@@ -1,0 +1,26 @@
+{
+  "i18n": {
+    "common": {
+      "themeSwitch": "Switch Theme"
+    },
+    "index": {
+      "title": "Hi",
+      "krzysztof": "I'm Krzysztof",
+      "work": {
+        "name": "Work"
+      },
+      "about": "I do like picking different programming projects - anything is fun! I've been working with Java frontend applications, Android AR Applications, Unity with AR Core, Django ' +'and currently I'm focusing on ReactJS.",
+      "projects": {
+        "name": "Projects",
+        "descriptions": {
+          "openglengine": "Project as integration of OpenGL rendering system into graphical user interface. Used for testing, learning and experimentation",
+          "sortingvisualizer": "Realtime sorting algorithm visualiser",
+          "reactadmin": "React frontend for Django server to manage accounts and tables"
+        }
+      },
+      "education": {
+        "name": "Education"
+      }
+    }
+  }
+}
