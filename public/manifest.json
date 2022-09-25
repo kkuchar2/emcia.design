@@ -3,9 +3,9 @@
   "background_color": "#fafafa",
   "display": "standalone",
   "start_url": "/",
-  "name": "KrzysztofKucharski",
-  "short_name": "KrzysztofKucharski",
-  "description": "Krzysztof Kucharski - Portfolio",
+  "name": "Emilia Markiewicz",
+  "short_name": "Emilia Markiewicz",
+  "description": "Emilia Markiewicz - UI/UX designer",
   "icons": [
     {
       "src": "/images/pwa/icon_x192.png",

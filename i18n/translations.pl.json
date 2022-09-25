@@ -1,26 +1,13 @@
 {
   "i18n": {
     "common": {
-      "themeSwitch": "Zmień motyw"
+      "themeSwitch": "Switch Theme"
     },
     "index": {
-      "title": "Cześć",
-      "krzysztof": "Jestem Krzysztof",
-      "work": {
-        "name": "Praca"
-      },
-      "about": "I do like picking different programming projects - anything is fun! I've been working with Java frontend applications, Android AR Applications, Unity with AR Core, Django ' +'and currently I'm focusing on ReactJS.",
-      "projects": {
-        "name": "Projekty",
-        "descriptions": {
-          "openglengine": "Mały demonstracyjny silniczek OpenGL",
-          "sortingvisualizer": "Wizualizacja algorytmów sortowania",
-          "reactadmin": "Aplikacja w ReactJS do zarządzania serwerem w Django"
-        }
-      },
-      "education": {
-        "name": "Edukacja"
-      }
+      "hello1": "Hi, I'm Emilia Markiewicz",
+      "hello2": "UI",
+      "hello3": "Designer",
+      "about": "blabla"
     }
   }
 }

@@ -1,11 +1,10 @@
-import React from "react";
+import React from 'react';
 
-import {Button, useColorMode} from "@chakra-ui/react";
-import {SunIcon} from "@heroicons/react/outline";
-import {MoonIcon} from "@heroicons/react/solid";
-import {useTranslation} from "next-export-i18n";
-
-import {useSemanticColor} from "hooks/useSemanticColor";
+import {Button, useColorMode} from '@chakra-ui/react';
+import {SunIcon} from '@heroicons/react/outline';
+import {MoonIcon} from '@heroicons/react/solid';
+import {useSemanticColor} from 'hooks/useSemanticColor';
+import {useTranslation} from 'next-export-i18n';
 
 const ThemeSwitcher = () => {
 

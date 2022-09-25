@@ -1,14 +1,12 @@
-import styled from "styled-components";
-
-import {MyCanvas} from "components/3d/MyCanvas";
+import styled from 'styled-components';
 
 export const StyledHome = styled.div`
-  min-width: 0;
+  height: 100vh;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow-x: hidden;
+  justify-content: center;
 `;
 
 export const StyledContent = styled.div`
@@ -20,38 +18,23 @@ export const StyledContent = styled.div`
   flex-direction: column;
 `;
 
-export const StyledMyCanvas = styled(MyCanvas)`
-  // create keyframes anim for opacity
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-        }
-        to {
-            opacity: 1;
-        }
-    }
-  
-  // create animation for opacity
-  //  
-  opacity: 0.1;
-`;
-
-export const TopSection = styled.div`
-  overflow: hidden;
+export const CenterBox = styled.div`
+  background-origin: padding-box;
   box-sizing: border-box;
-  margin-bottom: 100px;
-  width: 100%;
-  font-weight: 600;
-  margin-top: 50px;
-  padding-top: 100px;
+  line-height: clamp(4rem, 4vw + 1rem, 6rem);
+  margin: 10px 10px 100px;
+  font-weight: 400;
+  font-size: clamp(2.8rem, 2vw + 1rem, 5rem);
+  padding: 80px 50px 80px 50px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   background-size: 50px 50px;
   position: relative;
   z-index: 1;
-  pointer-events: none
+  pointer-events: none;
+  animation: fadeIn 1s ease-in-out forwards;
 `;
 
 export const Descriptions = styled.div`

@@ -1,12 +1,18 @@
 {
-  "name": "krzysztof_kucharski_portfolio",
+  "name": "emcia.design",
   "version": "1.0.0",
-  "author": "Krzysztof Kucharski",
+  "author": "Emilia Markiewicz & Krzysztof Kucharski",
   "license": "MIT",
-  "description": "My Portfolio",
+  "description": "Emilia Markiewicz UI/UX Designer",
   "keywords": [
     "react",
-    "porfolio"
+    "porfolio",
+    "ui",
+    "ux",
+    "designer",
+    "emilia",
+    "markiewicz",
+    "emcia"
   ],
   "scripts": {
     "dev": "node ./update-build.js && next dev -p 3002",
@@ -77,5 +83,5 @@
     "three": "^0.143.0",
     "typescript": "4.7.4"
   },
-  "buildHash": "1907e6cfb02704f064476b4016da233787b4d510"
+  "buildHash": "b509f8a841bd0286d8e7f6b9d79e804038f10d83"
 }

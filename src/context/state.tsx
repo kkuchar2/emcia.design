@@ -1,8 +1,8 @@
 import React, {createContext, useContext, useEffect, useState} from 'react';
 
-import {DefaultSeo} from "next-seo";
+import {DefaultSeo} from 'next-seo';
 
-import SEO from "../../next-seo.config";
+import SEO from '../../next-seo.config';
 
 const AppContext = createContext([]);
 

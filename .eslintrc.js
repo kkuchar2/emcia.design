@@ -1,6 +1,4 @@
-const possibleErrors = {
-    "@next/next/no-img-element": "off"
-};
+const possibleErrors = {};
 
 const bestPractices = {};
 
@@ -21,10 +19,12 @@ const stylistic = {
     'no-trailing-spaces': ['error', {skipBlankLines: false}],
     'comma-spacing': 'error',
     'comma-style': 'error',
-    "react/no-unescaped-entities": 0,
-    "react/prop-types": 0,
-    "no-var": 0,
-    "semi": 'error',
+    'react/no-unescaped-entities': 0,
+    'react/prop-types': 0,
+    'react/jsx-curly-brace-presence': ['error', 'always'],
+    'no-var': 0,
+    'semi': 'error',
+    'quotes': [2, 'single', 'avoid-escape'],
     'keyword-spacing': ['error'],
     'space-in-parens': ['error', 'never'],
     'space-infix-ops': 'error',
@@ -49,11 +49,11 @@ const stylistic = {
             pathGroupsExcludedImportTypes: ['builtin'],
         },
     ],
-    "no-unused-vars": "off", // or "@typescript-eslint/no-unused-vars": "off",
-    "unused-imports/no-unused-imports": "error",
-    "unused-imports/no-unused-vars": [
-        "warn",
-        {"vars": "all", "varsIgnorePattern": "^_", "args": "after-used", "argsIgnorePattern": "^_"}
+    'no-unused-vars': 'off', // or "@typescript-eslint/no-unused-vars": "off",
+    'unused-imports/no-unused-imports': 'error',
+    'unused-imports/no-unused-vars': [
+        'warn',
+        {'vars': 'all', 'varsIgnorePattern': '^_', 'args': 'after-used', 'argsIgnorePattern': '^_'}
     ],
 };
 
@@ -91,8 +91,7 @@ module.exports = {
         node: false
     },
     extends: [
-        'plugin:react/recommended',
-        "next/core-web-vitals"
+        'plugin:react/recommended'
     ],
     rules: rules,
     overrides: [

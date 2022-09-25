@@ -1,0 +1,27 @@
+@font-face {
+    font-family: 'Mansory';
+    src: url('Mansory.ttf');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Canela Thin';
+    src: url('Canela-Thin.ttf');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Canela Light';
+    src: url('Canela-Light.ttf');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Canela Medium';
+    src: url('Canela-Medium.ttf');
+    font-weight: 400;
+    font-style: normal;
+}

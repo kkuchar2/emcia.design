@@ -1,6 +1,6 @@
 const DEFAULT_THEME = 'dark';
 const LOCALSTORAGE_THEME_KEY = 'chakra-ui-color-mode';
-const LIGHT_THEME_HTML_BG = '#ffffff';
+const LIGHT_THEME_HTML_BG = '#FFFEF6';
 const DARK_THEME_HTML_BG = '#272727';
 /**
  * Prevent flash of white when refreshing page
