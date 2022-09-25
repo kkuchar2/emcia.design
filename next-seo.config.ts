@@ -4,7 +4,7 @@ export default {
     title: 'Emilia Markiewicz',
     description: 'Aspiring UI/UX designer',
     language: 'en',
-    canonical: 'https://kkucharski.com',
+    canonical: 'https://emcia.design',
 
     // Facebook OpenGraph
     openGraph: {
