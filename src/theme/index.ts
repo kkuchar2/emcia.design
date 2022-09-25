@@ -141,7 +141,7 @@ const styles = {
 
 // define config
 const config = {
-    initialColorMode: 'dark',
+    initialColorMode: 'light',
     useSystemColorMode: false
 };
 
