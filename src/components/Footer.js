@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { useTranslation } from 'next-i18next';
 import pkg from 'next-i18next/package.json';
 import pkgLD from 'next-language-detector/package.json';
@@ -32,11 +34,11 @@ export const Footer = () => {
                 })}
             </p>
             <p>
-                next-i18next v
+                {'next-i18next v'}
                 {pkg.version}
             </p>
             <p>
-                next-language-detector v
+                {'next-language-detector v'}
                 {pkgLD.version}
             </p>
         </footer>

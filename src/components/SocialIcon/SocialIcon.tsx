@@ -1,7 +1,7 @@
-import {CSSProperties, useCallback, useState} from "react";
+import React, {CSSProperties, useCallback, useState} from 'react';
 
-import {SocialIcon as BaseSocialIcon} from "react-social-icons";
-import styled from "styled-components";
+import {SocialIcon as BaseSocialIcon} from 'react-social-icons';
+import styled from 'styled-components';
 
 interface HoverSocialIconProps {
     size: number;
@@ -36,7 +36,7 @@ export const SocialIcon = (props: HoverSocialIconProps) => {
         setHover(false);
     }, []);
 
-    return <StyledBaseSocialIcon target={"_blank"}
+    return <StyledBaseSocialIcon target={'_blank'}
                                  style={{
                                      width: size,
                                      height: size,

@@ -1,8 +1,8 @@
-import React, {CSSProperties} from "react";
+import React, {CSSProperties} from 'react';
 
-import {StyledIconLink} from "./style";
+import {SvgIcon, SvgIconProps} from 'components/SvgIcon/SvgIcon';
 
-import {SvgIcon, SvgIconProps} from "components/SvgIcon/SvgIcon";
+import {StyledIconLink} from './style';
 
 interface SvgIconLinkProps {
     href: string;

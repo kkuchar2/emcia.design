@@ -1,6 +1,6 @@
-import React, {CSSProperties} from "react";
+import React, {CSSProperties} from 'react';
 
-import {StyledReactSVG} from "./style";
+import {StyledReactSVG} from './style';
 
 export interface SvgIconProps {
     icon: string;

@@ -1,3 +1,5 @@
+import React from 'react';
+
 import Head from 'next/head';
 
 export const Header = ({heading, title}) => (
@@ -6,17 +8,17 @@ export const Header = ({heading, title}) => (
             <title>{title}</title>
         </Head>
         <h2>
-            next-language-detector example
+            {'next-language-detector example'}
             <hr/>
         </h2>
         <h1>
             {heading}
         </h1>
         <a
-            className='github'
-            href='//github.com/i18next/next-language-detector'
+            className={'github'}
+            href={'//github.com/i18next/next-language-detector'}
         >
-            <i className='typcn typcn-social-github-circular'/>
+            <i className={'typcn typcn-social-github-circular'}/>
         </a>
     </>
 );

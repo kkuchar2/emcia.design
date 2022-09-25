@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 interface StyledThemeSwitchButtonProps {
     size: number;
@@ -13,6 +13,6 @@ export const StyledThemeSwitchButton = styled.button<StyledThemeSwitchButtonProp
   border-radius: 7px;
 
   &:hover {
-    background: ${props => props.theme === 'dark' ?  `rgba(255, 255, 255, 0.14)` : `#EDF2F7`};
-  }
+    background: ${props => props.theme === 'dark' ?  'rgba(255, 255, 255, 0.14)' : '#EDF2F7'};
+  } 
 `;

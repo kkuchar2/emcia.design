@@ -1,5 +1,5 @@
-import {useColorMode} from "@chakra-ui/react";
-import {useTheme} from "@emotion/react";
+import {useColorMode} from '@chakra-ui/react';
+import {useTheme} from '@emotion/react';
 
 export const useSemanticColor = (token: string) => {
     const theme = useTheme();

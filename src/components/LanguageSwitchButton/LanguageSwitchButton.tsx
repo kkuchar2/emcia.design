@@ -1,7 +1,7 @@
 import React, {useCallback, useMemo} from 'react';
 
-import {Button} from "@chakra-ui/react";
-import {useLanguageQuery, useLanguageSwitcherIsActive} from "next-export-i18n";
+import {Button} from '@chakra-ui/react';
+import {useLanguageQuery, useLanguageSwitcherIsActive} from 'next-export-i18n';
 import {useRouter} from 'next/router';
 
 type LanguageSwitchButtonProps = {
@@ -40,10 +40,10 @@ const LanguageSwitchButton = (props: LanguageSwitchButtonProps) => {
             bg={'none'}
             color={active ? 'text-lang-option-active' : 'text-lang-option'}
             _focus={{
-                bg: "none",
+                bg: 'none',
             }}
             _hover={{
-                bg: "none",
+                bg: 'none',
                 color: active ? 'text-lang-option-active-hover' : 'text-lang-option-hover',
             }}
             onClick={onButtonClick}>
