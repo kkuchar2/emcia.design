@@ -1,4 +1,4 @@
-const DEFAULT_THEME = 'dark';
+const DEFAULT_THEME = 'light';
 const LOCALSTORAGE_THEME_KEY = 'chakra-ui-color-mode';
 const LIGHT_THEME_HTML_BG = '#FFFEF6';
 const DARK_THEME_HTML_BG = '#272727';
