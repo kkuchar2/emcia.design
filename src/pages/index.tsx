@@ -3,13 +3,24 @@ import React from 'react';
 import styled from 'styled-components';
 
 const StyledLine = styled.div`
+
+  @keyframes line_mobile {
+    0% {
+      height: 0;
+    }
+    100% {
+      height: 80%;
+    }
+  }
+  
   width: 2px;
   height: 80%;
   background-color: #F1F1F1;
   position: absolute;
   bottom: 0;
   left: 50%;
-
+  animation: line_mobile 2200ms cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+  
   // sm-style:
   @media (min-width: 768px) {
     display: none;
@@ -20,13 +31,23 @@ const StyledLineBig = styled.div`
   background-color: #F1F1F1;
   position: absolute;
   
+  @keyframes line {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 140%;
+    }
+  }
+  
   @media (min-width: 768px) {
-    width: calc(140%);
+    width: 140%;
     max-width: 1200px;
     height: 1px;
     position: absolute;
     bottom: -10px;
     left: 0;
+    animation: line 2200ms cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
   }
 `;
 
@@ -39,6 +60,7 @@ const CircleSection = function () {
             'md:h-[25vw] md:w-[25vw] ' +
             'lg:h-[25vw] lg:w-[25vw] ' +
             'max-h-[400px] max-w-[400px] ' +
+            'animate-showscale ' +
             'rounded-full relative'}>
         </div>
     </div>;
@@ -47,19 +69,25 @@ const CircleSection = function () {
 const TitleAndDescription = function () {
     return <div className={'flex flex-col gap-[20px] items-center md:items-start justify-center w-full relative'}>
         <div className={'text-white relative ' +
+            'opacity-0 ' +
             'w-full ' +
             'md:text-left ' +
             'text-[36px] ' +
             'sm:text-[40px] ' +
             'md:text-[48px] ' +
             'lg:text-[60px] ' +
+            'animate-title1_mobile ' +
+            'md:animate-title1 ' +
             'text-center font-bold font-plusJakarta'}>
             <div>{'coming soon'}</div>
             <StyledLineBig />
         </div>
         <div className={'text-[#898989] sm:text-left ' +
+            'opacity-0 ' +
             'text-[10px] ' +
             'sm:text-[12px] ' +
+            'animate-title2_mobile ' +
+            'md:animate-title2 ' +
             'text-center font-plusJakarta font-[500]'}>
             {'We are currently working hard on this page. See you soon!'}
         </div>
