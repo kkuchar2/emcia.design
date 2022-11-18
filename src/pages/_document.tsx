@@ -14,6 +14,8 @@ class MyDocument extends Document {
                 <link rel={'manifest'} href={'/manifest.json'}/>
                 <link rel={'apple-touch-icon'} href={'/images/pwa/icon_x256.png'}/>
                 <link rel={'stylesheet'} href={'/fonts/style.css'}/>
+                <meta name={'viewport'} content={'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'}/>
+                <link rel={'preconnect stylesheet'} href={'https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap'} as={'style'} crossOrigin={''}/>
             </Head>
             <body>
                 <Main/>

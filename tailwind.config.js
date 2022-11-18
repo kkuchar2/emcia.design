@@ -7,78 +7,39 @@ module.exports = {
     theme: {
         extend: {
             keyframes: {
-                titlefadein: {
-                    '0%': { opacity: 0 },
-                    '100%': { opacity: 1 },
-                },
-                titlefadein2: {
-                    '0%': { opacity: 0 },
-                    '50%': { opacity: 0 },
-                    '100%': { opacity: 1 },
-                },
-                fadein1: {
+                title1: {
                     '0%': {
                         opacity: 0,
-                        right: '-600px',
-                        width: '500px'
+                        transform: 'translateX(-120px)'
                     },
                     '100%': {
                         opacity: 1,
-                        right: '40px',
-                        width: '333px'
+                        transform: 'translateX(0px)'
                     },
                 },
-                fadein2: {
+                title2: {
                     '0%': {
                         opacity: 0,
-                        left: '-600px',
-                        width: '1500px'
+                        transform: 'translateX(-120px)'
                     },
                     '100%': {
                         opacity: 1,
-                        left: '40px',
-                        width: '333px'
-                    }
+                        transform: 'translateX(0px)'
+                    },
                 },
-                fadein3: {
+                title3: {
                     '0%': {
                         opacity: 0,
-                        top: '-600px'
                     },
                     '100%': {
                         opacity: 1,
-                        top: '40px'
-                    }
-                },
-                fadein4: {
-                    '0%': {
-                        opacity: 0,
-                        top: '-300px'
                     },
-                    '100%': {
-                        opacity: 1,
-                        top: '40px'
-                    }
                 },
-                fadein5: {
-                    '0%': {
-                        opacity: 0,
-                        left: '-500px'
-                    },
-                    '100%': {
-                        opacity: 1,
-                        left: '0px'
-                    }
-                }
             },
             animation: {
-                titlefadein: 'titlefadein 1s ease-in',
-                titlefadein2: 'titlefadein2 1.2s ease-out',
-                fadein1: 'fadein1 1.2s ease',
-                fadein2: 'fadein2 1.4s ease',
-                fadein3: 'fadein3 1.3s ease',
-                fadein4: 'fadein4 0.5s ease',
-                fadein5: 'fadein5 0.8s ease',
+                title1: 'title1 1.5s ease',
+                title2: 'title2 1.5s ease 0.1s forwards',
+                title3: 'title3 1.5s ease 0.7s forwards',
             },
             colors: {
                 home: {
@@ -152,7 +113,7 @@ module.exports = {
             },
         },
         fontFamily: {
-            sarabun: ['Sarabun', 'sans-serif'],
+            plusJakarta: ['Plus Jakarta Sans', 'sans-serif'],
         }
     },
     daisyui: {
