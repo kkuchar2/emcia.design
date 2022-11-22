@@ -12,14 +12,15 @@ const StyledLine = styled.div`
       height: 60%;
     }
   }
-  
+
+  height: 0;
   width: 2px;
-  height: 80%;
   background-color: #F1F1F1;
   position: absolute;
   bottom: 10vh;
   left: 50%;
   animation: line_mobile 3200ms cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+  animation-delay: 0.2s;
   
   // sm-style:
   @media (min-width: 768px) {
@@ -41,13 +42,14 @@ const StyledLineBig = styled.div`
   }
   
   @media (min-width: 768px) {
-    width: 140%;
+    width: 0;
     max-width: 1200px;
     height: 1px;
     position: absolute;
     bottom: -10px;
     left: 0;
     animation: line 2200ms cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+    animation-delay: 0.2s;
   }
 `;
 
