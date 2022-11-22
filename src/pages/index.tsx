@@ -101,7 +101,7 @@ const TitleAndDescription = function () {
                 'animate-title2_mobile ' +
                 'md:animate-title2 ' +
                 'text-center font-plusJakarta font-[500]'}>
-                {'We are currently working hard on this page'}
+                {'We are currently working hard on this page.'}
             </div>
             <div className={'text-[#898989] sm:text-left ' +
                 'min-w-fit ' +
