@@ -51,8 +51,21 @@ module.exports = {
                     '0%': {
                         transform: 'scale(0)',
                     },
+                    '20%': {
+                        transform: 'scale(1.1)',
+                    },
                     '100%': {
                         transform: 'scale(1)',
+                    }
+                },
+                showscale2: {
+                    '0%': {
+                        transform: 'scale(0)',
+                        opacity: 0.05
+                    },
+                    '100%': {
+                        transform: 'scale(6)',
+                        opacity: 0.02
                     }
                 }
             },
@@ -61,7 +74,8 @@ module.exports = {
                 title2: 'title2 2.2s cubic-bezier(0.075, 0.82, 0.165, 1) 0.1s forwards',
                 title1_mobile: 'title1_mobile 2.2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards',
                 title2_mobile: 'title2_mobile 2.2s cubic-bezier(0.075, 0.82, 0.165, 1) 0.1s forwards',
-                showscale: 'showscale 2.2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards'
+                showscale: 'showscale 2.0s cubic-bezier(0.075, 1.20, 0.80, 1) forwards',
+                showscale2: 'showscale2 2.0s cubic-bezier(0.075, 1.20, 0.80, 1) forwards'
             },
             colors: {
                 home: {

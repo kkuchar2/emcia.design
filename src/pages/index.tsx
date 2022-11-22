@@ -9,7 +9,7 @@ const StyledLine = styled.div`
       height: 0;
     }
     100% {
-      height: 80%;
+      height: 60%;
     }
   }
   
@@ -17,9 +17,9 @@ const StyledLine = styled.div`
   height: 80%;
   background-color: #F1F1F1;
   position: absolute;
-  bottom: 0;
+  bottom: 10vh;
   left: 50%;
-  animation: line_mobile 2200ms cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+  animation: line_mobile 3200ms cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
   
   // sm-style:
   @media (min-width: 768px) {
@@ -63,6 +63,16 @@ const CircleSection = function () {
             'animate-showscale ' +
             'rounded-full relative'}>
         </div>
+        <div className={'bg-white ' +
+            'fixed ' +
+            'h-[20vh] w-[20vh] ' +
+            'sm:h-[25vw] sm:w-[25vw] ' +
+            'md:h-[25vw] md:w-[25vw] ' +
+            'lg:h-[25vw] lg:w-[25vw] ' +
+            'max-h-[400px] max-w-[400px] ' +
+            'animate-showscale2 ' +
+            'rounded-full'}>
+        </div>
     </div>;
 };
 
@@ -84,8 +94,8 @@ const TitleAndDescription = function () {
         </div>
         <div className={'text-[#898989] sm:text-left ' +
             'opacity-0 ' +
-            'text-[10px] ' +
-            'sm:text-[12px] ' +
+            'text-[15px] ' +
+            'sm:text-[16px] ' +
             'animate-title2_mobile ' +
             'md:animate-title2 ' +
             'text-center font-plusJakarta font-[500]'}>
