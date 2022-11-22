@@ -21,7 +21,7 @@ const StyledLine = styled.div`
   left: 50%;
   animation: line_mobile 3200ms cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
   animation-delay: 0.2s;
-  
+
   // sm-style:
   @media (min-width: 768px) {
     display: none;
@@ -31,16 +31,16 @@ const StyledLine = styled.div`
 const StyledLineBig = styled.div`
   background-color: #F1F1F1;
   position: absolute;
-  
+
   @keyframes line {
     0% {
-        width: 0;
+      width: 0;
     }
     100% {
-        width: 140%;
+      width: 140%;
     }
   }
-  
+
   @media (min-width: 768px) {
     width: 0;
     max-width: 1200px;
@@ -55,7 +55,7 @@ const StyledLineBig = styled.div`
 
 const CircleSection = function () {
     return <div className={'flex-1 flex items-end justify-center md:justify-end w-full relative'}>
-        <StyledLine />
+        <StyledLine/>
         <div className={'bg-white ' +
             'h-[20vh] w-[20vh] ' +
             'sm:h-[25vw] sm:w-[25vw] ' +
@@ -82,16 +82,37 @@ const TitleAndDescription = function () {
             'md:animate-title1 ' +
             'text-center font-bold font-plusJakarta'}>
             <div>{'coming soon'}</div>
-            <StyledLineBig />
+            <StyledLineBig/>
         </div>
-        <div className={'text-[#898989] sm:text-left ' +
-            'opacity-0 ' +
-            'text-[15px] ' +
-            'sm:text-[16px] ' +
-            'animate-title2_mobile ' +
-            'md:animate-title2 ' +
-            'text-center font-plusJakarta font-[500]'}>
-            {'We are currently working hard on this page. See you soon!'}
+        <div className={'flex ' +
+            'flex-row ' +
+            'flex-wrap ' +
+            'items-center ' +
+            'md:items-start ' +
+            'justify-center ' +
+            'md:justify-start ' +
+            'gap-[5px] ' +
+            'w-full relative'}>
+            <div className={'text-[#898989] sm:text-left ' +
+                'min-w-fit ' +
+                'opacity-0 ' +
+                'text-[15px] ' +
+                'sm:text-[16px] ' +
+                'animate-title2_mobile ' +
+                'md:animate-title2 ' +
+                'text-center font-plusJakarta font-[500]'}>
+                {'We are currently working hard on this page'}
+            </div>
+            <div className={'text-[#898989] sm:text-left ' +
+                'min-w-fit ' +
+                'opacity-0 ' +
+                'text-[15px] ' +
+                'sm:text-[16px] ' +
+                'animate-title2_mobile ' +
+                'md:animate-title2 ' +
+                'text-center font-plusJakarta font-[500]'}>
+                {'See you soon!'}
+            </div>
         </div>
     </div>;
 };
@@ -101,7 +122,8 @@ const Index = () => {
         className={'w-full max-w-[1500px] max-h-[600px] bg-[#1e1e1e] flex p-[30px] ' +
             'pt-[100px] pb-[50px] ' +
             'sm:pb-[100px] md:pl-[100px] md:pr-[100px] lg:pl-[150px] lg:pr-[150px] h-full max-h-[800px] md:max-h-full'}>
-        <div className={'w-full flex flex-col md:flex-row justify-center items-center h-full gap-[20px] sm:gap-0 md:gap-[20px]'}>
+        <div
+            className={'w-full flex flex-col md:flex-row justify-center items-center h-full gap-[20px] sm:gap-0 md:gap-[20px]'}>
             <TitleAndDescription/>
             <CircleSection/>
         </div>
