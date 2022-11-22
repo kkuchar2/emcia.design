@@ -7,78 +7,64 @@ module.exports = {
     theme: {
         extend: {
             keyframes: {
-                titlefadein: {
-                    '0%': { opacity: 0 },
-                    '100%': { opacity: 1 },
-                },
-                titlefadein2: {
-                    '0%': { opacity: 0 },
-                    '50%': { opacity: 0 },
-                    '100%': { opacity: 1 },
-                },
-                fadein1: {
+                title1: {
                     '0%': {
                         opacity: 0,
-                        right: '-600px',
-                        width: '500px'
+                        transform: 'translateX(-120px)'
                     },
                     '100%': {
                         opacity: 1,
-                        right: '40px',
-                        width: '333px'
+                        transform: 'translateX(0px)'
                     },
                 },
-                fadein2: {
+                title2: {
                     '0%': {
                         opacity: 0,
-                        left: '-600px',
-                        width: '1500px'
+                        transform: 'translateX(-120px)'
                     },
                     '100%': {
                         opacity: 1,
-                        left: '40px',
-                        width: '333px'
+                        transform: 'translateX(0px)'
+                    },
+                },
+                title1_mobile: {
+                    '0%': {
+                        opacity: 0,
+                        transform: 'translateY(-120px)'
+                    },
+                    '100%': {
+                        opacity: 1,
+                        transform: 'translateY(0px)'
                     }
                 },
-                fadein3: {
+                title2_mobile: {
                     '0%': {
                         opacity: 0,
-                        top: '-600px'
+                        transform: 'translateY(-120px)'
                     },
                     '100%': {
                         opacity: 1,
-                        top: '40px'
+                        transform: 'translateY(0px)'
                     }
                 },
-                fadein4: {
+                showscale: {
                     '0%': {
-                        opacity: 0,
-                        top: '-300px'
+                        transform: 'scale(0)',
+                    },
+                    '20%': {
+                        transform: 'scale(1.1)',
                     },
                     '100%': {
-                        opacity: 1,
-                        top: '40px'
-                    }
-                },
-                fadein5: {
-                    '0%': {
-                        opacity: 0,
-                        left: '-500px'
-                    },
-                    '100%': {
-                        opacity: 1,
-                        left: '0px'
+                        transform: 'scale(1)',
                     }
                 }
             },
             animation: {
-                titlefadein: 'titlefadein 1s ease-in',
-                titlefadein2: 'titlefadein2 1.2s ease-out',
-                fadein1: 'fadein1 1.2s ease',
-                fadein2: 'fadein2 1.4s ease',
-                fadein3: 'fadein3 1.3s ease',
-                fadein4: 'fadein4 0.5s ease',
-                fadein5: 'fadein5 0.8s ease',
+                title1: 'title1 2.2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards',
+                title2: 'title2 2.2s cubic-bezier(0.075, 0.82, 0.165, 1) 0.1s forwards',
+                title1_mobile: 'title1_mobile 2.2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards',
+                title2_mobile: 'title2_mobile 2.2s cubic-bezier(0.075, 0.82, 0.165, 1) 0.1s forwards',
+                showscale: 'showscale 2.0s cubic-bezier(0.075, 1.0, 0.90, 1) forwards',
             },
             colors: {
                 home: {
@@ -152,7 +138,7 @@ module.exports = {
             },
         },
         fontFamily: {
-            sarabun: ['Sarabun', 'sans-serif'],
+            plusJakarta: ['Plus Jakarta Sans', 'sans-serif'],
         }
     },
     daisyui: {

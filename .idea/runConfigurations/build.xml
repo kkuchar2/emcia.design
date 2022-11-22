@@ -6,7 +6,9 @@
       <script value="build" />
     </scripts>
     <node-interpreter value="$USER_HOME$/.nvm/versions/node/v16.11.1/bin/node" />
-    <envs />
+    <envs>
+      <env name="ANALYZE" value="true" />
+    </envs>
     <method v="2" />
   </configuration>
 </component>

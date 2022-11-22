@@ -1,134 +1,133 @@
 import React from 'react';
 
-import {useTranslation} from 'next-export-i18n';
 import styled from 'styled-components';
-import {
-    StyledHome,
-} from 'styles/MainPage';
 
-const StyledPage = styled.div`
-  font-family: "Mansory", sans-serif;
-`;
+const StyledLine = styled.div`
 
-const StyledText1 = styled.div`
-
-`;
-
-const StyledText2 = styled.span`
-
-`;
-
-const StyledText3 = styled.span`
-
-`;
-
-const Dot = styled.div`
-
-  @keyframes flip_horizontal {
+  @keyframes line_mobile {
     0% {
-      transform: rotateY(0deg);
-      background-position: unset;
-    }
-    24% {
-      transform: rotateY(0deg);
-      background-position: unset;
-    }
-    25% {
-      transform: rotateY(180deg);
-      background-position: center;
-    }
-    49% {
-      transform: rotateY(180deg);
-      background-position: center;
-    }
-    50% {
-      transform: rotateY(0deg);
-      background-position: center;
-    }
-    74% {
-      transform: rotateY(0deg);
-      background-position: center;
-    }
-    75% {
-      transform: rotateY(180deg);
-      background-position: unset;
+      height: 0;
     }
     100% {
-      transform: rotateY(180deg);
-      background-position: unset;
+      height: 60%;
     }
   }
 
-  width: 200px;
-  height: 200px;
-  background: url('/images/emcia.jpg');
-  background-size: cover;
-  border-radius: 50%;
-  animation: flip_horizontal 4s infinite;
+  height: 0;
+  width: 2px;
+  background-color: #F1F1F1;
+  position: absolute;
+  bottom: 10vh;
+  left: 50%;
+  animation: line_mobile 3200ms cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+  animation-delay: 0.2s;
 
-  @keyframes disco {
-    0% {
-      background: rgba(255, 0, 0, 0.2);
-    }
-    24% {
-      background: rgba(255, 0, 0, 0.2);
-    }
-    25% {
-      background: rgba(255, 255, 0, 0.2);
-    }
-    49% {
-      background: rgba(255, 255, 0, 0.2);
-    }
-    50% {
-      background: rgba(0, 255, 18, 0.2);
-    }
-    74% {
-      background: rgba(0, 255, 18, 0.2);
-    }
-    75% {
-      background: rgba(0, 0, 255, 0.2);
-    }
-    100% {
-      background: rgba(0, 0, 255, 0.2);
-    }
-  }
-
-  &:after {
-    content: '';
-    display: block;
-    width: 200px;
-    height: 200px;
-    background: rgba(255, 0, 0, 0.09);
-    border-radius: 50%;
-    animation: disco 1s infinite;
+  // sm-style:
+  @media (min-width: 768px) {
+    display: none;
   }
 `;
+
+const StyledLineBig = styled.div`
+  background-color: #F1F1F1;
+  position: absolute;
+
+  @keyframes line {
+    0% {
+      width: 0;
+    }
+    100% {
+      width: 140%;
+    }
+  }
+
+  @media (min-width: 768px) {
+    width: 0;
+    max-width: 1200px;
+    height: 1px;
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    animation: line 2200ms cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+    animation-delay: 0.2s;
+  }
+`;
+
+const CircleSection = function () {
+    return <div className={'flex-1 flex items-end justify-center md:justify-end w-full relative'}>
+        <StyledLine/>
+        <div className={'bg-white ' +
+            'h-[20vh] w-[20vh] ' +
+            'sm:h-[25vw] sm:w-[25vw] ' +
+            'md:h-[25vw] md:w-[25vw] ' +
+            'lg:h-[25vw] lg:w-[25vw] ' +
+            'max-h-[400px] max-w-[400px] ' +
+            'animate-showscale ' +
+            'rounded-full relative'}>
+        </div>
+    </div>;
+};
+
+const TitleAndDescription = function () {
+    return <div className={'flex flex-col gap-[20px] items-center md:items-start justify-center w-full relative'}>
+        <div className={'text-white relative ' +
+            'opacity-0 ' +
+            'w-full ' +
+            'md:text-left ' +
+            'text-[36px] ' +
+            'sm:text-[40px] ' +
+            'md:text-[48px] ' +
+            'lg:text-[60px] ' +
+            'animate-title1_mobile ' +
+            'md:animate-title1 ' +
+            'text-center font-bold font-plusJakarta'}>
+            <div>{'coming soon'}</div>
+            <StyledLineBig/>
+        </div>
+        <div className={'flex ' +
+            'flex-row ' +
+            'flex-wrap ' +
+            'items-center ' +
+            'md:items-start ' +
+            'justify-center ' +
+            'md:justify-start ' +
+            'gap-[5px] ' +
+            'w-full relative'}>
+            <div className={'text-[#898989] sm:text-left ' +
+                'min-w-fit ' +
+                'opacity-0 ' +
+                'text-[15px] ' +
+                'sm:text-[16px] ' +
+                'animate-title2_mobile ' +
+                'md:animate-title2 ' +
+                'text-center font-plusJakarta font-[500]'}>
+                {'We are currently working hard on this page.'}
+            </div>
+            <div className={'text-[#898989] sm:text-left ' +
+                'min-w-fit ' +
+                'opacity-0 ' +
+                'text-[15px] ' +
+                'sm:text-[16px] ' +
+                'animate-title2_mobile ' +
+                'md:animate-title2 ' +
+                'text-center font-plusJakarta font-[500]'}>
+                {'See you soon!'}
+            </div>
+        </div>
+    </div>;
+};
 
 const Index = () => {
-
-    const { t } = useTranslation();
-
-    return <StyledPage>
-        {/*<NavBar/>*/}
-        <div className={'w-full max-w-[3000px] mx-auto bg-red relative overflow-hidden'}>
-            <StyledHome>
-                <Dot/>
-                {/*<CenterBox>*/}
-                {/*    <div className={'animate-fadein1 absolute top-0 right-[40px] w-[333px] h-[1px] bg-black/30'}/>*/}
-                {/*    <div className={'animate-fadein2 absolute bottom-0 left-[40px] w-[333px] h-[1px] bg-black'}/>*/}
-                {/*    <div className={'animate-fadein3 absolute top-[40px] left-0 h-[245px] w-[1px] bg-black/30'}/>*/}
-                {/*    <div className={'animate-fadein4 absolute top-[40px] right-0 h-[245px] w-[1px] bg-black'}/>*/}
-                {/*    <div*/}
-                {/*        className={'animate-fadein5 absolute bottom-[-40px] left-0 w-[333px] h-[1px] bg-black/30  invisible md:visible'}/>*/}
-                {/*    <StyledText1 className={'animate-titlefadein'}>{t('index.hello1')}</StyledText1>*/}
-                {/*    <StyledText2 className={'animate-titlefadein'}>{'UI'}*/}
-                {/*        <StyledText3 className={'animate-titlefadein ml-[20px]'}>{t('index.hello3')}</StyledText3>*/}
-                {/*    </StyledText2>*/}
-
-                {/*</CenterBox>*/}
-            </StyledHome>
+    return <div
+        className={'w-full max-w-[1500px] max-h-[600px] bg-[#1e1e1e] flex p-[30px] ' +
+            'pt-[100px] pb-[50px] ' +
+            'sm:pb-[100px] md:pl-[100px] md:pr-[100px] lg:pl-[150px] lg:pr-[150px] h-full max-h-[800px] md:max-h-full'}>
+        <div
+            className={'w-full flex flex-col md:flex-row justify-center items-center h-full gap-[20px] sm:gap-0 md:gap-[20px]'}>
+            <TitleAndDescription/>
+            <CircleSection/>
         </div>
-    </StyledPage>;
+    </div>;
 };
 
 export default Index;

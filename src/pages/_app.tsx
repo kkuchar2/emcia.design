@@ -2,13 +2,10 @@ import '../styles/globals.css';
 import {useEffect} from 'react';
 import React from 'react';
 
-import {ChakraProvider} from '@chakra-ui/react';
 import {logEvent} from 'firebase/analytics';
 import Head from 'next/head';
 
-import {AppWrapper} from '../context/state';
 import {initAnalytics, initFirebase} from '../firebase';
-import theme from '../theme';
 
 const App = function ({ Component, pageProps }) {
 
@@ -20,14 +17,13 @@ const App = function ({ Component, pageProps }) {
         }
     }, []);
 
-    return <AppWrapper>
+    return <div>
         <Head>
             <title>{'Emilia Markiewicz'}</title>
+            <meta name={'viewport'} content={'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'}/>
         </Head>
-        <ChakraProvider theme={theme}>
-            <Component {...pageProps} />
-        </ChakraProvider>
-    </AppWrapper>;
+        <Component {...pageProps} />
+    </div>;
 };
 
 export default App;
