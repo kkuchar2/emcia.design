@@ -13,8 +13,7 @@ class MyDocument extends Document {
             <Head>
                 <link rel={'manifest'} href={'/manifest.json'}/>
                 <link rel={'apple-touch-icon'} href={'/images/pwa/icon_x256.png'}/>
-                <link rel={'stylesheet'} href={'/fonts/style.css'}/>
-                <link rel={'preconnect stylesheet'} href={'https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap'} as={'style'} crossOrigin={''}/>
+                <link rel={'stylesheet'} href={'https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap'} as={'style'} crossOrigin={''}/>
             </Head>
             <body>
                 <Main/>
