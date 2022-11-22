@@ -65,16 +65,6 @@ const CircleSection = function () {
             'animate-showscale ' +
             'rounded-full relative'}>
         </div>
-        <div className={'bg-white ' +
-            'fixed ' +
-            'h-[20vh] w-[20vh] ' +
-            'sm:h-[25vw] sm:w-[25vw] ' +
-            'md:h-[25vw] md:w-[25vw] ' +
-            'lg:h-[25vw] lg:w-[25vw] ' +
-            'max-h-[400px] max-w-[400px] ' +
-            'animate-showscale2 ' +
-            'rounded-full'}>
-        </div>
     </div>;
 };
 
