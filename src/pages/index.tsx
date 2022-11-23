@@ -6,14 +6,14 @@ const StyledLine = styled.div`
 
   @keyframes line_mobile {
     0% {
-      height: 0;
+      height: 0.01px;
     }
     100% {
       height: 60%;
     }
   }
 
-  height: 0;
+  height: 0.01px;
   width: 2px;
   background-color: #F1F1F1;
   position: absolute;
@@ -34,7 +34,7 @@ const StyledLineBig = styled.div`
 
   @keyframes line {
     0% {
-      width: 0;
+      width: 0.01px;
     }
     100% {
       width: 140%;
@@ -42,7 +42,7 @@ const StyledLineBig = styled.div`
   }
 
   @media (min-width: 768px) {
-    width: 0;
+    width: 0.01px;
     max-width: 1200px;
     height: 1px;
     position: absolute;
@@ -71,7 +71,7 @@ const CircleSection = function () {
 const TitleAndDescription = function () {
     return <div className={'flex flex-col gap-[20px] items-center md:items-start justify-center w-full relative'}>
         <div className={'text-white relative ' +
-            'opacity-0 ' +
+            'opacity-[0.01] ' +
             'w-full ' +
             'md:text-left ' +
             'text-[36px] ' +
@@ -95,7 +95,7 @@ const TitleAndDescription = function () {
             'w-full relative'}>
             <div className={'text-[#898989] sm:text-left ' +
                 'min-w-fit ' +
-                'opacity-0 ' +
+                'opacity-[0.01] ' +
                 'text-[15px] ' +
                 'sm:text-[16px] ' +
                 'animate-title2_mobile ' +
@@ -105,7 +105,7 @@ const TitleAndDescription = function () {
             </div>
             <div className={'text-[#898989] sm:text-left ' +
                 'min-w-fit ' +
-                'opacity-0 ' +
+                'opacity-[0.01] ' +
                 'text-[15px] ' +
                 'sm:text-[16px] ' +
                 'animate-title2_mobile ' +
