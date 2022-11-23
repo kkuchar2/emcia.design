@@ -9,7 +9,7 @@ class MyDocument extends Document {
     }
 
     render() {
-        return <Html>
+        return <Html lang={'en'}>
             <Head>
                 <link rel={'manifest'} href={'/manifest.json'}/>
                 <link rel={'apple-touch-icon'} href={'/images/pwa/icon_x256.png'}/>
