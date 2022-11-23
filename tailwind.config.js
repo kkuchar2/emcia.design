@@ -9,7 +9,7 @@ module.exports = {
             keyframes: {
                 title1: {
                     '0%': {
-                        opacity: 0,
+                        opacity: 0.01,
                         transform: 'translateX(-120px)'
                     },
                     '100%': {
@@ -19,7 +19,7 @@ module.exports = {
                 },
                 title2: {
                     '0%': {
-                        opacity: 0,
+                        opacity: 0.01,
                         transform: 'translateX(-120px)'
                     },
                     '100%': {
@@ -29,7 +29,7 @@ module.exports = {
                 },
                 title1_mobile: {
                     '0%': {
-                        opacity: 0,
+                        opacity: 0.01,
                         transform: 'translateY(-120px)'
                     },
                     '100%': {
@@ -39,7 +39,7 @@ module.exports = {
                 },
                 title2_mobile: {
                     '0%': {
-                        opacity: 0,
+                        opacity: 0.01,
                         transform: 'translateY(-120px)'
                     },
                     '100%': {
@@ -49,7 +49,7 @@ module.exports = {
                 },
                 showscale: {
                     '0%': {
-                        transform: 'scale(0)',
+                        transform: 'scale(0.01)',
                     },
                     '20%': {
                         transform: 'scale(1.1)',
