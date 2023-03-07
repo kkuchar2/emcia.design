@@ -9,10 +9,10 @@ import styled from 'styled-components';
 
 import SEO from '../../next-seo.config';
 import { initAnalytics, initFirebase } from '../firebase';
+import MainContextProvider from '../MainContext';
 
 import '../styles/globals.css';
 import '/node_modules/mouse-follower/src/scss/index.scss';
-import MainContextProvider from '../MainContext';
 
 MouseFollower.registerGSAP(gsap);
 

@@ -72,7 +72,7 @@ const StyledNavbar = styled.nav<IStyledNavBarProps>`
 `;
 export const NavBar = (config: INavbarConfig) => {
 
-    const { navbarOpened, setNavbarOpened } = useMainContext();
+    const { navbarOpened } = useMainContext();
 
     const screenWidth = useScreenWidth();
 
