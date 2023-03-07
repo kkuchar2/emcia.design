@@ -93,7 +93,6 @@ html,
 body > div:first-child,
 div#__next,
 div#__next > div {
-    height: 100%;
     width: 100%;
     display: flex;
     align-items: center;
@@ -101,7 +100,15 @@ div#__next > div {
 }
 
 body {
-    background: #1e1e1e;
-    height: 100%;
+    /*background: #1e1e1e;*/
     width: 100%;
+}
+
+.mf-cursor:before {
+    transform: scale(0.5) !important;
+    background: rgba(98, 60, 236, 0.37) !important;
+}
+
+* {
+    box-sizing: border-box;
 }
