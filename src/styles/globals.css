@@ -7,10 +7,6 @@
         @apply bg-[#292929]
     }
 
-    .input {
-        @apply w-full bg-input-default disabled:bg-input-disabled border-none focus:ring-0 rounded-none py-4 px-4 text-white focus:outline-none focus:border-none
-    }
-
     .error {
         @apply text-[#ff4949] text-[14px]
     }
@@ -100,7 +96,7 @@ div#__next > div {
 }
 
 body {
-    /*background: #1e1e1e;*/
+    background: #1e1e1e;
     width: 100%;
 }
 
@@ -111,4 +107,9 @@ body {
 
 * {
     box-sizing: border-box;
+}
+
+.base-page-size {
+    width: 100%;
+    min-height: 100vh;
 }

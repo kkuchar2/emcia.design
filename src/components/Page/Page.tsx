@@ -1,7 +1,8 @@
 import { HamburgerButton } from 'components/HamburgerButton/HamburgerButton';
-import { OverlayNavBar } from 'components/OverlayNavBar/OverlayNavBar';
+import { NavBar } from 'components/OverlayNavBar/NavBar';
 import { ScrolledContent } from 'components/ScrolledContent/ScrolledContent';
 import { useScreenWidth } from 'hooks/use-screen';
+import { useRouter } from 'next/router';
 import React, { useCallback, useMemo, useRef } from 'react';
 
 import { useMainContext } from '../../MainContext';
@@ -23,6 +24,12 @@ export const Page = (props: PageProps) => {
     const prevOpenedRef = useRef(false);
 
     const screenWidth = useScreenWidth();
+
+    const router = useRouter();
+
+    React.useEffect(() => {
+        setNavbarOpened(false);
+    }, [router, setNavbarOpened]);
 
     React.useEffect(() => {
         prevOpenedRef.current = navbarOpened;
@@ -59,7 +66,7 @@ export const Page = (props: PageProps) => {
     return <ScrolledContent component={Component} pageProps={pageProps}>
         <div className={style.overlay}/>
         <HamburgerButton onClick={onHamburgerClick} navbarOpened={navbarOpened}/>
-        <OverlayNavBar className={navbarClasses} {...projectConfig.navBarConfig} />
+        <NavBar className={navbarClasses} {...projectConfig.navBarConfig} />
         <div className={overlayClasses}/>
     </ScrolledContent>;
 };

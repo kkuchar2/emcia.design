@@ -31,6 +31,7 @@
     "smooth-scrollbar": "^8.8.1"
   },
   "devDependencies": {
+    "@material-ui/core": "^4.12.4",
     "@types/node": "18.14.6",
     "@types/react": "^18.0.28",
     "@types/react-dom": "18.0.11",
@@ -52,14 +53,13 @@
     "eslint-plugin-tailwindcss": "^3.10.1",
     "eslint-plugin-unused-imports": "^2.0.0",
     "firebase": "^9.17.2",
+    "framer-motion": "^10.2.3",
     "gsap": "^3.11.4",
-    "locomotive-scroll": "^4.1.4",
     "moment": "^2.29.4",
-    "mouse-follower": "^1.1.2",
     "next-build-id": "^3.0.0",
     "next-pwa": "5.6.0",
     "next-seo": "^5.15.0",
-    "next-sitemap": "^4.0.3",
+    "next-sitemap": "^4.0.5",
     "postcss": "^8.4.21",
     "react-device-detect": "^2.2.3",
     "react-in-viewport": "^1.0.0-alpha.29",
@@ -68,5 +68,5 @@
     "tailwindcss": "^3.2.7",
     "typescript": "4.9.5"
   },
-  "buildHash": "f0dc064f2eb892e756df1d554054776beb450170"
+  "buildHash": "c9c9433961dfa4f801e9b079882800d200cde73d"
 }

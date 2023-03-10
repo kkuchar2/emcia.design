@@ -30,11 +30,9 @@ const listener = (status) => {
 
     document.documentElement.style.setProperty('--navbar-top', `${-status.offset.y}px`);
     const remaining = status.limit.y - status.offset.y;
-    document.documentElement.style.setProperty('--scroll-remaining', `${remaining}px`);
     const fullScroll = status.limit.y;
     const scale = remaining / fullScroll;
     document.documentElement.style.setProperty('--scale-bottom-circle', `${scale}`);
-    console.log('scale', scale);
 };
 
 export const ScrolledContent = (props: IScrolledContentProps) => {
@@ -54,13 +52,14 @@ export const ScrolledContent = (props: IScrolledContentProps) => {
                 }
 
                 scrollbar = Scrollbar.init(scrollbarRef.current, options);
+
                 if (listener && typeof listener === 'function') {
                     scrollbar.addListener(listener);
                 }
             }
         }
         return () => {
-            if (scrollbar) {
+            if (scrollbar && scrollbarRef.current) {
                 if (listener && typeof listener === 'function') {
                     scrollbar.removeListener(listener);
                 }
@@ -69,10 +68,12 @@ export const ScrolledContent = (props: IScrolledContentProps) => {
         };
     }, []);
 
-    return <div className={'relative w-full'}>
+    return <div className={'relative w-full md:overflow-hidden'}>
         {children}
-        <div ref={scrollbarRef} className={'relative w-full overflow-hidden'}>
-            <Component {...pageProps} />
+        <div ref={scrollbarRef} className={'relative w-full md:overflow-hidden'}>
+            <div>
+                <Component {...pageProps} />
+            </div>
         </div>
     </div>;
 };

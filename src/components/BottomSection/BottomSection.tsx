@@ -1,4 +1,5 @@
-import { FollowMe } from 'components/BottomSection/FollowMe';
+import { MadeBy } from 'components/MadeBy/MadeBy';
+import { SocialMedia } from 'components/SocialMedia/SocialMedia';
 import { ISize, useCurrentSize } from 'hooks/use-size';
 import React, { useRef } from 'react';
 import styled from 'styled-components';
@@ -72,6 +73,9 @@ export const BottomSection = () => {
                 </div>
             </StyledContact>
         </StyledBottomSectionWrapper>
-        <FollowMe/>
+        <div className={'absolute left-0 bottom-0 z-0 flex h-[216px] w-full flex-col items-center justify-center bg-[#1e1e1e]'}>
+            <SocialMedia/>
+            <MadeBy/>
+        </div>
     </StyledBottomSection>;
 };

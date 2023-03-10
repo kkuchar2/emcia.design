@@ -1,14 +1,14 @@
-import { NavBarItem } from 'components/NavBar/NavBarItem';
+import { NavBarItem } from 'components/OverlayNavBar/NavBarItem';
 import { useScreenWidth } from 'hooks/use-screen';
 import React, { useMemo } from 'react';
 
 import { INavbarConfig } from '../../projectConfig';
 
-interface OverlayNavbarProps {
+interface NavbarProps {
     className?: string;
 }
 
-export const OverlayNavBar = (props: INavbarConfig & OverlayNavbarProps) => {
+export const NavBar = (props: INavbarConfig & NavbarProps) => {
 
     const { className, ...config } = props;
 

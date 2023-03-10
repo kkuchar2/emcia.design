@@ -1,8 +1,9 @@
 import { TextButtonWithArrow } from 'components/ProjectItem/TextButtonWithArrow';
-import React, { useRef } from 'react';
+import { motion } from 'framer-motion';
+import React from 'react';
 import styled from 'styled-components';
 
-const Circle = styled.div`
+const Circle = styled(motion.div)`
 
   transform: scale(0);
 
@@ -98,19 +99,13 @@ const StyledWrapper = styled.div`
 
 export const Header = () => {
 
-    const circleRef = useRef<HTMLDivElement>(null);
-
     return <section className={'header relative flex h-screen items-center justify-center overflow-x-clip bg-[#1e1e1e]'}>
-        <Circle ref={circleRef}/>
+        <Circle/>
         <StyledHeaderTitle>
             <div className={'flex flex-wrap gap-[1rem]'}>
                 <StyledWrapper>
-                    <WithTransformAnimate className={'text-5xl font-semibold md:text-7xl'}>{'emilia'}</WithTransformAnimate>
+                    <WithTransformAnimate className={'text-5xl font-semibold md:text-7xl'}>{'emilia markiewicz'}</WithTransformAnimate>
                 </StyledWrapper>
-                <StyledWrapper>
-                    <WithTransformAnimate delay={0.2} className={'text-5xl font-semibold md:text-7xl'}>{'markiewicz'}</WithTransformAnimate>
-                </StyledWrapper>
-
             </div>
             <StyledWrapper>
                 <WithTransformAnimate className={'text-5xl font-semibold md:text-7xl'} delay={0.3}>

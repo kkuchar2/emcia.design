@@ -21,6 +21,27 @@ export const useScreenWidth = () => {
     return width;
 };
 
+export const useScreenHeight = () => {
+
+    const [height, setHeight] = useState(0);
+
+    useEffect(() => {
+        function handleResize() {
+            setHeight(document.body.clientHeight);
+        }
+
+        window.addEventListener('resize', handleResize);
+
+        setHeight(document.body.clientHeight);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
+    return height;
+};
+
 export const useCallbackOnResize = (callback: () => void) => {
     useEffect(() => {
         function handleResize() {

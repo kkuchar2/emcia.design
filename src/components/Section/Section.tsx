@@ -9,7 +9,7 @@ export const Section = () => {
 
     const { selectedProjectsTitle, selectedProjectsDescription, projects } = projectsPageConfig;
 
-    return <section className={'mt-[80px] flex w-full flex-col flex-wrap items-center  gap-[80px] md:mt-[160px] md:justify-center md:gap-[160px]'}>
+    return <section className={'mt-[80px] flex w-full flex-col flex-wrap items-center gap-[80px]  bg-white md:mt-[160px] md:justify-center md:gap-[160px]'}>
 
         <div className={'flex w-full flex-col justify-center pl-[20px] sm:pl-[40px]'}>
             <div className={'text-2xl font-semibold md:text-4xl md:font-bold'}>
