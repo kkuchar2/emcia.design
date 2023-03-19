@@ -1,9 +1,10 @@
+import React, { useEffect } from 'react';
+
 import { Page } from 'components/Page/Page';
 import { logEvent } from 'firebase/analytics';
 import { AnimatePresence } from 'framer-motion';
 import Head from 'next/head';
 import { DefaultSeo } from 'next-seo';
-import React, { useEffect } from 'react';
 import styled from 'styled-components';
 
 import SEO from '../../next-seo.config';

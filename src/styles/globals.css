@@ -98,6 +98,27 @@ div#__next > div {
 body {
     background: #1e1e1e;
     width: 100%;
+    overflow-x: hidden;
+    scrollbar-width: auto;
+    scroll-behavior: smooth;
+}
+
+/* Firefox */
+body::-webkit-scrollbar {
+    width: 14px;
+
+}
+
+body::-webkit-scrollbar-track {
+    background: rgb(97, 97, 97);
+}
+
+body::-webkit-scrollbar-thumb {
+    background: #ababab;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+    background: #a7a7a7;
 }
 
 .mf-cursor:before {

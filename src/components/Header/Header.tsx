@@ -1,22 +1,15 @@
+import React from 'react';
+
+import { scaleUp } from 'components/Circles/keyframes';
 import { TextButtonWithArrow } from 'components/ProjectItem/TextButtonWithArrow';
 import { motion } from 'framer-motion';
-import React from 'react';
 import styled from 'styled-components';
 
 const Circle = styled(motion.div)`
 
   transform: scale(0);
 
-  @keyframes circle {
-    0% {
-      transform: scale(0);
-    }
-    100% {
-      transform: scale(1);
-    }
-  }
-
-  @media (min-width: 768px) {
+  @media (min-width: 1280px) {
     transform: scale(1);
     position: absolute;
     background: #ffffff;
@@ -28,28 +21,7 @@ const Circle = styled(motion.div)`
     right: -25vw;
     max-width: max(2400px, 100vh);
     max-height: max(2400px, 100vh);
-    animation: circle 2200ms cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
-  }
-`;
-
-const StyledHeaderTitle = styled.h1`
-  align-self: flex-end;
-  justify-self: flex-start;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  bottom: 100px;
-  position: relative;
-  height: auto;
-  width: 100%;
-  padding: 20px 20px 100px;
-  box-sizing: border-box;
-  max-width: 1200px;
-  color: #F1F1F1;
-  overflow: hidden;
-
-  @media (min-width: 768px) {
-    bottom: 200px;
+    animation: ${scaleUp} 2200ms cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
   }
 `;
 
@@ -65,7 +37,12 @@ const WithTransformAnimate = styled.div<{ delay?: number }>`
   transform: translateY(100%);
   will-change: transform;
   line-height: normal;
+  font-size: clamp(2.5rem, 7vw, 4.5rem);
   animation: lineHeight 1.2s cubic-bezier(0.175, 0.67, 0.3, 0.97) ${({ delay }) => delay || 0}s forwards;
+
+  @media (orientation: landscape) and (max-width: 768px) {
+    font-size: clamp(2.5rem, 4vh, 4.5rem);
+  }
 
   @keyframes lineHeight {
     0% {
@@ -81,6 +58,7 @@ const WithOpacityAnimate = styled.div<{ delay?: number }>`
   will-change: opacity;
   animation: fadeInText 1s cubic-bezier(0.175, 0.67, 0.3, 0.97) ${({ delay }) => delay || 0}s forwards;
   opacity: 0;
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
 
   @keyframes fadeInText {
     0% {
@@ -97,27 +75,63 @@ const StyledWrapper = styled.div`
   position: relative;
 `;
 
+const StyledHeader = styled.div`
+  height: 100svh;
+`;
+
+const HeaderTop = styled.div`
+  width: 100%;
+  height: 60%;
+`;
+
+const HeaderMiddle = styled.h1`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1.4rem;
+  position: relative;
+  padding: 40px 40px 40px 40px;
+  box-sizing: border-box;
+  color: #F1F1F1;
+  min-height: 30%;
+  width: 100%;
+  max-width: 1500px;
+`;
+
 export const Header = () => {
 
-    return <section className={'header relative flex h-screen items-center justify-center overflow-x-clip bg-[#1e1e1e]'}>
+    return <StyledHeader className={'relative flex flex-col overflow-x-clip bg-[#1e1e1e]'}>
         <Circle/>
-        <StyledHeaderTitle>
-            <div className={'flex flex-wrap gap-[1rem]'}>
+        <HeaderTop/>
+        <div className={'flex grow items-center justify-center'}>
+            <HeaderMiddle>
+                <div className={'flex flex-col'}>
+                    <StyledWrapper>
+                        <WithTransformAnimate className={' font-semibold leading-3 '}>
+                            {'emilia markiewicz'}
+                        </WithTransformAnimate>
+                    </StyledWrapper>
+                    <StyledWrapper style={{
+                        marginTop: '-1.0rem',
+                    }}>
+                        <WithTransformAnimate className={'text-5xl font-semibold md:text-7xl'} delay={0.3}>
+                            {'ui/ux designer'}
+                        </WithTransformAnimate>
+                    </StyledWrapper>
+                </div>
                 <StyledWrapper>
-                    <WithTransformAnimate className={'text-5xl font-semibold md:text-7xl'}>{'emilia markiewicz'}</WithTransformAnimate>
+                    <WithOpacityAnimate className={'text-xl'} delay={0.5}>
+                        {'Hi  I’m Emilia Markiewicz, a passionate UI/UX Designer from Poland.'}
+                    </WithOpacityAnimate>
                 </StyledWrapper>
-            </div>
-            <StyledWrapper>
-                <WithTransformAnimate className={'text-5xl font-semibold md:text-7xl'} delay={0.3}>
-                    {'ui/ux designer'}
-                </WithTransformAnimate>
-            </StyledWrapper>
-            <StyledWrapper>
-                <WithOpacityAnimate className={'text-xl'} delay={0.5}>
-                    {'Hi  I’m Emilia Markiewicz, a passionate UI/UX Designer from Poland.'}
-                </WithOpacityAnimate>
-            </StyledWrapper>
-            <TextButtonWithArrow text={'view all my works'} textColor={'#ffffff'} circleColor={'#595959'} image={'images/arrow_large_light.svg'} width={240}/>
-        </StyledHeaderTitle>
-    </section>;
+                <TextButtonWithArrow
+                    position={'relative'}
+                    text={'view all my works'}
+                    textColor={'#ffffff'}
+                    circleColor={'#595959'}
+                    image={'images/arrow_large_light.svg'}
+                    width={240}/>
+            </HeaderMiddle>
+        </div>
+    </StyledHeader>;
 };

@@ -1,18 +1,22 @@
-import { BottomSection } from 'components/BottomSection/BottomSection';
-import { Header } from 'components/Header/Header';
-import { Section } from 'components/Section/Section';
 import React from 'react';
 
+import { BottomSection } from 'components/BottomSection/BottomSection';
+import { Header } from 'components/Header/Header';
+import { SelectedProjects } from 'components/Section/SelectedProjects';
+import styled from 'styled-components';
+
+const StyledIndex = styled.div`
+  width: 100%;
+`;
+
 const Index = () => {
-    return <div className={'relative h-screen w-full'}>
+    return <StyledIndex>
         <Header/>
-        <div className={'relative flex w-full justify-center'}>
-            <div className={'w-full md:max-w-[1200px]'}>
-                <Section/>
-            </div>
+        <div className={'flex flex-col items-center justify-center bg-white'}>
+            <SelectedProjects/>
+            <BottomSection/>
         </div>
-        <BottomSection/>
-    </div>;
+    </StyledIndex>;
 };
 
 export default Index;

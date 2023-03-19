@@ -50,6 +50,11 @@ const stylistic = {
             },
             'pathGroups': [
                 {
+                    'pattern': 'react',
+                    'group': 'external',
+                    'position': 'before'
+                },
+                {
                     'pattern': '*.css',
                     'group': 'unknown',
                     'position': 'after'

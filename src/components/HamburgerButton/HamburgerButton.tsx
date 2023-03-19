@@ -1,24 +1,18 @@
 import React from 'react';
-import styled, { keyframes } from 'styled-components';
+
+import { isMobile } from 'react-device-detect';
+import styled from 'styled-components';
 
 interface HamburgerButtonProps {
-    onClick: () => void;
-    navbarOpened: boolean;
+    onClick?: () => void;
+    navbarOpened?: boolean;
 }
 
 interface StyledHamburgerButtonProps {
     navbarOpened: boolean;
     gap?: number;
+    isMobile?: boolean;
 }
-
-const showHamburger = keyframes`
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-`;
 
 const StyledHamburgerButton = styled.button<StyledHamburgerButtonProps>`
   align-items: center;
@@ -27,18 +21,16 @@ const StyledHamburgerButton = styled.button<StyledHamburgerButtonProps>`
   width: 60px;
   position: fixed;
   top: 50px;
-  right: 30px;
+  right: 40px;
   transform: translateY(-50%);
-  z-index: 4;
+  z-index: 10;
   margin: 0;
   padding: 0;
   display: none;
   -webkit-tap-highlight-color: transparent;
-  animation: ${showHamburger} 800ms ease;
-
   mix-blend-mode: ${({ navbarOpened }) => navbarOpened ? 'unset' : 'difference'};
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     display: block;
   }
 `;
@@ -68,7 +60,7 @@ export const HamburgerButton = (props: HamburgerButtonProps) => {
 
     const { onClick, navbarOpened } = props;
 
-    return <StyledHamburgerButton onClick={onClick} navbarOpened={navbarOpened}>
+    return <StyledHamburgerButton onClick={onClick} navbarOpened={navbarOpened} isMobile={isMobile}>
         <StyledHamburgerButtonTopLine navbarOpened={navbarOpened} gap={5}/>
         <StyledHamburgerButtonBottomLine navbarOpened={navbarOpened} gap={5}/>
     </StyledHamburgerButton>;

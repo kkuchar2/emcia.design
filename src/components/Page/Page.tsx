@@ -1,72 +1,82 @@
-import { HamburgerButton } from 'components/HamburgerButton/HamburgerButton';
-import { NavBar } from 'components/OverlayNavBar/NavBar';
-import { ScrolledContent } from 'components/ScrolledContent/ScrolledContent';
-import { useScreenWidth } from 'hooks/use-screen';
+import React from 'react';
+
+import { scaleUp } from 'components/Circles/keyframes';
+import { NavBar } from 'components/NavBar/NavBar';
 import { useRouter } from 'next/router';
-import React, { useCallback, useMemo, useRef } from 'react';
+import styled from 'styled-components';
 
-import { useMainContext } from '../../MainContext';
-import { projectConfig } from '../../projectConfig';
+const listener = (status) => {
+    const remaining = status.limit.y - status.offset.y;
+    const fullScroll = status.limit.y;
+    const scale = remaining / fullScroll;
+    document.documentElement.style.setProperty('--scale-bottom-circle', `${scale}`);
 
-import style from './Page.module.scss';
+    // Set var with scroll position:
+    document.documentElement.style.setProperty('--scroll-position', `${status.offset.y}px`);
+
+    // Set var with scroll progress:
+    const scrollProgress = status.offset.y / status.limit.y;
+    document.documentElement.style.setProperty('--scroll-progress', `${scrollProgress}`);
+};
 
 interface PageProps {
     component: React.FC;
     pageProps: any;
 }
 
+const Circle = styled.div`
+  position: absolute;
+  width: 160vh;
+  height: 160vh;
+  border-radius: 50%;
+  background: #ffffff;
+  right: calc(50% + 80px);
+  bottom: calc(50% - 80vh);
+  display: none;
+
+  @media (max-height: 768px) {
+    width: 100vw;
+    height: 100vw;
+    bottom: calc(50% - 70vw);
+  }
+
+  @media (min-width: 1024px) {
+    display: block;
+    animation: ${scaleUp} 2200ms cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+  }
+`;
+
 export const Page = (props: PageProps) => {
 
     const { component: Component, pageProps } = props;
 
-    const { navbarOpened, toggleNavbar, setNavbarOpened } = useMainContext();
-
-    const prevOpenedRef = useRef(false);
-
-    const screenWidth = useScreenWidth();
-
     const router = useRouter();
 
     React.useEffect(() => {
-        setNavbarOpened(false);
-    }, [router, setNavbarOpened]);
+        window.addEventListener('scroll', () => {
+            listener({
+                offset: {
+                    x: window.scrollX,
+                    y: window.scrollY
+                },
+                limit: {
+                    x: document.body.scrollWidth - window.innerWidth,
+                    y: document.body.scrollHeight - window.innerHeight
+                }
+            });
+        });
 
-    React.useEffect(() => {
-        prevOpenedRef.current = navbarOpened;
-    }, [navbarOpened]);
+        return () => {
+            window.removeEventListener('scroll', listener);
+        };
+    }, []);
 
-    React.useEffect(() => {
-        if (screenWidth > 768) {
-            setNavbarOpened(false);
-        }
-    }, [screenWidth]);
-
-    const overlayClasses = useMemo(() => {
-        return [
-            style.styledOverlay,
-            navbarOpened ? style.opened : style.hidden,
-            screenWidth > 768 ? style.forcedHidden : ''
-        ].join(' ');
-    }, [navbarOpened, screenWidth]);
-
-    const navbarClasses = useMemo(() => {
-        if (screenWidth > 768) {
-            return style.styledNavBar;
-        }
-        return [
-            style.styledNavBar,
-            navbarOpened ? style.opened : style.hidden,
-        ].join(' ');
-    }, [navbarOpened, screenWidth]);
-
-    const onHamburgerClick = useCallback(() => {
-        toggleNavbar();
-    }, [toggleNavbar]);
-
-    return <ScrolledContent component={Component} pageProps={pageProps}>
-        <div className={style.overlay}/>
-        <HamburgerButton onClick={onHamburgerClick} navbarOpened={navbarOpened}/>
-        <NavBar className={navbarClasses} {...projectConfig.navBarConfig} />
-        <div className={overlayClasses}/>
-    </ScrolledContent>;
+    return <div className={'w-full'}>
+        {router.pathname === '/contact' ?
+            <div className={'fixed top-0 left-0 z-0 h-screen w-screen'}>
+                <Circle/>
+            </div> : null}
+        <NavBar/>
+        <Component {...pageProps} />
+    </div>;
 };
