@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 
-import { ProjectGraphic } from 'components/ProjectItem/ProjectGraphic';
 import { TextButtonWithArrow } from 'components/ProjectItem/TextButtonWithArrow';
 import styled from 'styled-components';
 
@@ -31,7 +30,6 @@ export const StyledProjectItem = styled.div`
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  flex-wrap: wrap;
   gap: 20px;
 
   @media (min-width: 768px) {
@@ -93,14 +91,33 @@ const buildThresholdList = () => {
 
 interface ProjectItemProps {
     project: Project;
-    isEven?: boolean;
 }
+
+interface StyledImageProps {
+    enteredFirstTime?: boolean;
+}
+
+export const StyledImage = styled.img<StyledImageProps>`
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  width: 100%;
+  padding: 0;
+  overflow: hidden;
+  opacity: ${({ enteredFirstTime }) => enteredFirstTime ? 1 : 0};
+  transform: ${({ enteredFirstTime }) => enteredFirstTime ? 'translateY(0)' : 'translateY(100px)'};
+  transition: transform 2s cubic-bezier(0.075, 0.82, 0.165, 1), opacity 2s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+  @media (min-width: 768px) {
+    width: 50%;
+    transform: ${({ enteredFirstTime }) => enteredFirstTime ? 'translateY(0)' : 'translateY(300px)'};
+  }
+`;
 
 export const ProjectItem = (props: ProjectItemProps) => {
 
-    const { project, isEven } = props;
+    const { project } = props;
 
-    const { title, image, logo, link, tags, shortDescription, longDescription, style } = project;
+    const { title, image, shortDescription, longDescription, style } = project;
 
     const { longDescriptionMaxWidth } = style || {};
 
@@ -108,18 +125,11 @@ export const ProjectItem = (props: ProjectItemProps) => {
 
     const [visible, setVisible] = React.useState(false);
     const [enteredFirstTime, setEnteredFirstTime] = React.useState(false);
-    const [intersectionRatio, setIntersectionRatio] = React.useState(0);
 
     useEffect(() => {
         const observer = new IntersectionObserver(
             ([entry]) => {
-                ref.current?.style.setProperty('--intersection-ratio', entry.intersectionRatio.toString());
-                setVisible(entry.intersectionRatio > 0.3);
-                setIntersectionRatio(entry.intersectionRatio);
-
-                // set var(--ratio) to entry.intersectionRatio as percentage
-                ref.current?.style.setProperty('--ratio', `${entry.intersectionRatio}`);
-
+                setVisible(entry.intersectionRatio > 0.1);
             },
             {
                 root: null,
@@ -145,10 +155,8 @@ export const ProjectItem = (props: ProjectItemProps) => {
         }
     }, [visible, enteredFirstTime]);
 
-    console.log('Intersection ratio: ', intersectionRatio);
-
     return <StyledProjectItem ref={ref}>
-        <ProjectGraphic backgroundImagePath={image} logoImagePath={logo} isVisible={visible} enteredFirstTime={enteredFirstTime} isEven={isEven}/>
+        <StyledImage src={image} enteredFirstTime={enteredFirstTime}/>
 
         <StyledProjectDescription>
             <StyledWrapper>
@@ -171,9 +179,6 @@ export const ProjectItem = (props: ProjectItemProps) => {
                                  textColor={'#595959'}
                                  circleColor={'#dedede'}
                                  image={'images/arrow_large.svg'}
-                                 animate={enteredFirstTime}
-                                 intersectionRatio={intersectionRatio}
-                                 useAnimation={true}
                                  delay={0}
                                  width={200}/>
         </StyledProjectDescription>

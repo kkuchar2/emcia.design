@@ -15,7 +15,7 @@ interface StyledViewProjectButtonProps {
 }
 
 const StyledViewProjectButtonWrapper = styled.div<StyledViewProjectButtonWrapperProps>`
-  position: ${props => props.position ?? 'absolute'};
+  position: relative;
   bottom: 0;
   display: flex;
   align-items: center;
@@ -23,14 +23,13 @@ const StyledViewProjectButtonWrapper = styled.div<StyledViewProjectButtonWrapper
   width: ${props => props.width}px;
   min-height: 3rem;
   overflow: hidden;
-  transform: ${({ animate, useAnimation }) => {
-    if (!useAnimation) {
-      return 'translateY(0px)';
+  transform: ${({ visible }) => {
+    if (visible) {
+      return 'translateY(0)';
     }
-
-    return animate ? 'translateY(0)' : 'translateY(200px)';
+    return 'translateY(100%)';
   }};
-  transition: transform 2s cubic-bezier(0.175, 0.67, 0.3, 0.97) ${({ delay }) => delay || 0}s;
+  transition: transform 1s cubic-bezier(0.175, 0.67, 0.3, 0.97) ${({ delay }) => delay || 0}s;
 `;
 
 const StyledViewProjectButton = styled.a<StyledViewProjectButtonProps>`
@@ -74,25 +73,21 @@ const StyledViewProjectButton = styled.a<StyledViewProjectButtonProps>`
   }
 `;
 
-interface AnimateProps {
-    delay?: number;
-    width: number;
+interface WrapperProps {
     position?: string;
 }
 
-const AnimateWrapper = styled.div<AnimateProps>`
+const Wrapper = styled.div<WrapperProps>`
   position: ${props => props.position ?? 'absolute'};
   bottom: 0;
   line-height: normal;
+  overflow: hidden;
 `;
 
 interface StyledViewProjectButtonWrapperProps {
     width: number;
-    position?: string;
-    animate?: boolean;
     delay?: number;
-    useAnimation?: boolean;
-    intersectionRatio?: number;
+    visible?: boolean;
 }
 
 interface StyledTextProps {
@@ -120,18 +115,51 @@ interface TextButtonWithArrowProps {
     arrowColor?: string;
     image: string;
     position?: string;
-    animate?: boolean;
-    useAnimation?: boolean;
-    intersectionRatio?: number;
     delay?: number;
 }
 
 export const TextButtonWithArrow = (props: TextButtonWithArrowProps) => {
 
-    const { text, textColor, circleColor, arrowColor, image, width, position, animate = false, useAnimation = false, delay = 0, intersectionRatio } = props;
+    const { text, textColor, circleColor, image, width, position, delay = 0 } = props;
 
-    return <AnimateWrapper width={width || 200} position={position}>
-        <StyledViewProjectButtonWrapper width={width || 200} position={position} animate={animate} useAnimation={useAnimation} delay={delay} intersectionRatio={intersectionRatio}>
+    const [visible, setVisible] = React.useState(false);
+
+    const ref = React.useRef<HTMLDivElement>(null);
+
+    React.useEffect(() => {
+
+        const buildThresholdList = () => {
+            let thresholds = [];
+            for (let i = 0; i <= 1.0; i += 0.01) {
+                thresholds.push(i);
+            }
+            return thresholds;
+        };
+
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                setVisible(entry.isIntersecting);
+            },
+            {
+                root: null,
+                rootMargin: '0px',
+                threshold: buildThresholdList()
+            }
+        );
+
+        if (ref.current) {
+            observer.observe(ref.current);
+        }
+
+        return () => {
+            if (ref.current) {
+                observer.unobserve(ref.current);
+            }
+        };
+    }, []);
+
+    return <Wrapper position={position} ref={ref}>
+        <StyledViewProjectButtonWrapper width={width || 200} delay={delay} visible={visible}>
             <StyledViewProjectButton href={'/'} circleColor={circleColor}>
                 <StyledText color={textColor}>
                     {text}
@@ -139,5 +167,5 @@ export const TextButtonWithArrow = (props: TextButtonWithArrowProps) => {
                 <StyledArrow src={image} alt={'arrow'}/>
             </StyledViewProjectButton>
         </StyledViewProjectButtonWrapper>
-    </AnimateWrapper>;
+    </Wrapper>;
 };

@@ -1,7 +1,6 @@
 import React from 'react';
 
-import { StyledSquare } from 'components/ProjectItem/ProjectGraphic';
-import { ProjectItem, StyledProjectItem } from 'components/ProjectItem/ProjectItem';
+import { ProjectItem, StyledImage, StyledProjectItem } from 'components/ProjectItem/ProjectItem';
 import styled from 'styled-components';
 
 import { projectConfig } from '../../projectConfig';
@@ -42,7 +41,7 @@ const StyledProjectItems = styled.div`
     & > ${StyledProjectItem}:nth-child(even) {
       flex-direction: row-reverse;
 
-      ${StyledSquare} {
+      ${StyledImage} {
         padding-left: 40px;
         padding-right: 0;
       }
@@ -51,7 +50,7 @@ const StyledProjectItems = styled.div`
     & > ${StyledProjectItem}:nth-child(odd) {
       flex-direction: row;
 
-      ${StyledSquare} {
+      ${StyledImage} {
         padding-left: 0;
         padding-right: 40px;
       }
@@ -76,9 +75,7 @@ export const SelectedProjects = () => {
             </div>
 
             <StyledProjectItems>
-                {projects.map((project, index) => {
-                    return <ProjectItem key={index} project={project} isEven={index % 2 === 0}/>;
-                })}
+                {projects.map((project, index) => <ProjectItem key={index} project={project}/>)}
             </StyledProjectItems>
         </StyledSelectedProjects>;
     }
