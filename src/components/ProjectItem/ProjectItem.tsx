@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useRef } from 'react';
 
 import { TextButtonWithArrow } from 'components/ProjectItem/TextButtonWithArrow';
+import useIntersectionObserver from 'hooks/use-intersection';
 import styled from 'styled-components';
 
 export interface Project {
@@ -14,13 +15,16 @@ export interface Project {
     longDescriptionMaxWidth?: number;
     style?: {
         longDescriptionMaxWidth?: number;
+        background?: string;
+        targetZoom?: number;
+        objectFit?: 'cover' | 'contain';
     }
 }
 
 const StyledProjectLongDescription = styled.div`
   font-size: 15px;
   color: #595959;
-  font-weight: 300;
+  font-weight: 400;
   letter-spacing: 0.5px;
 `;
 
@@ -81,36 +85,37 @@ const StyledProjectDescription = styled.div`
   }
 `;
 
-const buildThresholdList = () => {
-    let thresholds = [];
-    for (let i = 0; i <= 1.0; i += 0.01) {
-        thresholds.push(i);
-    }
-    return thresholds;
-};
-
 interface ProjectItemProps {
     project: Project;
 }
 
 interface StyledImageProps {
-    enteredFirstTime?: boolean;
+    isVisible?: boolean;
+    background?: string;
+    targetZoom?: number;
+    objectFit?: string;
 }
 
-export const StyledImage = styled.img<StyledImageProps>`
+export const StyledImageWrapper = styled.div<StyledImageProps>`
   aspect-ratio: 4/3;
-  object-fit: cover;
+  position: relative;
   width: 100%;
   padding: 0;
   overflow: hidden;
-  opacity: ${({ enteredFirstTime }) => enteredFirstTime ? 1 : 0};
-  transform: ${({ enteredFirstTime }) => enteredFirstTime ? 'translateY(0)' : 'translateY(100px)'};
-  transition: transform 2s cubic-bezier(0.075, 0.82, 0.165, 1), opacity 2s cubic-bezier(0.075, 0.82, 0.165, 1);
+  background: ${({ background, isVisible }) => isVisible ? background : 'transparent'};
+  transition: background 2s ease;
 
   @media (min-width: 768px) {
     width: 50%;
-    transform: ${({ enteredFirstTime }) => enteredFirstTime ? 'translateY(0)' : 'translateY(300px)'};
   }
+`;
+
+const StyledImage = styled.img<StyledImageProps>`
+  transform: ${({ isVisible, targetZoom }) => isVisible ? `translateY(0) scale(${targetZoom})` : 'translateY(400px) scale(2)'};
+  transition: transform 2s cubic-bezier(0.075, 0.82, 0.165, 1);
+  object-fit: ${({ objectFit }) => objectFit || 'cover'};
+  width: 100%;
+  height: 100%;
 `;
 
 export const ProjectItem = (props: ProjectItemProps) => {
@@ -119,56 +124,30 @@ export const ProjectItem = (props: ProjectItemProps) => {
 
     const { title, image, shortDescription, longDescription, style } = project;
 
+    const { background, targetZoom, objectFit } = style || {};
+
     const { longDescriptionMaxWidth } = style || {};
 
-    const ref = React.useRef<HTMLDivElement>(null);
-
-    const [visible, setVisible] = React.useState(false);
-    const [enteredFirstTime, setEnteredFirstTime] = React.useState(false);
-
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                setVisible(entry.intersectionRatio > 0.1);
-            },
-            {
-                root: null,
-                rootMargin: '0px',
-                threshold: buildThresholdList()
-            }
-        );
-
-        if (ref.current) {
-            observer.observe(ref.current);
-        }
-
-        return () => {
-            if (ref.current) {
-                observer.unobserve(ref.current);
-            }
-        };
-    }, [ref]);
-
-    useEffect(() => {
-        if (!enteredFirstTime && visible) {
-            setEnteredFirstTime(true);
-        }
-    }, [visible, enteredFirstTime]);
+    const ref = useRef<HTMLDivElement | null>(null);
+    const entry = useIntersectionObserver(ref, {});
+    const isVisible = !!entry?.isIntersecting;
 
     return <StyledProjectItem ref={ref}>
-        <StyledImage src={image} enteredFirstTime={enteredFirstTime}/>
+        <StyledImageWrapper isVisible={isVisible} background={background}>
+            <StyledImage src={image} isVisible={isVisible} targetZoom={targetZoom} objectFit={objectFit}/>
+        </StyledImageWrapper>
 
         <StyledProjectDescription>
             <StyledWrapper>
-                <WithTransformAnimate enteredFirstTime={enteredFirstTime}>
+                <WithTransformAnimate enteredFirstTime={isVisible}>
                     <div className={'flex flex-col items-start gap-3 md:gap-5'}>
-                        <div className={'text-5xl font-bold text-[#3a3a3a] md:leading-[0.7] lg:text-6xl'}>{title}</div>
+                        <div className={'text-5xl font-bold text-[#1e1e1e] md:leading-[0.7] lg:text-6xl'}>{title}</div>
                         <div className={'text-md font-medium tracking-wider text-[#3a3a3a] '}>{shortDescription}</div>
                     </div>
                 </WithTransformAnimate>
             </StyledWrapper>
             <StyledWrapper>
-                <WithTransformAnimate enteredFirstTime={enteredFirstTime} delay={0.3}>
+                <WithTransformAnimate enteredFirstTime={isVisible} delay={0.3}>
                     <StyledProjectLongDescription style={{ maxWidth: `${longDescriptionMaxWidth}px` || 'auto' }}>
                         {longDescription}
                     </StyledProjectLongDescription>
@@ -178,6 +157,8 @@ export const ProjectItem = (props: ProjectItemProps) => {
             <TextButtonWithArrow text={'more details'}
                                  textColor={'#595959'}
                                  circleColor={'#dedede'}
+                                 hoverBgColor={'#f1f1f1'}
+                                 hoverBorderColor={'#dedede'}
                                  image={'images/arrow_large.svg'}
                                  delay={0}
                                  width={200}/>

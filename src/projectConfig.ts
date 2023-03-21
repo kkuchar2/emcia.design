@@ -27,22 +27,30 @@ export const projectConfig: IProjectConfig = {
         projects: [
             {
                 title: 'serenity',
-                image: '/images/serenity.png',
+                image: '/images/serenity_square.png',
                 link: 'https://www.behance.net/gallery/116000807/Handmade-App-UIUX-Design',
                 tags: ['UI/UX', 'Mobile', 'App'],
                 shortDescription: 'CANDLEMAKER STORE MOBILE APP',
                 longDescription: 'A mobile app designed to connect craftspeople and customers who appreciate high quality and unique products.',
                 style: {
-                    longDescriptionMaxWidth: 400
+                    longDescriptionMaxWidth: 400,
+                    background: '#EBE8E4',
+                    targetZoom: 1.2,
+                    objectFit: 'contain'
                 }
             },
             {
                 title: 'aprojekt',
-                image: '/images/aprojekt_bg.png',
+                image: '/images/aprojekt_square.png',
                 link: 'https://www.behance.net/gallery/116000807/Handmade-App-UIUX-Design',
                 tags: ['UI/UX', 'Mobile', 'App'],
                 shortDescription: 'FIBER CABLES COMPANY',
-                longDescription: 'A mobile app designed to connect craftspeople and customers who appreciate high quality and unique products.'
+                longDescription: 'A mobile app designed to connect craftspeople and customers who appreciate high quality and unique products.',
+                style: {
+                    background: '#f4f4f4',
+                    targetZoom: 0.9,
+                    objectFit: 'cover'
+                }
             },
         ]
     },

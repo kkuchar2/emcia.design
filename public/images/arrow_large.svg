@@ -1,3 +1,7 @@
-<svg width="300" height="80" viewBox="0 0 300 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M281.731 43.6858L0 43.6858L8.81411e-08 36.2944H281.731L214.35 6.72886L217.409 0L299.351 36.2947V43.6858L217.364 80L214.395 73.2315L281.731 43.6858Z" fill="#1E1E1E"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 310 256" shape-rendering="geometricPrecision">
+    <rect width="300" height="256" fill="none"/>
+    <line x1="0" y1="128" x2="300" y2="128"
+          fill="none" stroke="#595959" stroke-linecap="round" stroke-linejoin="round" stroke-width="10"/>
+    <polyline points="205 80 300 128 205 180"
+              fill="none" stroke="#595959" stroke-linecap="round" stroke-linejoin="round" stroke-width="10"/>
 </svg>
