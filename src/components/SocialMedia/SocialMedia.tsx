@@ -13,6 +13,11 @@ const StyledSocialMedia = styled.div<ISize>`
   @media (max-width: 430px) {
     height: ${({ width }) => width / 2}px;
   }
+
+  @media (min-width: 1024px) {
+    flex-direction: row;
+    align-items: center;
+  }
 `;
 
 interface IconProps {
@@ -30,7 +35,7 @@ const StyledIcon = styled.div`
   border-radius: 50%;
   background-color: #ffffff;
   transition: all .2s ease;
-  
+
   @media (min-width: 768px) {
     height: 32px;
     width: 32px;
@@ -76,10 +81,10 @@ export const SocialMedia = (props: SocialMediaProps) => {
     }, []);
 
     return <StyledSocialMedia ref={ref} {...parentSize}>
-        {title && <div className={'text-[15px] font-normal text-[#BDBDBD]'}>
+        {title && <div className={'text-smkfont-normal text-[#BDBDBD]'}>
             {title}
         </div>}
-        <div className={'mt-3 flex gap-4'}>
+        <div className={'flex gap-4'}>
             <StyledButton onClick={onClick}>
                 <Icon src={'images/dribble.svg'} altText={'dribble'} scale={0.75}/>
             </StyledButton>

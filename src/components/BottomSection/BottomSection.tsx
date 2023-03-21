@@ -37,7 +37,7 @@ const CircleWrapper = styled.div`
   max-height: calc(1580px / 2 - 216px);
   position: relative;
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;
   justify-content: center;
 
   &:after {
@@ -86,32 +86,56 @@ const CircleWrapper = styled.div`
 `;
 
 const WorkTitle = styled.div`
-  font-size: clamp(1.2rem, 3vw, 2rem);
-  font-weight: 500;
+  font-size: clamp(1rem, 3vw, 1.75rem);
+  font-weight: 600;
   line-height: 1.5;
   letter-spacing: 0.5px;
-  color: #ffffff;
+  color: #f1f1f1;
 `;
 
 const ContactMe = styled.div`
-  font-size: clamp(0.8rem, 3vw, 1.2rem);
+  font-size: clamp(0.9rem, 2.2vw, 1.25rem);
   font-weight: 400;
   line-height: 1.5;
   letter-spacing: 0.5px;
   color: #bdbdbd;
 `;
 
+const Email = styled.div`
+  margin-top: 10px;
+  font-size: clamp(0.8rem, 2.2vw, 1.25rem);
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+  color: #FF5C00;
+
+  @media (min-width: 768px) {
+    margin-top: 24px;
+  }
+`;
+
+const ContactSection = styled.div`
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  margin-top: 20%;
+
+  @media (min-width: 430px) {
+    margin-top: 15%;
+  }
+`;
+
 export const BottomSection = () => {
 
     return <StyledBottomSection>
         <CircleWrapper>
-            <div className={'z-40 mb-[2%] flex flex-col items-center gap-2 sm:mb-[10%]'}>
+            <ContactSection>
                 <WorkTitle>{'Want to work together?'}</WorkTitle>
                 <ContactMe>{'Contact me!'}</ContactMe>
-                <div className={'mt-2 text-sm font-semibold text-[#FF5C00]'}>
-                    {'emilia.markiewicz@gmail.com'}
-                </div>
-            </div>
+                <Email>{'emilia.markiewicz@gmail.com'}</Email>
+            </ContactSection>
         </CircleWrapper>
         <Footer>
             <SocialMedia/>
