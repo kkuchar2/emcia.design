@@ -14,6 +14,8 @@ module.exports = {
         },
         fontFamily: {
             plusJakarta: ['Plus Jakarta Sans', 'sans-serif'],
+            lato: ['Lato', 'sans-serif'],
+            openSans: ['Open Sans', 'sans-serif'],
         }
     },
     plugins: [

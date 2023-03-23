@@ -22,7 +22,7 @@ export interface IProjectConfig {
 
 export const projectConfig: IProjectConfig = {
     projectsPageConfig: {
-        selectedProjectsTitle: 'Selected projects',
+        selectedProjectsTitle: 'selected projects.',
         selectedProjectsDescription: 'Here I present you my best works selected with passion',
         projects: [
             {

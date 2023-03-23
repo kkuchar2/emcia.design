@@ -21,7 +21,7 @@ export const MadeBy = () => {
     return <StyledMadeBy>
         <StyledYear>
             <div className={'text-sm'}>{'©'}</div>
-            <div className={'text-sm'}>{'2022'}</div>
+            <div className={'text-sm'}>{'2023'}</div>
         </StyledYear>
         <div className={'text-sm'}>{'Emilia Markiewicz'}</div>
     </StyledMadeBy>;

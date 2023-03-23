@@ -101,6 +101,7 @@ body {
     overflow-x: hidden;
     scrollbar-width: auto;
     scroll-behavior: smooth;
+    font-family: Inter, sans-serif;
 }
 
 /* Firefox */

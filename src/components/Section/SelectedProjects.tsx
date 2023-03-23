@@ -59,10 +59,10 @@ const StyledProjectItems = styled.div`
 `;
 
 const SelectedProjectsTitle = styled.div`
-  font-size: clamp(1.8rem, 3vw, 2.8rem);
-  font-weight: 600;
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 700;
   line-height: 1.5;
-  letter-spacing: 0.5px;
+  letter-spacing: -0.06em;
   color: #1e1e1e;
 `;
 
@@ -70,7 +70,8 @@ const SelectedProjectsDescription = styled.div`
   font-size: clamp(1rem, 1.7vw, 1.2rem);
   color: #807F7F;
   font-weight: 400;
-  letter-spacing: 0.5px;
+  letter-spacing: -0.02em;
+  max-width: 400px;
 `;
 
 export const SelectedProjects = () => {

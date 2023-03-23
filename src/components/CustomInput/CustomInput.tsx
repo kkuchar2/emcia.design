@@ -39,17 +39,16 @@ const StyledInput = styled.input`
 `;
 
 const StyledLegend = styled.legend<InputState>`
-  color: ${({ focused }) => focused ? '#ffffff' : '#cacaca'};
+  color: ${({ focused }) => focused ? '#ffffff' : '#BDBDBD'};
   font-size: 0.8rem;
-  font-weight: 600;
-  padding-left: 10px;
-  padding-right: 10px;
+  font-weight: 400;
+  padding-left: 7px;
+  padding-right: 7px;
   margin-left: 15px;
   background: rgba(255, 0, 0, 0);
 
   @media (min-width: 768px) {
     font-size: 1rem;
-    font-weight: 500;
   }
 `;
 const StyledFieldSet = styled.fieldset<InputState>`
@@ -80,7 +79,7 @@ export const CustomInput = (props: CustomInputProps) => {
 
     return <StyledCustomInput focused={focused} onClick={onComponentClick}>
         <StyledFieldSet focused={focused}>
-            <StyledLegend focused={focused}>{label}</StyledLegend>
+            <StyledLegend focused={focused}>{label.toLowerCase()}</StyledLegend>
             <StyledInput ref={inputRef} onFocus={onInputFocus} onBlur={onInputBlur} type={'text'}/>
         </StyledFieldSet>
     </StyledCustomInput>;

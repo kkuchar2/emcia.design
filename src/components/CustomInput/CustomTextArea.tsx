@@ -44,15 +44,14 @@ const StyledTextArea = styled.textarea`
 const StyledLegend = styled.legend<TextAreaState>`
   color: ${({ focused }) => focused ? '#ffffff' : '#cacaca'};
   font-size: 0.8rem;
-  font-weight: 600;
-  padding-left: 10px;
-  padding-right: 10px;
+  font-weight: 400;
+  padding-left: 7px;
+  padding-right: 7px;
   margin-left: 15px;
   background: rgba(255, 0, 0, 0);
 
   @media (min-width: 768px) {
     font-size: 1rem;
-    font-weight: 500;
   }
 }
 `;
@@ -87,7 +86,7 @@ export const CustomTextArea = (props: CustomTextAreaProps) => {
 
     return <StyledCustomTextArea focused={focused} onClick={onComponentClick}>
         <StyledFieldSet focused={focused}>
-            <StyledLegend focused={focused}>{label}</StyledLegend>
+            <StyledLegend focused={focused}>{label.toLowerCase()}</StyledLegend>
             <StyledTextArea ref={textAreaRef} onFocus={onTextAreaFocus} onBlur={onTextAreaBlur}/>
         </StyledFieldSet>
     </StyledCustomTextArea>;

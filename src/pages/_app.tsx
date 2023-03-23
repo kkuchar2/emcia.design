@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 
 import { Page } from 'components/Page/Page';
 import { logEvent } from 'firebase/analytics';
-import { AnimatePresence } from 'framer-motion';
 import Head from 'next/head';
 import { DefaultSeo } from 'next-seo';
 import styled from 'styled-components';
@@ -31,20 +30,18 @@ const App = function ({ Component, pageProps }) {
         }
     }, []);
 
-    return <AnimatePresence mode={'wait'}>
-        <StyledApp>
-            <Head>
-                <title>{'Emilia Markiewicz'}</title>
-                <meta name={'viewport'} content={'width=device-width, initial-scale=1.0 user-scalable=no'}/>
-            </Head>
+    return <StyledApp>
+        <Head>
+            <title>{'Emilia Markiewicz'}</title>
+            <meta name={'viewport'} content={'width=device-width, initial-scale=1.0 user-scalable=no'}/>
+        </Head>
 
-            <DefaultSeo {...SEO} />
+        <DefaultSeo {...SEO} />
 
-            <MainContextProvider>
-                <Page component={Component} pageProps={pageProps}/>
-            </MainContextProvider>
-        </StyledApp>
-    </AnimatePresence>;
+        <MainContextProvider>
+            <Page component={Component} pageProps={pageProps}/>
+        </MainContextProvider>
+    </StyledApp>;
 };
 
 export default App;

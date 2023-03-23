@@ -34,24 +34,15 @@ export const TextButtonWithArrowWrapper = styled.div`
 `;
 
 const WithTransformAnimate = styled.div<{ delay?: number }>`
-  transform: translateY(100%);
+  transform: translateY(50%);
   will-change: transform;
   font-size: clamp(2.5rem, 7vw, 4.5rem);
-  animation: showUp 1.2s cubic-bezier(0.175, 0.67, 0.3, 0.97) ${({ delay }) => delay || 0}s forwards;
-  padding-bottom: 10px;
-  line-height: 1.2;
+  letter-spacing: -0.05em;
+  line-height: normal;
+  background: blue;
 
   @media (orientation: landscape) and (max-width: 768px) {
     font-size: clamp(2.5rem, 4vh, 4.5rem);
-  }
-
-  @keyframes showUp {
-    0% {
-      transform: translateY(100%);
-    }
-    100% {
-      transform: translateY(0);
-    }
   }
 `;
 
@@ -72,8 +63,18 @@ const WithOpacityAnimate = styled.div<{ delay?: number }>`
 `;
 
 const StyledWrapper = styled.div`
-  overflow: hidden;
-  position: relative;
+  font-weight: 800;
+  font-size: clamp(2.3rem, 7vw, 4.7rem);
+  line-height: 1;
+  color: #F1F1F1;
+`;
+
+const StyledWrapper2 = styled.div`
+  font-weight: 400;
+  font-size: clamp(1.2rem, 1.5vw, 1.5rem);
+  line-height: 1.2;
+  margin-top: 30px;
+  color: #BDBDBD;
 `;
 
 const StyledHeader = styled.div`
@@ -99,6 +100,20 @@ const HeaderMiddle = styled.h1`
   max-width: 1500px;
 `;
 
+const StyledTitle = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  //& > *:nth-child(even) {
+  //  background: rgba(91, 149, 91, 0.27);
+  //}
+  //
+  //& > *:nth-child(odd) {
+  //  background: rgba(140, 108, 48, 0.23);
+  //}
+`;
+
 export const Header = () => {
 
     return <StyledHeader className={'relative flex flex-col overflow-x-clip bg-[#1e1e1e]'}>
@@ -106,23 +121,11 @@ export const Header = () => {
         <HeaderTop/>
         <div className={'mb-0 flex grow items-center justify-center  sm:mb-[50px] md:mb-[100px]'}>
             <HeaderMiddle>
-                <div className={'flex flex-col gap-2'}>
-                    <StyledWrapper>
-                        <WithTransformAnimate className={'font-semibold'}>
-                            {'emilia markiewicz'}
-                        </WithTransformAnimate>
-                    </StyledWrapper>
-                    <StyledWrapper>
-                        <WithTransformAnimate className={'text-5xl font-semibold md:text-7xl'} delay={0.3}>
-                            {'ui/ux designer'}
-                        </WithTransformAnimate>
-                    </StyledWrapper>
-                    <StyledWrapper>
-                        <WithOpacityAnimate className={'text-xl'} delay={0.5}>
-                            {'Hi  I’m Emilia Markiewicz, a passionate UI/UX Designer from Poland.'}
-                        </WithOpacityAnimate>
-                    </StyledWrapper>
-                </div>
+                <StyledTitle>
+                    <StyledWrapper>{'emilia markiewicz'}</StyledWrapper>
+                    <StyledWrapper>{'ui/ux designer'}</StyledWrapper>
+                    <StyledWrapper2>{'Hi  I’m Emilia Markiewicz, a passionate UI/UX Designer from Poland.'}</StyledWrapper2>
+                </StyledTitle>
                 <div className={'ab mt-[50px] flex flex-col'}>
                     <TextButtonWithArrow
                         position={'relative'}
