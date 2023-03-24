@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 interface CustomTextAreaProps {
     label: string;
+    onChange?: (value: string) => void;
 }
 
 interface TextAreaState {
@@ -63,31 +64,32 @@ const StyledFieldSet = styled.fieldset<TextAreaState>`
 `;
 
 export const CustomTextArea = (props: CustomTextAreaProps) => {
-    const { label } = props;
+    const { label, onChange } = props;
 
     const [focused, setFocused] = useState(false);
 
     const textAreaRef = React.createRef<HTMLTextAreaElement>();
 
     const onTextAreaFocus = useCallback(() => {
-        console.log('onfocus', label);
         setFocused(true);
     }, []);
 
     const onTextAreaBlur = useCallback(() => {
-        console.log('onblur', label);
         setFocused(false);
     }, []);
 
     const onComponentClick = useCallback(() => {
-        console.log('focusing', label, textAreaRef.current);
         textAreaRef.current?.focus();
     }, [textAreaRef]);
+
+    const onTextAreaChange = useCallback((event: React.ChangeEvent<HTMLTextAreaElement>) => {
+        onChange?.(event.target.value);
+    }, [onChange]);
 
     return <StyledCustomTextArea focused={focused} onClick={onComponentClick}>
         <StyledFieldSet focused={focused}>
             <StyledLegend focused={focused}>{label.toLowerCase()}</StyledLegend>
-            <StyledTextArea ref={textAreaRef} onFocus={onTextAreaFocus} onBlur={onTextAreaBlur}/>
+            <StyledTextArea ref={textAreaRef} onFocus={onTextAreaFocus} onBlur={onTextAreaBlur} onChange={onTextAreaChange}/>
         </StyledFieldSet>
     </StyledCustomTextArea>;
 };

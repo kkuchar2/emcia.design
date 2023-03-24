@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 interface CustomInputProps {
     label: string;
+    onChange?: (value: string) => void;
 }
 
 interface InputState {
@@ -59,7 +60,7 @@ const StyledFieldSet = styled.fieldset<InputState>`
 `;
 
 export const CustomInput = (props: CustomInputProps) => {
-    const { label } = props;
+    const { label, onChange } = props;
 
     const [focused, setFocused] = useState(false);
 
@@ -77,10 +78,15 @@ export const CustomInput = (props: CustomInputProps) => {
         inputRef.current?.focus();
     }, [inputRef]);
 
+    const onInputChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
+        const { value } = event.target;
+        onChange?.(value);
+    }, [onChange]);
+
     return <StyledCustomInput focused={focused} onClick={onComponentClick}>
         <StyledFieldSet focused={focused}>
             <StyledLegend focused={focused}>{label.toLowerCase()}</StyledLegend>
-            <StyledInput ref={inputRef} onFocus={onInputFocus} onBlur={onInputBlur} type={'text'}/>
+            <StyledInput ref={inputRef} onFocus={onInputFocus} onBlur={onInputBlur} onChange={onInputChange} type={'text'}/>
         </StyledFieldSet>
     </StyledCustomInput>;
 };

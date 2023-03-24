@@ -113,13 +113,11 @@ const StyledViewProjectButton = styled.a`
 
       &:before {
         width: 100%;
-        border-radius: calc(2.5rem / 3);
         opacity: 0;
       }
 
       &:after {
         width: 100%;
-        border-radius: calc(2.5rem / 3);
         opacity: 1;
       }
     }

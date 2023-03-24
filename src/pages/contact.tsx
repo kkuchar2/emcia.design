@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 
 import { CustomInput } from 'components/CustomInput/CustomInput';
 import { CustomTextArea } from 'components/CustomInput/CustomTextArea';
@@ -159,6 +159,35 @@ const FakeCirclePart = styled.div`
 
 export default function Contact() {
 
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [subject, setSubject] = useState('');
+    const [message, setMessage] = useState('');
+
+    const onFormSubmit = useCallback(async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        console.log('Calling sendgrid');
+        const res = await fetch('/api/sendgrid', {
+            body: JSON.stringify({
+                email: email,
+                name: name,
+                subject: subject,
+                message: message,
+            }),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            method: 'POST',
+        });
+
+        const { error } = await res.json();
+        if (error) {
+            console.log(error);
+            return;
+        }
+        console.log(name, email, subject, message);
+    }, [name, email, subject, message]);
+
     return <StyledContact>
         <FakeNavbar/>
         <FakeCirclePart/>
@@ -175,11 +204,11 @@ export default function Contact() {
             <LeftSide/>
             <RightSide>
                 <Wrapper>
-                    <StyledForm>
-                        <CustomInput label={'Name'}/>
-                        <CustomInput label={'Email'}/>
-                        <CustomInput label={'Subject'}/>
-                        <CustomTextArea label={'Message'}/>
+                    <StyledForm onSubmit={onFormSubmit}>
+                        <CustomInput label={'Name'} onChange={setName}/>
+                        <CustomInput label={'Email'} onChange={setEmail}/>
+                        <CustomInput label={'Subject'} onChange={setSubject}/>
+                        <CustomTextArea label={'Message'} onChange={setMessage}/>
                         <StyledSubmitButton>{'Send message'}</StyledSubmitButton>
                     </StyledForm>
                     <div className={'mt-[50px] flex w-full justify-center md:mt-[50px] lg:justify-start'}>
