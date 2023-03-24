@@ -26,7 +26,7 @@ export const projectConfig: IProjectConfig = {
         selectedProjectsDescription: 'Here I present you my best works selected with passion',
         projects: [
             {
-                title: 'serenity',
+                title: 'serenity.',
                 image: '/images/serenity_square.png',
                 link: 'https://www.behance.net/gallery/116000807/Handmade-App-UIUX-Design',
                 tags: ['UI/UX', 'Mobile', 'App'],
@@ -40,7 +40,7 @@ export const projectConfig: IProjectConfig = {
                 }
             },
             {
-                title: 'aprojekt',
+                title: 'aprojekt.',
                 image: '/images/aprojekt_square.png',
                 link: 'https://www.behance.net/gallery/116000807/Handmade-App-UIUX-Design',
                 tags: ['UI/UX', 'Mobile', 'App'],

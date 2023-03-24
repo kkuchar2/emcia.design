@@ -32,7 +32,7 @@ const Footer = styled.footer`
 
 const CircleWrapper = styled.div`
   width: 100vw;
-  height: calc(100vw - 216px / 2);
+  height: calc(100vw - min(216px, 50vw));
   max-width: calc(1500px - 40px - 40px);
   max-height: calc(1580px / 2 - 216px);
   position: relative;
@@ -43,7 +43,7 @@ const CircleWrapper = styled.div`
   &:after {
     content: '';
     position: absolute;
-    background: #1e1e1e;
+    background-color: #1e1e1e;
     border-radius: 50% 50% 0 0;
     width: 100vw;
     height: 100vw;
@@ -54,7 +54,7 @@ const CircleWrapper = styled.div`
     max-height: calc(1500px - 40px - 40px);
   }
 
-  @media (min-width: 430px) {
+  @media (min-width: 470px) {
     width: calc(100vw - 40px - 40px);
     height: 35vw;
 
@@ -86,7 +86,7 @@ const CircleWrapper = styled.div`
 `;
 
 const WorkTitle = styled.div`
-  font-size: clamp(1rem, 3vw, 1.75rem);
+  font-size: clamp(0.9em, 3.6vw, 2rem);
   font-weight: 600;
   line-height: 1.5;
   letter-spacing: 0.5px;

@@ -34,6 +34,7 @@ const App = function ({ Component, pageProps }) {
         <Head>
             <title>{'Emilia Markiewicz'}</title>
             <meta name={'viewport'} content={'width=device-width, initial-scale=1.0 user-scalable=no'}/>
+            <title>{'Emilia Markiewicz'}</title>
         </Head>
 
         <DefaultSeo {...SEO} />

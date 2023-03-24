@@ -7,23 +7,20 @@ import { projectConfig } from '../../projectConfig';
 
 const StyledSelectedProjects = styled.div`
   margin-top: 80px;
-  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
   gap: 80px;
-  padding-left: 40px;
-  padding-right: 40px;
 
   @media (min-width: 768px) {
     margin-top: 160px;
     max-width: 1500px;
     justify-content: center;
-    gap: 160px;
     padding-left: 40px;
     padding-right: 40px;
+    gap: 160px;
   }
 `;
 
@@ -81,7 +78,7 @@ export const SelectedProjects = () => {
         const { selectedProjectsTitle, selectedProjectsDescription, projects } = projectsPageConfig;
 
         return <StyledSelectedProjects>
-            <div className={'flex w-full flex-col justify-center'}>
+            <div className={'flex flex-col gap-2 self-start px-[40px] md:px-0'}>
                 <SelectedProjectsTitle>
                     {selectedProjectsTitle}
                 </SelectedProjectsTitle>
@@ -89,7 +86,6 @@ export const SelectedProjects = () => {
                     {selectedProjectsDescription}
                 </SelectedProjectsDescription>
             </div>
-
             <StyledProjectItems>
                 {projects.map((project, index) => <ProjectItem key={index} project={project}/>)}
             </StyledProjectItems>

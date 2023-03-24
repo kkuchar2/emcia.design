@@ -1,7 +1,7 @@
 import React from 'react';
 
+import { HeaderArrowButton } from 'components/ArrowButton/HeaderArrowButton';
 import { scaleUp } from 'components/Circles/keyframes';
-import { TextButtonWithArrow } from 'components/ProjectItem/TextButtonWithArrow';
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
@@ -22,43 +22,6 @@ const Circle = styled(motion.div)`
     max-width: max(2400px, 100vh);
     max-height: max(2400px, 100vh);
     animation: ${scaleUp} 2200ms cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
-  }
-`;
-
-export const TextButtonWithArrowWrapper = styled.div`
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  height: 3rem;
-`;
-
-const WithTransformAnimate = styled.div<{ delay?: number }>`
-  transform: translateY(50%);
-  will-change: transform;
-  font-size: clamp(2.5rem, 7vw, 4.5rem);
-  letter-spacing: -0.05em;
-  line-height: normal;
-  background: blue;
-
-  @media (orientation: landscape) and (max-width: 768px) {
-    font-size: clamp(2.5rem, 4vh, 4.5rem);
-  }
-`;
-
-const WithOpacityAnimate = styled.div<{ delay?: number }>`
-  will-change: opacity;
-  animation: fadeInText 1s cubic-bezier(0.175, 0.67, 0.3, 0.97) ${({ delay }) => delay || 0}s forwards;
-  opacity: 0;
-  font-size: clamp(1rem, 2.5vw, 1.5rem);
-
-  @keyframes fadeInText {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
   }
 `;
 
@@ -104,14 +67,6 @@ const StyledTitle = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
-
-  //& > *:nth-child(even) {
-  //  background: rgba(91, 149, 91, 0.27);
-  //}
-  //
-  //& > *:nth-child(odd) {
-  //  background: rgba(140, 108, 48, 0.23);
-  //}
 `;
 
 export const Header = () => {
@@ -126,15 +81,10 @@ export const Header = () => {
                     <StyledWrapper>{'ui/ux designer'}</StyledWrapper>
                     <StyledWrapper2>{'Hi  I’m Emilia Markiewicz, a passionate UI/UX Designer from Poland.'}</StyledWrapper2>
                 </StyledTitle>
-                <div className={'ab mt-[50px] flex flex-col'}>
-                    <TextButtonWithArrow
-                        position={'relative'}
+                <div className={'mt-[20px] inline-flex sm:mt-[50px]'}>
+                    <HeaderArrowButton
                         text={'view all my works'}
-                        textColor={'#ffffff'}
-                        circleColor={'#595959'}
-                        hoverBgColor={'rgba(89,89,89,0.49)'}
-                        image={'images/arrow_large_light.svg'}
-                        width={240}/>
+                        image={'images/arrow_large_light.svg'}/>
                 </div>
             </HeaderMiddle>
         </div>

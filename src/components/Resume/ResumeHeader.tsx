@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { TextButtonWithArrow } from 'components/ProjectItem/TextButtonWithArrow';
+import { HeaderArrowButton } from 'components/ArrowButton/HeaderArrowButton';
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
@@ -52,14 +52,6 @@ const StyledHeaderTitle = styled.h1`
   @media (min-width: 768px) {
     bottom: 200px;
   }
-`;
-
-export const TextButtonWithArrowWrapper = styled.div`
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  height: 3rem;
 `;
 
 const WithTransformAnimate = styled.div<{ delay?: number }>`
@@ -130,10 +122,7 @@ export const ResumeHeader = () => {
                         {'My previous professional experience is presented below.'}
                     </WithOpacityAnimate>
                 </StyledWrapper>
-                <TextButtonWithArrow text={'more details'}
-                                     textColor={'#1e1e1e'}
-                                     circleColor={'#BDBDBD'}
-                                     image={'images/arrow_large_dark.svg'} width={240}/>
+                <HeaderArrowButton text={'more details'} image={'images/arrow_large_dark.svg'}/>
             </StyledHeaderTitle>
         </section>
         <StyledExperience>

@@ -37,7 +37,6 @@ class MyDocument extends Document {
                 <link rel={'manifest'} href={'/manifest.json'}/>
                 <link rel={'apple-touch-icon'} href={'/images/pwa/icon_x256.png'}/>
                 <link rel={'stylesheet'} href={'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap'}/>
-                <title>{'Emilia Markiewicz'}</title>
             </Head>
             <body>
             <Main/>

@@ -63,7 +63,8 @@
     "sass": "^1.59.3",
     "styled-components": "^5.3.9",
     "tailwindcss": "^3.2.7",
-    "typescript": "5.0.2"
+    "typescript": "5.0.2",
+    "typewriter-effect": "^2.19.0"
   },
-  "buildHash": "03c20308f5034652f6ba772e8cb0902041e7f5fc"
+  "buildHash": "64e2b0d507c633d06898929ab87364960c2f5a4b"
 }

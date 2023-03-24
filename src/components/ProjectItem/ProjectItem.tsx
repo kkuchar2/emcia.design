@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 
-import { TextButtonWithArrow } from 'components/ProjectItem/TextButtonWithArrow';
+import { ProjectArrowButton } from 'components/ArrowButton/ProjectArrowButton';
 import useIntersectionObserver from 'hooks/use-intersection';
 import styled from 'styled-components';
 
@@ -25,7 +25,6 @@ const StyledProjectLongDescription = styled.div`
   font-size: 15px;
   color: #595959;
   font-weight: 400;
-  letter-spacing: 0.5px;
 `;
 
 export const StyledProjectItem = styled.div`
@@ -55,7 +54,7 @@ interface WithTransformAnimateProps {
 const WithTransformAnimate = styled.div<WithTransformAnimateProps>`
   transform: ${({ enteredFirstTime }) => enteredFirstTime ? 'translateY(0)' : 'translateY(100%)'};
   will-change: transform;
-  transition: transform 1.2s cubic-bezier(0.175, 0.67, 0.3, 0.97) ${({ delay }) => delay || 0}s;
+    // transition: transform 1.2s cubic-bezier(0.175, 0.67, 0.3, 0.97) ${({ delay }) => delay || 0}s;
   line-height: normal;
   position: relative;
 `;
@@ -70,6 +69,8 @@ const StyledProjectDescription = styled.div`
   justify-content: flex-start;
   flex-wrap: wrap;
   padding-top: 20px;
+  padding-left: 40px;
+  padding-right: 40px;
   gap: 20px;
   height: 100%;
 
@@ -110,6 +111,12 @@ export const StyledImageWrapper = styled.div<StyledImageProps>`
   }
 `;
 
+const ShortDescription = styled.div`
+  font-size: 15px;
+  color: #595959;
+  font-weight: 400;
+`;
+
 const StyledImage = styled.img<StyledImageProps>`
   transform: ${({ isVisible, targetZoom }) => isVisible ? `translateY(0) scale(${targetZoom})` : 'translateY(400px) scale(2)'};
   transition: transform 2s cubic-bezier(0.075, 0.82, 0.165, 1);
@@ -139,12 +146,14 @@ export const ProjectItem = (props: ProjectItemProps) => {
 
         <StyledProjectDescription>
             <StyledWrapper>
-                <WithTransformAnimate enteredFirstTime={isVisible}>
-                    <div className={'flex flex-col items-start gap-3 md:gap-5'}>
-                        <div className={'text-5xl font-bold text-[#1e1e1e] md:leading-[0.7] lg:text-6xl'}>{title}</div>
-                        <div className={'text-md font-medium tracking-wider text-[#3a3a3a] '}>{shortDescription}</div>
-                    </div>
-                </WithTransformAnimate>
+
+                <div className={'flex flex-col items-start gap-3 md:gap-5'}>
+                    <div className={'text-5xl font-bold text-[#1e1e1e] md:leading-[0.7] lg:text-6xl'}>{title}</div>
+                    <ShortDescription>
+                        {shortDescription}
+                    </ShortDescription>
+                </div>
+
             </StyledWrapper>
             <StyledWrapper>
                 <WithTransformAnimate enteredFirstTime={isVisible} delay={0.3}>
@@ -154,14 +163,7 @@ export const ProjectItem = (props: ProjectItemProps) => {
                 </WithTransformAnimate>
             </StyledWrapper>
 
-            <TextButtonWithArrow text={'more details'}
-                                 textColor={'#595959'}
-                                 circleColor={'#dedede'}
-                                 hoverBgColor={'#f1f1f1'}
-                                 hoverBorderColor={'#dedede'}
-                                 image={'images/arrow_large.svg'}
-                                 delay={0}
-                                 width={200}/>
+            <ProjectArrowButton text={'more details'} image={'images/arrow_large.svg'}/>
         </StyledProjectDescription>
     </StyledProjectItem>;
 };
