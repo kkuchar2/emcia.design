@@ -17,7 +17,7 @@
   "scripts": {
     "dev": "node ./update-build.js && next dev -p 3002",
     "start": "node ./update-build.js && next start  -p 3002",
-    "build": "node ./update-build.js && next build && npx next-build-id",
+    "build": "node ./update-build.js && next build",
     "export": "node ./update-build.js && next build && next-sitemap && next export",
     "serve": "serve out",
     "lint": "next lint"
@@ -68,5 +68,5 @@
     "typewriter-effect": "^2.19.0",
     "validator": "^13.9.0"
   },
-  "buildHash": "f474cdc0f98da393385c24af4638e147944f959e"
+  "buildHash": "bb70800e8ca1eb6ff88e1e1d40bc0dc660103150"
 }
