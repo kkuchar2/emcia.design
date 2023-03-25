@@ -52,8 +52,7 @@
     "eslint-plugin-tailwindcss": "^3.10.1",
     "eslint-plugin-unused-imports": "^2.0.0",
     "firebase": "^9.18.0",
-    "framer-motion": "^10.6.0",
-    "gsap": "^3.11.5",
+    "mailgun-js": "^0.22.0",
     "moment": "^2.29.4",
     "next-build-id": "^3.0.0",
     "next-pwa": "5.6.0",
@@ -66,7 +65,8 @@
     "styled-components": "^5.3.9",
     "tailwindcss": "^3.2.7",
     "typescript": "5.0.2",
-    "typewriter-effect": "^2.19.0"
+    "typewriter-effect": "^2.19.0",
+    "validator": "^13.9.0"
   },
-  "buildHash": "ca773e24dc6d97633df435b7b32a3b3b943397eb"
+  "buildHash": "ae856394d7b24067d7b3ac3c260f69e7087df451"
 }

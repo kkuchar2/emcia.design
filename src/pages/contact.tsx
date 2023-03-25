@@ -166,8 +166,7 @@ export default function Contact() {
 
     const onFormSubmit = useCallback(async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        console.log('Calling sendgrid');
-        const res = await fetch('/api/sendgrid', {
+        const res = await fetch('/api/mail', {
             body: JSON.stringify({
                 email: email,
                 name: name,
@@ -205,9 +204,9 @@ export default function Contact() {
             <RightSide>
                 <Wrapper>
                     <StyledForm onSubmit={onFormSubmit}>
-                        <CustomInput label={'Name'} onChange={setName}/>
-                        <CustomInput label={'Email'} onChange={setEmail}/>
-                        <CustomInput label={'Subject'} onChange={setSubject}/>
+                        <CustomInput label={'Name'} onChange={e => setName(e.target.value)}/>
+                        <CustomInput label={'Email'} type={'email'} onChange={e => setEmail(e.target.value)}/>
+                        <CustomInput label={'Subject'} onChange={e => setSubject(e.target.value)}/>
                         <CustomTextArea label={'Message'} onChange={setMessage}/>
                         <StyledSubmitButton>{'Send message'}</StyledSubmitButton>
                     </StyledForm>

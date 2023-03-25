@@ -1,10 +1,9 @@
-import React, { useCallback, useState } from 'react';
+import React, { InputHTMLAttributes, useCallback, useState } from 'react';
 
 import styled from 'styled-components';
 
-interface CustomInputProps {
+interface CustomInputProps extends InputHTMLAttributes<HTMLInputElement> {
     label: string;
-    onChange?: (value: string) => void;
 }
 
 interface InputState {
@@ -60,33 +59,34 @@ const StyledFieldSet = styled.fieldset<InputState>`
 `;
 
 export const CustomInput = (props: CustomInputProps) => {
-    const { label, onChange } = props;
+    const { label, ...rest } = props;
 
     const [focused, setFocused] = useState(false);
 
     const inputRef = React.createRef<HTMLInputElement>();
 
-    const onInputFocus = useCallback(() => {
+    const onInputFocus = useCallback((event: React.FocusEvent<HTMLInputElement>) => {
         setFocused(true);
-    }, []);
+        rest.onFocus?.(event);
+    }, [rest.onFocus]);
 
-    const onInputBlur = useCallback(() => {
+    const onInputBlur = useCallback((event: React.FocusEvent<HTMLInputElement>) => {
         setFocused(false);
-    }, []);
+        rest.onBlur?.(event);
+    }, [rest.onBlur]);
 
     const onComponentClick = useCallback(() => {
         inputRef.current?.focus();
     }, [inputRef]);
 
-    const onInputChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
-        const { value } = event.target;
-        onChange?.(value);
-    }, [onChange]);
-
     return <StyledCustomInput focused={focused} onClick={onComponentClick}>
         <StyledFieldSet focused={focused}>
             <StyledLegend focused={focused}>{label.toLowerCase()}</StyledLegend>
-            <StyledInput ref={inputRef} onFocus={onInputFocus} onBlur={onInputBlur} onChange={onInputChange} type={'text'}/>
+            <StyledInput
+                ref={inputRef}
+                {...rest}
+                onFocus={onInputFocus}
+                onBlur={onInputBlur}/>
         </StyledFieldSet>
     </StyledCustomInput>;
 };

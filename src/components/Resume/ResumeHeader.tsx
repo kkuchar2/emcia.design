@@ -1,10 +1,9 @@
 import React from 'react';
 
 import { HeaderArrowButton } from 'components/ArrowButton/HeaderArrowButton';
-import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
-const Circle = styled(motion.div)`
+const Circle = styled.div`
 
   transform: scale(0);
 
