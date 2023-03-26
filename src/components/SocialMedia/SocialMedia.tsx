@@ -15,7 +15,6 @@ const StyledSocialMedia = styled.div<ISize>`
   }
 
   @media (min-width: 1024px) {
-    flex-direction: row;
     align-items: center;
   }
 `;
@@ -81,7 +80,7 @@ export const SocialMedia = (props: SocialMediaProps) => {
     }, []);
 
     return <StyledSocialMedia ref={ref} {...parentSize}>
-        {title && <div className={'text-smkfont-normal text-[#BDBDBD]'}>
+        {title && <div className={'text-sm font-normal text-[#BDBDBD]'}>
             {title}
         </div>}
         <div className={'flex gap-4'}>

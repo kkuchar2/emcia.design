@@ -6,19 +6,19 @@ html,
 body > div:first-child,
 div#__next,
 div#__next > div {
-    width: 100%;
-    display: flex;
     align-items: center;
+    display: flex;
     justify-content: center;
+    width: 100%;
 }
 
 body {
     background: #1e1e1e;
-    width: 100%;
-    overflow-x: hidden;
-    scrollbar-width: auto;
-    scroll-behavior: smooth;
     font-family: Inter, sans-serif;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    scrollbar-width: auto;
+    width: 100%;
 }
 
 /* Firefox */
@@ -40,8 +40,8 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .mf-cursor:before {
-    transform: scale(0.5) !important;
     background: rgba(98, 60, 236, 0.37) !important;
+    transform: scale(0.5) !important;
 }
 
 * {
@@ -49,6 +49,6 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .base-page-size {
-    width: 100%;
     min-height: 100vh;
+    width: 100%;
 }

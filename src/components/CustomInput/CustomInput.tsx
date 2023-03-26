@@ -12,15 +12,16 @@ interface InputState {
 
 const StyledCustomInput = styled.div<InputState>`
   width: 100%;
-  border-radius: 5px;
+  height: 70px;
   box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
   font-size: 1.2rem;
   color: #1e1e1e;
   font-weight: 500;
+  position: relative;
+  border-radius: 12px;
 
   &:hover {
     cursor: text
@@ -28,34 +29,48 @@ const StyledCustomInput = styled.div<InputState>`
 `;
 
 const StyledInput = styled.input`
+  position: absolute;
+  bottom: 1px;
   width: 100%;
+  height: 45px;
   outline: none;
-  background: none;
-  padding: 10px;
+  padding: 0 10px 10px 20px;
   caret-color: #cecece;
   color: #cacaca;
   font-size: 1rem;
-  font-weight: normal;
+  font-weight: 500;
+  background: transparent;
+
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    -webkit-transition-delay: 9999s;
+    transition-delay: 9999s;
+  }
 `;
 
 const StyledLegend = styled.legend<InputState>`
   color: ${({ focused }) => focused ? '#ffffff' : '#BDBDBD'};
-  font-size: 0.8rem;
   font-weight: 400;
+  font-size: 0.8rem;
   padding-left: 7px;
   padding-right: 7px;
   margin-left: 15px;
   background: rgba(255, 0, 0, 0);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 
   @media (min-width: 768px) {
     font-size: 1rem;
   }
 `;
 const StyledFieldSet = styled.fieldset<InputState>`
-  border: 1px solid #595959;
-  border-radius: 8px;
+  border: 1px solid ${({ focused }) => focused ? '#686868' : '#595959'};
+  border-radius: 12px;
   width: 100%;
-
+  height: 100%;
+  transition: all 0.3s ease-in-out;
+  background: ${({ focused }) => focused ? '#232323' : 'none'};
 `;
 
 export const CustomInput = (props: CustomInputProps) => {
@@ -81,7 +96,9 @@ export const CustomInput = (props: CustomInputProps) => {
 
     return <StyledCustomInput focused={focused} onClick={onComponentClick}>
         <StyledFieldSet focused={focused}>
-            <StyledLegend focused={focused}>{label.toLowerCase()}</StyledLegend>
+            <StyledLegend focused={focused}>
+                {label.toLowerCase()}
+            </StyledLegend>
             <StyledInput
                 ref={inputRef}
                 {...rest}

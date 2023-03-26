@@ -2,9 +2,8 @@ import React, { useCallback, useState } from 'react';
 
 import styled from 'styled-components';
 
-interface CustomTextAreaProps {
+interface CustomTextAreaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
     label: string;
-    onChange?: (value: string) => void;
 }
 
 interface TextAreaState {
@@ -34,22 +33,23 @@ const StyledTextArea = styled.textarea`
   background: none;
   max-height: 400px;
   height: 200px;
-  padding: 10px;
+  padding: 10px 10px 10px 20px;
   caret-color: #cecece;
-  color: #cacaca;
+  color: #ffffff;
   font-size: 1rem;
   font-weight: normal;
   resize: none;
 `;
 
 const StyledLegend = styled.legend<TextAreaState>`
-  color: ${({ focused }) => focused ? '#ffffff' : '#cacaca'};
-  font-size: 0.8rem;
+  color: ${({ focused }) => focused ? '#ffffff' : '#BDBDBD'};
   font-weight: 400;
+  font-size: 0.8rem;
   padding-left: 7px;
   padding-right: 7px;
   margin-left: 15px;
   background: rgba(255, 0, 0, 0);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 
   @media (min-width: 768px) {
     font-size: 1rem;
@@ -57,39 +57,43 @@ const StyledLegend = styled.legend<TextAreaState>`
 }
 `;
 const StyledFieldSet = styled.fieldset<TextAreaState>`
-  border: 1px solid #595959;
-  border-radius: 8px;
+  border: 1px solid ${({ focused }) => focused ? '#686868' : '#595959'};
+  border-radius: 12px;
   width: 100%;
-
+  transition: all 0.3s ease-in-out;
+  background: ${({ focused }) => focused ? '#232323' : 'none'};
 `;
 
 export const CustomTextArea = (props: CustomTextAreaProps) => {
-    const { label, onChange } = props;
+    const { label, ...rest } = props;
 
     const [focused, setFocused] = useState(false);
 
     const textAreaRef = React.createRef<HTMLTextAreaElement>();
 
-    const onTextAreaFocus = useCallback(() => {
+    const onTextAreaFocus = useCallback((event: React.FocusEvent<HTMLTextAreaElement>) => {
         setFocused(true);
-    }, []);
+        rest.onFocus?.(event);
+    }, [rest.onFocus]);
 
-    const onTextAreaBlur = useCallback(() => {
+    const onTextAreaBlur = useCallback((event: React.FocusEvent<HTMLTextAreaElement>) => {
         setFocused(false);
-    }, []);
+        rest.onBlur?.(event);
+    }, [rest.onBlur]);
 
     const onComponentClick = useCallback(() => {
         textAreaRef.current?.focus();
     }, [textAreaRef]);
 
-    const onTextAreaChange = useCallback((event: React.ChangeEvent<HTMLTextAreaElement>) => {
-        onChange?.(event.target.value);
-    }, [onChange]);
-
     return <StyledCustomTextArea focused={focused} onClick={onComponentClick}>
         <StyledFieldSet focused={focused}>
             <StyledLegend focused={focused}>{label.toLowerCase()}</StyledLegend>
-            <StyledTextArea ref={textAreaRef} onFocus={onTextAreaFocus} onBlur={onTextAreaBlur} onChange={onTextAreaChange}/>
+            <StyledTextArea
+                ref={textAreaRef}
+                {...rest}
+                onFocus={onTextAreaFocus}
+                onBlur={onTextAreaBlur}
+            />
         </StyledFieldSet>
     </StyledCustomTextArea>;
 };

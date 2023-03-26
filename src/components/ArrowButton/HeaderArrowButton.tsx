@@ -82,26 +82,20 @@ const StyledViewProjectButton = styled.a`
     transform: translateY(50%);
     left: 0;
     width: 100%;
-
     opacity: 0;
     border-radius: calc(3rem / 2);
+    background: linear-gradient(90deg, #282828, rgba(89, 89, 89, 0.49));
 
     @media (min-width: 768px) {
       width: 3rem;
       background: linear-gradient(90deg, #282828, rgba(89, 89, 89, 0.49));
-      opacity: 0;
     }
   }
 
-  @media (min-width: 768px) {
-
-    padding-left: 20px;
-    padding-right: 0;
-
-    &:hover {
-
+  &:hover {
+    @media (min-width: 768px) {
+      padding-left: 20px;
       padding-right: 15px;
-
 
       ${Text} {
         transform: translateX(10px);
@@ -113,13 +107,19 @@ const StyledViewProjectButton = styled.a`
 
       &:before {
         width: 100%;
-        opacity: 0;
       }
 
       &:after {
         width: 100%;
-        opacity: 1;
       }
+    }
+
+    &:before {
+      opacity: 0;
+    }
+
+    &:after {
+      opacity: 1;
     }
   }
 `;

@@ -52,6 +52,7 @@
     "eslint-plugin-tailwindcss": "^3.10.1",
     "eslint-plugin-unused-imports": "^2.0.0",
     "firebase": "^9.18.0",
+    "lottie-react": "^2.4.0",
     "mailgun-js": "^0.22.0",
     "moment": "^2.29.4",
     "next-build-id": "^3.0.0",
@@ -61,6 +62,7 @@
     "nodemailer": "^6.9.1",
     "postcss": "^8.4.21",
     "react-device-detect": "^2.2.3",
+    "react-hot-toast": "^2.4.0",
     "sass": "^1.59.3",
     "styled-components": "^5.3.9",
     "tailwindcss": "^3.2.7",
@@ -68,5 +70,5 @@
     "typewriter-effect": "^2.19.0",
     "validator": "^13.9.0"
   },
-  "buildHash": "bb70800e8ca1eb6ff88e1e1d40bc0dc660103150"
+  "buildHash": "057a11c2c5c3ab6e5d2c252a36fc2934020fb65c"
 }
