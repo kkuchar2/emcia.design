@@ -1,5 +1,6 @@
 import React, { useCallback, useState } from 'react';
 
+import { scaleUp } from 'components/Circles/keyframes';
 import { CustomInput } from 'components/CustomInput/CustomInput';
 import { CustomTextArea } from 'components/CustomInput/CustomTextArea';
 import { DotPulse } from 'components/DotPulse/DotPulse';
@@ -65,16 +66,52 @@ const Wrapper = styled.div`
   }
 `;
 
-const StyledTitle2 = styled.div`
+const StyledMobileTitle = styled.div`
   font-size: 2.8rem;
   visibility: visible;
-  text-align: left;
   font-weight: 600;
   color: #1E1E1E;
   z-index: 4;
+  text-align: center;
 
   @media (min-width: 1024px) {
     display: none;
+  }
+`;
+
+const StyledDesktopTitlePart = styled.div`
+  position: fixed;
+  top: 50%;
+  right: calc(50% + 200px);
+  mix-blend-mode: difference;
+
+  z-index: 4;
+
+  display: none;
+  color: #ffffff;
+
+  @media (min-height: 800px) {
+    right: calc(50% + 120px);
+  }
+
+  @media (min-width: 1024px) {
+    display: block;
+  }
+`;
+
+const StyledDesktopTitle = styled.div`
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  font-weight: 600;
+`;
+
+const StyledDesktopTitleDescription = styled.div`
+  font-size: clamp(1rem, 2vw, 1rem);
+  font-weight: 400;
+  color: #898989;
+  display: none;
+
+  @media (min-width: 1024px) {
+    display: block;
   }
 `;
 
@@ -189,6 +226,28 @@ const FakeCirclePart = styled.div`
   }
 `;
 
+const DesktopCircle = styled.div`
+  position: absolute;
+  width: 160vh;
+  height: 160vh;
+  border-radius: 50%;
+  background: #ffffff;
+  right: calc(50% + 80px);
+  bottom: calc(50% - 80vh);
+  display: none;
+
+  @media (max-height: 768px) {
+    width: 100vw;
+    height: 100vw;
+    bottom: calc(50% - 70vw);
+  }
+
+  @media (min-width: 1024px) {
+    display: block;
+    animation: ${scaleUp} 2200ms cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+  }
+`;
+
 const extractFirstName = (name: string) => {
     const split = name.split(' ');
     return split[0];
@@ -242,14 +301,23 @@ export default function Contact() {
     }, [name, email, subject, message]);
 
     return <StyledContact>
+        <div className={'fixed top-0 left-0 z-0 h-screen w-screen'}>
+            <DesktopCircle/>
+        </div>
+        <StyledDesktopTitlePart>
+            <StyledDesktopTitle>{'contact'}</StyledDesktopTitle>
+            <StyledDesktopTitleDescription>{'Would you like to work with me?'}</StyledDesktopTitleDescription>
+            <StyledDesktopTitleDescription>{'Send a message!'}</StyledDesktopTitleDescription>
+        </StyledDesktopTitlePart>
         <FakeNavbar/>
         <FakeCirclePart/>
+
         <TopCircle>
-            <div className={'absolute bottom-[80px] flex flex-col gap-7'}>
-                <StyledTitle2 className={'text-5xl font-semibold text-white '}>{'contact me'}</StyledTitle2>
+            <div className={'absolute bottom-[50px] flex flex-col gap-7'}>
+                <StyledMobileTitle>{'contact'}</StyledMobileTitle>
                 <div className={'flex flex-col gap-1 text-[#807F7F]'}>
-                    <div className={'flex w-full justify-center xl:justify-start'}>{'Do you want to work with me?'}</div>
-                    <div className={'flex w-full justify-center xl:justify-start'}>{'Feel free to contact me!'}</div>
+                    <div className={'flex w-full justify-center xl:justify-start'}>{'Would you like to work with me?'}</div>
+                    <div className={'flex w-full justify-center xl:justify-start'}>{'Send a message!'}</div>
                 </div>
             </div>
         </TopCircle>
