@@ -1,26 +1,6 @@
-import { Project } from 'components/ProjectItem/ProjectItem';
+import { IPortfolioConfig } from './protfolioConfig.types';
 
-export interface INavBarItem {
-    title: string,
-    link?: string
-}
-
-export interface INavbarConfig {
-    items: INavBarItem[]
-}
-
-export interface IProjectsPageConfig {
-    projects: Project[];
-    selectedProjectsTitle?: string;
-    selectedProjectsDescription?: string;
-}
-
-export interface IProjectConfig {
-    projectsPageConfig: IProjectsPageConfig,
-    navBarConfig: INavbarConfig
-}
-
-export const projectConfig: IProjectConfig = {
+export const portfolioConfig: IPortfolioConfig = {
     projectsPageConfig: {
         selectedProjectsTitle: 'selected projects.',
         selectedProjectsDescription: 'Here I present you my best works selected with passion',
@@ -73,5 +53,43 @@ export const projectConfig: IProjectConfig = {
                 link: '/contact'
             }
         ]
+    },
+    socialConfig: {
+        dribble: {
+            link: {
+                href: 'https://dribbble.com/emiliamarkiewicz',
+                target: '_blank',
+                title: 'Dribble'
+            },
+            icon: {
+                src: 'images/dribble.svg',
+                altText: 'Dribble',
+                scale: 0.75,
+            }
+        },
+        behance: {
+            link: {
+                href: 'https://www.behance.net/emiliamarkiewicz',
+                target: '_blank',
+                title: 'Behance'
+            },
+            icon: {
+                src: 'images/behance.svg',
+                altText: 'Behance',
+                scale: 0.75
+            }
+        },
+        linkedin: {
+            link: {
+                href: 'https://www.linkedin.com/in/emiliamarkiewicz',
+                target: '_blank',
+                title: 'LinkedIn'
+            },
+            icon: {
+                src: 'images/linkedin.svg',
+                altText: 'LinkedIn',
+                scale: 1
+            }
+        }
     }
 };

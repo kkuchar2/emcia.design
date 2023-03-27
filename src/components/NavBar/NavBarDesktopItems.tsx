@@ -3,7 +3,7 @@ import React, { useMemo } from 'react';
 import { NavBarItem } from 'components/NavBar/NavBarItem';
 import styled from 'styled-components';
 
-import { INavbarConfig } from '../../projectConfig';
+import { INavbarConfig } from '../../protfolioConfig.types';
 
 const StyledNavBarDesktopItems = styled.div`
   width: 100vw;

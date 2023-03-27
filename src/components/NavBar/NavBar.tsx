@@ -8,7 +8,7 @@ import { useRouter } from 'next/router';
 import styled, { keyframes } from 'styled-components';
 
 import { useMainContext } from '../../MainContext';
-import { projectConfig } from '../../projectConfig';
+import { portfolioConfig } from '../../portfolioConfig';
 
 interface StyledOverlayProps {
     opened: boolean;
@@ -72,8 +72,8 @@ export const NavBar = () => {
 
     return <>
         <HamburgerButton onClick={onHamburgerClick} navbarOpened={navbarOpened}/>
-        {screenWidth > 1024 && <NavBarDesktopItems {...projectConfig.navBarConfig} />}
-        {screenWidth <= 1024 && <NavBarMobileItems {...projectConfig.navBarConfig} />}
+        {screenWidth > 1024 && <NavBarDesktopItems {...portfolioConfig.navBarConfig} />}
+        {screenWidth <= 1024 && <NavBarMobileItems {...portfolioConfig.navBarConfig} />}
         {screenWidth <= 1024 && <StyledOverlay opened={navbarOpened}/>}
     </>;
 };

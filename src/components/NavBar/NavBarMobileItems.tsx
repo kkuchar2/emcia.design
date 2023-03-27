@@ -4,7 +4,7 @@ import { NavBarItem } from 'components/NavBar/NavBarItem';
 import styled, { keyframes } from 'styled-components';
 
 import { useMainContext } from '../../MainContext';
-import { INavbarConfig } from '../../projectConfig';
+import { INavbarConfig } from '../../protfolioConfig.types';
 
 interface IStyledNavBarMobileItemsProps {
     opened: boolean;

@@ -3,7 +3,7 @@ import React from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
 
-import { INavBarItem } from '../../projectConfig';
+import { INavBarItem } from '../../protfolioConfig.types';
 
 const StyledNavBarItem = styled(Link)`
   width: 120px;

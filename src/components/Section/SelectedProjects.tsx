@@ -3,7 +3,7 @@ import React from 'react';
 import { ProjectItem, StyledImageWrapper, StyledProjectItem } from 'components/ProjectItem/ProjectItem';
 import styled from 'styled-components';
 
-import { projectConfig } from '../../projectConfig';
+import { portfolioConfig } from '../../portfolioConfig';
 
 const StyledSelectedProjects = styled.div`
   margin-top: 80px;
@@ -73,22 +73,19 @@ const SelectedProjectsDescription = styled.div`
 
 export const SelectedProjects = () => {
 
-        const { projectsPageConfig } = projectConfig;
+    const { selectedProjectsTitle, selectedProjectsDescription, projects } = portfolioConfig.projectsPageConfig;
 
-        const { selectedProjectsTitle, selectedProjectsDescription, projects } = projectsPageConfig;
-
-        return <StyledSelectedProjects>
-            <div className={'flex flex-col gap-2 self-start px-[40px] md:px-0'}>
-                <SelectedProjectsTitle>
-                    {selectedProjectsTitle}
-                </SelectedProjectsTitle>
-                <SelectedProjectsDescription>
-                    {selectedProjectsDescription}
-                </SelectedProjectsDescription>
-            </div>
-            <StyledProjectItems>
-                {projects.map((project, index) => <ProjectItem key={index} project={project}/>)}
-            </StyledProjectItems>
-        </StyledSelectedProjects>;
-    }
-;
+    return <StyledSelectedProjects>
+        <div className={'flex flex-col gap-2 self-start px-[40px] md:px-0'}>
+            <SelectedProjectsTitle>
+                {selectedProjectsTitle}
+            </SelectedProjectsTitle>
+            <SelectedProjectsDescription>
+                {selectedProjectsDescription}
+            </SelectedProjectsDescription>
+        </div>
+        <StyledProjectItems>
+            {projects.map((project, index) => <ProjectItem key={index} project={project}/>)}
+        </StyledProjectItems>
+    </StyledSelectedProjects>;
+};
