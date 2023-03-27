@@ -1,15 +1,9 @@
-import React, { useCallback, useState } from 'react';
+import React from 'react';
 
 import { scaleUp } from 'components/Circles/keyframes';
-import { CustomInput } from 'components/CustomInput/CustomInput';
-import { CustomTextArea } from 'components/CustomInput/CustomTextArea';
-import { DotPulse } from 'components/DotPulse/DotPulse';
+import { ContactForm } from 'components/ContactForm/ContactForm';
 import { SocialMedia } from 'components/SocialMedia/SocialMedia';
-import Lottie from 'lottie-react';
-import toast from 'react-hot-toast';
 import styled from 'styled-components';
-
-import animationData from './paper_plane.json';
 
 const StyledContact = styled.div`
   position: relative;
@@ -115,59 +109,6 @@ const StyledDesktopTitleDescription = styled.div`
   }
 `;
 
-const StyledForm = styled.form`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  gap: 30px;
-  width: 100%;
-`;
-
-const StyledSubmitButton = styled.button<{ sending: boolean }>`
-  margin-top: 0;
-  width: 200px;
-  border-radius: 50px;
-  background: #914f37;
-  padding: 12px;
-  font-weight: 600;
-  color: #ffffff;
-  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
-  cursor: pointer;
-  font-size: 1rem;
-  align-self: center;
-  position: relative;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-
-  &:hover {
-    background: #d0562a;
-  }
-
-  &:focus {
-    outline: 1px solid #a4a4a4;
-  }
-
-  &:disabled {
-    background: rgba(74, 74, 74, 0.26);
-    color: rgba(255, 255, 255, 0.35);
-    cursor: not-allowed;
-  }
-
-  // animated rotated circle
-  &:after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    background: #ffffff;
-    transform: scale(0);
-    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
-
-  }
-`;
-
 const TopCircle = styled.div`
   position: absolute;
   background: #ffffff;
@@ -248,57 +189,7 @@ const DesktopCircle = styled.div`
   }
 `;
 
-const extractFirstName = (name: string) => {
-    const split = name.split(' ');
-    return split[0];
-};
-
 export default function Contact() {
-
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [subject, setSubject] = useState('');
-    const [message, setMessage] = useState('');
-
-    const [sending, setSending] = useState(false);
-
-    const onFormSubmit = useCallback(async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        setSending(true);
-
-        const res = await fetch('/api/mail', {
-            body: JSON.stringify({
-                email: email,
-                name: name,
-                subject: subject,
-                message: message,
-            }),
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            method: 'POST',
-        });
-
-        const { error } = await res.json();
-
-        if (error) {
-            console.log(error);
-            return;
-        }
-        setSending(false);
-
-        toast((t) => (
-            <div className={'flex h-[75px] overflow-hidden'}>
-                <div>{`Thank you ${extractFirstName(name)}! \n I'll get back to you as soon as possible!`}</div>
-                <Lottie animationData={animationData} style={{
-                    transform: 'scale(3)'
-                }}/>
-            </div>
-        ), {
-            position: 'bottom-center',
-            duration: 2000
-        });
-    }, [name, email, subject, message]);
 
     return <StyledContact>
         <div className={'fixed top-0 left-0 z-0 h-screen w-screen'}>
@@ -325,51 +216,7 @@ export default function Contact() {
             <LeftSide/>
             <RightSide>
                 <Wrapper>
-                    <StyledForm onSubmit={onFormSubmit}>
-                        <CustomInput
-                            name={'sender_name'}
-                            label={'Name'}
-                            type={'text'}
-                            autoComplete={'on'}
-                            required={true}
-                            onChange={e => setName(e.target.value)}
-                        />
-                        <CustomInput
-                            name={'sender_email'}
-                            label={'Email'}
-                            type={'email'}
-                            autoComplete={'on'}
-                            required={true}
-                            onChange={e => setEmail(e.target.value)}
-                        />
-                        <CustomInput
-                            name={'email_subject'}
-                            label={'Subject'}
-                            autoComplete={'on'}
-                            type={'text'}
-                            required={true}
-                            onChange={e => setSubject(e.target.value)}
-                        />
-
-                        <CustomTextArea
-                            name={'email_message'}
-                            label={'Message'}
-                            autoComplete={'off'}
-                            required={true}
-                            onChange={e => setMessage(e.target.value)}
-                        />
-
-                        <StyledSubmitButton disabled={sending} sending={sending} type={'submit'}>
-                            <div className={'relative flex items-center justify-center'}>
-                                <div className={'w-[150px] ' + (sending ? 'text-white' : 'text-white')}>
-                                    {sending ? 'Sending email' : 'Send'}
-                                </div>
-                                <DotPulse visible={sending}/>
-                            </div>
-
-                        </StyledSubmitButton>
-                    </StyledForm>
-
+                    <ContactForm/>
                     <div className={'mt-[20px] flex w-full justify-center sm:mt-[50px] md:mt-[50px]'}>
                         <SocialMedia title={'or check out my social media'}/>
                     </div>

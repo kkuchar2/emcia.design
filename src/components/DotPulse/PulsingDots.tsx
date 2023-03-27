@@ -51,7 +51,7 @@ interface DotPulseProps {
     visible: boolean;
 }
 
-export const DotPulse = (props: DotPulseProps) => {
+export const PulsingDots = (props: DotPulseProps) => {
 
     const { visible } = props;
 
