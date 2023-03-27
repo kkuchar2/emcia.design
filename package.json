@@ -30,7 +30,6 @@
     "serve": "^14.2.0"
   },
   "devDependencies": {
-    "@sendgrid/mail": "^7.7.0",
     "@types/node": "18.15.3",
     "@types/react": "^18.0.28",
     "@types/react-dom": "18.0.11",
@@ -59,7 +58,6 @@
     "next-pwa": "5.6.0",
     "next-seo": "^5.15.0",
     "next-sitemap": "^4.0.5",
-    "nodemailer": "^6.9.1",
     "postcss": "^8.4.21",
     "react-device-detect": "^2.2.3",
     "react-hot-toast": "^2.4.0",
@@ -67,7 +65,6 @@
     "styled-components": "^5.3.9",
     "tailwindcss": "^3.2.7",
     "typescript": "5.0.2",
-    "typewriter-effect": "^2.19.0",
     "validator": "^13.9.0"
   },
   "buildHash": "057a11c2c5c3ab6e5d2c252a36fc2934020fb65c"
