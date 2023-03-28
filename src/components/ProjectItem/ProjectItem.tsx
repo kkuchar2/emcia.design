@@ -145,16 +145,12 @@ export const ProjectItem = (props: ProjectItemProps) => {
         </StyledImageWrapper>
 
         <StyledProjectDescription>
-            <StyledWrapper>
-
-                <div className={'flex flex-col items-start gap-3 md:gap-5'}>
-                    <div className={'text-5xl font-bold text-[#1e1e1e] md:leading-[0.7] lg:text-6xl'}>{title}</div>
-                    <ShortDescription>
-                        {shortDescription}
-                    </ShortDescription>
-                </div>
-
-            </StyledWrapper>
+            <div className={'flex flex-col items-start gap-3 md:gap-5'}>
+                <div className={'text-5xl font-bold text-[#1e1e1e] md:leading-[0.7] lg:text-6xl'}>{title}</div>
+                <ShortDescription>
+                    {shortDescription}
+                </ShortDescription>
+            </div>
             <StyledWrapper>
                 <WithTransformAnimate enteredFirstTime={isVisible} delay={0.3}>
                     <StyledProjectLongDescription style={{ maxWidth: `${longDescriptionMaxWidth}px` || 'auto' }}>
