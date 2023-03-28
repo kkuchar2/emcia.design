@@ -42,16 +42,17 @@ const BigScreenTitle = styled.div`
   position: fixed;
   top: 50%;
   right: calc(50% + 200px);
-  mix-blend-mode: difference;
   display: none;
-  color: #ffffff;
+  mix-blend-mode: difference;
 
   @media (min-height: 800px) {
     right: calc(50% + 120px);
   }
 
   @media (min-width: 1024px) {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
   }
 `;
 
@@ -59,18 +60,20 @@ const Title = styled.div`
   font-size: 2.8rem;
   visibility: visible;
   font-weight: 600;
-  color: white;
-  mix-blend-mode: difference;
+  color: #e1e1e1;
   text-align: center;
+  position: relative;
 
   @media (min-width: 1024px) {
-    font-size: clamp(2.8rem, 6vw, 5rem);
+    font-size: clamp(2.8rem, 10vw, 5rem);
     font-weight: 600;
+    text-align: left;
+    margin-left: -4px;
   }
 `;
 
 const TitleHelloMessage = styled.div`
-  font-size: clamp(1rem, 2vw, 1rem);
+  font-size: clamp(1rem, 2vw, 1.2rem);
   font-weight: 400;
   color: #807F7F;
   text-align: center;
@@ -257,7 +260,7 @@ export default function Contact() {
         <FakeCircleBlock/>
 
         <TopCircle mailSent={mailSent}>
-            <div className={'absolute bottom-[50px] flex flex-col gap-7'}>
+            <div className={'absolute bottom-[50px] flex flex-col gap-2 mix-blend-difference'}>
                 <Title>{'contact'}</Title>
                 <div>
                     <TitleHelloMessage>{'Would you like to work with me?'}</TitleHelloMessage>
