@@ -4,7 +4,6 @@ import { Page } from 'components/Page/Page';
 import { logEvent } from 'firebase/analytics';
 import Head from 'next/head';
 import { DefaultSeo } from 'next-seo';
-import { Toaster } from 'react-hot-toast';
 import styled from 'styled-components';
 
 import SEO from '../../next-seo.config';
@@ -42,16 +41,6 @@ const App = function ({ Component, pageProps }) {
 
         <MainContextProvider>
             <Page component={Component} pageProps={pageProps}/>
-            <Toaster
-                toastOptions={{
-                    className: '',
-                    style: {
-                        background: '#313131',
-                        padding: '16px',
-                        color: '#f1f1f1',
-                    },
-                }}
-            />
         </MainContextProvider>
     </StyledApp>;
 };
