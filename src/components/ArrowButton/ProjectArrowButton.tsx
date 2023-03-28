@@ -21,7 +21,6 @@ const StyledViewProjectButton = styled.a`
   text-decoration: none;
   transition: all .5s cubic-bezier(.77, 0, .175, 1);
   display: flex;
-  z-index: 1;
   gap: 0.5rem;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   height: 3rem;
@@ -69,7 +68,6 @@ const StyledViewProjectButton = styled.a`
       border-radius: calc(2.5rem / 2);
     }
   }
-}
 `;
 
 const Text = styled.div`

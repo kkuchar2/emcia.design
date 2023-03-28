@@ -1,25 +1,16 @@
 import React from 'react';
 
-import { HeaderArrowButton } from 'components/ArrowButton/HeaderArrowButton';
+import { scaleUp } from 'components/Circles/keyframes';
 import styled from 'styled-components';
 
 const Circle = styled.div`
 
   transform: scale(0);
 
-  @keyframes circle {
-    0% {
-      transform: scale(0);
-    }
-    100% {
-      transform: scale(1);
-    }
-  }
-
-  @media (min-width: 768px) {
+  @media (min-width: 1280px) {
     transform: scale(1);
     position: absolute;
-    background: #1E1E1E;
+    background: #1e1e1e;
     border-radius: 50%;
     border: 1px solid #e3e3e3;
     width: 62.5vw;
@@ -28,109 +19,66 @@ const Circle = styled.div`
     right: -25vw;
     max-width: max(2400px, 100vh);
     max-height: max(2400px, 100vh);
-    animation: circle 2200ms cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
-  }
-`;
-
-const StyledHeaderTitle = styled.h1`
-  align-self: flex-end;
-  justify-self: flex-start;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  bottom: 100px;
-  position: relative;
-  height: auto;
-  width: 100%;
-  padding: 20px 20px 100px;
-  box-sizing: border-box;
-  max-width: 1200px;
-  color: #1e1e1e;
-  overflow: hidden;
-
-  @media (min-width: 768px) {
-    bottom: 200px;
-  }
-`;
-
-const WithTransformAnimate = styled.div<{ delay?: number }>`
-  transform: translateY(100%);
-  will-change: transform;
-  line-height: normal;
-  animation: lineHeight 1.2s cubic-bezier(0.175, 0.67, 0.3, 0.97) ${({ delay }) => delay || 0}s forwards;
-
-  @keyframes lineHeight {
-    0% {
-      transform: translateY(100%);
-    }
-    100% {
-      transform: translateY(0);
-    }
-  }
-`;
-
-const WithOpacityAnimate = styled.div<{ delay?: number }>`
-  will-change: opacity;
-  animation: fadeInText 1s cubic-bezier(0.175, 0.67, 0.3, 0.97) ${({ delay }) => delay || 0}s forwards;
-  opacity: 0;
-
-  @keyframes fadeInText {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
+    animation: ${scaleUp} 2200ms cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
   }
 `;
 
 const StyledWrapper = styled.div`
-  overflow: hidden;
-  position: relative;
-`;
-
-const StyledExperience = styled.div`
-  padding: 200px;
-`;
-
-const StyledExperienceTitle = styled.h1`
-  color: #F1F1F1;
-  font-size: 3rem;
   font-weight: 600;
+  font-size: clamp(2.3rem, 7vw, 4.7rem);
+  line-height: 1;
+  color: #1E1E1E;
 `;
 
-const StyledExperienceDescription = styled.div`
-  color: #BDBDBD;
-  font-size: 1.2rem;
+const StyledWrapper2 = styled.div`
   font-weight: 400;
+  font-size: clamp(1.2rem, 1.5vw, 1.5rem);
+  line-height: 1.2;
+  margin-top: 30px;
+  color: #807F7F;
+`;
+
+const StyledHeader = styled.div`
+  height: 80svh;
+`;
+
+const HeaderTop = styled.div`
+  width: 100%;
+  height: 60%;
+`;
+
+const HeaderMiddle = styled.h1`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1.4rem;
+  position: relative;
+  padding: 40px 40px 40px 40px;
+  box-sizing: border-box;
+  color: #F1F1F1;
+  min-height: 40%;
+  width: 100%;
+  max-width: 1500px;
+`;
+
+const StyledTitle = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: relative;
 `;
 
 export const ResumeHeader = () => {
 
-    return <div className={'relative h-screen w-full'}>
-        <section className={'header relative flex h-[75vh] items-center justify-center overflow-x-clip bg-[#f1f1f1]'}>
-            <Circle/>
-            <StyledHeaderTitle>
-                <div className={'flex flex-wrap gap-[1rem]'}>
-                    <StyledWrapper>
-                        <WithTransformAnimate className={'text-5xl font-semibold md:text-7xl'}>{'resume'}</WithTransformAnimate>
-                    </StyledWrapper>
-                </div>
-                <StyledWrapper>
-                    <WithOpacityAnimate className={'text-xl'} delay={0.5}>
-                        {'My previous professional experience is presented below.'}
-                    </WithOpacityAnimate>
-                </StyledWrapper>
-                <HeaderArrowButton text={'more details'} image={'images/arrow_large_dark.svg'}/>
-            </StyledHeaderTitle>
-        </section>
-        <StyledExperience>
-            <StyledExperienceTitle>
-                {'Experience'}
-            </StyledExperienceTitle>
-            <StyledExperienceDescription>
-                {'I have worked for the following companies so far.'}
-            </StyledExperienceDescription>
-        </StyledExperience>
-    </div>;
+    return <StyledHeader className={'relative flex flex-col overflow-x-clip bg-[#F1F1F1]'}>
+        <Circle/>
+        <HeaderTop/>
+        <div className={'mb-0 flex grow items-center justify-center  sm:mb-[50px] md:mb-[100px]'}>
+            <HeaderMiddle>
+                <StyledTitle>
+                    <StyledWrapper>{'resume'}</StyledWrapper>
+                    <StyledWrapper2>{'My previous professional experience is presented below.'}</StyledWrapper2>
+                </StyledTitle>
+            </HeaderMiddle>
+        </div>
+    </StyledHeader>;
 };

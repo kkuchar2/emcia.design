@@ -14,7 +14,7 @@ const StyledNavBarDesktopItems = styled.div`
   gap: 3rem;
   align-items: center;
   font-size: 1.5rem;
-  z-index: 4;
+  z-index: 1;
   mix-blend-mode: difference;
   color: #e5e5e5;
   transition: opacity 0.3s ease;

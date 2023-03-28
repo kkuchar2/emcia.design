@@ -31,7 +31,7 @@ const StyledNavBarMobileItems = styled.div<IStyledNavBarMobileItemsProps>`
   align-items: center;
   justify-content: center;
   font-size: 1.5rem;
-  z-index: 4;
+  z-index: 3;
   mix-blend-mode: difference;
   color: #e5e5e5;
   will-change: opacity;

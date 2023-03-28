@@ -1,56 +1,17 @@
 import React from 'react';
 
-import { IExperienceItem } from 'components/Resume/ExperienceItem';
-
-const experienceItems: IExperienceItem[] = [
-    {
-        startDate: '2021',
-        endDate: 'Present',
-        title: 'Software Engineer',
-        company: 'Cognizant',
-        duties: [
-            'Developing and maintaining web applications using React, Next.js, and TypeScript',
-            'Developing and maintaining mobile applications using React Native',
-            'Developing and maintaining backend services using Node.js and Express',
-            'Developing and maintaining database schemas using MongoDB',
-        ]
-    },
-    {
-        startDate: '2021',
-        endDate: 'Present',
-        title: 'Software Engineer',
-        company: 'Cognizant',
-        duties: [
-            'Developing and maintaining web applications using React, Next.js, and TypeScript',
-            'Developing and maintaining mobile applications using React Native',
-            'Developing and maintaining backend services using Node.js and Express',
-            'Developing and maintaining database schemas using MongoDB',
-        ]
-    },
-    {
-        startDate: '2021',
-        endDate: 'Present',
-        title: 'Software Engineer',
-        company: 'Cognizant',
-        duties: [
-            'Developing and maintaining web applications using React, Next.js, and TypeScript',
-            'Developing and maintaining mobile applications using React Native',
-            'Developing and maintaining backend services using Node.js and Express',
-            'Developing and maintaining database schemas using MongoDB',
-        ]
-    }
-];
+import { BottomSection } from 'components/BottomSection/BottomSection';
+import { Education } from 'components/Resume/Education';
+import { Experience } from 'components/Resume/Experience';
+import { ResumeHeader } from 'components/Resume/ResumeHeader';
 
 export default function Resume() {
-
-    return <div className={'relative h-screen w-full'}>
-        <div className={'bg-red'}>
-            {/*<ResumeHeader/>*/}
-            {/*<div className={'relative flex w-full justify-center'}>*/}
-            {/*    <div className={'w-full md:max-w-[1200px]'}>*/}
-            {/*        {experienceItems.map((item, index) => <ExperienceItem key={index} {...item}/>)}*/}
-            {/*    </div>*/}
-            {/*</div>*/}
+    return <div className={'relative w-full bg-[#f1f1f1]'}>
+        <ResumeHeader/>
+        <div className={'flex flex-col items-center justify-center bg-white'}>
+            <Experience/>
+            <Education/>
         </div>
+        <BottomSection/>
     </div>;
 }

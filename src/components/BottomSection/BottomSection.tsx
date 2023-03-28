@@ -19,7 +19,6 @@ const StyledBottomSection = styled.section`
 const Footer = styled.footer`
   left: 0;
   bottom: 0;
-  z-index: 0;
   display: flex;
   height: 216px;
   width: 100%;
@@ -28,6 +27,7 @@ const Footer = styled.footer`
   justify-content: center;
   background-color: #1e1e1e;
   padding-bottom: 30px;
+  z-index: 1;
 `;
 
 const CircleWrapper = styled.div`
@@ -115,12 +115,12 @@ const Email = styled.div`
 `;
 
 const ContactSection = styled.div`
-  z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 4px;
   margin-top: 20%;
+  z-index: 1;
 
   @media (min-width: 430px) {
     margin-top: 15%;

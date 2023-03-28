@@ -1,14 +1,15 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 
 import { scaleUp } from 'components/Circles/keyframes';
 import { ContactForm } from 'components/ContactForm/ContactForm';
 import { SocialMedia } from 'components/SocialMedia/SocialMedia';
 import styled from 'styled-components';
 
-const StyledContact = styled.div`
+const StyledContact = styled.div<{ mailSent: boolean }>`
   position: relative;
   display: flex;
   flex-direction: column;
+  height: ${({ mailSent }) => (mailSent ? '100svh' : 'auto')};
 
   @media (min-width: 1024px) {
     align-items: center;
@@ -30,6 +31,7 @@ const RightSide = styled.div`
   place-items: center;
   padding: 30px;
   flex-grow: 1;
+  position: relative;
 
   @media (min-width: 1024px) {
     width: 50%;
@@ -78,7 +80,7 @@ const TitleHelloMessage = styled.div`
   }
 `;
 
-const TopCircle = styled.div`
+const TopCircle = styled.div<{ mailSent: boolean }>`
   position: absolute;
   background: #ffffff;
   border-radius: 50%;
@@ -86,9 +88,9 @@ const TopCircle = styled.div`
   height: 100vw;
   top: calc(-50vw + 100px);
   left: 0;
-  display: flex;
   align-items: center;
   justify-content: center;
+  display: ${({ mailSent }) => (mailSent ? 'none' : 'flex')};
 
   @media (min-width: 640px) {
     width: 100vw;
@@ -158,17 +160,89 @@ const BigScreenCircle = styled.div`
   }
 `;
 
-const FormAndSocialMedia = styled.div`
+const FormAndSocialMedia = styled.div<{ mailSent: boolean }>`
   width: min(100%, 600px);
+  display: ${({ mailSent }) => mailSent ? 'none' : 'block'};
+`;
+
+const BigScreenCircleWrapper = styled.div`
+  position: fixed;
+  width: 100%;
+  height: 100svh;
+`;
+
+const ConfirmationTitle = styled.div`
+  font-size: clamp(1.2rem, 2vw, 2rem);
+  font-weight: 600;
+  color: white;
+  mix-blend-mode: difference;
+  text-align: center;
+  transform: scale(0);
+`;
+
+const ConfirmationMessage = styled.div`
+  font-size: clamp(0.8rem, 1.5vw, 1rem);
+  font-weight: 400;
+  color: #ffffff;
+  text-align: center;
+  transform: scale(0);
+`;
+
+const Confirmation = styled.div<{ mailSent?: boolean }>`
+  position: absolute;
+  height: 100%;
+  right: 0;
+  z-index: 1;
+  color: #ffffff;
+  place-items: center;
+  place-content: center;
+  gap: 20px;
+  display: grid;
+  visibility: ${({ mailSent }) => mailSent ? 'visible' : 'hidden'};
+  background: #1e1e1e;
+  width: 100%;
+  padding-bottom: 0;
+
+  ${ConfirmationTitle} {
+    transform: ${({ mailSent }) => mailSent ? 'scale(1)' : 'scale(0)'};
+    transition: transform 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+
+  ${ConfirmationMessage} {
+    transform: ${({ mailSent }) => mailSent ? 'scale(1)' : 'scale(0)'};
+    transition: transform 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+
+  @media (min-width: 1024px) {
+    width: 50%;
+    height: calc(100svh - 100px);
+    top: 100px;
+    padding-bottom: 50px;
+  }
+
+  @media (orientation: landscape) and (max-width: 1024px) {
+    top: 0;
+    left: 0;
+    height: 100svh;
+    width: 100vw;
+    background: #1e1e1e;
+    padding-bottom: 0;
+  }
 `;
 
 export default function Contact() {
 
-    return <StyledContact>
+    const [mailSent, setMailSent] = React.useState(false);
 
-        <div className={'fixed top-0 left-0 z-0 h-screen w-screen'}>
+    const onMailSent = useCallback(() => {
+        setMailSent(true);
+    }, []);
+
+    return <StyledContact mailSent={mailSent}>
+
+        <BigScreenCircleWrapper>
             <BigScreenCircle/>
-        </div>
+        </BigScreenCircleWrapper>
 
         <BigScreenTitle>
             <Title>{'contact'}</Title>
@@ -182,7 +256,7 @@ export default function Contact() {
 
         <FakeCircleBlock/>
 
-        <TopCircle>
+        <TopCircle mailSent={mailSent}>
             <div className={'absolute bottom-[50px] flex flex-col gap-7'}>
                 <Title>{'contact'}</Title>
                 <div>
@@ -192,17 +266,25 @@ export default function Contact() {
             </div>
         </TopCircle>
 
+        <Confirmation mailSent={mailSent}>
+            <ConfirmationTitle>
+                {'Thank you for your message, Krzysztof!'}
+            </ConfirmationTitle>
+            <ConfirmationMessage>
+                {'I will get back to you as soon as possible.'}
+            </ConfirmationMessage>
+        </Confirmation>
+
         <div className={'flex w-full grow pt-7 md:pt-0'}>
             <LeftSide/>
             <RightSide>
-                <FormAndSocialMedia>
-                    <ContactForm/>
+                <FormAndSocialMedia mailSent={mailSent}>
+                    <ContactForm onMailSent={onMailSent}/>
                     <div className={'mt-[20px] flex w-full justify-center sm:mt-[50px] md:mt-[50px]'}>
                         <SocialMedia title={'or check out my social media'}/>
                     </div>
                 </FormAndSocialMedia>
             </RightSide>
         </div>
-
     </StyledContact>;
 }

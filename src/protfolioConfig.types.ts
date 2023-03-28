@@ -43,8 +43,17 @@ interface ISocialConfig {
     linkedin: ISocialItem
 }
 
+export interface IExperienceItem {
+    startDate: string;
+    endDate: string;
+    title: string;
+    company: string;
+    duties: string[];
+}
+
 export interface IPortfolioConfig {
     projectsPageConfig: IProjectsPageConfig,
-    navBarConfig: INavbarConfig
+    navBarConfig: INavbarConfig,
     socialConfig: ISocialConfig
+    experience: IExperienceItem[]
 }

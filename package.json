@@ -51,7 +51,6 @@
     "eslint-plugin-tailwindcss": "^3.10.1",
     "eslint-plugin-unused-imports": "^2.0.0",
     "firebase": "^9.18.0",
-    "lottie-react": "^2.4.0",
     "mailgun-js": "^0.22.0",
     "moment": "^2.29.4",
     "next-build-id": "^3.0.0",
@@ -60,12 +59,11 @@
     "next-sitemap": "^4.0.5",
     "postcss": "^8.4.21",
     "react-device-detect": "^2.2.3",
-    "react-hot-toast": "^2.4.0",
     "sass": "^1.59.3",
     "styled-components": "^5.3.9",
     "tailwindcss": "^3.2.7",
     "typescript": "5.0.2",
     "validator": "^13.9.0"
   },
-  "buildHash": "057a11c2c5c3ab6e5d2c252a36fc2934020fb65c"
+  "buildHash": "21b7436adb5c8bef8df1de1458228b8ae07f0960"
 }

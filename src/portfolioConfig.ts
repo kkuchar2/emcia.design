@@ -91,5 +91,40 @@ export const portfolioConfig: IPortfolioConfig = {
                 scale: 1
             }
         }
-    }
+    },
+    experience: [
+        {
+            startDate: '10/2020',
+            endDate: '06/2022',
+            title: 'Designer',
+            company: 'Aprojekt Technologie Sp. z o.o. Sp.k.',
+            duties: [
+                'preparing teletechnical networks construction projects',
+                'project coordination with public institutions, constructors and private individuals',
+                'preparing and coordinating projects with clients',
+                'supporting project budgets analysis',
+            ]
+        },
+        {
+            startDate: '07/2019',
+            endDate: '10/2020',
+            title: 'Junior Designer',
+            company: 'Aprojekt Technologie Sp. z o.o. Sp.k.',
+            duties: [
+                'preparing teletechnical networks construction projects',
+                'project coordination with public institutions, constructors and private individuals',
+                'preparing lease telecommunication drains and poles projects  '
+            ]
+        },
+        {
+            startDate: '03/2019',
+            endDate: '06/2019',
+            title: 'Intern',
+            company: 'IRIS Telecommunication Poland Sp. z o.o.',
+            duties: [
+                'preparing installation ERTM/GSM-R devices projects for PKP railway lines',
+                'office work'
+            ]
+        }
+    ]
 };

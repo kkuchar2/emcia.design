@@ -3,11 +3,7 @@ import React, { useCallback, useState } from 'react';
 import { CustomInput } from 'components/CustomInput/CustomInput';
 import { CustomTextArea } from 'components/CustomInput/CustomTextArea';
 import { PulsingDots } from 'components/DotPulse/PulsingDots';
-import Lottie from 'lottie-react';
-import toast from 'react-hot-toast';
 import styled from 'styled-components';
-
-import animationData from './paper_plane.json';
 
 const StyledForm = styled.form`
   display: flex;
@@ -15,6 +11,7 @@ const StyledForm = styled.form`
   justify-content: flex-start;
   gap: 30px;
   width: 100%;
+  position: relative;
 `;
 
 const SubmitButton = styled.button<{ sending: boolean }>`
@@ -60,7 +57,11 @@ const SubmitButton = styled.button<{ sending: boolean }>`
   }
 `;
 
-export const ContactForm = () => {
+interface ContactFormProps {
+    onMailSent?: (name: string) => void;
+}
+
+export const ContactForm = (props: ContactFormProps) => {
 
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -68,6 +69,8 @@ export const ContactForm = () => {
     const [message, setMessage] = useState('');
 
     const [sending, setSending] = useState(false);
+
+    const { onMailSent } = props;
 
     const extractFirstName = useCallback((name: string) => {
         const split = name.split(' ');
@@ -77,7 +80,6 @@ export const ContactForm = () => {
     const onFormSubmit = useCallback(async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setSending(true);
-
         const res = await fetch('/api/mail', {
             body: JSON.stringify({
                 email: email,
@@ -99,23 +101,16 @@ export const ContactForm = () => {
         }
         setSending(false);
 
-        toast((t) => (
-            <div className={'flex h-[75px] overflow-hidden'}>
-                <div>{`Thank you ${extractFirstName(name)}! \n I'll get back to you as soon as possible!`}</div>
-                <Lottie animationData={animationData} style={{
-                    transform: 'scale(3)'
-                }}/>
-            </div>
-        ), {
-            position: 'bottom-center',
-            duration: 2000
-        });
+        if (onMailSent) {
+            onMailSent(extractFirstName(name));
+        }
     }, [name, email, subject, message]);
 
     return <StyledForm onSubmit={onFormSubmit}>
         <CustomInput
             name={'sender_name'}
             label={'Name'}
+            spellCheck={false}
             type={'text'}
             autoComplete={'on'}
             required={true}
@@ -125,6 +120,7 @@ export const ContactForm = () => {
             name={'sender_email'}
             label={'Email'}
             type={'email'}
+            spellCheck={false}
             autoComplete={'on'}
             required={true}
             onChange={e => setEmail(e.target.value)}
@@ -133,6 +129,7 @@ export const ContactForm = () => {
             name={'email_subject'}
             label={'Subject'}
             autoComplete={'on'}
+            spellCheck={false}
             type={'text'}
             required={true}
             onChange={e => setSubject(e.target.value)}
@@ -140,6 +137,7 @@ export const ContactForm = () => {
 
         <CustomTextArea
             name={'email_message'}
+            spellCheck={false}
             label={'Message'}
             autoComplete={'off'}
             required={true}
@@ -151,7 +149,7 @@ export const ContactForm = () => {
                 <div className={'w-[150px] ' + (sending ? 'text-white' : 'text-white')}>
                     {sending ? 'Sending email' : 'Send'}
                 </div>
-                <PulsingDots visible={sending}/>
+                <PulsingDots mailSent={sending}/>
             </div>
         </SubmitButton>
     </StyledForm>;

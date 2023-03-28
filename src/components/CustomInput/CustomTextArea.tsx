@@ -12,7 +12,7 @@ interface TextAreaState {
 
 const StyledCustomTextArea = styled.div<TextAreaState>`
   width: 100%;
-  border-radius: 5px;
+  position: relative;
   box-sizing: border-box;
   display: flex;
   align-items: center;
@@ -21,6 +21,7 @@ const StyledCustomTextArea = styled.div<TextAreaState>`
   font-size: 1.2rem;
   color: #1e1e1e;
   font-weight: 500;
+  border-radius: 12px;
 
   &:hover {
     cursor: text
@@ -54,8 +55,8 @@ const StyledLegend = styled.legend<TextAreaState>`
   @media (min-width: 768px) {
     font-size: 1rem;
   }
-}
 `;
+
 const StyledFieldSet = styled.fieldset<TextAreaState>`
   border: 1px solid ${({ focused }) => focused ? '#686868' : '#595959'};
   border-radius: 12px;

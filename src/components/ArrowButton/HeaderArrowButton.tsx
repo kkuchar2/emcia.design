@@ -45,7 +45,6 @@ const StyledViewProjectButton = styled.a`
   text-align: center;
   text-decoration: none;
   display: flex;
-  z-index: 1;
   gap: 0.5rem;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   height: 3rem;

@@ -23,7 +23,7 @@ const StyledHamburgerButton = styled.button<StyledHamburgerButtonProps>`
   top: 50px;
   right: 40px;
   transform: translateY(-50%);
-  z-index: 10;
+  z-index: 4;
   margin: 0;
   padding: 0;
   display: none;

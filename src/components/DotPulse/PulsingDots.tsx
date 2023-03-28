@@ -37,8 +37,8 @@ const Dot = styled.div`
 const DotPulseWrapper = styled.div<DotPulseProps>`
   display: inline-flex;
   transition: all .3s cubic-bezier(0.165, 0.84, 0.44, 1);
-  opacity: ${({ visible }) => visible ? '1' : '0'};
-  width: ${({ visible }) => visible ? '40px' : '0'};
+  opacity: ${({ mailSent }) => mailSent ? '1' : '0'};
+  width: ${({ mailSent }) => mailSent ? '40px' : '0'};
   overflow: hidden;
 `;
 
@@ -48,14 +48,14 @@ const DotWrapper = styled.div`
 `;
 
 interface DotPulseProps {
-    visible: boolean;
+    mailSent: boolean;
 }
 
 export const PulsingDots = (props: DotPulseProps) => {
 
-    const { visible } = props;
+    const { mailSent } = props;
 
-    return <DotPulseWrapper visible={visible}>
+    return <DotPulseWrapper mailSent={mailSent}>
         <DotWrapper>
             <Dot/>
             <Dot/>

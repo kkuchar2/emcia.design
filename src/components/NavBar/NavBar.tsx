@@ -36,7 +36,7 @@ const StyledOverlay = styled.div<StyledOverlayProps>`
   position: fixed;
   content: '';
   background: #ffffff;
-  z-index: 3;
+  z-index: 2;
   transition: all 2.3s ease;
   border-radius: 50%;
   width: ${({ opened }) => opened ? '100vh' : '0px'};
