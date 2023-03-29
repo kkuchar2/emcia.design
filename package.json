@@ -63,7 +63,8 @@
     "styled-components": "^5.3.9",
     "tailwindcss": "^3.2.7",
     "typescript": "5.0.2",
-    "validator": "^13.9.0"
+    "validator": "^13.9.0",
+    "zustand": "^4.3.6"
   },
-  "buildHash": "b2b7d72c1b76b5b0d9327b861425481bd9c68891"
+  "buildHash": "5b5da0fc8c30b493b77cb20b362612498a001315"
 }

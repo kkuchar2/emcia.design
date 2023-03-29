@@ -26,7 +26,7 @@ const StyledNavBarItem = styled(Link)`
     left: 50%;
     transform: translateX(-50%);
     height: 2px;
-    bottom: 10px;
+    bottom: 5px;
     background: #c3c3c3;
     transition: all 0.5s cubic-bezier(0.075, 0.82, 0.265, 1);
     opacity: 0;

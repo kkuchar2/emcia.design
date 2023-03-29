@@ -5,6 +5,8 @@ import { CustomTextArea } from 'components/CustomInput/CustomTextArea';
 import { PulsingDots } from 'components/DotPulse/PulsingDots';
 import styled from 'styled-components';
 
+import { useMailStore } from '../../store/store';
+
 const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
@@ -57,11 +59,7 @@ const SubmitButton = styled.button<{ sending: boolean }>`
   }
 `;
 
-interface ContactFormProps {
-    onMailSent?: (name: string) => void;
-}
-
-export const ContactForm = (props: ContactFormProps) => {
+export const ContactForm = () => {
 
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -70,7 +68,8 @@ export const ContactForm = (props: ContactFormProps) => {
 
     const [sending, setSending] = useState(false);
 
-    const { onMailSent } = props;
+    const setMailSent = useMailStore(state => state.setMailSent);
+    const setRecentSender = useMailStore(state => state.setRecentSender);
 
     const extractFirstName = useCallback((name: string) => {
         const split = name.split(' ');
@@ -100,11 +99,9 @@ export const ContactForm = (props: ContactFormProps) => {
             return;
         }
         setSending(false);
-
-        if (onMailSent) {
-            onMailSent(extractFirstName(name));
-        }
-    }, [name, email, subject, message]);
+        setMailSent(true);
+        setRecentSender(extractFirstName(name));
+    }, [name, email, subject, message, setMailSent]);
 
     return <StyledForm onSubmit={onFormSubmit}>
         <CustomInput

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-import { Page } from 'components/Page/Page';
+import { Page } from 'components/Pages/Page';
 import { logEvent } from 'firebase/analytics';
 import Head from 'next/head';
 import { DefaultSeo } from 'next-seo';
