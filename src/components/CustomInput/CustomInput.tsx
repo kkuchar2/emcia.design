@@ -13,7 +13,6 @@ interface InputState {
 const StyledCustomInput = styled.div<InputState>`
   width: 100%;
   height: 70px;
-  box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: space-between;

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
 import { ContactDesktop } from 'components/Pages/Contact/ContactDesktop';
-import { ContactMobile } from 'components/Pages/Contact/ContactMobile';
 import { useScreenWidth } from 'hooks/use-screen';
 
 import { useMailStore } from '../store/store';
@@ -26,5 +25,5 @@ export default function Contact() {
         return <div/>;
     }
 
-    return screenWidth > 1024 ? <ContactDesktop/> : <ContactMobile/>;
+    return <ContactDesktop/>;
 }

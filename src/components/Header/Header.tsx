@@ -55,7 +55,6 @@ const HeaderMiddle = styled.h1`
   gap: 1.4rem;
   position: relative;
   padding: 40px 40px 40px 40px;
-  box-sizing: border-box;
   color: #F1F1F1;
   min-height: 40%;
   width: 100%;

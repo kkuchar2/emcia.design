@@ -5,11 +5,8 @@ import styled from 'styled-components';
 
 const StyledHeaderArrowButton = styled.div`
   position: relative;
-  bottom: 0;
   align-items: center;
   justify-content: center;
-  min-height: 3rem;
-  overflow: hidden;
 `;
 
 const Text = styled.div`
@@ -57,7 +54,6 @@ const StyledViewProjectButton = styled.a`
     top: -50%;
     height: 3rem;
     transition: all 0.8s cubic-bezier(0.275, 0.82, 0.165, 1);
-    box-sizing: border-box;
     transform: translateY(50%);
     left: 0;
     width: 100%;
@@ -77,7 +73,6 @@ const StyledViewProjectButton = styled.a`
     top: -50%;
     height: 3rem;
     transition: all 0.8s cubic-bezier(0.275, 0.82, 0.165, 1);
-    box-sizing: border-box;
     transform: translateY(50%);
     left: 0;
     width: 100%;

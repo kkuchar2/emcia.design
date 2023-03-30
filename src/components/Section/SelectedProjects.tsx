@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ProjectItem, StyledImageWrapper, StyledProjectItem } from 'components/ProjectItem/ProjectItem';
+import { ProjectItem, StyledImageWrapper, StyledProjectDescription, StyledProjectItem } from 'components/ProjectItem/ProjectItem';
 import styled from 'styled-components';
 
 import { portfolioConfig } from '../../portfolioConfig';
@@ -31,25 +31,13 @@ const StyledProjectItems = styled.div`
   gap: 160px;
 
   @media (min-width: 768px) {
-    ${StyledProjectItem} {
-      flex-direction: row;
-    }
-
     & > ${StyledProjectItem}:nth-child(even) {
-      flex-direction: row-reverse;
-
       ${StyledImageWrapper} {
-        margin-left: 40px;
-        padding-right: 0;
+        order: 2;
       }
-    }
 
-    & > ${StyledProjectItem}:nth-child(odd) {
-      flex-direction: row;
-
-      ${StyledImageWrapper} {
-        padding-left: 0;
-        margin-right: 40px;
+      ${StyledProjectDescription} {
+        order: 1;
       }
     }
   }
@@ -58,7 +46,6 @@ const StyledProjectItems = styled.div`
 const SelectedProjectsTitle = styled.div`
   font-size: clamp(1.8rem, 3.5vw, 2.8rem);
   font-weight: 700;
-  line-height: 1.5;
   letter-spacing: -0.06em;
   color: #1e1e1e;
 `;

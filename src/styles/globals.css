@@ -7,48 +7,20 @@ body > div:first-child,
 div#__next,
 div#__next > div {
     align-items: center;
+    box-sizing: border-box;
     display: flex;
     justify-content: center;
+    scroll-behavior: smooth;
     width: 100%;
+}
+
+*, *:before, *:after {
+    box-sizing: border-box;
 }
 
 body {
     background: #1e1e1e;
     font-family: Inter, sans-serif;
-    overflow-x: hidden;
     scroll-behavior: smooth;
-    scrollbar-width: auto;
-    width: 100%;
-}
-
-/* Firefox */
-body::-webkit-scrollbar {
-    width: 14px;
-
-}
-
-body::-webkit-scrollbar-track {
-    background: rgb(97, 97, 97);
-}
-
-body::-webkit-scrollbar-thumb {
-    background: #ababab;
-}
-
-body::-webkit-scrollbar-thumb:hover {
-    background: #a7a7a7;
-}
-
-.mf-cursor:before {
-    background: rgba(98, 60, 236, 0.37) !important;
-    transform: scale(0.5) !important;
-}
-
-* {
-    box-sizing: border-box;
-}
-
-.base-page-size {
-    min-height: 100vh;
     width: 100%;
 }

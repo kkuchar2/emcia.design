@@ -1,32 +1,33 @@
 import React from 'react';
 
-import { scaleUp } from 'components/Circles/keyframes';
-import { ContactForm } from 'components/ContactForm/ContactForm';
-import { SocialMedia } from 'components/SocialMedia/SocialMedia';
+import {scaleUp} from 'components/Circles/keyframes';
 import styled from 'styled-components';
 
-import { useMailStore } from '../../../store/store';
+import {useMailStore} from '../../../store/store';
 
 const StyledContact = styled.div<{ mailSent: boolean }>`
   position: relative;
   display: flex;
   flex-direction: column;
-  height: ${({ mailSent }) => (mailSent ? '100svh' : 'auto')};
+  height: ${({mailSent}) => (mailSent ? '100svh' : 'auto')};
   align-items: center;
   min-height: 100vh;
 `;
 
 const BigScreenTitle = styled.div`
-  position: fixed;
+  position: absolute;
   top: 50%;
-  right: calc(50% + 200px);
+  transform: translateY(-50%);
+  left: calc(100% - 500px);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   mix-blend-mode: difference;
+  background: red;
+  width: 1000px;
 
-  @media (min-height: 800px) {
-    right: calc(50% + 120px);
+  @media (max-height: 768px) {
+    top: 40%;
   }
 `;
 
@@ -52,7 +53,7 @@ const BigScreenCircle = styled.div`
   height: 160vh;
   border-radius: 50%;
   background: #ffffff;
-  right: calc(50%);
+  right: calc(50% + 80px);
   bottom: calc(50% - 80vh);
   display: block;
   animation: ${scaleUp} 2200ms cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
@@ -60,8 +61,26 @@ const BigScreenCircle = styled.div`
   @media (max-height: 768px) {
     width: 100vw;
     height: 100vw;
-    bottom: calc(50% - 70vw);
-    right: calc(50% + 80px);
+    bottom: calc(50% - 60vw);
+  }
+`;
+
+const BigScreenCircle2 = styled.div`
+  position: absolute;
+  isolation: isolate;
+  width: 160vh;
+  height: 160vh;
+  border-radius: 50%;
+  right: calc(50%);
+  bottom: 0;
+  overflow: hidden;
+  transition: bottom 0.5s ease;
+  background: black;
+
+  @media (max-height: 768px) {
+    width: 100vw;
+    height: 100vw;
+    bottom: calc(50% - 60vw);
   }
 `;
 
@@ -97,7 +116,7 @@ const Confirmation = styled.div<{ mailSent?: boolean }>`
   place-content: center;
   gap: 20px;
   display: grid;
-  visibility: ${({ mailSent }) => mailSent ? 'visible' : 'hidden'};
+  visibility: ${({mailSent}) => mailSent ? 'visible' : 'hidden'};
   background: #1e1e1e;
   width: 50%;
   height: calc(100svh - 100px);
@@ -105,14 +124,21 @@ const Confirmation = styled.div<{ mailSent?: boolean }>`
   padding-bottom: 50px;
 
   ${ConfirmationTitle} {
-    transform: ${({ mailSent }) => mailSent ? 'scale(1)' : 'scale(0)'};
+    transform: ${({mailSent}) => mailSent ? 'scale(1)' : 'scale(0)'};
     transition: transform 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
   }
 
   ${ConfirmationMessage} {
-    transform: ${({ mailSent }) => mailSent ? 'scale(1)' : 'scale(0)'};
+    transform: ${({mailSent}) => mailSent ? 'scale(1)' : 'scale(0)'};
     transition: transform 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
   }
+`;
+
+const Line = styled.div`
+  position: relative;
+  width: 1000px;
+  height: 3px;
+  background: white;
 `;
 
 export const ContactDesktop = () => {
@@ -123,41 +149,39 @@ export const ContactDesktop = () => {
     return <StyledContact mailSent={false}>
 
         <BigScreenCircleWrapper>
-            <BigScreenCircle/>
+            {/*<BigScreenCircle/>*/}
+            <BigScreenCircle2>
+                <BigScreenTitle>
+                    <Title>{'contact'}</Title>
+                    {/*<Line/>*/}
+                    <div>
+                        <TitleHelloMessage>{'Would you like to work with me?'}</TitleHelloMessage>
+                        <TitleHelloMessage>{'Send a message!'}</TitleHelloMessage>
+                    </div>
+                </BigScreenTitle>
+            </BigScreenCircle2>
         </BigScreenCircleWrapper>
 
-        <BigScreenTitle>
-            <Title>{'contact'}</Title>
-            <div>
-                <TitleHelloMessage>{'Would you like to work with me?'}</TitleHelloMessage>
-                <TitleHelloMessage>{'Send a message!'}</TitleHelloMessage>
-            </div>
-        </BigScreenTitle>
+        {/*<Confirmation mailSent={mailSent}>*/}
+        {/*    <div>*/}
+        {/*        <ConfirmationTitle>{'Thank you for your message'}</ConfirmationTitle>*/}
+        {/*        <ConfirmationTitle>{recentSender}</ConfirmationTitle>*/}
+        {/*    </div>*/}
+        {/*    <ConfirmationMessage>{'I will get back to you as soon as possible.'}</ConfirmationMessage>*/}
+        {/*</Confirmation>*/}
 
-        <Confirmation mailSent={mailSent}>
-            <div>
-                <ConfirmationTitle>
-                    {'Thank you for your message'}
-                </ConfirmationTitle>
-                <ConfirmationTitle>
-                    {recentSender}
-                </ConfirmationTitle>
-            </div>
-            <ConfirmationMessage>{'I will get back to you as soon as possible.'}</ConfirmationMessage>
-        </Confirmation>
+        {/*<div className={'h-[100px] w-full'}/>*/}
 
-        <div className={'h-[100px] w-full'}/>
-
-        <div className={'flex w-full grow pt-7 md:pt-0'}>
-            <div className={'block w-1/2'}/>
-            <div className={'grow-1 relative grid w-1/2 place-items-center p-4'}>
-                <div className={'w-[min(100%,600px)]' + ` ${mailSent ? 'hidden' : 'block'}`}>
-                    <ContactForm/>
-                    <div className={'mt-[20px] flex w-full justify-center sm:mt-[50px] md:mt-[50px]'}>
-                        <SocialMedia title={'or check out my social media'}/>
-                    </div>
-                </div>
-            </div>
-        </div>
+        {/*<div className={'flex w-full grow pt-7 md:pt-0'}>*/}
+        {/*    <div className={'block w-2/3'}/>*/}
+        {/*    <div className={'grow-1 relative grid w-1/2 place-items-center p-4'}>*/}
+        {/*        <div className={'w-[min(100%,600px)]' + ` ${mailSent ? 'hidden' : 'block'}`}>*/}
+        {/*            <ContactForm/>*/}
+        {/*            <div className={'mt-[20px] flex w-full justify-center sm:mt-[50px] md:mt-[50px]'}>*/}
+        {/*                <SocialMedia title={'or check out my social media'}/>*/}
+        {/*            </div>*/}
+        {/*        </div>*/}
+        {/*    </div>*/}
+        {/*</div>*/}
     </StyledContact>;
 };

@@ -11,6 +11,7 @@ const StyledContact = styled.div<{ mailSent: boolean }>`
   display: flex;
   flex-direction: column;
   height: ${({ mailSent }) => (mailSent ? '100svh' : 'auto')};
+  container-type: inline-size;
 `;
 
 const Title = styled.div`
@@ -33,7 +34,7 @@ const TopCircle = styled.div<{ mailSent: boolean }>`
   position: absolute;
   background: #ffffff;
   border-radius: 50%;
-  width: 100vw;
+  width: 100cqw;
   height: 100vw;
   top: calc(-50vw + 100px);
   left: 0;
@@ -42,13 +43,13 @@ const TopCircle = styled.div<{ mailSent: boolean }>`
   display: ${({ mailSent }) => (mailSent ? 'none' : 'flex')};
 
   @media (min-width: 640px) {
-    width: 100vw;
+    width: 100cqw;
     height: 80vw;
     top: calc(100px - 40vw);
   }
 
   @media (min-width: 768px) {
-    width: 100vw;
+    width: 100cqw;
     height: 60vw;
     top: calc(100px - 30vw);
   }

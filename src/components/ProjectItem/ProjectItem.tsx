@@ -25,64 +25,40 @@ const StyledProjectLongDescription = styled.div`
   font-size: 15px;
   color: #595959;
   font-weight: 400;
+  margin-top: 30px;
 `;
 
 export const StyledProjectItem = styled.div`
   position: relative;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  gap: 20px;
+  column-gap: 0;
+  row-gap: 20px;
 
   @media (min-width: 768px) {
-    gap: 40px;
+    grid-template-columns: fit-content(50%) 1fr;
+    column-gap: 80px;
+    row-gap: 0;
     padding-left: 0;
     padding-right: 0;
   }
 `;
 
-const StyledWrapper = styled.div`
-  overflow: hidden;
-`;
-
-interface WithTransformAnimateProps {
-    delay?: number;
-    enteredFirstTime?: boolean;
-}
-
-const WithTransformAnimate = styled.div<WithTransformAnimateProps>`
-  transform: ${({ enteredFirstTime }) => enteredFirstTime ? 'translateY(0)' : 'translateY(100%)'};
-  will-change: transform;
-    // transition: transform 1.2s cubic-bezier(0.175, 0.67, 0.3, 0.97) ${({ delay }) => delay || 0}s;
-  line-height: normal;
-  position: relative;
-`;
-
-const StyledProjectDescription = styled.div`
-  display: flex;
-  width: 100%;
-  flex-grow: 1;
-  flex-basis: 300px;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  flex-wrap: wrap;
+export const StyledProjectDescription = styled.div`
+  display: grid;
   padding-top: 20px;
   padding-left: 40px;
   padding-right: 40px;
-  gap: 20px;
-  height: 100%;
+  order: 2;
 
   @media (min-width: 768px) {
+    grid-auto-rows: max-content;
     padding-top: 0;
     padding-left: 0;
     padding-right: 0;
-    flex-direction: row;
-  }
-
-  @media (min-width: 1024px) {
-    gap: 50px;
+    grid-template-rows: repeat(3, auto) minmax(0, 1fr);
   }
 `;
 
@@ -100,21 +76,25 @@ interface StyledImageProps {
 export const StyledImageWrapper = styled.div<StyledImageProps>`
   aspect-ratio: 4/3;
   position: relative;
-  width: 100%;
-  padding: 0;
+  height: 100%;
   overflow: hidden;
   background: ${({ background, isVisible }) => isVisible ? background : 'transparent'};
   transition: background 2s ease;
+  order: 1;
+`;
 
-  @media (min-width: 768px) {
-    width: 50%;
-  }
+const Title = styled.div`
+  font-size: clamp(3rem, 3.5vw, 4rem);
+  font-weight: 700;
+  color: #1e1e1e;
+  line-height: 0.8;
 `;
 
 const ShortDescription = styled.div`
   font-size: 15px;
   color: #595959;
   font-weight: 400;
+  margin-top: 20px;
 `;
 
 const StyledImage = styled.img<StyledImageProps>`
@@ -145,21 +125,16 @@ export const ProjectItem = (props: ProjectItemProps) => {
         </StyledImageWrapper>
 
         <StyledProjectDescription>
-            <div className={'flex flex-col items-start gap-3 md:gap-5'}>
-                <div className={'text-5xl font-bold text-[#1e1e1e] md:leading-[0.7] lg:text-6xl'}>{title}</div>
-                <ShortDescription>
-                    {shortDescription}
-                </ShortDescription>
-            </div>
-            <StyledWrapper>
-                <WithTransformAnimate enteredFirstTime={isVisible} delay={0.3}>
-                    <StyledProjectLongDescription style={{ maxWidth: `${longDescriptionMaxWidth}px` || 'auto' }}>
-                        {longDescription}
-                    </StyledProjectLongDescription>
-                </WithTransformAnimate>
-            </StyledWrapper>
+            <Title>{title}</Title>
+            <ShortDescription>{shortDescription}</ShortDescription>
 
-            <ProjectArrowButton text={'more details'} image={'images/arrow_large.svg'}/>
+            <StyledProjectLongDescription style={{ maxWidth: `${longDescriptionMaxWidth}px` || 'auto' }}>
+                {longDescription}
+            </StyledProjectLongDescription>
+
+            <div className={'mt-6 flex items-end '}>
+                <ProjectArrowButton text={'more details'} image={'images/arrow_large.svg'}/>
+            </div>
         </StyledProjectDescription>
     </StyledProjectItem>;
 };

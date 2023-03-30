@@ -13,7 +13,6 @@ interface TextAreaState {
 const StyledCustomTextArea = styled.div<TextAreaState>`
   width: 100%;
   position: relative;
-  box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: space-between;
