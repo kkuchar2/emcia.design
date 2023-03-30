@@ -13,9 +13,9 @@ import MainContextProvider from '../MainContext';
 import '../styles/globals.css';
 
 const StyledApp = styled.div`
-  * {
-    outline: 1px solid rgba(116, 18, 148, 0.63);
-  }
+  //* {
+  //  outline: 1px solid rgba(116, 18, 148, 0.63);
+  //}
 
   width: 100%;
 `;

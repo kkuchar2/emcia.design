@@ -1,30 +1,33 @@
 import React from 'react';
 
-import {scaleUp} from 'components/Circles/keyframes';
+import { scaleUp } from 'components/Circles/keyframes';
+import { ContactForm } from 'components/ContactForm/ContactForm';
+import { SocialMedia } from 'components/SocialMedia/SocialMedia';
 import styled from 'styled-components';
 
-import {useMailStore} from '../../../store/store';
+import { useMailStore } from '../../../store/store';
 
 const StyledContact = styled.div<{ mailSent: boolean }>`
   position: relative;
   display: flex;
   flex-direction: column;
-  height: ${({mailSent}) => (mailSent ? '100svh' : 'auto')};
+  height: ${({ mailSent }) => (mailSent ? '100svh' : 'auto')};
   align-items: center;
   min-height: 100vh;
 `;
 
 const BigScreenTitle = styled.div`
   position: absolute;
-  top: 50%;
+  background: red;
+  top: 55%;
   transform: translateY(-50%);
-  left: calc(100% - 500px);
+  left: calc(100% - 400px);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   mix-blend-mode: difference;
-  background: red;
-  width: 1000px;
+  gap: 10px;
+  width: 400px;
 
   @media (max-height: 768px) {
     top: 40%;
@@ -38,7 +41,7 @@ const Title = styled.div`
   font-size: clamp(2.8rem, 10vw, 5rem);
   font-weight: 600;
   text-align: left;
-  margin-left: -4px;
+  line-height: normal;
 `;
 
 const TitleHelloMessage = styled.div`
@@ -71,11 +74,11 @@ const BigScreenCircle2 = styled.div`
   width: 160vh;
   height: 160vh;
   border-radius: 50%;
-  right: calc(50%);
-  bottom: 0;
+  right: calc(50% + 80px);
+  bottom: calc(50% - 80vh);
   overflow: hidden;
   transition: bottom 0.5s ease;
-  background: black;
+  background: white;
 
   @media (max-height: 768px) {
     width: 100vw;
@@ -116,7 +119,7 @@ const Confirmation = styled.div<{ mailSent?: boolean }>`
   place-content: center;
   gap: 20px;
   display: grid;
-  visibility: ${({mailSent}) => mailSent ? 'visible' : 'hidden'};
+  visibility: ${({ mailSent }) => mailSent ? 'visible' : 'hidden'};
   background: #1e1e1e;
   width: 50%;
   height: calc(100svh - 100px);
@@ -124,20 +127,21 @@ const Confirmation = styled.div<{ mailSent?: boolean }>`
   padding-bottom: 50px;
 
   ${ConfirmationTitle} {
-    transform: ${({mailSent}) => mailSent ? 'scale(1)' : 'scale(0)'};
+    transform: ${({ mailSent }) => mailSent ? 'scale(1)' : 'scale(0)'};
     transition: transform 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
   }
 
   ${ConfirmationMessage} {
-    transform: ${({mailSent}) => mailSent ? 'scale(1)' : 'scale(0)'};
+    transform: ${({ mailSent }) => mailSent ? 'scale(1)' : 'scale(0)'};
     transition: transform 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
   }
 `;
 
 const Line = styled.div`
-  position: relative;
-  width: 1000px;
-  height: 3px;
+  position: absolute;
+  width: 2000px;
+  height: 2px;
+  top: 100px;
   background: white;
 `;
 
@@ -149,11 +153,11 @@ export const ContactDesktop = () => {
     return <StyledContact mailSent={false}>
 
         <BigScreenCircleWrapper>
-            {/*<BigScreenCircle/>*/}
+            <BigScreenCircle/>
             <BigScreenCircle2>
                 <BigScreenTitle>
                     <Title>{'contact'}</Title>
-                    {/*<Line/>*/}
+                    <Line/>
                     <div>
                         <TitleHelloMessage>{'Would you like to work with me?'}</TitleHelloMessage>
                         <TitleHelloMessage>{'Send a message!'}</TitleHelloMessage>
@@ -162,26 +166,26 @@ export const ContactDesktop = () => {
             </BigScreenCircle2>
         </BigScreenCircleWrapper>
 
-        {/*<Confirmation mailSent={mailSent}>*/}
-        {/*    <div>*/}
-        {/*        <ConfirmationTitle>{'Thank you for your message'}</ConfirmationTitle>*/}
-        {/*        <ConfirmationTitle>{recentSender}</ConfirmationTitle>*/}
-        {/*    </div>*/}
-        {/*    <ConfirmationMessage>{'I will get back to you as soon as possible.'}</ConfirmationMessage>*/}
-        {/*</Confirmation>*/}
+        <Confirmation mailSent={mailSent}>
+            <div>
+                <ConfirmationTitle>{'Thank you for your message'}</ConfirmationTitle>
+                <ConfirmationTitle>{recentSender}</ConfirmationTitle>
+            </div>
+            <ConfirmationMessage>{'I will get back to you as soon as possible.'}</ConfirmationMessage>
+        </Confirmation>
 
-        {/*<div className={'h-[100px] w-full'}/>*/}
+        <div className={'h-[100px] w-full'}/>
 
-        {/*<div className={'flex w-full grow pt-7 md:pt-0'}>*/}
-        {/*    <div className={'block w-2/3'}/>*/}
-        {/*    <div className={'grow-1 relative grid w-1/2 place-items-center p-4'}>*/}
-        {/*        <div className={'w-[min(100%,600px)]' + ` ${mailSent ? 'hidden' : 'block'}`}>*/}
-        {/*            <ContactForm/>*/}
-        {/*            <div className={'mt-[20px] flex w-full justify-center sm:mt-[50px] md:mt-[50px]'}>*/}
-        {/*                <SocialMedia title={'or check out my social media'}/>*/}
-        {/*            </div>*/}
-        {/*        </div>*/}
-        {/*    </div>*/}
-        {/*</div>*/}
+        <div className={'flex w-full grow pt-7 md:pt-0'}>
+            <div className={'block w-2/3'}/>
+            <div className={'grow-1 relative grid w-1/2 place-items-center p-4'}>
+                <div className={'w-[min(100%,600px)]' + ` ${mailSent ? 'hidden' : 'block'}`}>
+                    <ContactForm/>
+                    <div className={'mt-[20px] flex w-full justify-center sm:mt-[50px] md:mt-[50px]'}>
+                        <SocialMedia title={'or check out my social media'}/>
+                    </div>
+                </div>
+            </div>
+        </div>
     </StyledContact>;
 };

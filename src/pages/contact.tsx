@@ -25,5 +25,5 @@ export default function Contact() {
         return <div/>;
     }
 
-    return <ContactDesktop/>;
+    return screenWidth > 1024 ? <ContactDesktop/> : <ContactDesktop/>;
 }
