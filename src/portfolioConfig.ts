@@ -25,7 +25,7 @@ export const portfolioConfig: IPortfolioConfig = {
                 link: 'https://www.behance.net/gallery/116000807/Handmade-App-UIUX-Design',
                 tags: ['UI/UX', 'Mobile', 'App'],
                 shortDescription: 'FIBER CABLES COMPANY',
-                longDescription: 'A mobile app designed to connect craftspeople and customers who appreciate high quality and unique products.',
+                longDescription: 'This case study focuses on the website redesign for a small telecommunication project office in Warsaw, with a focus on responsive web design to enhance user experience across devices.',
                 style: {
                     background: '#f4f4f4',
                     targetZoom: 0.9,
