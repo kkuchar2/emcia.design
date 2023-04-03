@@ -33,7 +33,7 @@ export const NavBarDesktopItems = (props: INavbarConfig) => {
     const { ...config } = props;
 
     const items = useMemo(() => {
-        return config.items.map((item, index) => <NavBarItem key={index} {...item}/>);
+        return config.items.map((item, index) => <NavBarItem index={index} key={index} {...item}/>);
     }, []);
 
     return <StyledNavBarDesktopItems>
