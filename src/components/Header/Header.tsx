@@ -83,6 +83,8 @@ const ScrollIndicator = styled.div`
 
   @media (orientation: landscape) {
     bottom: 10px;
+    right: 20px;
+    left: unset;
     transform: translateX(-50%) scale(0.8);
   }
 
@@ -136,7 +138,7 @@ export const Header = () => {
                     <StyledWrapper>{'ui/ux designer'}</StyledWrapper>
                     <StyledWrapper2>{'Hi I’m Emilia Markiewicz, a passionate UI/UX Designer from Poland.'}</StyledWrapper2>
                 </StyledTitle>
-                <div className={'inline-flex'}>
+                <div className={'mt-[10px] inline-flex'}>
                     <HeaderArrowButton text={'view all my works'} image={'images/arrow_large_light.svg'}/>
                 </div>
             </HeaderMiddle>
