@@ -129,12 +129,12 @@ export const Header = () => {
     return <StyledHeader className={'relative flex flex-col overflow-x-clip bg-[#1e1e1e]'}>
         <Circle/>
         <HeaderTop/>
-        <div className={'mb-0 flex grow items-center justify-center  sm:mb-[50px] sm:items-end md:mb-[100px]'}>
+        <div className={'mb-[150px] flex grow items-end justify-center  md:mb-[200px]'}>
             <HeaderMiddle>
                 <StyledTitle>
                     <StyledWrapper>{'emilia markiewicz'}</StyledWrapper>
                     <StyledWrapper>{'ui/ux designer'}</StyledWrapper>
-                    <StyledWrapper2>{'Hi  I’m Emilia Markiewicz, a passionate UI/UX Designer from Poland.'}</StyledWrapper2>
+                    <StyledWrapper2>{'Hi I’m Emilia Markiewicz, a passionate UI/UX Designer from Poland.'}</StyledWrapper2>
                 </StyledTitle>
                 <div className={'inline-flex'}>
                     <HeaderArrowButton text={'view all my works'} image={'images/arrow_large_light.svg'}/>
