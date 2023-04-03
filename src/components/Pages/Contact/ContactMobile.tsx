@@ -10,7 +10,7 @@ const StyledContact = styled.div<{ mailSent: boolean }>`
   position: relative;
   display: flex;
   flex-direction: column;
-  height: ${({ mailSent }) => (mailSent ? '100svh' : 'auto')};
+  height: ${({ mailSent }) => (mailSent ? '100dvh' : 'auto')};
   container-type: inline-size;
 `;
 
@@ -33,8 +33,9 @@ const TitleHelloMessage = styled.div`
 const TopCircle = styled.div<{ mailSent: boolean }>`
   position: absolute;
   background: #ffffff;
-  border-radius: 50%;
-  width: 100cqw;
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+  width: 100vw;
   height: 100vw;
   top: calc(-50vw + 100px);
   left: 0;
@@ -43,13 +44,13 @@ const TopCircle = styled.div<{ mailSent: boolean }>`
   display: ${({ mailSent }) => (mailSent ? 'none' : 'flex')};
 
   @media (min-width: 640px) {
-    width: 100cqw;
+    width: 100vw;
     height: 80vw;
     top: calc(100px - 40vw);
   }
 
   @media (min-width: 768px) {
-    width: 100cqw;
+    width: 100vw;
     height: 60vw;
     top: calc(100px - 30vw);
   }
@@ -113,7 +114,7 @@ const Confirmation = styled.div<{ mailSent?: boolean }>`
   @media (orientation: landscape) {
     top: 0;
     left: 0;
-    height: 100svh;
+    height: 100dvh;
     width: 100vw;
     background: #1e1e1e;
     padding-bottom: 0;

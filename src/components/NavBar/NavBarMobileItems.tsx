@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 
-import { NavBarItem } from 'components/NavBar/NavBarItem';
-import styled, { keyframes } from 'styled-components';
+import { NavBarItem, StyledNavBarItem } from 'components/NavBar/NavBarItem';
+import styled from 'styled-components';
 
 import { useMainContext } from '../../MainContext';
 import { INavbarConfig } from '../../protfolioConfig.types';
@@ -9,16 +9,6 @@ import { INavbarConfig } from '../../protfolioConfig.types';
 interface IStyledNavBarMobileItemsProps {
     opened: boolean;
 }
-
-const showAnimation = keyframes`
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
-`;
 
 const StyledNavBarMobileItems = styled.div<IStyledNavBarMobileItemsProps>`
   position: fixed;
@@ -31,16 +21,21 @@ const StyledNavBarMobileItems = styled.div<IStyledNavBarMobileItemsProps>`
   align-items: center;
   justify-content: center;
   font-size: 1.5rem;
-  z-index: 3;
+  z-index: 4;
   mix-blend-mode: difference;
   color: #e5e5e5;
   will-change: opacity;
-  height: 100vh;
-  opacity: 0;
-  animation: ${({ opened }) => opened ? showAnimation : 'none'} 0.3s ease forwards;
-  animation-delay: 0.2s;
+  height: 100dvh;
   pointer-events: ${({ opened }) => opened ? 'all' : 'none'};
-  transition-delay: 0.2s;
+
+
+  ${StyledNavBarItem} {
+    transition: ${({ opened }) => opened ? 'all 0.6s cubic-bezier(0.075, 0.82, 0.165, 1)' : 'all 0.2s ease'};
+    transition-delay: calc(var(--index) * 0.03s); /* use a CSS variable to set the delay */
+    transform: ${({ opened }) => opened ? 'translateY(0)' : 'translateY(-10svh)'};
+    opacity: ${({ opened }) => opened ? 1 : 0};
+  }
+
 
   @media (orientation: landscape) {
     height: auto;
@@ -61,7 +56,7 @@ export const NavBarMobileItems = (props: INavbarConfig) => {
     const { navbarOpened } = useMainContext();
 
     const items = useMemo(() => {
-        return config.items.map((item, index) => <NavBarItem key={index} {...item}/>);
+        return config.items.map((item, index) => <NavBarItem key={index} index={index} {...item}/>);
     }, []);
 
     return <StyledNavBarMobileItems opened={navbarOpened}>

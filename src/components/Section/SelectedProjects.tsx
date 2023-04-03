@@ -32,13 +32,24 @@ const StyledProjectItems = styled.div`
 
   @media (min-width: 768px) {
     & > ${StyledProjectItem}:nth-child(even) {
+      grid-template-columns:  1.5fr 2fr;
+
       ${StyledImageWrapper} {
         order: 2;
+        margin-left: 0;
+        margin-right: 0;
       }
 
       ${StyledProjectDescription} {
         order: 1;
+        min-width: 0;
       }
+    }
+  }
+
+  @media (min-width: 1024px) {
+    & > ${StyledProjectItem}:nth-child(even) {
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 `;

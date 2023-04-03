@@ -5,7 +5,12 @@ import styled from 'styled-components';
 
 import { INavBarItem } from '../../protfolioConfig.types';
 
-const StyledNavBarItem = styled(Link)`
+interface StyledNavBarItemProps {
+    index: number;
+}
+
+export const StyledNavBarItem = styled(Link)<StyledNavBarItemProps>`
+  --index: ${({ index }) => index};
   width: 120px;
   display: flex;
   align-items: center;
@@ -71,11 +76,15 @@ const StyledNavBarItem = styled(Link)`
   }
 `;
 
-export const NavBarItem = (item: INavBarItem) => {
+interface INavbarItemProps {
+    index: number;
+}
 
-    const { title, link } = item;
+export const NavBarItem = (item: INavBarItem & INavbarItemProps) => {
 
-    return <StyledNavBarItem href={link}>
+    const { title, link, index } = item;
+
+    return <StyledNavBarItem index={index} href={link}>
         {title.toLowerCase()}
     </StyledNavBarItem>;
 };

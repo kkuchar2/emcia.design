@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from 'react';
 
 import { ContactDesktop } from 'components/Pages/Contact/ContactDesktop';
-import { useScreenWidth } from 'hooks/use-screen';
+import { ContactMobile } from 'components/Pages/Contact/ContactMobile';
 
 import { useMailStore } from '../store/store';
 
 export default function Contact() {
 
-    const screenWidth = useScreenWidth();
-
     const [loading, setLoading] = useState(true);
+
     const setMailSent = useMailStore(state => state.setMailSent);
 
     useEffect(() => {
@@ -21,9 +20,12 @@ export default function Contact() {
         return <div className={'bg-[#1e1e1e]'}/>;
     }
 
-    if (screenWidth === 0) {
-        return <div/>;
-    }
-
-    return screenWidth > 1024 ? <ContactDesktop/> : <ContactDesktop/>;
+    return <>
+        <div className={'hidden lg:block'}>
+            <ContactDesktop/>
+        </div>
+        <div className={'block lg:hidden'}>
+            <ContactMobile/>
+        </div>
+    </>;
 }

@@ -18,8 +18,8 @@ const Circle = styled.div`
     height: 62.5vw;
     bottom: max(-1200px, calc(-62.5vw / 2));
     right: -25vw;
-    max-width: max(2400px, 100vh);
-    max-height: max(2400px, 100vh);
+    max-width: max(2400px, 100dvh);
+    max-height: max(2400px, 100dvh);
     animation: ${scaleUp} 2200ms cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
   }
 `;
@@ -41,22 +41,25 @@ const StyledWrapper2 = styled.div`
 
 const StyledHeader = styled.div`
   height: 100svh;
+  position: relative;
 `;
 
 const HeaderTop = styled.div`
   width: 100%;
-  height: 60%;
+
+  @media (min-width: 1024px) {
+    min-height: 100px;
+    height: 100px;
+  }
 `;
 
-const HeaderMiddle = styled.h1`
+const HeaderMiddle = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
   gap: 1.4rem;
-  position: relative;
-  padding: 40px 40px 40px 40px;
+  padding: 40px;
   color: #F1F1F1;
-  min-height: 40%;
   width: 100%;
   max-width: 1500px;
 `;
@@ -67,24 +70,77 @@ const StyledTitle = styled.div`
   position: relative;
 `;
 
+const ScrollIndicator = styled.div`
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2rem;
+  height: 3.5rem;
+  border-radius: 2rem;
+  border: 1px solid rgba(241, 241, 241, 0.34);
+  display: flex;
+  bottom: 50px;
+
+  @media (orientation: landscape) {
+    bottom: 10px;
+    transform: translateX(-50%) scale(0.8);
+  }
+
+  @media (min-width: 1024px) {
+    display: none;
+  }
+
+  @keyframes dot {
+    0% {
+      width: 0;
+      height: 0;
+      top: 0.5rem;
+      opacity: 0;
+    }
+    50% {
+      width: 0.5rem;
+      height: 0.5rem;
+      opacity: 1;
+    }
+    100% {
+      width: 0.5rem;
+      height: 0.5rem;
+      top: 2.5rem;
+      opacity: 0;
+    }
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0.5rem;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background: #F1F1F1;
+    animation: dot 2s ease infinite;
+  }
+`;
+
 export const Header = () => {
 
     return <StyledHeader className={'relative flex flex-col overflow-x-clip bg-[#1e1e1e]'}>
         <Circle/>
         <HeaderTop/>
-        <div className={'mb-0 flex grow items-center justify-center  sm:mb-[50px] md:mb-[100px]'}>
+        <div className={'mb-0 flex grow items-center justify-center  sm:mb-[50px] sm:items-end md:mb-[100px]'}>
             <HeaderMiddle>
                 <StyledTitle>
                     <StyledWrapper>{'emilia markiewicz'}</StyledWrapper>
                     <StyledWrapper>{'ui/ux designer'}</StyledWrapper>
                     <StyledWrapper2>{'Hi  I’m Emilia Markiewicz, a passionate UI/UX Designer from Poland.'}</StyledWrapper2>
                 </StyledTitle>
-                <div className={'mt-[20px] inline-flex sm:mt-[50px]'}>
-                    <HeaderArrowButton
-                        text={'view all my works'}
-                        image={'images/arrow_large_light.svg'}/>
+                <div className={'inline-flex'}>
+                    <HeaderArrowButton text={'view all my works'} image={'images/arrow_large_light.svg'}/>
                 </div>
             </HeaderMiddle>
         </div>
+        <ScrollIndicator/>
     </StyledHeader>;
 };

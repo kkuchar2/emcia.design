@@ -38,11 +38,16 @@ export const StyledProjectItem = styled.div`
   row-gap: 20px;
 
   @media (min-width: 768px) {
-    grid-template-columns: fit-content(50%) 1fr;
-    column-gap: 80px;
+    grid-template-columns: 2fr 1.5fr;
+    column-gap: 3%;
     row-gap: 0;
     padding-left: 0;
     padding-right: 0;
+  }
+
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: max(7%, 80px);
   }
 `;
 
@@ -54,7 +59,6 @@ export const StyledProjectDescription = styled.div`
   order: 2;
 
   @media (min-width: 768px) {
-    grid-auto-rows: max-content;
     padding-top: 0;
     padding-left: 0;
     padding-right: 0;
@@ -76,7 +80,6 @@ interface StyledImageProps {
 export const StyledImageWrapper = styled.div<StyledImageProps>`
   aspect-ratio: 4/3;
   position: relative;
-  height: 100%;
   overflow: hidden;
   background: ${({ background, isVisible }) => isVisible ? background : 'transparent'};
   transition: background 2s ease;
@@ -127,12 +130,11 @@ export const ProjectItem = (props: ProjectItemProps) => {
         <StyledProjectDescription>
             <Title>{title}</Title>
             <ShortDescription>{shortDescription}</ShortDescription>
-
             <StyledProjectLongDescription style={{ maxWidth: `${longDescriptionMaxWidth}px` || 'auto' }}>
                 {longDescription}
             </StyledProjectLongDescription>
 
-            <div className={'mt-6 flex items-end '}>
+            <div className={'mt-[40px] flex items-end md:mt-0 '}>
                 <ProjectArrowButton text={'more details'} image={'images/arrow_large.svg'}/>
             </div>
         </StyledProjectDescription>

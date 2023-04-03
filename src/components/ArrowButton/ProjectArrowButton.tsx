@@ -3,96 +3,84 @@ import React from 'react';
 import { ArrowButtonProps } from 'components/ArrowButton/ArrowButton.types';
 import styled from 'styled-components';
 
-const StyledProjectArrowButton = styled.div`
-  position: relative;
-  align-items: center;
-  justify-content: center;
-`;
+const transition = 'all 0.8s cubic-bezier(0.275, 0.82, 0.165, 1)';
+const mobileTransition = 'all 0.3s ease';
+const arrowTransition = 'all 0.5s ease';
+const circleDiameter = '3rem';
 
 const Text = styled.div`
-  font-size: 16px;
-  font-weight: 600;
   z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 2px;
-  min-width: max-content;
+  font-size: 1rem;
+  font-weight: 600;
+  display: grid;
+  place-items: center;
   color: #1e1e1e;
-  transition: all 0.8s cubic-bezier(0.275, 0.82, 0.165, 1);
+  max-width: 200px;
+  transition: ${transition};
 `;
 
 const Arrow = styled.img`
-  width: 60px;
   z-index: 1;
+  width: 3.75rem;
   padding-left: 10px;
   padding-right: 20px;
-  transition: all 0.5s ease;
+  transition: ${arrowTransition};
   display: none;
 
-  @media (min-width: 1024px) {
+  @media (min-width: 768px) {
     display: block;
   }
 `;
 
-const StyledViewProjectButton = styled.a`
+const ArrowLink = styled.a`
+  height: ${circleDiameter};
+  position: relative;
   cursor: pointer;
-  margin: 0;
-  width: 100%;
-  text-align: center;
-  text-decoration: none;
-  transition: all .5s cubic-bezier(.77, 0, .175, 1);
   display: flex;
   gap: 0.5rem;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  height: 3rem;
+  -webkit-tap-highlight-color: transparent;
   padding-left: 20px;
   padding-right: 20px;
 
-  :before {
+  &:before {
     content: '';
     position: absolute;
+    height: ${circleDiameter};
     top: -50%;
-    height: 3rem;
-    transition: all 0.8s cubic-bezier(0.275, 0.82, 0.165, 1);
-    transform: translateY(50%);
     left: 0;
+    transform: translateY(50%);
+    border-radius: calc(${circleDiameter} / 2);
+    transition: ${mobileTransition};
     width: 100%;
-    background: rgba(189, 189, 189, 0.4);
-    border-radius: calc(3rem / 2);
+    background: rgba(216, 216, 216, 0.35);
 
-    @media (min-width: 1024px) {
-      width: 3rem;
-      background: #BDBDBD;
+    @media (min-width: 768px) {
+      transition: ${transition};
+      width: ${circleDiameter};
+      background: rgb(216, 216, 216);
     }
   }
 
   &:hover {
-    :before {
-      background: rgba(189, 189, 189, 0.78);
-    }
-  }
-}
-
-@media (min-width: 1024px) {
-
-  padding-left: 20px;
-  padding-right: 0;
-
-  &:hover {
-    width: 100%;
-
-    ${Text} {
-      transform: translateX(10px);
+    &:before {
+      background: rgb(216, 216, 216);
     }
 
-    ${Arrow} {
-      transform: translateX(15px);
-    }
+    @media (min-width: 768px) {
+      padding-left: 20px;
+      padding-right: 20px;
 
-    :before {
-      width: 100%;
-      background: rgba(189, 189, 189, 0.4);
+      ${Text} {
+        transform: translateX(10px);
+      }
+
+      ${Arrow} {
+        transform: translateX(15px);
+      }
+
+      &:before {
+        width: 100%;
+      }
     }
   }
 `;
@@ -101,10 +89,8 @@ export const ProjectArrowButton = (props: ArrowButtonProps) => {
 
     const { text, image } = props;
 
-    return <StyledProjectArrowButton>
-        <StyledViewProjectButton href={'/'}>
-            <Text>{text}</Text>
-            <Arrow src={image} alt={'arrow'}/>
-        </StyledViewProjectButton>
-    </StyledProjectArrowButton>;
+    return <ArrowLink href={'/'}>
+        <Text>{text}</Text>
+        <Arrow src={image} alt={'arrow'}/>
+    </ArrowLink>;
 };

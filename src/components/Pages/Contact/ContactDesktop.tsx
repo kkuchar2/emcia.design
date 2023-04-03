@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { scaleUp } from 'components/Circles/keyframes';
+import { lineGrow, scaleUp } from 'components/Circles/keyframes';
 import { ContactForm } from 'components/ContactForm/ContactForm';
 import { SocialMedia } from 'components/SocialMedia/SocialMedia';
 import styled from 'styled-components';
@@ -13,21 +13,21 @@ const StyledContact = styled.div<{ mailSent: boolean }>`
   flex-direction: column;
   height: ${({ mailSent }) => (mailSent ? '100svh' : 'auto')};
   align-items: center;
-  min-height: 100vh;
+  min-height: 100dvh;
 `;
 
 const BigScreenTitle = styled.div`
   position: absolute;
-  background: red;
   top: 55%;
   transform: translateY(-50%);
   left: calc(100% - 400px);
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   mix-blend-mode: difference;
-  gap: 10px;
+  gap: 40px;
   width: 400px;
+  overflow: hidden;
 
   @media (max-height: 768px) {
     top: 40%;
@@ -59,12 +59,12 @@ const BigScreenCircle = styled.div`
   right: calc(50% + 80px);
   bottom: calc(50% - 80vh);
   display: block;
-  animation: ${scaleUp} 2200ms cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+  animation: ${scaleUp} 2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
 
   @media (max-height: 768px) {
     width: 100vw;
     height: 100vw;
-    bottom: calc(50% - 60vw);
+    bottom: calc(30% - 60vw);
   }
 `;
 
@@ -77,20 +77,19 @@ const BigScreenCircle2 = styled.div`
   right: calc(50% + 80px);
   bottom: calc(50% - 80vh);
   overflow: hidden;
-  transition: bottom 0.5s ease;
-  background: white;
+  mix-blend-mode: difference;
 
   @media (max-height: 768px) {
     width: 100vw;
     height: 100vw;
-    bottom: calc(50% - 60vw);
+    bottom: calc(30% - 60vw);
   }
 `;
 
 const BigScreenCircleWrapper = styled.div`
   position: fixed;
   width: 100%;
-  height: 100svh;
+  height: 100dvh;
 `;
 
 const ConfirmationTitle = styled.div`
@@ -122,7 +121,7 @@ const Confirmation = styled.div<{ mailSent?: boolean }>`
   visibility: ${({ mailSent }) => mailSent ? 'visible' : 'hidden'};
   background: #1e1e1e;
   width: 50%;
-  height: calc(100svh - 100px);
+  height: calc(100dvh - 100px);
   top: 100px;
   padding-bottom: 50px;
 
@@ -139,10 +138,11 @@ const Confirmation = styled.div<{ mailSent?: boolean }>`
 
 const Line = styled.div`
   position: absolute;
-  width: 2000px;
-  height: 2px;
-  top: 100px;
-  background: white;
+  width: 0;
+  height: 1px;
+  top: 110px;
+  background: #d1d1d1;
+  animation: ${lineGrow} 2.5s cubic-bezier(0.075, 0.82, 0.165, 1) 0.4s forwards;
 `;
 
 export const ContactDesktop = () => {

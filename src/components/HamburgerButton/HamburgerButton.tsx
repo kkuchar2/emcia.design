@@ -21,9 +21,9 @@ const StyledHamburgerButton = styled.button<StyledHamburgerButtonProps>`
   width: 60px;
   position: fixed;
   top: 50px;
-  right: 40px;
+  right: calc(40px - (var(--scrollbar-width) * var(--scrollbar-width-multiplier)));
   transform: translateY(-50%);
-  z-index: 4;
+  z-index: 5;
   margin: 0;
   padding: 0;
   display: none;

@@ -8,3 +8,12 @@ export const scaleUp = keyframes`
     transform: scale(1);
   }
 `;
+
+export const lineGrow = keyframes`
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 400px;
+  }
+`;

@@ -4,8 +4,9 @@ import { HamburgerButton } from 'components/HamburgerButton/HamburgerButton';
 import { NavBarDesktopItems } from 'components/NavBar/NavBarDesktopItems';
 import { NavBarMobileItems } from 'components/NavBar/NavBarMobileItems';
 import { useScreenWidth } from 'hooks/use-screen';
+import { isScrollbarVisible, setScrollbarWidthMultiplier } from 'hooks/use-scrollbar-width';
 import { useRouter } from 'next/router';
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 
 import { useMainContext } from '../../MainContext';
 import { portfolioConfig } from '../../portfolioConfig';
@@ -14,37 +15,52 @@ interface StyledOverlayProps {
     opened: boolean;
 }
 
-const overlayAnimation = keyframes`
-  0% {
-    width: 0;
-    height: 0;
-    top: 0;
-    right: 0;
-    transform: translate(50%, -50%);
-  }
-
-  100% {
-    width: max(200vh, 200vw);
-    height: max(200vh, 200vw);
-    top: 50%;
-    right: 50%;
-    transform: translate(50%, -50%);
-  }
-`;
-
 const StyledOverlay = styled.div<StyledOverlayProps>`
   position: fixed;
   content: '';
   background: #ffffff;
-  z-index: 2;
-  transition: all 2.3s ease;
+  z-index: 3;
+  transition: all 1s cubic-bezier(0.575, 0.82, 0.165, 1);
   border-radius: 50%;
-  width: ${({ opened }) => opened ? '100vh' : '0px'};
-  height: ${({ opened }) => opened ? '100vh' : '0px'};
-  top: ${({ opened }) => opened ? '50%' : '0'};
-  right: ${({ opened }) => opened ? '50%' : '0'};
-  transform: ${({ opened }) => opened ? 'translate(50%, -50%)' : 'translate(50%, -50%)'};
-  animation: ${({ opened }) => opened ? overlayAnimation : 'none'} 0.8s ease forwards;
+  width: 0;
+  height: 0;
+  top: 50px;
+  right: calc(40px - (var(--scrollbar-width) * var(--scrollbar-width-multiplier)) + 30px);
+  transform: translate(50%, -50%);
+
+  @media (orientation: landscape) {
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+  }
+
+  &.opened {
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+    width: 150vh;
+    height: 150vh;
+    transition: all 1s cubic-bezier(0.575, 0.82, 0.165, 1);
+
+    @media (orientation: landscape) {
+      width: 250vh;
+      height: 250vh;
+    }
+  }
+`;
+
+const StyledOverlay2 = styled.div<StyledOverlayProps>`
+  position: fixed;
+  content: '';
+  background: #313131;
+  z-index: 2;
+  width: 100svw;
+  height: 100dvh;
+  display: none;
+
+  &.opened {
+    display: block;
+  }
 `;
 
 export const NavBar = () => {
@@ -66,14 +82,32 @@ export const NavBar = () => {
         }
     }, [screenWidth]);
 
+    useEffect(() => {
+        setScrollbarWidthMultiplier(isScrollbarVisible() ? 1 : 0);
+    }, [navbarOpened]);
+
     const onHamburgerClick = useCallback(() => {
         toggleNavbar();
-    }, [toggleNavbar]);
+    }, [toggleNavbar, navbarOpened]);
 
     return <>
         <HamburgerButton onClick={onHamburgerClick} navbarOpened={navbarOpened}/>
-        {screenWidth > 1024 && <NavBarDesktopItems {...portfolioConfig.navBarConfig} />}
-        {screenWidth <= 1024 && <NavBarMobileItems {...portfolioConfig.navBarConfig} />}
-        {screenWidth <= 1024 && <StyledOverlay opened={navbarOpened}/>}
+
+        <div className={'hidden lg:block'}>
+            <NavBarDesktopItems {...portfolioConfig.navBarConfig} />
+        </div>
+        <div className={'lg:hidden'}>
+            <NavBarMobileItems {...portfolioConfig.navBarConfig} />
+        </div>
+        <div className={'lg:hidden'}>
+            <StyledOverlay
+                className={navbarOpened ? 'opened' : ''}
+                opened={navbarOpened}/>
+
+            <StyledOverlay2
+                className={navbarOpened ? 'opened' : ''}
+                opened={navbarOpened}/>
+
+        </div>
     </>;
 };

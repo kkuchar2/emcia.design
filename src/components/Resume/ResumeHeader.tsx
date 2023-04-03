@@ -17,8 +17,8 @@ const Circle = styled.div`
     height: 62.5vw;
     bottom: max(-1200px, calc(-62.5vw / 2));
     right: -25vw;
-    max-width: max(2400px, 100vh);
-    max-height: max(2400px, 100vh);
+    max-width: max(2400px, 100dvh);
+    max-height: max(2400px, 100dvh);
     animation: ${scaleUp} 2200ms cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
   }
 `;

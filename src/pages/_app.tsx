@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 
 import { Page } from 'components/Pages/Page';
 import { logEvent } from 'firebase/analytics';
+import useScrollbarWidth from 'hooks/use-scrollbar-width';
 import Head from 'next/head';
 import { DefaultSeo } from 'next-seo';
 import styled from 'styled-components';
@@ -16,11 +17,11 @@ const StyledApp = styled.div`
   //* {
   //  outline: 1px solid rgba(116, 18, 148, 0.63);
   //}
-
-  width: 100%;
 `;
 
 const App = function ({ Component, pageProps }) {
+
+    useScrollbarWidth();
 
     useEffect(() => {
         const app = initFirebase();
