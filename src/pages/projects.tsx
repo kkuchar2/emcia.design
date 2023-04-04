@@ -1,7 +1,17 @@
 import React from 'react';
 
+import { BottomContactSection } from 'components/BottomContactSection/BottomContactSection';
+import { DribbleShotsView } from 'components/Projects/DribbleShotsView';
+import { ProjectsListView } from 'components/Projects/ProjectsListView';
+
+import { portfolioConfig } from '../portfolioConfig';
+
 export default function Projects() {
-    return <div className={'flex h-screen items-center justify-center bg-[#1e1e1e] text-7xl font-bold text-white'}>
-        {'Projects'}
-    </div>;
+    return <>
+        <div className={'flex flex-col items-center justify-center bg-white'}>
+            <ProjectsListView {...portfolioConfig.projectsPageConfig.showcaseProjectsConfig} />
+            <DribbleShotsView {...portfolioConfig.projectsPageConfig.dribbleShotsConfig} />
+            <BottomContactSection/>
+        </div>
+    </>;
 }

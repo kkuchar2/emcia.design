@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { ProjectItem, StyledImageWrapper, StyledProjectDescription, StyledProjectItem } from 'components/ProjectItem/ProjectItem';
+import { ProjectItem, StyledImageWrapper, StyledProjectDescription, StyledProjectItem } from 'components/Projects/ProjectItem';
 import styled from 'styled-components';
 
-import { portfolioConfig } from '../../portfolioConfig';
+import { ShowcaseProjectsConfig } from '../../portfolioConfig.types';
 
 const StyledSelectedProjects = styled.div`
   margin-top: 80px;
@@ -54,14 +54,14 @@ const StyledProjectItems = styled.div`
   }
 `;
 
-const SelectedProjectsTitle = styled.div`
+const Title = styled.div`
   font-size: clamp(1.8rem, 3.5vw, 2.8rem);
   font-weight: 700;
   letter-spacing: -0.06em;
   color: #1e1e1e;
 `;
 
-const SelectedProjectsDescription = styled.div`
+const SecondaryTitle = styled.div`
   font-size: clamp(1rem, 1.7vw, 1.2rem);
   color: #807F7F;
   font-weight: 400;
@@ -69,18 +69,14 @@ const SelectedProjectsDescription = styled.div`
   max-width: 400px;
 `;
 
-export const SelectedProjects = () => {
+export const ProjectsListView = (props: ShowcaseProjectsConfig) => {
 
-    const { selectedProjectsTitle, selectedProjectsDescription, projects } = portfolioConfig.projectsPageConfig;
+    const { title, secondaryTitle, projects } = props;
 
     return <StyledSelectedProjects>
         <div className={'flex flex-col gap-2 self-start px-[40px] md:px-0'}>
-            <SelectedProjectsTitle>
-                {selectedProjectsTitle}
-            </SelectedProjectsTitle>
-            <SelectedProjectsDescription>
-                {selectedProjectsDescription}
-            </SelectedProjectsDescription>
+            <Title>{title}</Title>
+            <SecondaryTitle>{secondaryTitle}</SecondaryTitle>
         </div>
         <StyledProjectItems>
             {projects.map((project, index) => <ProjectItem key={index} project={project}/>)}

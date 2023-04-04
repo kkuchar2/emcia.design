@@ -1,4 +1,27 @@
-import { Project } from 'components/ProjectItem/ProjectItem';
+export interface ProjectStyle {
+    longDescriptionMaxWidth?: number;
+    background?: string;
+    targetZoom?: number;
+    objectFit?: 'cover' | 'contain';
+}
+
+export interface Project {
+    title: string;
+    image: string;
+    logo?: string;
+    link: string;
+    tags: string[];
+    shortDescription: string;
+    longDescription?: string;
+    longDescriptionMaxWidth?: number;
+    style?: ProjectStyle;
+}
+
+export interface DribbleShot {
+    name: string;
+    image: string;
+    link: string;
+}
 
 export interface INavBarItem {
     title: string,
@@ -9,15 +32,25 @@ export interface INavbarConfig {
     items: INavBarItem[]
 }
 
-export interface IProjectsPageConfig {
+export interface ShowcaseProjectsConfig {
+    title?: string;
+    secondaryTitle?: string;
     projects: Project[];
-    selectedProjectsTitle?: string;
-    selectedProjectsDescription?: string;
 }
 
-export interface IProjectConfig {
-    projectsPageConfig: IProjectsPageConfig,
-    navBarConfig: INavbarConfig
+export interface DribbleShotsConfig {
+    title?: string;
+    secondaryTitle?: string;
+    shots: DribbleShot[];
+}
+
+export interface IHomePageConfig {
+    selectedProjectsConfig: ShowcaseProjectsConfig,
+}
+
+export interface IProjectsPageConfig {
+    showcaseProjectsConfig: ShowcaseProjectsConfig,
+    dribbleShotsConfig: DribbleShotsConfig
 }
 
 export interface ISocialLink {
@@ -64,9 +97,14 @@ export interface ICertificationItem {
     date: string;
 }
 
+export interface ProjectStyleTransform {
+    [key: string]: ProjectStyle;
+}
+
 export interface IPortfolioConfig {
-    projectsPageConfig: IProjectsPageConfig,
     navBarConfig: INavbarConfig,
+    homePageConfig: IHomePageConfig,
+    projectsPageConfig: IProjectsPageConfig,
     socialConfig: ISocialConfig
     experience: IExperienceItem[],
     education: IEducationItem[],

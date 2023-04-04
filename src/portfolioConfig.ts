@@ -1,38 +1,87 @@
-import { IPortfolioConfig } from './protfolioConfig.types';
+import { transformStyles } from './configUtils';
+import { IPortfolioConfig, Project } from './portfolioConfig.types';
+
+const allProjects = [
+    {
+        title: 'serenity.',
+        image: '/images/serenity_square.png',
+        link: 'https://www.behance.net/gallery/116000807/Handmade-App-UIUX-Design',
+        tags: ['UI/UX', 'Mobile', 'App'],
+        shortDescription: 'CANDLEMAKER STORE MOBILE APP',
+        longDescription: 'A mobile app designed to connect craftspeople and customers who appreciate high quality and unique products.',
+    },
+    {
+        title: 'aprojekt.',
+        image: '/images/aprojekt_square.png',
+        link: 'https://www.behance.net/gallery/116000807/Handmade-App-UIUX-Design',
+        tags: ['UI/UX', 'Mobile', 'App'],
+        shortDescription: 'FIBER CABLES COMPANY',
+        longDescription: 'This case study focuses on the website redesign for a small telecommunication project office in Warsaw, with a focus on responsive web design to enhance user experience across devices.',
+    }
+] as Project[];
+
+let selectedProjects = transformStyles(allProjects, {
+    'serenity.': {
+        longDescriptionMaxWidth: 400,
+        background: '#EBE8E4',
+        targetZoom: 1.2,
+        objectFit: 'contain'
+    },
+    'aprojekt.': {
+        background: '#f4f4f4',
+        targetZoom: 0.9,
+        objectFit: 'cover'
+    }
+});
+
+const showcasedProjects = transformStyles(allProjects, {
+    'serenity.': {
+        background: '#EBE8E4',
+        targetZoom: 1.2,
+        objectFit: 'contain'
+    },
+    'aprojekt.': {
+        background: '#f4f4f4',
+        targetZoom: 0.9,
+        objectFit: 'cover'
+    }
+});
 
 export const portfolioConfig: IPortfolioConfig = {
+    homePageConfig: {
+        selectedProjectsConfig: {
+            title: 'selected projects.',
+            secondaryTitle: 'Here I present you my best works selected with passion',
+            projects: selectedProjects
+        }
+    },
     projectsPageConfig: {
-        selectedProjectsTitle: 'selected projects.',
-        selectedProjectsDescription: 'Here I present you my best works selected with passion',
-        projects: [
-            {
-                title: 'serenity.',
-                image: '/images/serenity_square.png',
-                link: 'https://www.behance.net/gallery/116000807/Handmade-App-UIUX-Design',
-                tags: ['UI/UX', 'Mobile', 'App'],
-                shortDescription: 'CANDLEMAKER STORE MOBILE APP',
-                longDescription: 'A mobile app designed to connect craftspeople and customers who appreciate high quality and unique products.',
-                style: {
-                    longDescriptionMaxWidth: 400,
-                    background: '#EBE8E4',
-                    targetZoom: 1.2,
-                    objectFit: 'contain'
+        showcaseProjectsConfig: {
+            title: 'My works.',
+            secondaryTitle: 'Below, I want to present to you all my works.',
+            projects: showcasedProjects
+        },
+        dribbleShotsConfig: {
+            title: 'Dribble shots.',
+            secondaryTitle: 'Here you can find my Dribble shots.',
+            shots: [
+                {
+                    name: 'Landing page | Daily UI Challenge 003',
+                    image: 'https://cdn.dribbble.com/users/10819497/screenshots/19530852/media/a89fbef11cc2bb082492939c9f3f337b.png',
+                    link: 'https://dribbble.com/shots/19530852-Landing-page-Daily-UI-Challenge-003'
+                },
+                {
+                    name: 'Credit Card Checkout | Daily UI Challenge 002',
+                    image: 'https://cdn.dribbble.com/users/10819497/screenshots/19041008/media/a06ca03781ebf5e4ad5617d39cbd177b.png?compress=1&resize=1600x1200&vertical=top',
+                    link: 'https://dribbble.com/shots/19041008-Credit-Card-Checkout-Daily-UI-Challenge-002'
+                },
+                {
+                    name: 'Sign up page | Daily UI Challenge 001',
+                    image: 'https://cdn.dribbble.com/users/10819497/screenshots/19032056/media/67032c073b19cc5b94e129d9f2877e3a.png?compress=1&resize=1600x1200&vertical=top',
+                    link: 'https://dribbble.com/shots/19032056-Sign-up-page-Daily-UI-Challenge-001'
                 }
-            },
-            {
-                title: 'aprojekt.',
-                image: '/images/aprojekt_square.png',
-                link: 'https://www.behance.net/gallery/116000807/Handmade-App-UIUX-Design',
-                tags: ['UI/UX', 'Mobile', 'App'],
-                shortDescription: 'FIBER CABLES COMPANY',
-                longDescription: 'This case study focuses on the website redesign for a small telecommunication project office in Warsaw, with a focus on responsive web design to enhance user experience across devices.',
-                style: {
-                    background: '#f4f4f4',
-                    targetZoom: 0.9,
-                    objectFit: 'cover'
-                }
-            },
-        ]
+            ]
+        }
     },
     navBarConfig: {
         items: [

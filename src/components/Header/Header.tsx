@@ -8,7 +8,7 @@ const Circle = styled.div`
 
   transform: scale(0);
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     transform: scale(1);
     position: absolute;
     background: #ffffff;

@@ -2,21 +2,18 @@ import React from 'react';
 
 import { BottomContactSection } from 'components/BottomContactSection/BottomContactSection';
 import { Header } from 'components/Header/Header';
-import { SelectedProjects } from 'components/Section/SelectedProjects';
-import styled from 'styled-components';
+import { ProjectsListView } from 'components/Projects/ProjectsListView';
 
-const StyledIndex = styled.div`
-  width: 100%;
-`;
+import { portfolioConfig } from '../portfolioConfig';
 
 const Index = () => {
-    return <StyledIndex>
+    return <>
         <Header/>
         <div className={'flex flex-col items-center justify-center bg-white'}>
-            <SelectedProjects/>
+            <ProjectsListView {...portfolioConfig.homePageConfig.selectedProjectsConfig}/>
             <BottomContactSection/>
         </div>
-    </StyledIndex>;
+    </>;
 };
 
 export default Index;

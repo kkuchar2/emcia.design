@@ -4,22 +4,7 @@ import { ProjectArrowButton } from 'components/ArrowButton/ProjectArrowButton';
 import useIntersectionObserver from 'hooks/use-intersection';
 import styled from 'styled-components';
 
-export interface Project {
-    title: string;
-    image: string;
-    logo?: string;
-    link: string;
-    tags: string[];
-    shortDescription: string;
-    longDescription?: string;
-    longDescriptionMaxWidth?: number;
-    style?: {
-        longDescriptionMaxWidth?: number;
-        background?: string;
-        targetZoom?: number;
-        objectFit?: 'cover' | 'contain';
-    }
-}
+import { Project } from '../../portfolioConfig.types';
 
 const StyledProjectLongDescription = styled.div`
   font-size: 15px;
