@@ -31,7 +31,7 @@ const TitleHelloMessage = styled.div`
 
 const TopCircle = styled.div`
   position: absolute;
-  background: #ffffff;
+  background: #f1f1f1;
   border-bottom-left-radius: 50%;
   border-bottom-right-radius: 50%;
   width: 100vw;
@@ -80,9 +80,9 @@ export const ResumeMobile = () => {
                 </div>
             </div>
         </TopCircle>
-        <div className={'h-[100px] w-full bg-white'}/>
+        <div className={'h-[100px] w-full bg-[#f1f1f1]'}/>
         <FakeCircleBlock/>
-        <div className={'flex flex-col items-center justify-center bg-white'}>
+        <div className={'flex flex-col items-center justify-center bg-[#f1f1f1]'}>
             <Experience/>
             <Education/>
         </div>

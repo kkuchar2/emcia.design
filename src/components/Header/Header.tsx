@@ -11,7 +11,7 @@ const Circle = styled.div`
   @media (min-width: 1024px) {
     transform: scale(1);
     position: absolute;
-    background: #ffffff;
+    background: #f1f1f1;
     border-radius: 50%;
     border: 1px solid #e3e3e3;
     width: 62.5vw;

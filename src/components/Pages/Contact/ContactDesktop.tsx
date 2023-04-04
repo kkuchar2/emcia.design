@@ -55,7 +55,7 @@ const BigScreenCircle = styled.div`
   width: 160vh;
   height: 160vh;
   border-radius: 50%;
-  background: #ffffff;
+  background: #f1f1f1;
   right: calc(50% + 80px);
   bottom: calc(50% - 80vh);
   display: block;

@@ -46,7 +46,7 @@ export const StyledNavBarItem = styled(Link)<StyledNavBarItemProps>`
     &:after {
       width: 65%;
       opacity: 1;
-      background: white;
+      background: #f1f1f1;
     }
   }
 

@@ -12,7 +12,7 @@ const StyledIcon = styled.div`
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  background-color: #ffffff;
+  background-color: #f1f1f1;
   transition: all .2s ease;
 
   @media (min-width: 768px) {

@@ -18,7 +18,7 @@ interface StyledOverlayProps {
 const StyledOverlay = styled.div<StyledOverlayProps>`
   position: fixed;
   content: '';
-  background: #ffffff;
+  background: #f1f1f1;
   z-index: 3;
   transition: all 1s cubic-bezier(0.575, 0.82, 0.165, 1);
   border-radius: 50%;

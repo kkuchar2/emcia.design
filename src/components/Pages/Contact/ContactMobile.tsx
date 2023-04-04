@@ -32,7 +32,7 @@ const TitleHelloMessage = styled.div`
 
 const TopCircle = styled.div<{ mailSent: boolean }>`
   position: absolute;
-  background: #ffffff;
+  background: #f1f1f1;
   border-bottom-left-radius: 50%;
   border-bottom-right-radius: 50%;
   width: 100vw;
@@ -136,7 +136,7 @@ export const ContactMobile = () => {
                 </div>
             </div>
         </TopCircle>
-        <div className={'h-[100px] w-full bg-white'}/>
+        <div className={'h-[100px] w-full bg-[#f1f1f1]'}/>
         <FakeCircleBlock/>
 
         <Confirmation mailSent={mailSent}>
