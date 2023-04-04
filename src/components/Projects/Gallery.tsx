@@ -1,89 +1,109 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 
-import { useScreenWidth } from 'hooks/use-screen';
 import styled from 'styled-components';
 import { Keyboard, Navigation, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper as SwiperClass } from 'swiper/types';
 
 import { DribbleShot } from '../../portfolioConfig.types';
 
 import 'swiper/css';
-
-const Container = styled.div`
-  position: relative;
-  width: 100%;
-  height: clamp(250px, 45vw, 600px);
-  overflow: visible;
-`;
-
-const StyledSwiperSlide = styled(SwiperSlide)<{ image: string }>`
-  display: grid;
-  place-items: center;
-  background-image: url(${props => props.image});
-  background-size: cover;
-
-  &:hover {
-    cursor: pointer;
-  }
-
-  &.swiper-slide-active {
-    transform: scale(1.1);
-    z-index: 2;
-    transition: transform 0.3s ease;
-  }
-`;
-
-const StyledSwiper = styled(Swiper)`
-  height: 100%;
-  overflow: visible;
-`;
+import 'swiper/css/pagination';
 
 interface GalleryCarouselProps {
     shots: DribbleShot[]
 }
 
+const Container = styled.div`
+  position: relative;
+  width: 100%;
+  overflow: visible;
+`;
+
+const Image = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all 0.3s ease-in-out;
+`;
+
+const ImageWrapper = styled.div`
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+`;
+
+const StyledSwiperSlide = styled(SwiperSlide)`
+  display: grid;
+  place-items: center;
+  position: relative;
+  height: 100%;
+
+  &:hover {
+    cursor: grab;
+
+    &.swiper-slide-active {
+      cursor: pointer;
+    }
+  }
+`;
+
+const StyledSwiper = styled(Swiper)`
+  height: 100%;
+  padding-bottom: 30px;
+
+  .swiper-pagination {
+    --swiper-theme-color: #1e1e1e;
+  }
+`;
+
 const GalleryCarousel = (props: GalleryCarouselProps) => {
 
     const { shots } = props;
 
-    const screenWidth = useScreenWidth();
-
-    const getSlidesPerView = useCallback(() => {
-        if (screenWidth > 1920) {
-            return 2.5;
-        }
-        if (screenWidth > 1280) {
-            return 2.2;
-        }
-        if (screenWidth > 1024) {
-            return 1.7;
-        }
-        if (screenWidth > 900) {
-            return 2;
-        }
-        if (screenWidth > 768) {
-            return 2;
-        }
-        return 1.5;
-    }, [screenWidth]);
-
     return <Container>
         <StyledSwiper
-            slidesPerView={getSlidesPerView()}
+            slidesPerView={2.2}
+            breakpoints={{
+                960: {
+                    slidesPerView: 2.2
+                },
+                720: {
+                    slidesPerView: 1.8,
+                    spaceBetween: 20
+                },
+                540: {
+                    slidesPerView: 1.8,
+                    spaceBetween: 20
+                },
+                320: {
+                    slidesPerView: 1.5,
+                    spaceBetween: 20
+                },
+            }}
             loop={false}
             keyboard={{
                 enabled: true,
             }}
             centeredSlides={true}
             pagination={{
-                clickable: true,
+                dynamicBullets: true,
+            }}
+            onClick={(swiper: SwiperClass) => {
+                if (swiper.clickedIndex === swiper.activeIndex) {
+                    window.open(shots[swiper.activeIndex].link, '_blank');
+                } else {
+                    swiper.slideTo(swiper.clickedIndex);
+                }
             }}
             modules={[Keyboard, Pagination, Navigation]}>
             {shots.map((shot, index) => {
                 return <StyledSwiperSlide
-                    onClick={() => window.open(shot.link, '_blank')}
-                    key={index}
-                    image={shot.image}/>;
+                    key={index}>
+                    <ImageWrapper>
+                        <Image src={shot.image} alt={shot.name}/>
+                    </ImageWrapper>
+                </StyledSwiperSlide>;
             })}
         </StyledSwiper>
     </Container>;

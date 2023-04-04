@@ -3,7 +3,6 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 
 export const setScrollbarWidthMultiplier = (value: number) => {
-    console.log('Setting scrollbar width multiplier to: ', value);
     document.documentElement.style.setProperty('--scrollbar-width-multiplier', `${value}`);
 };
 

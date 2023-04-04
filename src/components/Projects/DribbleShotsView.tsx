@@ -9,17 +9,18 @@ const StyledDribbleShots = styled.div`
   margin-top: 80px;
   display: flex;
   flex-direction: column;
+  gap: 50px;
   align-items: center;
   justify-content: center;
+  max-width: 1500px;
   width: 100%;
-  gap: 80px;
   overflow: hidden;
   padding-bottom: 50px;
 
   @media (min-width: 768px) {
     margin-top: 160px;
     justify-content: center;
-    gap: 160px;
+    gap: 80px;
   }
 `;
 
