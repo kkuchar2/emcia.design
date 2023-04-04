@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 
-// Import Swiper React components
+import { useScreenWidth } from 'hooks/use-screen';
 import styled from 'styled-components';
 import { Keyboard, Navigation, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -8,7 +8,6 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { DribbleShot } from '../../portfolioConfig.types';
 
 import 'swiper/css';
-import { useScreenWidth } from 'hooks/use-screen';
 
 const Container = styled.div`
   position: relative;
