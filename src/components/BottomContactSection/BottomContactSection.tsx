@@ -127,7 +127,7 @@ const ContactSection = styled.div`
   }
 `;
 
-export const BottomSection = () => {
+export const BottomContactSection = () => {
 
     return <StyledBottomSection>
         <CircleWrapper>

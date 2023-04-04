@@ -1,17 +1,15 @@
 import React from 'react';
 
-import { BottomSection } from 'components/BottomSection/BottomSection';
-import { Education } from 'components/Resume/Education';
-import { Experience } from 'components/Resume/Experience';
-import { ResumeHeader } from 'components/Resume/ResumeHeader';
+import { ResumeDesktop } from 'components/Resume/ResumeDesktop';
+import { ResumeMobile } from 'components/Resume/ResumeMobile';
 
 export default function Resume() {
-    return <div className={'relative w-full bg-[#f1f1f1]'}>
-        <ResumeHeader/>
-        <div className={'flex flex-col items-center justify-center bg-white'}>
-            <Experience/>
-            <Education/>
+    return <div className={'bg-[#f1f1f1]'}>
+        <div className={'hidden lg:block'}>
+            <ResumeDesktop/>
         </div>
-        <BottomSection/>
+        <div className={'block lg:hidden'}>
+            <ResumeMobile/>
+        </div>
     </div>;
 }

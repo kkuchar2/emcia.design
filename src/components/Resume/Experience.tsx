@@ -11,7 +11,7 @@ const StyledExperience = styled.div`
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 80px;
+  gap: 30px;
   background: #1E1E1E;
   width: 100%;
   padding-bottom: 80px;
@@ -24,7 +24,7 @@ const StyledExperience = styled.div`
 `;
 
 const ExperienceTitle = styled.div`
-  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
   font-weight: 600;
   line-height: 1.5;
   letter-spacing: -0.06em;
@@ -44,7 +44,7 @@ const StyledExperienceItems = styled.div`
   width: 100%;
   max-width: 1000px;
   flex-direction: column;
-  gap: 160px;
+  gap: 5rem;
 `;
 
 export const Experience = () => {
@@ -52,14 +52,10 @@ export const Experience = () => {
     const exp = portfolioConfig.experience;
 
     return <StyledExperience>
-        <div className={'flex w-full max-w-[1500px] flex-col gap-[120px] px-[40px] md:mt-[50px]'}>
+        <div className={'flex w-full max-w-[1500px] flex-col gap-[60px] px-[40px] md:mt-[50px]'}>
             <div className={'flex flex-col gap-2 self-start'}>
-                <ExperienceTitle>
-                    {'Experience'}
-                </ExperienceTitle>
-                <ExperienceDescription>
-                    {'I have worked for the following companies so far:'}
-                </ExperienceDescription>
+                <ExperienceTitle>{'Experience'}</ExperienceTitle>
+                <ExperienceDescription>{'I have worked for the following companies so far:'}</ExperienceDescription>
             </div>
             <StyledExperienceItems>
                 {exp.map((item, index) => <ExperienceItem key={index} {...item}/>)}

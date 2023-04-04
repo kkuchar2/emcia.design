@@ -126,5 +126,36 @@ export const portfolioConfig: IPortfolioConfig = {
                 'office work'
             ]
         }
-    ]
+    ],
+    education: [
+        {
+            startDate: '02/2017',
+            endDate: '09/2018',
+            title: 'Spatial Planning, Master of Science in Engineering',
+            school: 'Warsaw University of Technology'
+        },
+        {
+            startDate: '02/2017',
+            endDate: '09/2018',
+            title: 'Spatial Planning, Bachelor of Science in Engineering',
+            school: 'Warsaw University of Technology'
+        }
+    ],
+    certifications: [
+        {
+            title: 'Google UX Design Professional Certificate',
+            name: 'UX Design course on platform coursera.org',
+            date: '2022'
+        },
+        {
+            title: 'Digital Designer Certificate',
+            name: 'Web and UI Design course featured by designpractice.pl',
+            date: '2022'
+        },
+        {
+            title: 'ECDL CAD Module S8 Certificate',
+            name: 'Computer aided design 2D',
+            date: '2016'
+        }
+    ],
 };

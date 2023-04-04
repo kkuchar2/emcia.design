@@ -51,9 +51,24 @@ export interface IExperienceItem {
     duties: string[];
 }
 
+export interface IEducationItem {
+    startDate: string;
+    endDate: string;
+    title: string;
+    school: string;
+}
+
+export interface ICertificationItem {
+    title: string;
+    name: string;
+    date: string;
+}
+
 export interface IPortfolioConfig {
     projectsPageConfig: IProjectsPageConfig,
     navBarConfig: INavbarConfig,
     socialConfig: ISocialConfig
-    experience: IExperienceItem[]
+    experience: IExperienceItem[],
+    education: IEducationItem[],
+    certifications: ICertificationItem[]
 }

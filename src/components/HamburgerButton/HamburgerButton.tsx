@@ -26,12 +26,12 @@ const StyledHamburgerButton = styled.button<StyledHamburgerButtonProps>`
   z-index: 5;
   margin: 0;
   padding: 0;
-  display: none;
+  display: block;
   -webkit-tap-highlight-color: transparent;
   mix-blend-mode: ${({ navbarOpened }) => navbarOpened ? 'unset' : 'difference'};
 
-  @media (max-width: 1024px) {
-    display: block;
+  @media (min-width: 1024px) {
+    display: none;
   }
 `;
 

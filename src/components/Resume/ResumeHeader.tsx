@@ -1,13 +1,13 @@
 import React from 'react';
 
 import { scaleUp } from 'components/Circles/keyframes';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 const Circle = styled.div`
 
   transform: scale(0);
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     transform: scale(1);
     position: absolute;
     background: #1e1e1e;
@@ -20,6 +20,7 @@ const Circle = styled.div`
     max-width: max(2400px, 100dvh);
     max-height: max(2400px, 100dvh);
     animation: ${scaleUp} 2200ms cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+    z-index: 1;
   }
 `;
 
@@ -34,7 +35,7 @@ const StyledWrapper2 = styled.div`
   font-weight: 400;
   font-size: clamp(1.2rem, 1.5vw, 1.5rem);
   line-height: 1.2;
-  margin-top: 30px;
+  margin-top: 20px;
   color: #807F7F;
 `;
 
@@ -66,15 +67,33 @@ const StyledTitle = styled.div`
   position: relative;
 `;
 
+const lineAnimation = keyframes`
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+`;
+
+const Line = styled.div`
+  width: 0;
+  height: 1px;
+  background: #000000;
+  margin-top: 20px;
+  animation: ${lineAnimation} 4s cubic-bezier(0.075, 0.92, 0.565, 1) forwards;
+`;
+
 export const ResumeHeader = () => {
 
     return <StyledHeader className={'relative flex flex-col overflow-x-clip bg-[#F1F1F1]'}>
         <Circle/>
         <HeaderTop/>
-        <div className={'mb-0 flex grow items-center justify-center  sm:mb-[50px] md:mb-[100px]'}>
+        <div className={'mb-0 flex grow items-center justify-center  sm:mb-[50px] md:mb-[20px]'}>
             <HeaderMiddle>
                 <StyledTitle>
                     <StyledWrapper>{'resume'}</StyledWrapper>
+                    <Line/>
                     <StyledWrapper2>{'My previous professional experience is presented below.'}</StyledWrapper2>
                 </StyledTitle>
             </HeaderMiddle>

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { BottomSection } from 'components/BottomSection/BottomSection';
+import { BottomContactSection } from 'components/BottomContactSection/BottomContactSection';
 import { Header } from 'components/Header/Header';
 import { SelectedProjects } from 'components/Section/SelectedProjects';
 import styled from 'styled-components';
@@ -14,7 +14,7 @@ const Index = () => {
         <Header/>
         <div className={'flex flex-col items-center justify-center bg-white'}>
             <SelectedProjects/>
-            <BottomSection/>
+            <BottomContactSection/>
         </div>
     </StyledIndex>;
 };
