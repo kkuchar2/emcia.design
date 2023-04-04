@@ -4,7 +4,7 @@ import { NavBarItem, StyledNavBarItem } from 'components/NavBar/NavBarItem';
 import styled from 'styled-components';
 
 import { useMainContext } from '../../MainContext';
-import { INavbarConfig } from '../../protfolioConfig.types';
+import { INavbarConfig } from '../../portfolioConfig.types';
 
 interface IStyledNavBarMobileItemsProps {
     opened: boolean;

@@ -3,7 +3,7 @@ import React from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
 
-import { ISocialIcon, ISocialItem } from '../../protfolioConfig.types';
+import { ISocialIcon, ISocialItem } from '../../portfolioConfig.types';
 
 const StyledIcon = styled.div`
   display: flex;

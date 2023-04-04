@@ -1,4 +1,4 @@
-import { Project, ProjectStyleTransform } from './protfolioConfig.types';
+import { Project, ProjectStyleTransform } from './portfolioConfig.types';
 
 export const transformStyles = (projects: Project[],
                                 transform: ProjectStyleTransform): Project[] => {

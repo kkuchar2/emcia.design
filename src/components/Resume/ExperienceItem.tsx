@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 
 import styled from 'styled-components';
 
-import { IExperienceItem } from '../../protfolioConfig.types';
+import { IExperienceItem } from '../../portfolioConfig.types';
 
 const StyledExperienceItem = styled.div`
   color: #f1f1f1;

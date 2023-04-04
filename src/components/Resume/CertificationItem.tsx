@@ -2,7 +2,7 @@ import React from 'react';
 
 import styled from 'styled-components';
 
-import { ICertificationItem } from '../../protfolioConfig.types';
+import { ICertificationItem } from '../../portfolioConfig.types';
 
 const StyledCertificationItem = styled.div`
   color: #1e1e1e;

@@ -2,7 +2,7 @@ import React from 'react';
 
 import styled from 'styled-components';
 
-import { IEducationItem } from '../../protfolioConfig.types';
+import { IEducationItem } from '../../portfolioConfig.types';
 
 const StyledEducationItem = styled.div`
   color: #1e1e1e;

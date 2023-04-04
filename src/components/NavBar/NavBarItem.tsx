@@ -3,7 +3,7 @@ import React from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
 
-import { INavBarItem } from '../../protfolioConfig.types';
+import { INavBarItem } from '../../portfolioConfig.types';
 
 interface StyledNavBarItemProps {
     index: number;
