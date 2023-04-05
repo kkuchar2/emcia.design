@@ -4,17 +4,19 @@ import { IPortfolioConfig, Project } from './portfolioConfig.types';
 const allProjects = [
     {
         title: 'serenity.',
-        image: '/images/serenity_square.png',
+        image: 'serenity_square.png',
         link: 'https://www.behance.net/gallery/116000807/Handmade-App-UIUX-Design',
         tags: ['UI/UX', 'Mobile', 'App'],
+        alt: 'Serenity app',
         shortDescription: 'CANDLEMAKER STORE MOBILE APP',
         longDescription: 'A mobile app designed to connect craftspeople and customers who appreciate high quality and unique products.',
     },
     {
         title: 'aprojekt.',
-        image: '/images/aprojekt_square.png',
+        image: 'aprojekt_square.png',
         link: 'https://www.behance.net/gallery/116000807/Handmade-App-UIUX-Design',
         tags: ['UI/UX', 'Mobile', 'App'],
+        alt: 'Aprojekt app',
         shortDescription: 'FIBER CABLES COMPANY',
         longDescription: 'This case study focuses on the website redesign for a small telecommunication project office in Warsaw, with a focus on responsive web design to enhance user experience across devices.',
     }
@@ -112,8 +114,8 @@ export const portfolioConfig: IPortfolioConfig = {
             },
             icon: {
                 src: 'images/dribble.svg',
-                altText: 'Dribble',
-                scale: 0.75,
+                alt: 'Dribble',
+                scale: 0.8,
             }
         },
         behance: {
@@ -124,7 +126,7 @@ export const portfolioConfig: IPortfolioConfig = {
             },
             icon: {
                 src: 'images/behance.svg',
-                altText: 'Behance',
+                alt: 'Behance',
                 scale: 0.75
             }
         },
@@ -136,7 +138,7 @@ export const portfolioConfig: IPortfolioConfig = {
             },
             icon: {
                 src: 'images/linkedin.svg',
-                altText: 'LinkedIn',
+                alt: 'LinkedIn',
                 scale: 1
             }
         }

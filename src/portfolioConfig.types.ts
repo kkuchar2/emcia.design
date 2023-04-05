@@ -1,3 +1,5 @@
+import { ImageProps } from 'next/dist/client/image';
+
 export interface ProjectStyle {
     longDescriptionMaxWidth?: number;
     background?: string;
@@ -11,6 +13,7 @@ export interface Project {
     logo?: string;
     link: string;
     tags: string[];
+    alt: string;
     shortDescription: string;
     longDescription?: string;
     longDescriptionMaxWidth?: number;
@@ -59,9 +62,7 @@ export interface ISocialLink {
     title: string
 }
 
-export interface ISocialIcon {
-    src: string;
-    altText: string;
+export interface ISocialIcon extends ImageProps {
     scale?: number;
 }
 

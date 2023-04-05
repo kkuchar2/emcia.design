@@ -1,5 +1,6 @@
 import React from 'react';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import styled from 'styled-components';
 
@@ -7,26 +8,23 @@ import { ISocialIcon, ISocialItem } from '../../portfolioConfig.types';
 
 const StyledIcon = styled.div`
   display: flex;
-  height: 32px;
-  width: 32px;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
   background-color: #f1f1f1;
   transition: all .2s ease;
-
-  @media (min-width: 768px) {
-    height: 32px;
-    width: 32px;
-  }
+  line-height: 0;
 `;
 
 const SocialIcon = (props: ISocialIcon) => {
-    const { src, altText, scale } = props;
+    const { src, alt, scale } = props;
     return <StyledIcon>
-        <img src={src} alt={altText} className={'h-10 w-10'} style={{
-            transform: `scale(${scale})`,
-        }}/>
+        <Image
+            src={src}
+            alt={alt}
+            width={35}
+            height={35}
+            style={{ transform: `scale(${scale})` }}/>
     </StyledIcon>;
 };
 

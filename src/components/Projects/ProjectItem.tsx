@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 
 import { ProjectArrowButton } from 'components/ArrowButton/ProjectArrowButton';
 import useIntersectionObserver from 'hooks/use-intersection';
+import Image from 'next/image';
 import styled from 'styled-components';
 
 import { Project } from '../../portfolioConfig.types';
@@ -85,19 +86,16 @@ const ShortDescription = styled.div`
   margin-top: 20px;
 `;
 
-const StyledImage = styled.img<StyledImageProps>`
+const StyledImage = styled(Image)<StyledImageProps>`
   transform: ${({ isVisible, targetZoom }) => isVisible ? `translateY(0) scale(${targetZoom})` : 'translateY(400px) scale(2)'};
   transition: transform 2s cubic-bezier(0.075, 0.82, 0.165, 1);
-  object-fit: ${({ objectFit }) => objectFit || 'cover'};
-  width: 100%;
-  height: 100%;
 `;
 
 export const ProjectItem = (props: ProjectItemProps) => {
 
     const { project } = props;
 
-    const { title, image, shortDescription, longDescription, style } = project;
+    const { title, image, alt, shortDescription, longDescription, style } = project;
 
     const { background, targetZoom, objectFit } = style || {};
 
@@ -107,9 +105,17 @@ export const ProjectItem = (props: ProjectItemProps) => {
     const entry = useIntersectionObserver(ref, {});
     const isVisible = !!entry?.isIntersecting;
 
+    const img = require(`/public/images/${image}`);
+
     return <StyledProjectItem ref={ref}>
         <StyledImageWrapper isVisible={isVisible} background={background}>
-            <StyledImage src={image} isVisible={isVisible} targetZoom={targetZoom} objectFit={objectFit}/>
+            <StyledImage
+                src={img}
+                alt={alt}
+                fill={true}
+                isVisible={isVisible}
+                targetZoom={targetZoom}
+                objectFit={objectFit}/>
         </StyledImageWrapper>
 
         <StyledProjectDescription>
