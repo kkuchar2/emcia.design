@@ -111,6 +111,7 @@ export const ProjectItem = (props: ProjectItemProps) => {
         <StyledImageWrapper isVisible={isVisible} background={background}>
             <StyledImage
                 src={img}
+                loading={'eager'}
                 alt={alt}
                 fill={true}
                 isVisible={isVisible}
