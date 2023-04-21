@@ -49,7 +49,7 @@ const CircleWrapper = styled.div`
     height: 100vw;
     top: 0;
     left: 50%;
-    transform: translateX(-50%) scale(var(--scroll-progress, 1));
+    transform: translate(-50%);
     max-width: calc(1500px - 40px - 40px);
     max-height: calc(1500px - 40px - 40px);
   }
@@ -61,6 +61,7 @@ const CircleWrapper = styled.div`
     &:after {
       width: 100%;
       height: calc(100vw - 40px - 40px);
+      transform: translate(-50%, 0) scale(var(--scroll-progress, 1));
     }
   }
 
@@ -121,13 +122,15 @@ const ContactSection = styled.div`
   gap: 4px;
   margin-top: 20%;
   z-index: 1;
-  // translate 0 when scroll progress is 1, else translate 100px 
-  transform: translateY(calc(300px * (1 - var(--scroll-progress, 1)) * 2)) scale(calc(1 - (1 - var(--scroll-progress, 1)) * 0.7));
-  // opacity but slower than scale
   opacity: calc(1 - (1 - var(--scroll-progress, 1)) * 5);
+  transform: none;
 
   @media (min-width: 430px) {
     margin-top: 15%;
+  }
+
+  @media (min-width: 768px) {
+    transform: translateY(calc(300px * (1 - var(--scroll-progress, 1)) * 2)) scale(calc(1 - (1 - var(--scroll-progress, 1)) * 0.7));
   }
 `;
 
