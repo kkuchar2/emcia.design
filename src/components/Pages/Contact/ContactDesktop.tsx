@@ -14,6 +14,7 @@ const StyledContact = styled.div<{ mailSent: boolean }>`
   height: ${({ mailSent }) => (mailSent ? '100svh' : 'auto')};
   align-items: center;
   min-height: 100dvh;
+  background: #1f1f1f;
 `;
 
 const BigScreenTitle = styled.div`

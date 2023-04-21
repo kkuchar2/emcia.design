@@ -80,6 +80,8 @@ const ScrollIndicator = styled.div`
   border: 1px solid rgba(241, 241, 241, 0.34);
   display: flex;
   bottom: 50px;
+  opacity: var(--scroll-indicator-opacity, 1);
+  transition: opacity 0.5s ease;
 
   @media (orientation: landscape) {
     bottom: 10px;

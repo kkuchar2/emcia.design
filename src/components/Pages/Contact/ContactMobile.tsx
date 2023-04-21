@@ -10,8 +10,8 @@ const StyledContact = styled.div<{ mailSent: boolean }>`
   position: relative;
   display: flex;
   flex-direction: column;
-  height: ${({ mailSent }) => (mailSent ? '100dvh' : 'auto')};
   container-type: inline-size;
+  background: #1f1f1f;
 `;
 
 const Title = styled.div`

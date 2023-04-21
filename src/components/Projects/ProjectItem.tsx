@@ -56,14 +56,7 @@ interface ProjectItemProps {
     project: Project;
 }
 
-interface StyledImageProps {
-    isVisible?: boolean;
-    background?: string;
-    targetZoom?: number;
-    objectFit?: string;
-}
-
-export const StyledImageWrapper = styled.div<StyledImageProps>`
+export const StyledImageWrapper = styled.div<{ isVisible?: boolean, background?: string }>`
   aspect-ratio: 4/3;
   position: relative;
   overflow: hidden;
@@ -86,11 +79,6 @@ const ShortDescription = styled.div`
   margin-top: 20px;
 `;
 
-const StyledImage = styled(Image)<StyledImageProps>`
-  transform: ${({ isVisible, targetZoom }) => isVisible ? `translateY(0) scale(${targetZoom})` : 'translateY(400px) scale(2)'};
-  transition: transform 2s cubic-bezier(0.075, 0.82, 0.165, 1);
-`;
-
 export const ProjectItem = (props: ProjectItemProps) => {
 
     const { project } = props;
@@ -107,16 +95,28 @@ export const ProjectItem = (props: ProjectItemProps) => {
 
     const img = require(`/public/images/${image}`);
 
+    const [loaded, setLoaded] = React.useState(false);
+
+    const onLoadingComplete = () => {
+        console.log('loading complete');
+        setLoaded(true);
+    };
+
     return <StyledProjectItem ref={ref}>
         <StyledImageWrapper isVisible={isVisible} background={background}>
-            <StyledImage
+            <Image
                 src={img}
                 loading={'eager'}
                 alt={alt}
                 fill={true}
-                isVisible={isVisible}
-                targetZoom={targetZoom}
-                objectFit={objectFit}/>
+                onLoadingComplete={onLoadingComplete}
+                sizes={'(min-width: 1024px) 512px, (min-width: 28em) 45vw, 100vw'}
+                quality={100}
+                style={{
+                    objectFit: objectFit || 'cover',
+                    transition: 'transform 2s cubic-bezier(0.075, 0.82, 0.165, 1), opacity 2s ease',
+                    transform: isVisible && loaded ? `translateY(0) scale(${targetZoom})` : 'translateY(400px) scale(2)'
+                }}/>
         </StyledImageWrapper>
 
         <StyledProjectDescription>
@@ -127,7 +127,7 @@ export const ProjectItem = (props: ProjectItemProps) => {
             </StyledProjectLongDescription>
 
             <div className={'mt-[40px] flex items-end md:mt-0 '}>
-                <ProjectArrowButton text={'more details'} image={'images/arrow_large.svg'}/>
+                <ProjectArrowButton text={'more details'} image={'images/arrow_large.svg'} href={project.link}/>
             </div>
         </StyledProjectDescription>
     </StyledProjectItem>;

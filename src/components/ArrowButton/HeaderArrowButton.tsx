@@ -20,7 +20,6 @@ const Text = styled.div`
 
 const Arrow = styled.img`
   z-index: 1;
-  width: 3.75rem;
   padding-left: 10px;
   padding-right: 20px;
   transition: ${arrowTransition};
@@ -109,8 +108,8 @@ export const HeaderArrowButton = (props: ArrowButtonProps) => {
 
     const { text, image } = props;
 
-    return <ArrowLink href={'/'}>
+    return <ArrowLink href={'/projects'}>
         <Text>{text}</Text>
-        <Arrow src={image} alt={'arrow'}/>
+        <Arrow src={image} alt={'arrow'} width={60} height={0}/>
     </ArrowLink>;
 };

@@ -5,8 +5,8 @@ const allProjects = [
     {
         title: 'serenity.',
         image: 'serenity_square.png',
-        link: 'https://www.behance.net/gallery/116000807/Handmade-App-UIUX-Design',
-        tags: ['UI/UX', 'Mobile', 'App'],
+        link: 'https://www.behance.net/gallery/156628655/Serenity-Candlemaker-Mobile-App',
+        tags: ['UI/UX', 'Mobile', 'App', 'Case Study', 'Design System', 'Candles'],
         alt: 'Serenity app',
         shortDescription: 'CANDLEMAKER STORE MOBILE APP',
         longDescription: 'A mobile app designed to connect craftspeople and customers who appreciate high quality and unique products.',
@@ -14,8 +14,8 @@ const allProjects = [
     {
         title: 'aprojekt.',
         image: 'aprojekt_square.png',
-        link: 'https://www.behance.net/gallery/116000807/Handmade-App-UIUX-Design',
-        tags: ['UI/UX', 'Mobile', 'App'],
+        link: 'https://www.behance.net/gallery/164216181/Aprojekt-Website-UI-Redesign',
+        tags: ['UI/UX', 'Web', 'Website', 'Case Study', 'Design System', 'Telecommunications'],
         alt: 'Aprojekt app',
         shortDescription: 'FIBER CABLES COMPANY',
         longDescription: 'This case study focuses on the website redesign for a small telecommunication project office in Warsaw, with a focus on responsive web design to enhance user experience across devices.',
@@ -69,18 +69,21 @@ export const portfolioConfig: IPortfolioConfig = {
             shots: [
                 {
                     name: 'Landing page | Daily UI Challenge 003',
-                    image: 'https://cdn.dribbble.com/users/10819497/screenshots/19530852/media/a89fbef11cc2bb082492939c9f3f337b.png',
-                    link: 'https://dribbble.com/shots/19530852-Landing-page-Daily-UI-Challenge-003'
+                    image: 'daily_ui_challenge_001.png',
+                    link: 'https://dribbble.com/shots/19530852-Landing-page-Daily-UI-Challenge-003',
+                    blurDataURL: 'LAQvq9_MDgD%t7j[fQayDzMybcxt'
                 },
                 {
                     name: 'Credit Card Checkout | Daily UI Challenge 002',
-                    image: 'https://cdn.dribbble.com/users/10819497/screenshots/19041008/media/a06ca03781ebf5e4ad5617d39cbd177b.png?compress=1&resize=1600x1200&vertical=top',
-                    link: 'https://dribbble.com/shots/19041008-Credit-Card-Checkout-Daily-UI-Challenge-002'
+                    image: 'daily_ui_challenge_002.png',
+                    link: 'https://dribbble.com/shots/19041008-Credit-Card-Checkout-Daily-UI-Challenge-002',
+                    blurDataURL: 'L6QvtJ%KKbkR#S}=osd?.it2IAM_'
                 },
                 {
                     name: 'Sign up page | Daily UI Challenge 001',
-                    image: 'https://cdn.dribbble.com/users/10819497/screenshots/19032056/media/67032c073b19cc5b94e129d9f2877e3a.png?compress=1&resize=1600x1200&vertical=top',
-                    link: 'https://dribbble.com/shots/19032056-Sign-up-page-Daily-UI-Challenge-001'
+                    image: 'daily_ui_challenge_003.png',
+                    link: 'https://dribbble.com/shots/19032056-Sign-up-page-Daily-UI-Challenge-001',
+                    blurDataURL: 'L13+M@_0M_9Hs?aRM|W+ICM#ogxt'
                 }
             ]
         }

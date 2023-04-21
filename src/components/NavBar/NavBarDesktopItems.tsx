@@ -25,7 +25,7 @@ const StyledNavBarDesktopItems = styled.div`
   pointer-events: all;
   flex-direction: row;
   height: 100px;
-  padding-right: 50px;
+  padding-right: calc(50px - (var(--scrollbar-width) * var(--scrollbar-width-multiplier)));
 `;
 
 export const NavBarDesktopItems = (props: INavbarConfig) => {

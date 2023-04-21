@@ -48,7 +48,7 @@ export const DribbleShotsView = (props: DribbleShotsConfig) => {
             <Title>{title}</Title>
             <SecondaryTitle>{secondaryTitle}</SecondaryTitle>
         </div>
-        <div className={'flex w-full max-w-[2500px]'}>
+        <div className={'flex w-full max-w-[2500px] xl:px-[40px]'}>
             <GalleryCarousel shots={shots}/>
         </div>
     </StyledDribbleShots>;

@@ -43,6 +43,11 @@ const StyledOverlay = styled.div<StyledOverlayProps>`
     transition: all 1s cubic-bezier(0.575, 0.82, 0.165, 1);
 
     @media (orientation: landscape) {
+      width: 250svw;
+      height: 250svw;
+    }
+
+    @media (orientation: landscape) and (min-height: 600px) {
       width: 250vh;
       height: 250vh;
     }
@@ -77,7 +82,10 @@ export const NavBar = () => {
     }, [router, setNavbarOpened]);
 
     useEffect(() => {
+        console.log('screenWidth', screenWidth);
         if (screenWidth > 1024) {
+            console.log('try to setNavbarOpened(false);');
+            console.log('setNavbarOpened', setNavbarOpened);
             setNavbarOpened(false);
         }
     }, [screenWidth]);

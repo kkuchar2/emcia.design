@@ -63,7 +63,7 @@ const Title = styled.div`
 
 const SecondaryTitle = styled.div`
   font-size: clamp(1rem, 1.7vw, 1.2rem);
-  color: #807F7F;
+  color: #6E6E6E;
   font-weight: 400;
   letter-spacing: -0.02em;
   max-width: 400px;

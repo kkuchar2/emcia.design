@@ -22,22 +22,39 @@ const MainContextProvider: React.FC<MainContextProviderProps> = ({ children }) =
     const [navbarOpened, setNavbarOpened] = useState(false);
 
     const toggleNavbar = useCallback(() => {
+        console.log('toggle navbar');
         const next = !navbarOpened;
 
         // set body overflow to hidden if navbar is opened
         if (next) {
+            console.log('set body overflow to hidden');
             document.body.style.overflow = 'hidden';
         } else {
+            console.log('set body overflow to visible');
             document.body.style.overflow = '';
         }
 
         setNavbarOpened(next);
     }, [navbarOpened]);
 
+    const internalSetNavbarOpened = useCallback((value: boolean) => {
+        const next = value;
+
+        // set body overflow to hidden if navbar is opened
+        if (next) {
+            console.log('set body overflow to hidden');
+            document.body.style.overflow = 'hidden';
+        } else {
+            console.log('set body overflow to visible');
+            document.body.style.overflow = '';
+        }
+        setNavbarOpened(next);
+    }, [setNavbarOpened]);
+
     const contextValue: MainContextType = {
         navbarOpened,
         toggleNavbar,
-        setNavbarOpened
+        setNavbarOpened: internalSetNavbarOpened,
     };
 
     return <MainContext.Provider value={contextValue}>

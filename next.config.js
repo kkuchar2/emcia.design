@@ -1,7 +1,5 @@
 const path = require('path');
 
-const nextBuildId = require('next-build-id');
-
 module.exports = {
     reactStrictMode: false,
     swcMinify: true,
@@ -10,10 +8,5 @@ module.exports = {
     },
     compiler: {
         styledComponents: true,
-    },
-    generateBuildId: async () => {
-        const id = await nextBuildId({ dir: __dirname });
-        console.log('Generating build hash for NextJS modules:', id);
-        return id;
     }
 };

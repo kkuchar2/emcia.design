@@ -1,14 +1,11 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 
+import { GallerySlide } from 'components/Projects/GallerySlide';
 import styled from 'styled-components';
-import { Keyboard, Navigation, Pagination } from 'swiper';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Swiper as SwiperClass } from 'swiper/types';
 
 import { DribbleShot } from '../../portfolioConfig.types';
 
-import 'swiper/css';
-import 'swiper/css/pagination';
+import 'flickity/dist/flickity.min.css';
 
 interface GalleryCarouselProps {
     shots: DribbleShot[]
@@ -18,42 +15,10 @@ const Container = styled.div`
   position: relative;
   width: 100%;
   overflow: visible;
-`;
+  height: 300px;
 
-const Image = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: all 0.3s ease-in-out;
-`;
-
-const ImageWrapper = styled.div`
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-`;
-
-const StyledSwiperSlide = styled(SwiperSlide)`
-  display: grid;
-  place-items: center;
-  position: relative;
-  height: 100%;
-
-  &:hover {
-    cursor: grab;
-
-    &.swiper-slide-active {
-      cursor: pointer;
-    }
-  }
-`;
-
-const StyledSwiper = styled(Swiper)`
-  height: 100%;
-  padding-bottom: 30px;
-
-  .swiper-pagination {
-    --swiper-theme-color: #1e1e1e;
+  @media (min-width: 1024px) {
+    height: 400px;
   }
 `;
 
@@ -61,51 +26,38 @@ const GalleryCarousel = (props: GalleryCarouselProps) => {
 
     const { shots } = props;
 
+    const flickityRef = useRef(null);
+
+    useEffect(() => {
+        if (typeof window === 'undefined') {
+            return;
+        }
+
+        const Flickity = typeof window !== 'undefined' ? require('flickity') : null;
+
+        flickityRef.current = new Flickity('.main-carousel', {
+            wrapAround: true,
+            pageDots: false,
+            autoPlay: 2000
+        });
+
+        flickityRef.current.on('staticClick', function (event, pointer, cellElement, cellIndex) {
+            if (cellElement) {
+                window.open(shots[cellIndex].link, '_blank');
+            }
+        });
+
+        return () => {
+            if (flickityRef.current) {
+                flickityRef.current.destroy();
+            }
+        };
+    }, []);
+
     return <Container>
-        <StyledSwiper
-            slidesPerView={2.2}
-            breakpoints={{
-                960: {
-                    slidesPerView: 2.2
-                },
-                720: {
-                    slidesPerView: 1.8,
-                    spaceBetween: 20
-                },
-                540: {
-                    slidesPerView: 1.8,
-                    spaceBetween: 20
-                },
-                320: {
-                    slidesPerView: 1.5,
-                    spaceBetween: 20
-                },
-            }}
-            loop={false}
-            keyboard={{
-                enabled: true,
-            }}
-            centeredSlides={true}
-            pagination={{
-                dynamicBullets: true,
-            }}
-            onClick={(swiper: SwiperClass) => {
-                if (swiper.clickedIndex === swiper.activeIndex) {
-                    window.open(shots[swiper.activeIndex].link, '_blank');
-                } else {
-                    swiper.slideTo(swiper.clickedIndex);
-                }
-            }}
-            modules={[Keyboard, Pagination, Navigation]}>
-            {shots.map((shot, index) => {
-                return <StyledSwiperSlide
-                    key={index}>
-                    <ImageWrapper>
-                        <Image src={shot.image} alt={shot.name}/>
-                    </ImageWrapper>
-                </StyledSwiperSlide>;
-            })}
-        </StyledSwiper>
+        <div className={'main-carousel'}>
+            {shots.map((shot, index) => <GallerySlide key={index} shot={shot}/>)}
+        </div>
     </Container>;
 };
 

@@ -37,7 +37,6 @@ class MyDocument extends Document {
                 <link rel={'manifest'} href={'/manifest.json'}/>
                 <link rel={'apple-touch-icon'} href={'/images/pwa/icon_x256.png'}/>
                 <link rel={'stylesheet'} href={'https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap'}/>
-                <meta name={'viewport'} content={'width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1'}/>
             </Head>
             <body>
             <Main/>

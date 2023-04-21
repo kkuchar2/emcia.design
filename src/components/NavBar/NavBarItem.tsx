@@ -40,7 +40,6 @@ export const StyledNavBarItem = styled(Link)<StyledNavBarItemProps>`
 
   &:hover {
     cursor: pointer;
-    font-weight: 600;
     color: #ffffff;
 
     &:after {
