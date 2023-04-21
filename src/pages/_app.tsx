@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 
+import { Analytics } from '@vercel/analytics/react';
 import { Page } from 'components/Pages/Page';
 import useScrollbarWidth from 'hooks/use-scrollbar-width';
 import Head from 'next/head';
@@ -56,6 +57,7 @@ const App = function ({ Component, pageProps }) {
 
         <MainContextProvider>
             <Page component={Component} pageProps={pageProps}/>
+            <Analytics/>
         </MainContextProvider>
     </StyledApp>;
 };

@@ -34,6 +34,7 @@
     "@types/styled-components": "^5.1.26",
     "@typescript-eslint/eslint-plugin": "^5.59.0",
     "@typescript-eslint/parser": "^5.59.0",
+    "@vercel/analytics": "^1.0.0",
     "autoprefixer": "^10.4.14",
     "babel-plugin-macros": "^3.1.0",
     "babel-plugin-styled-components": "^2.1.1",
