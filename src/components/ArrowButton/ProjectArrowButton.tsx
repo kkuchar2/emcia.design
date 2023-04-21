@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useRef } from 'react';
 
 import { ArrowButtonProps } from 'components/ArrowButton/ArrowButton.types';
+import useIntersectionObserver from 'hooks/use-intersection';
 import styled from 'styled-components';
 
 const transition = 'all 0.8s cubic-bezier(0.275, 0.82, 0.165, 1)';
@@ -31,7 +32,7 @@ const Arrow = styled.img`
   }
 `;
 
-const ArrowLink = styled.a`
+const ArrowLink = styled.a<{ visible: boolean }>`
   height: ${circleDiameter};
   position: relative;
   cursor: pointer;
@@ -47,7 +48,7 @@ const ArrowLink = styled.a`
     height: ${circleDiameter};
     top: -50%;
     left: 0;
-    transform: translateY(50%);
+    transform: ${props => props.visible ? 'translateY(50%) scale(1)' : 'translateY(50%) scale(0)'};
     border-radius: calc(${circleDiameter} / 2);
     transition: ${mobileTransition};
     width: 100%;
@@ -88,7 +89,11 @@ export const ProjectArrowButton = (props: ArrowButtonProps) => {
 
     const { text, image, href } = props;
 
-    return <ArrowLink href={href} target={'_blank'}>
+    const ref = useRef<HTMLAnchorElement | null>(null);
+    const entry = useIntersectionObserver(ref, {});
+    const isVisible = !!entry?.isIntersecting;
+
+    return <ArrowLink ref={ref} href={href} target={'_blank'} visible={isVisible}>
         <Text>{text}</Text>
         <Arrow src={image} alt={'arrow'} width={60} height={0}/>
     </ArrowLink>;

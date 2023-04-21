@@ -2,7 +2,7 @@ import React from 'react';
 
 import { HeaderArrowButton } from 'components/ArrowButton/HeaderArrowButton';
 import { scaleUp } from 'components/Circles/keyframes';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 const Circle = styled.div`
 
@@ -24,19 +24,55 @@ const Circle = styled.div`
   }
 `;
 
+const showFromBottom = keyframes`
+  from {
+    top: 100%;
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+    top: 0;
+  }
+`;
+
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
+
+const StyledDummyText = styled.div`
+  visibility: hidden;
+`;
+
+const StyledText = styled.div<{ delay: number }>`
+  position: absolute;
+  top: 100%;
+  opacity: 0;
+  animation: ${showFromBottom} 800ms cubic-bezier(0.075, 0.32, 0.12, 0.95) forwards ${(props) => props.delay}ms;
+  will-change: transform;
+`;
+
 const StyledWrapper = styled.div`
+  position: relative;
+  overflow: hidden;
   font-weight: 800;
   font-size: clamp(2.3rem, 7vw, 4.7rem);
-  line-height: 1;
+  line-height: 1.2;
   color: #F1F1F1;
 `;
 
-const StyledWrapper2 = styled.div`
+const StyledWrapper2 = styled.div<{ delay: number }>`
   font-weight: 400;
   font-size: clamp(1.2rem, 1.5vw, 1.5rem);
   line-height: 1.2;
   margin-top: 30px;
   color: #BDBDBD;
+  opacity: 0;
+  animation: ${fadeIn} 1000ms ease forwards ${(props) => props.delay}ms;
 `;
 
 const StyledHeader = styled.div`
@@ -136,9 +172,15 @@ export const Header = () => {
         <div className={'mb-[150px] flex grow items-end justify-center  md:mb-[200px]'}>
             <HeaderMiddle>
                 <StyledTitle>
-                    <StyledWrapper>{'emilia markiewicz'}</StyledWrapper>
-                    <StyledWrapper>{'ui/ux designer'}</StyledWrapper>
-                    <StyledWrapper2>{'Hi I’m Emilia Markiewicz, a passionate UI/UX Designer from Poland.'}</StyledWrapper2>
+                    <StyledWrapper>
+                        <StyledDummyText>{'a'}</StyledDummyText>
+                        <StyledText delay={0}>{'emilia markiewicz'}</StyledText>
+                    </StyledWrapper>
+                    <StyledWrapper>
+                        <StyledDummyText>{'a'}</StyledDummyText>
+                        <StyledText delay={200}>{'ui/ux designer'}</StyledText>
+                    </StyledWrapper>
+                    <StyledWrapper2 delay={500}>{'Hi I’m Emilia Markiewicz, a passionate UI/UX Designer from Poland.'}</StyledWrapper2>
                 </StyledTitle>
                 <div className={'mt-[10px] inline-flex'}>
                     <HeaderArrowButton text={'view all my works'} image={'images/arrow_large_light.svg'}/>

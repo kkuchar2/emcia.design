@@ -98,7 +98,6 @@ export const ProjectItem = (props: ProjectItemProps) => {
     const [loaded, setLoaded] = React.useState(false);
 
     const onLoadingComplete = () => {
-        console.log('loading complete');
         setLoaded(true);
     };
 

@@ -42,6 +42,16 @@ const ArrowLink = styled.a`
   transition: ${transition};
 
   &:before, &:after {
+
+    @keyframes circlePop {
+      0% {
+        transform: translateY(50%) scale(0);
+      }
+      100% {
+        transform: translateY(50%) scale(1);
+      }
+    }
+
     content: '';
     position: absolute;
     height: ${circleDiameter};
@@ -51,6 +61,7 @@ const ArrowLink = styled.a`
     border-radius: calc(${circleDiameter} / 2);
     transition: ${mobileTransition};
     width: 100%;
+    animation: circlePop 800ms cubic-bezier(0.175, 0.72, 0.565, 1) forwards;
 
     @media (min-width: 768px) {
       transition: ${transition};
