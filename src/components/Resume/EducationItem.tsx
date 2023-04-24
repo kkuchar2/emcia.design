@@ -23,7 +23,8 @@ const DesktopDate = styled.div`
   font-size: 1rem;
   font-weight: 400;
   color: #1E1E1E;
-
+  line-height: 1.2;
+  
   @media (min-width: 1024px) {
     display: flex;
     height: 40px;
@@ -38,6 +39,7 @@ const MobileDate = styled.div`
   font-weight: 400;
   color: #807F7F;
   margin-top: 12px;
+  line-height: 1.2;
 
   @media (min-width: 1024px) {
     display: none;
@@ -50,6 +52,7 @@ const EducationTitle = styled.div`
   display: flex;
   align-items: center;
   height: 40px;
+  line-height: 1.2;
 `;
 
 const School = styled.div`
@@ -57,6 +60,7 @@ const School = styled.div`
   font-weight: 300;
   margin-top: 0.2rem;
   color: #1E1E1E;
+  line-height: 1.2;
 
   @media (min-width: 1024px) {
     color: #807F7F;
