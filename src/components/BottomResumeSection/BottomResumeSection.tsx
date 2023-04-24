@@ -139,7 +139,9 @@ export const BottomResumeSection = () => {
         <CircleWrapper>
             <DownloadResumeSection>
                 <DownloadResumeTitle>{'Download my resume'}</DownloadResumeTitle>
-                <ResumeButton>{'Click here'}</ResumeButton>
+                <ResumeButton href={'doc/CV-Emilia-Markiewicz.pdf'} target={'blank'}>
+                    {'Click here'}
+                </ResumeButton>
             </DownloadResumeSection>
         </CircleWrapper>
         <Footer>
