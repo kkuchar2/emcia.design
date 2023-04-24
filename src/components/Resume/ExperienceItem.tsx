@@ -20,7 +20,7 @@ const StyledExperienceItem = styled.div`
 const DesktopDate = styled.div`
   display: none;
   gap: 5px;
-  font-size: clamp(1rem, 1.7vw, 1.2rem);
+  font-size: 1rem;
   font-weight: 300;
   color: #f1f1f1;
 
@@ -34,7 +34,7 @@ const DesktopDate = styled.div`
 const MobileDate = styled.div`
   display: flex;
   gap: 5px;
-  font-size: clamp(1rem, 1.5vw, 1rem);
+  font-size: 1rem;
   font-weight: 400;
   color: #807F7F;
   margin-top: 12px;
@@ -55,7 +55,6 @@ const JobTitle = styled.div`
 const Company = styled.div`
   font-size: clamp(1.2rem, 1.5vw, 1.1rem);
   font-weight: 300;
-  margin-top: 12px;
 `;
 
 const Duty = styled.div`
@@ -115,7 +114,7 @@ export const ExperienceItem = (props: IExperienceItem) => {
                 <div>{'-'}</div>
                 <div>{endDate}</div>
             </MobileDate>
-            <div className={'mt-[20px] flex flex-col gap-1 text-sm text-[#807F7F]'}>
+            <div className={'mt-[30px] flex flex-col gap-2 text-sm text-[#807F7F]'}>
                 <div className={'flex flex-col gap-2'}>
                     {dutiesList}
                 </div>

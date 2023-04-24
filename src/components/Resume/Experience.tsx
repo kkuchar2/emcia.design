@@ -32,11 +32,10 @@ const ExperienceTitle = styled.div`
 `;
 
 const ExperienceDescription = styled.div`
-  font-size: clamp(1rem, 1.7vw, 1rem);
+  font-size: clamp(1rem, 1vw, 1rem);
   color: #807F7F;
   font-weight: 400;
-  letter-spacing: -0.02em;
-  max-width: 400px;
+  letter-spacing: 0.02em;
 `;
 
 const StyledExperienceItems = styled.div`
@@ -44,7 +43,7 @@ const StyledExperienceItems = styled.div`
   width: 100%;
   max-width: 1000px;
   flex-direction: column;
-  gap: 5rem;
+  gap: 7rem;
 `;
 
 export const Experience = () => {

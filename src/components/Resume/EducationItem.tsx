@@ -20,7 +20,7 @@ const StyledEducationItem = styled.div`
 const DesktopDate = styled.div`
   display: none;
   gap: 5px;
-  font-size: clamp(1rem, 1.2vw, 1.2rem);
+  font-size: 1rem;
   font-weight: 400;
   color: #1E1E1E;
 
@@ -34,7 +34,7 @@ const DesktopDate = styled.div`
 const MobileDate = styled.div`
   display: flex;
   gap: 5px;
-  font-size: clamp(0.9rem, 1.5vw, 1rem);
+  font-size: 1rem;
   font-weight: 400;
   color: #807F7F;
   margin-top: 12px;

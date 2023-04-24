@@ -44,10 +44,10 @@ const EducationItems = styled.div`
   width: 100%;
   max-width: 1000px;
   flex-direction: column;
-  gap: 3rem;
+  gap: 2rem;
 
   @media (min-width: 768px) {
-    gap: 5rem;
+    gap: 3rem;
   }
 `;
 
@@ -56,10 +56,10 @@ const CertificationItems = styled.div`
   width: 100%;
   max-width: 1000px;
   flex-direction: column;
-  gap: 3rem;
+  gap: 2rem;
 
   @media (min-width: 768px) {
-    gap: 5rem;
+    gap: 3rem;
   }
 `;
 
