@@ -68,10 +68,10 @@ export const portfolioConfig: IPortfolioConfig = {
             secondaryTitle: 'Here you can find my Dribble shots.',
             shots: [
                 {
-                    name: 'Landing page | Daily UI Challenge 003',
+                    name: 'Sign up page | Daily UI Challenge 001',
                     image: 'daily_ui_challenge_001.png',
-                    link: 'https://dribbble.com/shots/19530852-Landing-page-Daily-UI-Challenge-003',
-                    blurDataURL: 'LAQvq9_MDgD%t7j[fQayDzMybcxt'
+                    link: 'https://dribbble.com/shots/19032056-Sign-up-page-Daily-UI-Challenge-001',
+                    blurDataURL: 'L13+M@_0M_9Hs?aRM|W+ICM#ogxt'
                 },
                 {
                     name: 'Credit Card Checkout | Daily UI Challenge 002',
@@ -80,10 +80,10 @@ export const portfolioConfig: IPortfolioConfig = {
                     blurDataURL: 'L6QvtJ%KKbkR#S}=osd?.it2IAM_'
                 },
                 {
-                    name: 'Sign up page | Daily UI Challenge 001',
+                    name: 'Landing page | Daily UI Challenge 003',
                     image: 'daily_ui_challenge_003.png',
-                    link: 'https://dribbble.com/shots/19032056-Sign-up-page-Daily-UI-Challenge-001',
-                    blurDataURL: 'L13+M@_0M_9Hs?aRM|W+ICM#ogxt'
+                    link: 'https://dribbble.com/shots/19530852-Landing-page-Daily-UI-Challenge-003',
+                    blurDataURL: 'LAQvq9_MDgD%t7j[fQayDzMybcxt'
                 }
             ]
         }

@@ -82,10 +82,7 @@ export const NavBar = () => {
     }, [router, setNavbarOpened]);
 
     useEffect(() => {
-        console.log('screenWidth', screenWidth);
         if (screenWidth > 1024) {
-            console.log('try to setNavbarOpened(false);');
-            console.log('setNavbarOpened', setNavbarOpened);
             setNavbarOpened(false);
         }
     }, [screenWidth]);
