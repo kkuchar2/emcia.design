@@ -23,6 +23,11 @@ export const StyledNavBarItem = styled(Link)<StyledNavBarItemProps>`
   transition: transform 0.3s ease-in-out, color 0.2s ease-in-out;
   text-transform: lowercase;
 
+  // when pressed:
+  &:active {
+    font-weight: 700;
+  }
+
   &:after {
     display: none;
     content: '';
