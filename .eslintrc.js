@@ -15,8 +15,8 @@ const react = {};
 const typescript = {};
 
 const stylistic = {
-    'no-multiple-empty-lines': ['error', {max: 1, maxBOF: 0, maxEOF: 0}],
-    'no-trailing-spaces': ['error', {skipBlankLines: false}],
+    'no-multiple-empty-lines': ['error', { max: 1, maxBOF: 0, maxEOF: 0 }],
+    'no-trailing-spaces': ['error', { skipBlankLines: false }],
     'comma-spacing': 'error',
     'comma-style': 'error',
     'react/no-unescaped-entities': 0,
@@ -29,32 +29,51 @@ const stylistic = {
     'space-in-parens': ['error', 'never'],
     'space-infix-ops': 'error',
     'space-unary-ops': 'error',
+    'object-curly-spacing': ['error', 'always'],
     'wrap-regex': 'error',
+    'tailwindcss/classnames-order': 'error',
     'import/order': [
         'error',
         {
-            alphabetize: {
-                order: 'asc',
-                caseInsensitive: true,
-            },
-            'newlines-between': 'always',
-            groups: ['builtin', 'external', 'parent', 'sibling', 'index'],
-            pathGroups: [
-                {
-                    pattern: 'react',
-                    group: 'external',
-                    position: 'before',
-                },
+            'groups': [
+                'builtin',
+                'external',
+                'internal',
+                'parent',
+                'sibling',
+                'index'
             ],
-            pathGroupsExcludedImportTypes: ['builtin'],
-        },
+            'newlines-between': 'always',
+            'alphabetize': {
+                'order': 'asc',
+                'caseInsensitive': true
+            },
+            'pathGroups': [
+                {
+                    'pattern': 'react',
+                    'group': 'external',
+                    'position': 'before'
+                },
+                {
+                    'pattern': '*.css',
+                    'group': 'unknown',
+                    'position': 'after'
+                }
+            ],
+            'pathGroupsExcludedImportTypes': ['builtin'],
+
+        }
     ],
     'no-unused-vars': 'off', // or "@typescript-eslint/no-unused-vars": "off",
     'unused-imports/no-unused-imports': 'error',
     'unused-imports/no-unused-vars': [
         'warn',
-        {'vars': 'all', 'varsIgnorePattern': '^_', 'args': 'after-used', 'argsIgnorePattern': '^_'}
+        { 'vars': 'all', 'varsIgnorePattern': '^_', 'args': 'after-used', 'argsIgnorePattern': '^_' }
     ],
+};
+
+const tailwind = {
+    'tailwindcss/no-custom-classname': 'off',
 };
 
 const rules = Object.assign({},
@@ -66,7 +85,9 @@ const rules = Object.assign({},
     es6,
     react,
     typescript,
-    stylistic);
+    stylistic,
+    tailwind
+);
 
 module.exports = {
     root: true,
@@ -91,7 +112,8 @@ module.exports = {
         node: false
     },
     extends: [
-        'plugin:react/recommended'
+        'plugin:react/recommended',
+        'plugin:tailwindcss/recommended'
     ],
     rules: rules,
     overrides: [
