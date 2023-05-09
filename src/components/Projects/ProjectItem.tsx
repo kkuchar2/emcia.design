@@ -110,7 +110,8 @@ export const ProjectItem = (props: ProjectItemProps) => {
                 title={alt}
                 fill={true}
                 onLoadingComplete={onLoadingComplete}
-                sizes={'(min-width: 1024px) 512px, (min-width: 28em) 45vw, 100vw'}
+                sizes={'(max-width: 768px) 100vw, 50vw'}
+                priority={true}
                 quality={100}
                 style={{
                     objectFit: objectFit || 'cover',
