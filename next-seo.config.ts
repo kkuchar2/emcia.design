@@ -16,7 +16,11 @@ export default {
         title: 'Emilia Markiewicz',
         description: 'Aspiring UI/UX designer',
         language: { hrefLang: 'en-US', text: 'English' },
-        images: [],
+        images: [
+            {
+                url: 'https://emcia.design/images/og-image.png',
+            }
+        ],
         site_name: 'Emilia Markiewicz',
     }
 };
