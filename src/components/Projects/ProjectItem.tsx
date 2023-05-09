@@ -110,7 +110,7 @@ export const ProjectItem = (props: ProjectItemProps) => {
                 title={alt}
                 fill={true}
                 onLoadingComplete={onLoadingComplete}
-                sizes={'(max-width: 768px) 100vw, 50vw'}
+                sizes={'(max-width: 768px) 100vw, (max-width: 1024px) 620px, 800px'}
                 priority={true}
                 quality={100}
                 style={{
