@@ -6,7 +6,7 @@ export default {
     defaultTitle: 'Emilia Markiewicz | UI/UX Designer | Portfolio',
     description: 'I\'m Emilia Markiewicz, an UI/UX designer specializing in creating beautiful and functional user interfaces. Check out my portfolio to see my work.',
     language: 'en',
-    canonical: 'https://emcia.design',
+    canonical: 'https://www.emcia.design',
     type: 'website',
 
     // Facebook OpenGraph
