@@ -187,13 +187,13 @@ export const portfolioConfig: IPortfolioConfig = {
         {
             startDate: '02/2017',
             endDate: '09/2018',
-            title: 'Spatial Planning, Master of Science in Engineering',
+            title: 'Spatial Planning, Master of Engineering',
             school: 'Warsaw University of Technology'
         },
         {
             startDate: '10/2013',
             endDate: '02/2017',
-            title: 'Spatial Planning, Bachelor of Science in Engineering',
+            title: 'Spatial Planning, Bachelor of Engineering',
             school: 'Warsaw University of Technology'
         }
     ],

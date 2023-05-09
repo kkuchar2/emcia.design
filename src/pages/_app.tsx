@@ -5,18 +5,11 @@ import { Page } from 'components/Pages/Page';
 import useScrollbarWidth from 'hooks/use-scrollbar-width';
 import Head from 'next/head';
 import { DefaultSeo, SocialProfileJsonLd } from 'next-seo';
-import styled from 'styled-components';
 
 import SEO from '../../next-seo.config';
 import MainContextProvider from '../MainContext';
 
 import '../styles/globals.css';
-
-const StyledApp = styled.div`
-  //* {
-  //  outline: 1px solid rgba(116, 18, 148, 0.63);
-  //}
-`;
 
 const App = function ({ Component, pageProps }) {
 
@@ -46,7 +39,7 @@ const App = function ({ Component, pageProps }) {
         };
     });
 
-    return <StyledApp>
+    return <div>
         <Head>
             <title>{'Emilia Markiewicz'}</title>
             <meta name={'viewport'} content={'width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5'}/>
@@ -70,7 +63,7 @@ const App = function ({ Component, pageProps }) {
             <Page component={Component} pageProps={pageProps}/>
             <Analytics/>
         </MainContextProvider>
-    </StyledApp>;
+    </div>;
 };
 
 export default App;
