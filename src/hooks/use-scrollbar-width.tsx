@@ -29,6 +29,7 @@ const useScrollbarWidth = () => {
             setScrollbarWidth(outer.offsetWidth - inner.offsetWidth);
             setScrollbarWidthMultiplier(isScrollbarVisible() ? 1 : 0);
             outer.parentNode.removeChild(outer);
+            document.documentElement.style.setProperty('--navbar-opacity', '1');
         };
 
         const updateOnResize = () => {

@@ -29,6 +29,8 @@ const StyledHamburgerButton = styled.button<StyledHamburgerButtonProps>`
   display: block;
   -webkit-tap-highlight-color: transparent;
   mix-blend-mode: ${({ navbarOpened }) => navbarOpened ? 'unset' : 'difference'};
+  opacity: var(--navbar-opacity);
+  transition: opacity 0.8s ease;
 
   @media (min-width: 1024px) {
     display: none;

@@ -17,8 +17,6 @@ const StyledNavBarDesktopItems = styled.div`
   z-index: 2;
   mix-blend-mode: difference;
   color: #e5e5e5;
-  transition: opacity 0.3s ease;
-  transition-delay: 0.2s;
   will-change: opacity;
   animation: none;
   justify-content: flex-end;
@@ -36,7 +34,7 @@ export const NavBarDesktopItems = (props: INavbarConfig) => {
         return config.items.map((item, index) => <NavBarItem index={index} key={index} {...item}/>);
     }, []);
 
-    return <StyledNavBarDesktopItems>
+    return <StyledNavBarDesktopItems className={'ease opacity-[--navbar-opacity] transition-opacity duration-[800ms]'}>
         {items}
     </StyledNavBarDesktopItems>;
 };
