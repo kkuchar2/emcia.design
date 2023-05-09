@@ -87,14 +87,14 @@ const ArrowLink = styled.a<{ visible: boolean }>`
 
 export const ProjectArrowButton = (props: ArrowButtonProps) => {
 
-    const { text, image, href } = props;
+    const { text, image, href, title } = props;
 
     const ref = useRef<HTMLAnchorElement | null>(null);
     const entry = useIntersectionObserver(ref, {});
     const isVisible = !!entry?.isIntersecting;
 
-    return <ArrowLink ref={ref} href={href} target={'_blank'} visible={isVisible}>
+    return <ArrowLink ref={ref} href={href} title={title} target={'_blank'} visible={isVisible}>
         <Text>{text}</Text>
-        <Arrow src={image} alt={'arrow'} width={60} height={0}/>
+        <Arrow src={image} alt={'arrow'} title={'arrow'} width={60} height={0}/>
     </ArrowLink>;
 };

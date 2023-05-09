@@ -24,14 +24,14 @@ const Circle = styled.div`
   }
 `;
 
-const StyledWrapper = styled.div`
+const StyledWrapper = styled.h1`
   font-weight: 600;
   font-size: clamp(2.3rem, 7vw, 4.7rem);
   line-height: 1;
   color: #1E1E1E;
 `;
 
-const StyledWrapper2 = styled.div`
+const StyledWrapper2 = styled.h2`
   font-weight: 400;
   font-size: clamp(1.2rem, 1.5vw, 1.5rem);
   line-height: 1.2;

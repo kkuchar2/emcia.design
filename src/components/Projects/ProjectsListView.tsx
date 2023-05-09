@@ -54,14 +54,14 @@ const StyledProjectItems = styled.div`
   }
 `;
 
-const Title = styled.div`
+const Title = styled.h1`
   font-size: clamp(1.8rem, 3.5vw, 2.8rem);
   font-weight: 700;
   letter-spacing: -0.06em;
   color: #1e1e1e;
 `;
 
-const SecondaryTitle = styled.div`
+const SecondaryTitle = styled.h2`
   font-size: clamp(1rem, 1.7vw, 1.2rem);
   color: #6E6E6E;
   font-weight: 400;

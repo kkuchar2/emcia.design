@@ -2,9 +2,12 @@ export default {
 
     // Main
     title: 'Emilia Markiewicz',
-    description: 'Aspiring UI/UX designer',
+    titleTemplate: '%s | UI/UX Designer | Portfolio',
+    defaultTitle: 'Emilia Markiewicz | UI/UX Designer | Portfolio',
+    description: 'I\'m Emilia Markiewicz, an UI/UX designer specializing in creating beautiful and functional user interfaces. Check out my portfolio to see my work.',
     language: 'en',
     canonical: 'https://emcia.design',
+    type: 'website',
 
     // Facebook OpenGraph
     openGraph: {
@@ -15,8 +18,5 @@ export default {
         language: { hrefLang: 'en-US', text: 'English' },
         images: [],
         site_name: 'Emilia Markiewicz',
-    },
-
-    // Twitter
-    twitter: {},
+    }
 };

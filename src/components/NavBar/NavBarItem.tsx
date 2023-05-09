@@ -88,7 +88,7 @@ export const NavBarItem = (item: INavBarItem & INavbarItemProps) => {
 
     const { title, link, index } = item;
 
-    return <StyledNavBarItem index={index} href={link}>
+    return <StyledNavBarItem index={index} href={link} title={title}>
         {title.toLowerCase()}
     </StyledNavBarItem>;
 };

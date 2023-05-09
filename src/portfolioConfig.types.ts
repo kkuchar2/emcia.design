@@ -12,6 +12,7 @@ export interface Project {
     image: string;
     logo?: string;
     link: string;
+    linkTitle?: string;
     tags: string[];
     alt: string;
     shortDescription: string;

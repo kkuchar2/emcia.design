@@ -48,7 +48,7 @@ const StyledDummyText = styled.div`
   visibility: hidden;
 `;
 
-const StyledText = styled.div<{ delay: number }>`
+const StyledText = styled.h1<{ delay: number }>`
   position: absolute;
   top: 100%;
   opacity: 0;
@@ -65,7 +65,7 @@ const StyledWrapper = styled.div`
   color: #F1F1F1;
 `;
 
-const StyledWrapper2 = styled.div<{ delay: number }>`
+const StyledWrapper2 = styled.h2<{ delay: number }>`
   font-weight: 400;
   font-size: clamp(1.2rem, 1.5vw, 1.5rem);
   line-height: 1.2;
@@ -183,7 +183,7 @@ export const Header = () => {
                     <StyledWrapper2 delay={500}>{'Hi I’m Emilia Markiewicz, a passionate UI/UX Designer from Poland.'}</StyledWrapper2>
                 </StyledTitle>
                 <div className={'mt-[10px] inline-flex'}>
-                    <HeaderArrowButton text={'view all my works'} image={'images/arrow_large_light.svg'}/>
+                    <HeaderArrowButton text={'view all my works'} image={'images/arrow_large_light.svg'} title={'View all my works'}/>
                 </div>
             </HeaderMiddle>
         </div>

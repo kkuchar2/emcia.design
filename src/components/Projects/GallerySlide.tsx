@@ -57,6 +57,7 @@ const _GallerySlide = (props: GallerySlideProps) => {
             <Image
                 src={img}
                 alt={shot.name}
+                title={shot.name}
                 loading={'lazy'}
                 fill={true}
                 sizes={'(min-width: 60em) 50vw, (min-width: 28em) 45vw, 80vw'}

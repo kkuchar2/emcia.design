@@ -20,6 +20,7 @@ const SocialIcon = (props: ISocialIcon) => {
     const { src, alt, scale } = props;
     return <StyledIcon>
         <Image
+            title={alt}
             src={src}
             alt={alt}
             width={35}

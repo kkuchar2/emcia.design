@@ -4,7 +4,7 @@ import { Analytics } from '@vercel/analytics/react';
 import { Page } from 'components/Pages/Page';
 import useScrollbarWidth from 'hooks/use-scrollbar-width';
 import Head from 'next/head';
-import { DefaultSeo } from 'next-seo';
+import { DefaultSeo, SocialProfileJsonLd } from 'next-seo';
 import styled from 'styled-components';
 
 import SEO from '../../next-seo.config';
@@ -54,6 +54,17 @@ const App = function ({ Component, pageProps }) {
         </Head>
 
         <DefaultSeo {...SEO} />
+
+        <SocialProfileJsonLd
+            type={'Person'}
+            name={'Emilia Markiewicz'}
+            url={'https://emcia.design'}
+            sameAs={[
+                'https://www.behance.net/emiliamarkiewicz',
+                'https://dribbble.com/emiliamarkiewicz',
+                'https://www.linkedin.com/in/emiliamarkiewicz',
+            ]}
+        />
 
         <MainContextProvider>
             <Page component={Component} pageProps={pageProps}/>

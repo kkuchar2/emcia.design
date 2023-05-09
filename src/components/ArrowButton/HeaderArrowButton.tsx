@@ -117,10 +117,10 @@ const ArrowLink = styled.a`
 
 export const HeaderArrowButton = (props: ArrowButtonProps) => {
 
-    const { text, image } = props;
+    const { text, image, title } = props;
 
-    return <ArrowLink href={'/projects'}>
+    return <ArrowLink href={'/projects'} title={title}>
         <Text>{text}</Text>
-        <Arrow src={image} alt={'arrow'} width={60} height={0}/>
+        <Arrow src={image} alt={'arrow'} title={'arrow'} width={60} height={0}/>
     </ArrowLink>;
 };

@@ -107,6 +107,7 @@ export const ProjectItem = (props: ProjectItemProps) => {
                 src={img}
                 loading={'eager'}
                 alt={alt}
+                title={alt}
                 fill={true}
                 onLoadingComplete={onLoadingComplete}
                 sizes={'(min-width: 1024px) 512px, (min-width: 28em) 45vw, 100vw'}
@@ -126,7 +127,7 @@ export const ProjectItem = (props: ProjectItemProps) => {
             </StyledProjectLongDescription>
 
             <div className={'mt-[40px] flex items-end md:mt-0 '}>
-                <ProjectArrowButton text={'more details'} image={'images/arrow_large.svg'} href={project.link}/>
+                <ProjectArrowButton text={'more details'} image={'images/arrow_large.svg'} href={project.link} title={project.linkTitle}/>
             </div>
         </StyledProjectDescription>
     </StyledProjectItem>;

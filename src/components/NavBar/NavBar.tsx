@@ -112,7 +112,6 @@ export const NavBar = () => {
             <StyledOverlay2
                 className={navbarOpened ? 'opened' : ''}
                 opened={navbarOpened}/>
-
         </div>
     </>;
 };

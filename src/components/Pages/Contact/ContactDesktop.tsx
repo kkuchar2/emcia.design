@@ -35,7 +35,7 @@ const BigScreenTitle = styled.div`
   }
 `;
 
-const Title = styled.div`
+const Title = styled.h1`
   visibility: visible;
   color: #e1e1e1;
   position: relative;
@@ -45,7 +45,7 @@ const Title = styled.div`
   line-height: normal;
 `;
 
-const TitleHelloMessage = styled.div`
+const TitleHelloMessage = styled.h2`
   font-size: clamp(1rem, 2vw, 1.2rem);
   font-weight: 400;
   color: #807F7F;

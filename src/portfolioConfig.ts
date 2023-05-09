@@ -6,6 +6,7 @@ const allProjects = [
         title: 'serenity.',
         image: 'serenity_square.png',
         link: 'https://www.behance.net/gallery/156628655/Serenity-Candlemaker-Mobile-App',
+        linkTitle: 'Behance - Serenity Candlemaker Mobile App',
         tags: ['UI/UX', 'Mobile', 'App', 'Case Study', 'Design System', 'Candles'],
         alt: 'Serenity app',
         shortDescription: 'CANDLEMAKER STORE MOBILE APP',
@@ -15,6 +16,7 @@ const allProjects = [
         title: 'aprojekt.',
         image: 'aprojekt_square.png',
         link: 'https://www.behance.net/gallery/164216181/Aprojekt-Website-UI-Redesign',
+        linkTitle: 'Behance - Aprojekt Website UI redesign',
         tags: ['UI/UX', 'Web', 'Website', 'Case Study', 'Design System', 'Telecommunications'],
         alt: 'Aprojekt app',
         shortDescription: 'FIBER CABLES COMPANY',
@@ -113,7 +115,7 @@ export const portfolioConfig: IPortfolioConfig = {
             link: {
                 href: 'https://dribbble.com/emiliamarkiewicz',
                 target: '_blank',
-                title: 'Dribble'
+                title: 'Emilia Markiewicz - Dribble'
             },
             icon: {
                 src: 'images/dribble.svg',
@@ -125,7 +127,7 @@ export const portfolioConfig: IPortfolioConfig = {
             link: {
                 href: 'https://www.behance.net/emiliamarkiewicz',
                 target: '_blank',
-                title: 'Behance'
+                title: 'Emilia Markiewicz - Behance'
             },
             icon: {
                 src: 'images/behance.svg',
@@ -137,7 +139,7 @@ export const portfolioConfig: IPortfolioConfig = {
             link: {
                 href: 'https://www.linkedin.com/in/emiliamarkiewicz',
                 target: '_blank',
-                title: 'LinkedIn'
+                title: 'Emilia Markiewicz - LinkedIn'
             },
             icon: {
                 src: 'images/linkedin.svg',
