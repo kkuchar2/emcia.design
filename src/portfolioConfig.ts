@@ -191,8 +191,8 @@ export const portfolioConfig: IPortfolioConfig = {
             school: 'Warsaw University of Technology'
         },
         {
-            startDate: '02/2017',
-            endDate: '09/2018',
+            startDate: '10/2013',
+            endDate: '02/2017',
             title: 'Spatial Planning, Bachelor of Science in Engineering',
             school: 'Warsaw University of Technology'
         }
