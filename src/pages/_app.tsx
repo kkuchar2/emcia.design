@@ -4,7 +4,7 @@ import { Analytics } from '@vercel/analytics/react';
 import { Page } from 'components/Pages/Page';
 import useScrollbarWidth from 'hooks/use-scrollbar-width';
 import Head from 'next/head';
-import { DefaultSeo, SocialProfileJsonLd } from 'next-seo';
+import { DefaultSeo, SocialProfileJsonLd, WebPageJsonLd } from 'next-seo';
 
 import SEO from '../../next-seo.config';
 import MainContextProvider from '../MainContext';
@@ -57,6 +57,16 @@ const App = function ({ Component, pageProps }) {
                 'https://dribbble.com/emiliamarkiewicz',
                 'https://www.linkedin.com/in/emiliamarkiewicz',
             ]}
+        />
+        <WebPageJsonLd
+            id={'https://emcia.design'}
+            name={'Emilia Markiewicz - UI/UX Designer Portfolio'}
+            description={'I\'m Emilia Markiewicz, an UI/UX designer specializing in creating beautiful and functional user interfaces. Check out my portfolio to see my work.'}
+            url={'https://emcia.design'}
+            author={{
+                '@type': 'Person',
+                'name': 'Emilia Markiewicz',
+            }}
         />
 
         <MainContextProvider>
