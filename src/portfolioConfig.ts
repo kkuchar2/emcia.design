@@ -45,7 +45,8 @@ let selectedProjects = transformStyles(allProjects, {
     'serenity.': {
         background: '#EBE8E4',
         targetZoom: 1.2,
-        objectFit: 'contain'
+        objectFit: 'contain',
+        longDescriptionMaxWidth: 400
     },
     'aprojekt.': {
         background: 'transparent',
