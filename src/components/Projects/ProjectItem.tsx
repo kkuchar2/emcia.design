@@ -56,13 +56,35 @@ interface ProjectItemProps {
     project: Project;
 }
 
-export const StyledImageWrapper = styled.div<{ isVisible?: boolean, background?: string }>`
+export const StyledImageWrapper = styled.div`
   aspect-ratio: 4/3;
   position: relative;
   overflow: hidden;
-  background: ${({ background, isVisible }) => isVisible ? background : 'transparent'};
   transition: background 2s ease;
   order: 1;
+`;
+
+const StyledImageBackground = styled.div<{ isVisible?: boolean, background?: string }>`
+  width: 100%;
+  height: 100%;
+
+  &:after, &:before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: opacity 2s ease;
+  }
+
+  &:after {
+    background: ${({ background }) => background};
+    opacity: ${({ isVisible }) => isVisible ? 1 : 0};
+  }
+
+  &:before {
+    background: transparent;
+    opacity: ${({ isVisible }) => isVisible ? 0 : 1};
+  }
 `;
 
 const Title = styled.div`
@@ -83,7 +105,7 @@ export const ProjectItem = (props: ProjectItemProps) => {
 
     const { project } = props;
 
-    const { title, image, alt, shortDescription, longDescription, style } = project;
+    const { title, image, overlayImage, alt, shortDescription, longDescription, style } = project;
 
     const { background, targetZoom, objectFit } = style || {};
 
@@ -95,6 +117,12 @@ export const ProjectItem = (props: ProjectItemProps) => {
 
     const img = require(`/public/images/${image}`);
 
+    let overlayImg;
+
+    if (overlayImage) {
+        overlayImg = require(`/public/images/${overlayImage}`);
+    }
+
     const [loaded, setLoaded] = React.useState(false);
 
     const onLoadingComplete = () => {
@@ -102,7 +130,8 @@ export const ProjectItem = (props: ProjectItemProps) => {
     };
 
     return <StyledProjectItem ref={ref}>
-        <StyledImageWrapper isVisible={isVisible} background={background}>
+        <StyledImageWrapper>
+            <StyledImageBackground isVisible={isVisible} background={background}/>
             <Image
                 src={img}
                 loading={'eager'}
@@ -118,6 +147,21 @@ export const ProjectItem = (props: ProjectItemProps) => {
                     transition: 'transform 2s cubic-bezier(0.075, 0.82, 0.165, 1), opacity 2s ease',
                     transform: isVisible && loaded ? `translateY(0) scale(${targetZoom})` : 'translateY(400px) scale(2)'
                 }}/>
+            {overlayImage && <Image
+                src={overlayImg}
+                loading={'eager'}
+                alt={alt}
+                title={alt}
+                fill={true}
+                onLoadingComplete={onLoadingComplete}
+                sizes={'(max-width: 768px) 100vw, (max-width: 1024px) 620px, 800px'}
+                priority={true}
+                quality={100}
+                style={{
+                    objectFit: objectFit || 'cover',
+                    transition: 'transform 2s cubic-bezier(0.075, 0.82, 0.165, 1) 300ms, opacity 2s ease',
+                    transform: isVisible && loaded ? `translateY(-20px) scale(${1.2})` : 'translateY(400px) scale(2)'
+                }}/>}
         </StyledImageWrapper>
 
         <StyledProjectDescription>

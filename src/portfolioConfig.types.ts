@@ -10,6 +10,7 @@ export interface ProjectStyle {
 export interface Project {
     title: string;
     image: string;
+    overlayImage?: string;
     logo?: string;
     link: string;
     linkTitle?: string;

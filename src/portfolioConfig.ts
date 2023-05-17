@@ -13,6 +13,18 @@ const allProjects = [
         longDescription: 'A mobile app designed to connect craftspeople and customers who appreciate high quality and unique products.',
     },
     {
+        title: 'sciencelo.',
+        image: 'sciencelo_no_text.png',
+        overlayImage: 'sciencelo_text_image.png',
+        link: 'https://www.behance.net/gallery/170657341/Sciencelo-Landing-Page-UI-Design',
+        linkTitle: 'Behance - Scencelo - Educational Platform Landing Page',
+        tags: ['UI/UX', 'Case Study', 'Design System', 'Education', 'Landing Page', 'Sciencelo'],
+        alt: 'Sciencelo landing page',
+        extraImageText: 'Sciencelo.',
+        shortDescription: 'EDUCATIONAL PLATFORM LANDING PAGE',
+        longDescription: 'This UI case study highlights the design of Sciencelo\'s educational networking platform landing page. The platform effectively matches educational content to users, ensuring a personalized learning process. I created this project with the assistance of artificial intelligence tools, specifically ChatGPT-3 and Midjourney AI.',
+    },
+    {
         title: 'aprojekt.',
         image: 'aprojekt_square.png',
         link: 'https://www.behance.net/gallery/164216181/Aprojekt-Website-UI-Redesign',
@@ -25,15 +37,19 @@ const allProjects = [
 ] as Project[];
 
 let selectedProjects = transformStyles(allProjects, {
+    'sciencelo.': {
+        background: '#71A495',
+        targetZoom: 1.1,
+        objectFit: 'contain'
+    },
     'serenity.': {
-        longDescriptionMaxWidth: 400,
         background: '#EBE8E4',
         targetZoom: 1.2,
         objectFit: 'contain'
     },
     'aprojekt.': {
-        background: '#f4f4f4',
-        targetZoom: 0.9,
+        background: 'transparent',
+        targetZoom: 1,
         objectFit: 'cover'
     }
 });
@@ -44,9 +60,14 @@ const showcasedProjects = transformStyles(allProjects, {
         targetZoom: 1.2,
         objectFit: 'contain'
     },
+    'sciencelo.': {
+        background: '#71A495',
+        targetZoom: 1.1,
+        objectFit: 'contain'
+    },
     'aprojekt.': {
-        background: '#f4f4f4',
-        targetZoom: 0.9,
+        background: 'transparent',
+        targetZoom: 1,
         objectFit: 'cover'
     }
 });
