@@ -56,7 +56,7 @@ interface ProjectItemProps {
     project: Project;
 }
 
-export const StyledImageWrapper = styled.div`
+export const StyledImageWrapper = styled.a`
   aspect-ratio: 4/3;
   position: relative;
   overflow: hidden;
@@ -130,13 +130,13 @@ export const ProjectItem = (props: ProjectItemProps) => {
     };
 
     return <StyledProjectItem ref={ref}>
-        <StyledImageWrapper>
+        <StyledImageWrapper href={project.link} target={'_blank'} rel={'noopener noreferrer'}>
             <StyledImageBackground isVisible={isVisible} background={background}/>
             <Image
                 src={img}
                 loading={'eager'}
-                alt={alt}
-                title={alt}
+                alt={`Open in Behance - ${alt}`}
+                title={`Open in Behance - ${alt}`}
                 fill={true}
                 onLoadingComplete={onLoadingComplete}
                 sizes={'(max-width: 768px) 100vw, (max-width: 1024px) 620px, 800px'}
@@ -150,8 +150,8 @@ export const ProjectItem = (props: ProjectItemProps) => {
             {overlayImage && <Image
                 src={overlayImg}
                 loading={'eager'}
-                alt={alt}
-                title={alt}
+                alt={`Open in Behance - ${alt}`}
+                title={`Open in Behance - ${alt}`}
                 fill={true}
                 onLoadingComplete={onLoadingComplete}
                 sizes={'(max-width: 768px) 100vw, (max-width: 1024px) 620px, 800px'}
