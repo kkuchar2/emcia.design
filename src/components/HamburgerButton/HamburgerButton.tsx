@@ -62,7 +62,12 @@ export const HamburgerButton = (props: HamburgerButtonProps) => {
 
     const { onClick, navbarOpened } = props;
 
-    return <StyledHamburgerButton onClick={onClick} navbarOpened={navbarOpened} isMobile={isMobile}>
+    return <StyledHamburgerButton
+        title={'Menu'}
+        name={'Menu'}
+        onClick={onClick}
+        navbarOpened={navbarOpened}
+        isMobile={isMobile}>
         <StyledHamburgerButtonTopLine navbarOpened={navbarOpened} gap={5}/>
         <StyledHamburgerButtonBottomLine navbarOpened={navbarOpened} gap={5}/>
     </StyledHamburgerButton>;
