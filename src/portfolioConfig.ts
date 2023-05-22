@@ -1,21 +1,26 @@
 import { transformStyles } from './configUtils';
 import { IPortfolioConfig, Project } from './portfolioConfig.types';
 
-const allProjects = [
+const projects = [
     {
         title: 'serenity.',
-        image: 'serenity_square.png',
+        image: 'projects/serenity_square.png',
         link: 'https://www.behance.net/gallery/156628655/Serenity-Candlemaker-Mobile-App',
         linkTitle: 'Behance - Serenity Candlemaker Mobile App',
         tags: ['UI/UX', 'Mobile', 'App', 'Case Study', 'Design System', 'Candles'],
         alt: 'Serenity Candlemaker Mobile App',
         shortDescription: 'CANDLEMAKER STORE MOBILE APP',
         longDescription: 'A mobile app designed to connect craftspeople and customers who appreciate high quality and unique products.',
+        style: {
+            background: '#EBE8E4',
+            targetZoom: 1.2,
+            objectFit: 'contain',
+        }
     },
     {
         title: 'sciencelo.',
-        image: 'sciencelo_no_text.png',
-        overlayImage: 'sciencelo_text_image.png',
+        image: 'projects/sciencelo_no_text.png',
+        overlayImage: 'projects/sciencelo_text_image.png',
         link: 'https://www.behance.net/gallery/170657341/Sciencelo-Landing-Page-UI-Design',
         linkTitle: 'Behance - Scencelo - Educational Platform Landing Page',
         tags: ['UI/UX', 'Case Study', 'Design System', 'Education', 'Landing Page', 'Sciencelo'],
@@ -23,55 +28,36 @@ const allProjects = [
         extraImageText: 'Sciencelo.',
         shortDescription: 'EDUCATIONAL PLATFORM LANDING PAGE',
         longDescription: 'This UI case study highlights the design of Sciencelo\'s educational networking platform landing page. The platform effectively matches educational content to users, ensuring a personalized learning process. I created this project with the assistance of artificial intelligence tools, specifically ChatGPT-3 and Midjourney AI.',
+        style: {
+            background: '#71A495',
+            targetZoom: 1.1,
+            objectFit: 'contain',
+        }
     },
     {
         title: 'aprojekt.',
-        image: 'aprojekt_square.png',
+        image: 'projects/aprojekt_square.png',
         link: 'https://www.behance.net/gallery/164216181/Aprojekt-Website-UI-Redesign',
         linkTitle: 'Behance - Aprojekt Website UI redesign',
         tags: ['UI/UX', 'Web', 'Website', 'Case Study', 'Design System', 'Telecommunications'],
         alt: 'AProjekt Website Redesign',
         shortDescription: 'FIBER CABLES COMPANY',
         longDescription: 'This case study focuses on the website redesign for a small telecommunication project office in Warsaw, with a focus on responsive web design to enhance user experience across devices.',
+        style: {
+            background: 'transparent',
+            targetZoom: 1,
+            objectFit: 'cover',
+        }
     }
 ] as Project[];
 
-let selectedProjects = transformStyles(allProjects, {
-    'sciencelo.': {
-        background: '#71A495',
-        targetZoom: 1.1,
-        objectFit: 'contain'
-    },
+let selectedProjects = transformStyles(projects, {
     'serenity.': {
-        background: '#EBE8E4',
-        targetZoom: 1.2,
-        objectFit: 'contain',
         longDescriptionMaxWidth: 400
     },
-    'aprojekt.': {
-        background: 'transparent',
-        targetZoom: 1,
-        objectFit: 'cover'
-    }
 });
 
-const showcasedProjects = transformStyles(allProjects, {
-    'serenity.': {
-        background: '#EBE8E4',
-        targetZoom: 1.2,
-        objectFit: 'contain'
-    },
-    'sciencelo.': {
-        background: '#71A495',
-        targetZoom: 1.1,
-        objectFit: 'contain'
-    },
-    'aprojekt.': {
-        background: 'transparent',
-        targetZoom: 1,
-        objectFit: 'cover'
-    }
-});
+const showcasedProjects = transformStyles(projects, {});
 
 export const portfolioConfig: IPortfolioConfig = {
     homePageConfig: {
@@ -93,21 +79,18 @@ export const portfolioConfig: IPortfolioConfig = {
             shots: [
                 {
                     name: 'Sign up page | Daily UI Challenge 001',
-                    image: 'daily_ui_challenge_001.png',
-                    link: 'https://dribbble.com/shots/19032056-Sign-up-page-Daily-UI-Challenge-001',
-                    blurDataURL: 'L13+M@_0M_9Hs?aRM|W+ICM#ogxt'
+                    image: 'projects/shots/daily_ui_challenge_001.png',
+                    link: 'https://dribbble.com/shots/19032056-Sign-up-page-Daily-UI-Challenge-001'
                 },
                 {
                     name: 'Credit Card Checkout | Daily UI Challenge 002',
-                    image: 'daily_ui_challenge_002.png',
-                    link: 'https://dribbble.com/shots/19041008-Credit-Card-Checkout-Daily-UI-Challenge-002',
-                    blurDataURL: 'L6QvtJ%KKbkR#S}=osd?.it2IAM_'
+                    image: 'projects/shots/daily_ui_challenge_002.png',
+                    link: 'https://dribbble.com/shots/19041008-Credit-Card-Checkout-Daily-UI-Challenge-002'
                 },
                 {
                     name: 'Landing page | Daily UI Challenge 003',
-                    image: 'daily_ui_challenge_003.png',
+                    image: 'projects/shots/daily_ui_challenge_003.png',
                     link: 'https://dribbble.com/shots/19530852-Landing-page-Daily-UI-Challenge-003',
-                    blurDataURL: 'LAQvq9_MDgD%t7j[fQayDzMybcxt'
                 }
             ]
         }
@@ -140,7 +123,7 @@ export const portfolioConfig: IPortfolioConfig = {
                 title: 'Emilia Markiewicz - Dribble'
             },
             icon: {
-                src: 'images/dribble.svg',
+                src: 'images/icons/dribble.svg',
                 alt: 'Dribble',
                 scale: 0.8,
             }
@@ -152,7 +135,7 @@ export const portfolioConfig: IPortfolioConfig = {
                 title: 'Emilia Markiewicz - Behance'
             },
             icon: {
-                src: 'images/behance.svg',
+                src: 'images/icons/behance.svg',
                 alt: 'Behance',
                 scale: 0.75
             }
@@ -164,7 +147,7 @@ export const portfolioConfig: IPortfolioConfig = {
                 title: 'Emilia Markiewicz - LinkedIn'
             },
             icon: {
-                src: 'images/linkedin.svg',
+                src: 'images/icons/linkedin.svg',
                 alt: 'LinkedIn',
                 scale: 1
             }

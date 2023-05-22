@@ -3,8 +3,11 @@ import React from 'react';
 import { BottomContactSection } from 'components/BottomContactSection/BottomContactSection';
 import { DribbleShotsView } from 'components/Projects/DribbleShotsView';
 import { ProjectsListView } from 'components/Projects/ProjectsListView';
+import { GetStaticProps } from 'next';
 
 import { portfolioConfig } from '../portfolioConfig';
+
+import { PageProps } from './_app';
 
 export default function Projects() {
     return <div className={'flex flex-col items-center justify-center bg-[#f1f1f1]'}>
@@ -13,3 +16,11 @@ export default function Projects() {
         <BottomContactSection/>
     </div>;
 }
+
+export const getStaticProps: GetStaticProps<PageProps> = async () => {
+    return {
+        props: {
+            seoKey: 'projects',
+        },
+    };
+};

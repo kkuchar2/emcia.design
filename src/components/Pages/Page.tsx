@@ -3,12 +3,14 @@ import React, { useEffect } from 'react';
 import { NavBar } from 'components/NavBar/NavBar';
 import { isScrollbarVisible, setScrollbarWidthMultiplier } from 'hooks/use-scrollbar-width';
 
-interface PageProps {
-    component: React.FC;
-    pageProps: any;
+import { PageProps } from '../../pages/_app';
+
+interface GenericPageProps {
+    component: React.ElementType<PageProps>;
+    pageProps: PageProps;
 }
 
-export const Page = (props: PageProps) => {
+export const Page = (props: GenericPageProps) => {
 
     const { component: Component, pageProps } = props;
 

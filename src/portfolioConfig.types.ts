@@ -24,9 +24,8 @@ export interface Project {
 
 export interface DribbleShot {
     name: string;
-    image: string;
+    image?: string;
     link: string;
-    blurDataURL?: string;
 }
 
 export interface INavBarItem {

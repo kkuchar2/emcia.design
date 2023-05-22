@@ -2,8 +2,11 @@ import React, { useEffect, useState } from 'react';
 
 import { ContactDesktop } from 'components/Pages/Contact/ContactDesktop';
 import { ContactMobile } from 'components/Pages/Contact/ContactMobile';
+import { GetStaticProps } from 'next';
 
 import { useMailStore } from '../store/store';
+
+import { PageProps } from './_app';
 
 export default function Contact() {
 
@@ -29,3 +32,11 @@ export default function Contact() {
         </div>
     </>;
 }
+
+export const getStaticProps: GetStaticProps<PageProps> = async () => {
+    return {
+        props: {
+            seoKey: 'contact'
+        },
+    };
+};

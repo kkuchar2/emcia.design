@@ -2,16 +2,19 @@ import React, { useEffect } from 'react';
 
 import { Analytics } from '@vercel/analytics/react';
 import { Page } from 'components/Pages/Page';
+import { SEO } from 'components/SEO/SEO';
 import useScrollbarWidth from 'hooks/use-scrollbar-width';
 import Head from 'next/head';
-import { DefaultSeo, SocialProfileJsonLd, WebPageJsonLd } from 'next-seo';
 
-import SEO from '../../next-seo.config';
 import MainContextProvider from '../MainContext';
 
 import '../styles/globals.css';
 
-const App = function ({ Component, pageProps }) {
+export interface PageProps {
+    seoKey: string;
+}
+
+const App = function ({ Component, pageProps }: { Component: React.ElementType<PageProps>; pageProps: PageProps }) {
 
     useScrollbarWidth();
 
@@ -46,28 +49,7 @@ const App = function ({ Component, pageProps }) {
             <title>{'Emilia Markiewicz'}</title>
         </Head>
 
-        <DefaultSeo {...SEO} />
-
-        <SocialProfileJsonLd
-            type={'Person'}
-            name={'Emilia Markiewicz'}
-            url={'https://emcia.design'}
-            sameAs={[
-                'https://www.behance.net/emiliamarkiewicz',
-                'https://dribbble.com/emiliamarkiewicz',
-                'https://www.linkedin.com/in/emiliamarkiewicz',
-            ]}
-        />
-        <WebPageJsonLd
-            id={'https://emcia.design'}
-            name={'Emilia Markiewicz - UI/UX Designer Portfolio'}
-            description={'I\'m Emilia Markiewicz, an UI/UX designer specializing in creating beautiful and functional user interfaces. Check out my portfolio to see my work.'}
-            url={'https://emcia.design'}
-            author={{
-                '@type': 'Person',
-                'name': 'Emilia Markiewicz',
-            }}
-        />
+        <SEO seoKey={pageProps.seoKey}/>
 
         <MainContextProvider>
             <Page component={Component} pageProps={pageProps}/>

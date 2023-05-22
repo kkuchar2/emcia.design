@@ -6,7 +6,10 @@ export const transformStyles = (projects: Project[],
         const newProject = { ...project };
         const transformKey = Object.keys(transform).find(key => project.title.includes(key));
         if (transformKey) {
-            newProject.style = { ...transform[transformKey] };
+            newProject.style = {
+                ...newProject.style,
+                ...transform[transformKey]
+            };
         }
         return newProject;
     });

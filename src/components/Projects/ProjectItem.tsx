@@ -172,7 +172,11 @@ export const ProjectItem = (props: ProjectItemProps) => {
             </StyledProjectLongDescription>
 
             <div className={'mt-[40px] flex items-end md:mt-0 '}>
-                <ProjectArrowButton text={'more details'} image={'images/arrow_large.svg'} href={project.link} title={project.linkTitle}/>
+                <ProjectArrowButton
+                    text={'more details'}
+                    image={'images/icons/arrow_large.svg'}
+                    href={project.link}
+                    title={project.linkTitle}/>
             </div>
         </StyledProjectDescription>
     </StyledProjectItem>;

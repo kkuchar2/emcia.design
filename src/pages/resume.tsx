@@ -2,6 +2,9 @@ import React from 'react';
 
 import { ResumeDesktop } from 'components/Resume/ResumeDesktop';
 import { ResumeMobile } from 'components/Resume/ResumeMobile';
+import { GetStaticProps } from 'next';
+
+import { PageProps } from './_app';
 
 export default function Resume() {
     return <div className={'bg-[#f1f1f1]'}>
@@ -13,3 +16,11 @@ export default function Resume() {
         </div>
     </div>;
 }
+
+export const getStaticProps: GetStaticProps<PageProps> = async () => {
+    return {
+        props: {
+            seoKey: 'resume',
+        },
+    };
+};

@@ -183,7 +183,10 @@ export const Header = () => {
                     <StyledWrapper2 delay={500}>{'Hi I’m Emilia Markiewicz, a passionate UI/UX Designer from Poland.'}</StyledWrapper2>
                 </StyledTitle>
                 <div className={'mt-[10px] inline-flex'}>
-                    <HeaderArrowButton text={'view all my works'} image={'images/arrow_large_light.svg'} title={'View all my works'}/>
+                    <HeaderArrowButton
+                        text={'view all my works'}
+                        image={'images/icons/arrow_large_light.svg'}
+                        title={'View all my works'}/>
                 </div>
             </HeaderMiddle>
         </div>
