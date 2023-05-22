@@ -88,7 +88,7 @@ const seoConfig = {
                 description: 'Discover a collection of UI/UX design projects showcasing my skills and experience',
                 openGraph: {
                     url: 'https://emcia.design/projects',
-                    title: 'Projects | Emilia Markiewicz',
+                    title: 'Projects - Emilia Markiewicz - UI & UX Portfolio',
                     description: 'Discover a collection of UI/UX design projects showcasing my skills and experience',
                     images: [
                         {
@@ -102,7 +102,7 @@ const seoConfig = {
                     component: WebPageJsonLd,
                     props: {
                         id: 'https://emcia.design/projects',
-                        name: 'Projects - Emilia Markiewicz',
+                        name: 'Projects - Emilia Markiewicz - UI & UX Portfolio',
                         description: 'Discover a collection of UI/UX design projects showcasing my skills and experience',
                         url: 'https://emcia.design/projects',
                         author: {
@@ -120,7 +120,7 @@ const seoConfig = {
                 canonical: 'https://emcia.design/resume',
                 openGraph: {
                     url: 'https://emcia.design/resume',
-                    title: 'Resume | Emilia Markiewicz',
+                    title: 'Resume - Emilia Markiewicz - UI & UX Portfolio',
                     description: 'Professional resume of Emilia Markiewicz',
                     images: [
                         {
@@ -138,7 +138,7 @@ const seoConfig = {
                  looking for a UI/UX designer to join your team.`,
                 openGraph: {
                     url: 'https://emcia.design/contact',
-                    title: 'Contact | Emilia Markiewicz',
+                    title: 'Contact - Emilia Markiewicz - UI & UX Portfolio',
                     description: 'Contact Emilia Markiewicz',
                     images: [
                         {
