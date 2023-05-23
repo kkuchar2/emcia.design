@@ -27,7 +27,7 @@ const Circle = styled.div`
 const showFromBottom = keyframes`
   from {
     top: 100%;
-    opacity: 0;
+    opacity: 0.01;
   }
   to {
     opacity: 1;
@@ -37,7 +37,7 @@ const showFromBottom = keyframes`
 
 const fadeIn = keyframes`
   from {
-    opacity: 0;
+    opacity: 0.01;
   }
   to {
     opacity: 1;
@@ -51,7 +51,7 @@ const StyledDummyText = styled.div`
 const StyledText = styled.h1<{ delay: number }>`
   position: absolute;
   top: 100%;
-  opacity: 0;
+  opacity: 0.01;
   animation: ${showFromBottom} 800ms cubic-bezier(0.075, 0.32, 0.12, 0.95) forwards ${(props) => props.delay}ms;
   will-change: transform;
 `;
@@ -71,7 +71,7 @@ const StyledWrapper2 = styled.h2<{ delay: number }>`
   line-height: 1.2;
   margin-top: 30px;
   color: #BDBDBD;
-  opacity: 0;
+  opacity: 0.01;
   animation: ${fadeIn} 1000ms ease forwards ${(props) => props.delay}ms;
 `;
 
