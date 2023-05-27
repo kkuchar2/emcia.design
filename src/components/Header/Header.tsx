@@ -58,7 +58,7 @@ const StyledText = styled.h1<{ delay: number }>`
 
 const StyledWrapper = styled.div`
   position: relative;
-  overflow: hidden;
+
   font-weight: 800;
   font-size: clamp(2.3rem, 7vw, 4.7rem);
   line-height: 1.2;
