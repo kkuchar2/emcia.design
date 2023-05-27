@@ -2,7 +2,7 @@ import React from 'react';
 
 import { HeaderArrowButton } from 'components/ArrowButton/HeaderArrowButton';
 import { scaleUp } from 'components/Circles/keyframes';
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 
 const Circle = styled.div`
 
@@ -22,57 +22,6 @@ const Circle = styled.div`
     max-height: max(2400px, 100dvh);
     animation: ${scaleUp} 2200ms cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
   }
-`;
-
-const showFromBottom = keyframes`
-  from {
-    top: 100%;
-    opacity: 0.01;
-  }
-  to {
-    opacity: 1;
-    top: 0;
-  }
-`;
-
-const fadeIn = keyframes`
-  from {
-    opacity: 0.01;
-  }
-  to {
-    opacity: 1;
-  }
-`;
-
-const StyledDummyText = styled.div`
-  visibility: hidden;
-`;
-
-const StyledText = styled.h1<{ delay: number }>`
-  position: absolute;
-  top: 100%;
-  opacity: 0.01;
-  animation: ${showFromBottom} 800ms cubic-bezier(0.075, 0.32, 0.12, 0.95) forwards ${(props) => props.delay}ms;
-  will-change: transform;
-`;
-
-const StyledWrapper = styled.div`
-  position: relative;
-
-  font-weight: 800;
-  font-size: clamp(2.3rem, 7vw, 4.7rem);
-  line-height: 1.2;
-  color: #F1F1F1;
-`;
-
-const StyledWrapper2 = styled.h2<{ delay: number }>`
-  font-weight: 400;
-  font-size: clamp(1.2rem, 1.5vw, 1.5rem);
-  line-height: 1.2;
-  margin-top: 30px;
-  color: #BDBDBD;
-  opacity: 0.01;
-  animation: ${fadeIn} 1000ms ease forwards ${(props) => props.delay}ms;
 `;
 
 const StyledHeader = styled.div`
@@ -95,15 +44,8 @@ const HeaderMiddle = styled.div`
   flex-direction: column;
   gap: 1.4rem;
   padding: 40px;
-  color: #F1F1F1;
   width: 100%;
   max-width: 1500px;
-`;
-
-const StyledTitle = styled.div`
-  display: flex;
-  flex-direction: column;
-  position: relative;
 `;
 
 const ScrollIndicator = styled.div`
@@ -171,17 +113,23 @@ export const Header = () => {
         <HeaderTop/>
         <div className={'mb-[150px] flex grow items-end justify-center  md:mb-[200px]'}>
             <HeaderMiddle>
-                <StyledTitle>
-                    <StyledWrapper>
-                        <StyledDummyText>{'a'}</StyledDummyText>
-                        <StyledText delay={0}>{'emilia markiewicz'}</StyledText>
-                    </StyledWrapper>
-                    <StyledWrapper>
-                        <StyledDummyText>{'a'}</StyledDummyText>
-                        <StyledText delay={200}>{'ui/ux designer'}</StyledText>
-                    </StyledWrapper>
-                    <StyledWrapper2 delay={500}>{'Hi I’m Emilia Markiewicz, a passionate UI/UX Designer from Poland.'}</StyledWrapper2>
-                </StyledTitle>
+                <div>
+                    <div className={'index_title_wrapper animate-clipPath'}>
+                        <div className={'index_title'}>
+                            {'emilia markiewicz'}
+                        </div>
+                    </div>
+                    <div className={'second_title_wrapper'}>
+                        <div className={'index_title_wrapper animate-clipPath animation-delay-300'}>
+                            <div className={'index_title animation-delay-300'}>
+                                {'ui/ux designer'}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h3 className={'index_description animation-delay-300'}>
+                    {'Hi I’m Emilia Markiewicz, a passionate UI/UX Designer from Poland.'}
+                </h3>
                 <div className={'mt-[10px] inline-flex'}>
                     <HeaderArrowButton
                         text={'view all my works'}
