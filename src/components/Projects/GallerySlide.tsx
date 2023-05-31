@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 import 'flickity/dist/flickity.min.css';
 
-import { DribbleShot } from '../../portfolioConfig.types';
+import { DribbbleShot } from '../../portfolioConfig.types';
 
 const ImageWrapper = styled.div`
   aspect-ratio: 4/3;
@@ -43,7 +43,7 @@ const StyledSwiperSlide = styled.div`
 `;
 
 interface GallerySlideProps {
-    shot: DribbleShot;
+    shot: DribbbleShot;
 }
 
 const _GallerySlide = (props: GallerySlideProps) => {

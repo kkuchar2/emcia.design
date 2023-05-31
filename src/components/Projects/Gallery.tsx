@@ -3,12 +3,12 @@ import React, { useEffect, useRef } from 'react';
 import { GallerySlide } from 'components/Projects/GallerySlide';
 import styled from 'styled-components';
 
-import { DribbleShot } from '../../portfolioConfig.types';
+import { DribbbleShot } from '../../portfolioConfig.types';
 
 import 'flickity/dist/flickity.min.css';
 
 interface GalleryCarouselProps {
-    shots: DribbleShot[]
+    shots: DribbbleShot[]
 }
 
 const Container = styled.div`

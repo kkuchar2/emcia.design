@@ -41,7 +41,7 @@ export const SocialMedia = (props: SocialMediaProps) => {
             {title}
         </div>}
         <div className={'flex gap-4'}>
-            <SocialLink {...socialConfig.dribble} />
+            <SocialLink {...socialConfig.dribbble} />
             <SocialLink {...socialConfig.behance} />
             <SocialLink {...socialConfig.linkedin} />
         </div>

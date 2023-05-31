@@ -73,9 +73,9 @@ export const portfolioConfig: IPortfolioConfig = {
             secondaryTitle: 'Below, I want to present to you all my works.',
             projects: showcasedProjects
         },
-        dribbleShotsConfig: {
-            title: 'Dribble shots.',
-            secondaryTitle: 'Here you can find my Dribble shots.',
+        dribbbleShotsConfig: {
+            title: 'Dribbble shots.',
+            secondaryTitle: 'Here you can find my Dribbble shots.',
             shots: [
                 {
                     name: 'Sign up page | Daily UI Challenge 001',
@@ -116,15 +116,15 @@ export const portfolioConfig: IPortfolioConfig = {
         ]
     },
     socialConfig: {
-        dribble: {
+        dribbble: {
             link: {
                 href: 'https://dribbble.com/emiliamarkiewicz',
                 target: '_blank',
-                title: 'Emilia Markiewicz - Dribble'
+                title: 'Emilia Markiewicz - Dribbble'
             },
             icon: {
-                src: 'images/icons/dribble.svg',
-                alt: 'Dribble',
+                src: 'images/icons/dribbble.svg',
+                alt: 'Dribbble',
                 scale: 0.8,
             }
         },

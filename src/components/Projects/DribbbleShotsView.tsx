@@ -3,9 +3,9 @@ import React from 'react';
 import GalleryCarousel from 'components/Projects/Gallery';
 import styled from 'styled-components';
 
-import { DribbleShotsConfig } from '../../portfolioConfig.types';
+import { DribbbleShotsConfig } from '../../portfolioConfig.types';
 
-const StyledDribbleShots = styled.div`
+const StyledDribbbleShots = styled.div`
   margin-top: 80px;
   display: flex;
   flex-direction: column;
@@ -39,11 +39,11 @@ const SecondaryTitle = styled.div`
   max-width: 400px;
 `;
 
-export const DribbleShotsView = (props: DribbleShotsConfig) => {
+export const DribbbleShotsView = (props: DribbbleShotsConfig) => {
 
     const { title, secondaryTitle, shots } = props;
 
-    return <StyledDribbleShots>
+    return <StyledDribbbleShots>
         <div className={'flex w-full max-w-[1500px] flex-col gap-2 px-[40px]'}>
             <Title>{title}</Title>
             <SecondaryTitle>{secondaryTitle}</SecondaryTitle>
@@ -51,5 +51,5 @@ export const DribbleShotsView = (props: DribbleShotsConfig) => {
         <div className={'flex w-full max-w-[2500px] xl:px-[40px]'}>
             <GalleryCarousel shots={shots}/>
         </div>
-    </StyledDribbleShots>;
+    </StyledDribbbleShots>;
 };
