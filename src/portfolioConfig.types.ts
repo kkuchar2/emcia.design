@@ -22,7 +22,7 @@ export interface Project {
     style?: ProjectStyle;
 }
 
-export interface DribbleShot {
+export interface DribbbleShot {
     name: string;
     image?: string;
     link: string;
@@ -43,10 +43,10 @@ export interface ShowcaseProjectsConfig {
     projects: Project[];
 }
 
-export interface DribbleShotsConfig {
+export interface DribbbleShotsConfig {
     title?: string;
     secondaryTitle?: string;
-    shots: DribbleShot[];
+    shots: DribbbleShot[];
 }
 
 export interface IHomePageConfig {
@@ -55,7 +55,7 @@ export interface IHomePageConfig {
 
 export interface IProjectsPageConfig {
     showcaseProjectsConfig: ShowcaseProjectsConfig,
-    dribbleShotsConfig: DribbleShotsConfig
+    dribbbleShotsConfig: DribbbleShotsConfig
 }
 
 export interface ISocialLink {
@@ -74,7 +74,7 @@ export interface ISocialItem {
 }
 
 interface ISocialConfig {
-    dribble: ISocialItem,
+    dribbble: ISocialItem,
     behance: ISocialItem,
     linkedin: ISocialItem
 }

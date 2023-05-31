@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { BottomContactSection } from 'components/BottomContactSection/BottomContactSection';
-import { DribbleShotsView } from 'components/Projects/DribbleShotsView';
+import { DribbbleShotsView } from 'components/Projects/DribbbleShotsView';
 import { ProjectsListView } from 'components/Projects/ProjectsListView';
 import { GetStaticProps } from 'next';
 
@@ -12,7 +12,7 @@ import { PageProps } from './_app';
 export default function Projects() {
     return <div className={'flex flex-col items-center justify-center bg-[#f1f1f1]'}>
         <ProjectsListView {...portfolioConfig.projectsPageConfig.showcaseProjectsConfig} />
-        <DribbleShotsView {...portfolioConfig.projectsPageConfig.dribbleShotsConfig} />
+        <DribbbleShotsView {...portfolioConfig.projectsPageConfig.dribbbleShotsConfig} />
         <BottomContactSection/>
     </div>;
 }
