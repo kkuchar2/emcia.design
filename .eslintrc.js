@@ -31,7 +31,9 @@ const stylistic = {
     'space-unary-ops': 'error',
     'object-curly-spacing': ['error', 'always'],
     'wrap-regex': 'error',
+    'brace-style': [2, 'stroustrup', { allowSingleLine: true }],
     'tailwindcss/classnames-order': 'error',
+    '@typescript-eslint/indent': ['error'],
     'import/order': [
         'error',
         {
