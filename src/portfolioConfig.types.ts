@@ -1,4 +1,4 @@
-import { ImageProps } from 'next/dist/client/image';
+import React from 'react';
 
 export interface ProjectStyle {
     longDescriptionMaxWidth?: number;
@@ -64,8 +64,11 @@ export interface ISocialLink {
     title: string
 }
 
-export interface ISocialIcon extends ImageProps {
-    scale?: number;
+export interface ISocialIcon {
+    component?: React.FC<any>
+    width?: number,
+    height?: number
+    twStyle?: string
 }
 
 export interface ISocialItem {

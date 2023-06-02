@@ -1,3 +1,7 @@
+import { Behance } from 'components/svg/Behance';
+import { Dribbble } from 'components/svg/Dribbble';
+import { LinkedIn } from 'components/svg/LinkedIn';
+
 import { transformStyles } from './configUtils';
 import { IPortfolioConfig, Project } from './portfolioConfig.types';
 
@@ -120,36 +124,39 @@ export const portfolioConfig: IPortfolioConfig = {
             link: {
                 href: 'https://dribbble.com/emiliamarkiewicz',
                 target: '_blank',
-                title: 'Emilia Markiewicz - Dribbble'
+                title: 'dribbble.com/emiliamarkiewicz'
             },
             icon: {
-                src: 'images/icons/dribbble.svg',
-                alt: 'Dribbble',
-                scale: 0.8,
+                component: Dribbble,
+                width: 25,
+                height: 25,
+                twStyle: 'w-[35px] h-[35px] p-[5px]'
             }
         },
         behance: {
             link: {
                 href: 'https://www.behance.net/emiliamarkiewicz',
                 target: '_blank',
-                title: 'Emilia Markiewicz - Behance'
+                title: 'behance.net/emiliamarkiewicz'
             },
             icon: {
-                src: 'images/icons/behance.svg',
-                alt: 'Behance',
-                scale: 0.75
+                component: Behance,
+                width: 25,
+                height: 25,
+                twStyle: 'w-[35px] h-[35px] p-[5px]'
             }
         },
         linkedin: {
             link: {
                 href: 'https://www.linkedin.com/in/emiliamarkiewicz',
                 target: '_blank',
-                title: 'Emilia Markiewicz - LinkedIn'
+                title: 'linkedin.com/in/emiliamarkiewicz'
             },
             icon: {
-                src: 'images/icons/linkedin.svg',
-                alt: 'LinkedIn',
-                scale: 1
+                component: LinkedIn,
+                width: 35,
+                height: 35,
+                twStyle: 'w-[35px] h-[35px]'
             }
         }
     },

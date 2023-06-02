@@ -174,7 +174,6 @@ export const ProjectItem = (props: ProjectItemProps) => {
             <div className={'mt-[40px] flex items-end md:mt-0 '}>
                 <ProjectArrowButton
                     text={'more details'}
-                    image={'images/icons/arrow_large.svg'}
                     href={project.link}
                     title={project.linkTitle}/>
             </div>

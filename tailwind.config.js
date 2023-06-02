@@ -11,13 +11,31 @@ module.exports = {
                 indexTitle: 'clamp(2.3rem, 7vw, 4.7rem)',
             },
             keyframes: {
-                fadeIn: {
+                arrowButton: {
                     from: {
-                        transform: 'translateX(-50px)',
+                        transform: 'translateX(-30px)',
                         opacity: '0.001',
                     },
                     to: {
                         transform: 'translateX(0)',
+                        opacity: '1',
+                    }
+                },
+                fadeIn: {
+                    from: {
+                        transform: 'translateY(30px)',
+                        opacity: '0.001',
+                    },
+                    to: {
+                        transform: 'translateX(0)',
+                        opacity: '1',
+                    }
+                },
+                fadeIn2: {
+                    from: {
+                        opacity: '0.001',
+                    },
+                    to: {
                         opacity: '1',
                     }
                 },
@@ -39,11 +57,22 @@ module.exports = {
                         opacity: '1',
                     },
                 },
+                animatePulseImage: {
+                    '0%, 100%': {
+                        opacity: 1
+                    },
+                    '50%': {
+                        opacity: .3
+                    }
+                }
             },
             animation: {
                 title: 'title 1200ms cubic-bezier(0.175, 0.32, 0, 1) forwards',
                 indexDescription: 'fadeIn 1200ms ease forwards',
                 clipPath: 'clipPath 800ms cubic-bezier(0.175, 0.32, 0.12, 0.95) forwards',
+                arrowButton: 'arrowButton 800ms cubic-bezier(0.175, 0.32, 0.12, 0.95) forwards',
+                pulseImage: 'animatePulseImage 2s ease-in-out infinite',
+                showDelay: 'fadeIn2 800ms ease forwards 1s',
             }
         },
         screens: {
