@@ -1,23 +1,31 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
-export const useMediaQuery = (width: number): boolean => {
-    const [targetReached, setTargetReached] = useState(false);
+export const useMediaQuery = (query: string): boolean => {
+    const getMatches = (query: string): boolean => {
+        // Prevents SSR issues
+        if (typeof window !== 'undefined') {
+            return window.matchMedia(query).matches;
+        }
+        return false;
+    };
 
-    const updateTarget = useCallback((e: MediaQueryListEvent) => {
-        setTargetReached(e.matches);
-    }, []);
+    const [matches, setMatches] = useState<boolean>(getMatches(query));
+
+    function handleChange() {
+        setMatches(getMatches(query));
+    }
 
     useEffect(() => {
-        const media = window.matchMedia(`(min-width: ${width}px)`);
-        media.addEventListener('change', updateTarget);
+        const matchMedia = window.matchMedia(query);
 
-        // Check on mount (callback is not called until a change occurs)
-        if (media.matches) {
-            setTargetReached(true);
-        }
+        handleChange();
 
-        return () => media.removeEventListener('change', updateTarget);
-    }, [width, updateTarget]);
+        matchMedia.addEventListener('change', handleChange);
 
-    return targetReached;
+        return () => {
+            matchMedia.removeEventListener('change', handleChange);
+        };
+    }, [query]);
+
+    return matches;
 };
