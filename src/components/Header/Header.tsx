@@ -133,7 +133,7 @@ export const Header = () => {
                 <div className={'mt-[10px] inline-flex'}>
                     <HeaderArrowButton
                         text={'view all my works'}
-                        image={'images/icons/arrow_large_light.svg'}
+                        strokeColor={'#f1f1f1'}
                         title={'View all my works'}/>
                 </div>
             </HeaderMiddle>
