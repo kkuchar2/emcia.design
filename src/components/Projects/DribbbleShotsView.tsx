@@ -1,9 +1,13 @@
 import React from 'react';
 
-import GalleryCarousel from 'components/Projects/Gallery';
+import dynamic from 'next/dynamic';
 import styled from 'styled-components';
 
 import { DribbbleShotsConfig } from '../../portfolioConfig.types';
+
+const DynamicGalleryCarousel = dynamic(() => import('../Projects/Gallery'), {
+    loading: () => <></>
+});
 
 const StyledDribbbleShots = styled.div`
   margin-top: 80px;
@@ -12,7 +16,6 @@ const StyledDribbbleShots = styled.div`
   gap: 50px;
   align-items: center;
   justify-content: center;
-  max-width: 1500px;
   width: 100%;
   overflow: hidden;
   padding-bottom: 50px;
@@ -44,12 +47,12 @@ export const DribbbleShotsView = (props: DribbbleShotsConfig) => {
     const { title, secondaryTitle, shots } = props;
 
     return <StyledDribbbleShots>
-        <div className={'flex w-full max-w-[1500px] flex-col gap-2 px-[40px]'}>
+        <div className={'flex w-full max-w-[1500px] flex-col gap-2 pl-[40px]'}>
             <Title>{title}</Title>
             <SecondaryTitle>{secondaryTitle}</SecondaryTitle>
         </div>
-        <div className={'flex w-full max-w-[2500px] xl:px-[40px]'}>
-            <GalleryCarousel shots={shots}/>
+        <div className={'flex w-full max-w-[4000px]'}>
+            <DynamicGalleryCarousel shots={shots}/>
         </div>
     </StyledDribbbleShots>;
 };

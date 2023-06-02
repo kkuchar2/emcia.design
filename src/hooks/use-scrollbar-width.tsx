@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-import { useRouter } from 'next/router';
+import { usePathname } from 'next/navigation';
 
 export const setScrollbarWidthMultiplier = (value: number) => {
     document.documentElement.style.setProperty('--scrollbar-width-multiplier', `${value}`);
@@ -15,7 +15,7 @@ export const isScrollbarVisible = () => {
 };
 
 const useScrollbarWidth = () => {
-    const router = useRouter();
+    const pathname = usePathname();
 
     useEffect(() => {
 
@@ -43,7 +43,7 @@ const useScrollbarWidth = () => {
         return () => {
             window.removeEventListener('resize', updateOnResize);
         };
-    }, [router.events]);
+    }, [pathname]);
 };
 
 export default useScrollbarWidth;

@@ -1,9 +1,9 @@
-import { Behance } from 'components/svg/Behance';
-import { Dribbble } from 'components/svg/Dribbble';
-import { LinkedIn } from 'components/svg/LinkedIn';
+import {Behance} from 'components/svg/Behance';
+import {Dribbble} from 'components/svg/Dribbble';
+import {LinkedIn} from 'components/svg/LinkedIn';
 
-import { transformStyles } from './configUtils';
-import { IPortfolioConfig, Project } from './portfolioConfig.types';
+import {transformStyles} from './configUtils';
+import {IPortfolioConfig, Project} from './portfolioConfig.types';
 
 const projects = [
     {
@@ -31,7 +31,7 @@ const projects = [
         alt: 'Sciencelo Landing Page',
         extraImageText: 'Sciencelo.',
         shortDescription: 'EDUCATIONAL PLATFORM LANDING PAGE',
-        longDescription: 'This UI case study highlights the design of Sciencelo\'s educational networking platform landing page. The platform effectively matches educational content to users, ensuring a personalized learning process. I created this project with the assistance of artificial intelligence tools, specifically ChatGPT-3 and Midjourney AI.',
+        longDescription: 'This UI case study highlights the design of Sciencelo\'s educational networking platform landing page. The platform effectively matches educational content to users, ensuring a personalized learning process.',
         style: {
             background: '#71A495',
             targetZoom: 1.1,
@@ -81,6 +81,21 @@ export const portfolioConfig: IPortfolioConfig = {
             title: 'Dribbble shots.',
             secondaryTitle: 'Here you can find my Dribbble shots.',
             shots: [
+                {
+                    name: 'Sciencelo. - User Dashboard',
+                    video: 'videos/sciencelo_user_dashboard.mp4',
+                    link: 'https://dribbble.com/shots/21505890-Sciencelo-User-Dashboard',
+                },
+                {
+                    name: 'Lingo - Flashcard Learning App #1',
+                    video: 'videos/resized_lingo_flashcard_1.mp4',
+                    link: 'https://dribbble.com/shots/21498815-Lingo-Flashcard-Learning-App-1',
+                },
+                {
+                    name: 'Lingo - Flashcard Learning App #2',
+                    video: 'videos/resized_lingo_flashcard_2.mp4',
+                    link: 'https://dribbble.com/shots/21498901-Lingo-Flashcard-Learning-App-2',
+                },
                 {
                     name: 'Sign up page | Daily UI Challenge 001',
                     image: 'projects/shots/daily_ui_challenge_001.png',

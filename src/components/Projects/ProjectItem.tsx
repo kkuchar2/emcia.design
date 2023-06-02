@@ -1,8 +1,9 @@
 import React, { useRef } from 'react';
 
 import { ProjectArrowButton } from 'components/ArrowButton/ProjectArrowButton';
+import { ImageWithState } from 'components/Image/AppImage';
 import useIntersectionObserver from 'hooks/use-intersection';
-import Image from 'next/image';
+import Link from 'next/link';
 import styled from 'styled-components';
 
 import { Project } from '../../portfolioConfig.types';
@@ -56,35 +57,12 @@ interface ProjectItemProps {
     project: Project;
 }
 
-export const StyledImageWrapper = styled.a`
+export const StyledImageWrapper = styled(Link)`
   aspect-ratio: 4/3;
   position: relative;
   overflow: hidden;
   transition: background 2s ease;
   order: 1;
-`;
-
-const StyledImageBackground = styled.div<{ isVisible?: boolean, background?: string }>`
-  width: 100%;
-  height: 100%;
-
-  &:after, &:before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    transition: opacity 2s ease;
-  }
-
-  &:after {
-    background: ${({ background }) => background};
-    opacity: ${({ isVisible }) => isVisible ? 1 : 0};
-  }
-
-  &:before {
-    background: transparent;
-    opacity: ${({ isVisible }) => isVisible ? 0 : 1};
-  }
 `;
 
 const Title = styled.div`
@@ -115,53 +93,25 @@ export const ProjectItem = (props: ProjectItemProps) => {
     const entry = useIntersectionObserver(ref, {});
     const isVisible = !!entry?.isIntersecting;
 
-    const img = require(`/public/images/${image}`);
-
-    let overlayImg;
-
-    if (overlayImage) {
-        overlayImg = require(`/public/images/${overlayImage}`);
-    }
-
-    const [loaded, setLoaded] = React.useState(false);
-
-    const onLoadingComplete = () => {
-        setLoaded(true);
-    };
-
     return <StyledProjectItem ref={ref}>
         <StyledImageWrapper href={project.link} target={'_blank'} rel={'noopener noreferrer'}>
-            <StyledImageBackground isVisible={isVisible} background={background}/>
-            <Image
-                src={img}
-                loading={'eager'}
+            <ImageWithState
+                isVisible={isVisible}
+                background={background}
+                src={image}
+                overlayImageSrc={overlayImage}
                 alt={`Open in Behance - ${alt}`}
                 title={`Open in Behance - ${alt}`}
-                fill={true}
-                onLoadingComplete={onLoadingComplete}
                 sizes={'(max-width: 768px) 100vw, (max-width: 1024px) 620px, 800px'}
-                priority={true}
                 quality={100}
+                fill={true}
+                loading={'lazy'}
+                objectFit={objectFit || 'cover'}
                 style={{
                     objectFit: objectFit || 'cover',
-                    transition: 'transform 2s cubic-bezier(0.075, 0.82, 0.165, 1), opacity 2s ease',
-                    transform: isVisible && loaded ? `translateY(0) scale(${targetZoom})` : 'translateY(400px) scale(2)'
+                    transition: 'transform 2s cubic-bezier(0.075, 0.82, 0.165, 1)',
+                    transform: isVisible ? `translateY(0) scale(${targetZoom})` : 'translateY(400px) scale(2)',
                 }}/>
-            {overlayImage && <Image
-                src={overlayImg}
-                loading={'eager'}
-                alt={`Open in Behance - ${alt}`}
-                title={`Open in Behance - ${alt}`}
-                fill={true}
-                onLoadingComplete={onLoadingComplete}
-                sizes={'(max-width: 768px) 100vw, (max-width: 1024px) 620px, 800px'}
-                priority={true}
-                quality={100}
-                style={{
-                    objectFit: objectFit || 'cover',
-                    transition: 'transform 2s cubic-bezier(0.075, 0.82, 0.165, 1) 300ms, opacity 2s ease',
-                    transform: isVisible && loaded ? `translateY(-20px) scale(${1.2})` : 'translateY(400px) scale(2)'
-                }}/>}
         </StyledImageWrapper>
 
         <StyledProjectDescription>
@@ -171,7 +121,7 @@ export const ProjectItem = (props: ProjectItemProps) => {
                 {longDescription}
             </StyledProjectLongDescription>
 
-            <div className={'mt-[40px] flex items-end md:mt-0 '}>
+            <div className={'mt-[40px] flex items-end md:mt-0'}>
                 <ProjectArrowButton
                     text={'more details'}
                     href={project.link}

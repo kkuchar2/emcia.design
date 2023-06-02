@@ -1,8 +1,10 @@
 import React from 'react';
 
+import styled from 'styled-components';
+
 import { HeaderArrowButton } from 'components/ArrowButton/HeaderArrowButton';
 import { scaleUp } from 'components/Circles/keyframes';
-import styled from 'styled-components';
+import { ScrollIndicator } from 'components/ScrollIndicator/ScrollIndicator';
 
 const Circle = styled.div`
 
@@ -38,92 +40,24 @@ const HeaderTop = styled.div`
   }
 `;
 
-const HeaderMiddle = styled.div`
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  gap: 1.4rem;
-  padding: 40px;
-  width: 100%;
-  max-width: 1500px;
-`;
-
-const ScrollIndicator = styled.div`
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 2rem;
-  height: 3.5rem;
-  border-radius: 2rem;
-  border: 1px solid rgba(241, 241, 241, 0.34);
-  display: flex;
-  bottom: 50px;
-  opacity: var(--scroll-indicator-opacity, 1);
-  transition: opacity 0.5s ease;
-
-  @media (orientation: landscape) {
-    bottom: 10px;
-    right: 20px;
-    left: unset;
-    transform: translateX(-50%) scale(0.8);
-  }
-
-  @media (min-width: 1024px) {
-    display: none;
-  }
-
-  @keyframes dot {
-    0% {
-      width: 0;
-      height: 0;
-      top: 0.5rem;
-      opacity: 0;
-    }
-    50% {
-      width: 0.5rem;
-      height: 0.5rem;
-      opacity: 1;
-    }
-    100% {
-      width: 0.5rem;
-      height: 0.5rem;
-      top: 2.5rem;
-      opacity: 0;
-    }
-  }
-
-  &:after {
-    content: '';
-    position: absolute;
-    top: 0.5rem;
-    left: 50%;
-    transform: translate(-50%, 0);
-    width: 0.5rem;
-    height: 0.5rem;
-    border-radius: 50%;
-    background: #F1F1F1;
-    animation: dot 2s ease infinite;
-  }
-`;
-
 export const Header = () => {
 
     return <StyledHeader className={'relative flex flex-col overflow-x-clip bg-[#1e1e1e]'}>
         <Circle/>
         <HeaderTop/>
         <div className={'mb-[150px] flex grow items-end justify-center  md:mb-[200px]'}>
-            <HeaderMiddle>
+            <div className={'flex w-full max-w-[1500px] flex-col justify-center gap-[1.4rem] p-[40px] text-[#f1f1f1]'}>
                 <div>
                     <div className={'index_title_wrapper animate-clipPath'}>
-                        <div className={'index_title'}>
+                        <h1 className={'index_title'}>
                             {'emilia markiewicz'}
-                        </div>
+                        </h1>
                     </div>
-                    <div className={'second_title_wrapper'}>
+                    <div className={''}>
                         <div className={'index_title_wrapper animate-clipPath animation-delay-300'}>
-                            <div className={'index_title animation-delay-300'}>
+                            <h2 className={'index_title animation-delay-300'}>
                                 {'ui/ux designer'}
-                            </div>
+                            </h2>
                         </div>
                     </div>
                 </div>
@@ -136,7 +70,7 @@ export const Header = () => {
                         strokeColor={'#f1f1f1'}
                         title={'View all my works'}/>
                 </div>
-            </HeaderMiddle>
+            </div>
         </div>
         <ScrollIndicator/>
     </StyledHeader>;

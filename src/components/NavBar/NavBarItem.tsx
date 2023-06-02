@@ -20,7 +20,6 @@ export const StyledNavBarItem = styled(Link)<StyledNavBarItemProps>`
   user-select: none;
   -webkit-tap-highlight-color: transparent;
   font-weight: 500;
-  transition: transform 0.3s ease-in-out, color 0.2s ease-in-out;
   text-transform: lowercase;
 
   // when pressed:

@@ -25,6 +25,7 @@ export interface Project {
 export interface DribbbleShot {
     name: string;
     image?: string;
+    video?: string;
     link: string;
 }
 

@@ -1,21 +1,18 @@
 import React, { useCallback, useEffect } from 'react';
 
+import { usePathname } from 'next/navigation';
+import styled from 'styled-components';
+
 import { HamburgerButton } from 'components/HamburgerButton/HamburgerButton';
 import { NavBarDesktopItems } from 'components/NavBar/NavBarDesktopItems';
 import { NavBarMobileItems } from 'components/NavBar/NavBarMobileItems';
 import { useScreenWidth } from 'hooks/use-screen';
 import { isScrollbarVisible, setScrollbarWidthMultiplier } from 'hooks/use-scrollbar-width';
-import { useRouter } from 'next/router';
-import styled from 'styled-components';
 
 import { useMainContext } from '../../MainContext';
 import { portfolioConfig } from '../../portfolioConfig';
 
-interface StyledOverlayProps {
-    opened: boolean;
-}
-
-const StyledOverlay = styled.div<StyledOverlayProps>`
+const StyledOverlay = styled.div`
   position: fixed;
   content: '';
   background: #f1f1f1;
@@ -54,13 +51,13 @@ const StyledOverlay = styled.div<StyledOverlayProps>`
   }
 `;
 
-const StyledOverlay2 = styled.div<StyledOverlayProps>`
+const StyledOverlay2 = styled.div`
   position: fixed;
   content: '';
   background: #313131;
   z-index: 2;
   width: 100svw;
-  height: 100dvh;
+  height: 100svh;
   display: none;
 
   &.opened {
@@ -74,12 +71,12 @@ export const NavBar = () => {
 
     const { navbarOpened, toggleNavbar, setNavbarOpened } = useMainContext();
 
-    const router = useRouter();
+    const pathname = usePathname();
 
     useEffect(() => {
         setNavbarOpened(false);
         document.body.style.overflow = '';
-    }, [router, setNavbarOpened]);
+    }, [pathname, setNavbarOpened]);
 
     useEffect(() => {
         if (screenWidth > 1024) {
@@ -93,7 +90,7 @@ export const NavBar = () => {
 
     const onHamburgerClick = useCallback(() => {
         toggleNavbar();
-    }, [toggleNavbar, navbarOpened]);
+    }, [toggleNavbar]);
 
     return <>
         <HamburgerButton onClick={onHamburgerClick} navbarOpened={navbarOpened}/>
@@ -106,12 +103,10 @@ export const NavBar = () => {
         </div>
         <div className={'lg:hidden'}>
             <StyledOverlay
-                className={navbarOpened ? 'opened' : ''}
-                opened={navbarOpened}/>
+                className={navbarOpened ? 'opened' : ''}/>
 
             <StyledOverlay2
-                className={navbarOpened ? 'opened' : ''}
-                opened={navbarOpened}/>
+                className={navbarOpened ? 'opened' : ''}/>
         </div>
     </>;
 };

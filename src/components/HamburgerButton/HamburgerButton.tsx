@@ -1,6 +1,5 @@
 import React from 'react';
 
-import { isMobile } from 'react-device-detect';
 import styled from 'styled-components';
 
 interface HamburgerButtonProps {
@@ -11,7 +10,6 @@ interface HamburgerButtonProps {
 interface StyledHamburgerButtonProps {
     navbarOpened: boolean;
     gap?: number;
-    isMobile?: boolean;
 }
 
 const StyledHamburgerButton = styled.button<StyledHamburgerButtonProps>`
@@ -66,8 +64,7 @@ export const HamburgerButton = (props: HamburgerButtonProps) => {
         title={'Menu'}
         name={'Menu'}
         onClick={onClick}
-        navbarOpened={navbarOpened}
-        isMobile={isMobile}>
+        navbarOpened={navbarOpened}>
         <StyledHamburgerButtonTopLine navbarOpened={navbarOpened} gap={5}/>
         <StyledHamburgerButtonBottomLine navbarOpened={navbarOpened} gap={5}/>
     </StyledHamburgerButton>;

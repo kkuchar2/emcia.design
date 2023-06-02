@@ -48,7 +48,7 @@ const HeaderTop = styled.div`
   height: 60%;
 `;
 
-const HeaderMiddle = styled.h1`
+const HeaderMiddle = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;

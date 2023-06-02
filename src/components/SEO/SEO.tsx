@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { DefaultSeo } from 'next-seo';
+import Script from 'next/script';
 
-import { seoConfig } from '../../../next-seo.config';
+import {JsonLd, seoConfig} from '../../../next-seo.config';
 
 interface SeoProps {
     seoKey: string;
@@ -10,7 +10,7 @@ interface SeoProps {
 
 export const SEO = (props: SeoProps) => {
 
-    const { seoKey } = props;
+    const {seoKey} = props;
 
     if (!seoKey) {
         return null;
@@ -32,11 +32,14 @@ export const SEO = (props: SeoProps) => {
     };
 
     return <>
-        {config.meta && <DefaultSeo {...meta} />}
-
-        {config.jsonLd && config.jsonLd.map((config, index) => {
-            const { component: LdJsonComponent, props } = config;
-            return <LdJsonComponent key={index} {...props} />;
+        {config.jsonLd && config.jsonLd.map((jsonLd: JsonLd, index: number) => {
+            return <Script
+                key={index}
+                id={'app-ld-json'}
+                type={'application/ld+json'}
+                strategy={'beforeInteractive'}
+                dangerouslySetInnerHTML={jsonLd}
+            />;
         })}
     </>;
 };

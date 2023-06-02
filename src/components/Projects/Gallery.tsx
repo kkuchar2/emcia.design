@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import { GallerySlide } from 'components/Projects/GallerySlide';
 import styled from 'styled-components';
@@ -14,11 +14,21 @@ interface GalleryCarouselProps {
 const Container = styled.div`
   position: relative;
   width: 100%;
-  overflow: visible;
-  height: 300px;
+  height: 50vw;
+  max-height: 500px;
+`;
 
-  @media (min-width: 1024px) {
-    height: 400px;
+const StyledCarousel = styled.div`
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+
+  .flickity-viewport {
+    height: 100% !important;
+  }
+
+  .flickity-slider {
+    width: 100% !important;
   }
 `;
 
@@ -27,6 +37,8 @@ const GalleryCarousel = (props: GalleryCarouselProps) => {
     const { shots } = props;
 
     const flickityRef = useRef(null);
+
+    const [loaded, setLoaded] = useState(false);
 
     useEffect(() => {
         if (typeof window === 'undefined') {
@@ -37,8 +49,8 @@ const GalleryCarousel = (props: GalleryCarouselProps) => {
 
         flickityRef.current = new Flickity('.main-carousel', {
             wrapAround: true,
+            freeScroll: true,
             pageDots: false,
-            autoPlay: 2000
         });
 
         flickityRef.current.on('staticClick', function (event, pointer, cellElement, cellIndex) {
@@ -47,6 +59,13 @@ const GalleryCarousel = (props: GalleryCarouselProps) => {
             }
         });
 
+        window.addEventListener('resize', () => {
+            flickityRef.current.stopPlayer();
+            flickityRef.current.resize();
+        });
+
+        setLoaded(true);
+
         return () => {
             if (flickityRef.current) {
                 flickityRef.current.destroy();
@@ -54,10 +73,10 @@ const GalleryCarousel = (props: GalleryCarouselProps) => {
         };
     }, []);
 
-    return <Container>
-        <div className={'main-carousel'}>
+    return <Container className={loaded ? '' : 'animate-pulse bg-gray-200'}>
+        <StyledCarousel className={'main-carousel'}>
             {shots.map((shot, index) => <GallerySlide key={index} shot={shot}/>)}
-        </div>
+        </StyledCarousel>
     </Container>;
 };
 

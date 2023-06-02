@@ -1,16 +1,12 @@
-import React from 'react';
+import {socialProfileJsonLd, webPageJsonLd} from 'components/SEO/JsonLd';
 
-import { SocialProfileJsonLd, WebPageJsonLd } from 'next-seo';
-import { DefaultSeoProps } from 'next-seo/lib/types';
-
-interface LDJSONConfigItem {
-    component: React.ComponentType<any>;
-    props: Record<string, any>;
+export interface JsonLd {
+    __html: string;
 }
 
 interface PageSeoConfig {
-    jsonLd?: LDJSONConfigItem[];
-    meta?: DefaultSeoProps;
+    jsonLd?: JsonLd[];
+    meta?: any;
 }
 
 interface PagesSeoConfig {
@@ -32,7 +28,7 @@ const seoConfig = {
     pages: {
         'home': {
             meta: {
-                title: '',
+                title: 'Home',
                 canonical: 'https://emcia.design',
                 description: `I'm Emilia Markiewicz, a UI/UX designer specializing in creating beautiful and
          functional user interfaces. Check out my portfolio to see my work.`,
@@ -42,7 +38,7 @@ const seoConfig = {
                     title: 'Emilia Markiewicz',
                     description: `I'm Emilia Markiewicz, a UI/UX designer specializing in creating 
                     beautiful and functional user interfaces. Check out my portfolio to see my work.`,
-                    language: { hrefLang: 'en-US', text: 'English' },
+                    language: {hrefLang: 'en-US', text: 'English'},
                     images: [
                         {
                             url: 'https://emcia.design/images/seo/og-image.png',
@@ -51,34 +47,20 @@ const seoConfig = {
                 }
             },
             jsonLd: [
-                {
-                    component: SocialProfileJsonLd,
-                    props: {
-                        type: 'Person',
-                        name: 'Emilia Markiewicz',
-                        url: 'https://emcia.design',
-                        sameAs: [
-                            'https://www.behance.net/emiliamarkiewicz',
-                            'https://dribbble.com/emiliamarkiewicz',
-                            'https://www.linkedin.com/in/emiliamarkiewicz',
-                        ],
-                    },
-                },
-                {
-                    component: WebPageJsonLd,
-                    props: {
-                        id: 'https://emcia.design',
-                        name: 'Emilia Markiewicz - UI/UX Designer Portfolio',
-                        description: `I'm Emilia Markiewicz, a UI/UX designer specializing
-                        in creating beautiful and functional user interfaces. Check out
-                        my portfolio to see my work.`,
-                        url: 'https://emcia.design',
-                        author: {
-                            '@type': 'Person',
-                            name: 'Emilia Markiewicz',
-                        },
-                    },
-                },
+                socialProfileJsonLd({
+                    name: 'Emilia Markiewicz',
+                    url: 'https://emcia.design',
+                    linkedinProfile: 'emiliamarkiewicz',
+                    dribbbleProfile: 'emiliamarkiewicz',
+                    behanceProfile: 'emiliamarkiewicz'
+                }),
+                webPageJsonLd({
+                    name: 'Emilia Markiewicz - UI/UX Designer Portfolio',
+                    description: `I'm Emilia Markiewicz, a UI/UX designer specializing in creating
+                    beautiful and functional user interfaces. Check out my portfolio to see my work.`,
+                    url: 'https://emcia.design',
+                    authorName: 'Emilia Markiewicz',
+                })
             ]
         },
         'projects': {
@@ -98,19 +80,12 @@ const seoConfig = {
                 },
             },
             jsonLd: [
-                {
-                    component: WebPageJsonLd,
-                    props: {
-                        id: 'https://emcia.design/projects',
-                        name: 'Projects - Emilia Markiewicz - UI & UX Portfolio',
-                        description: 'Discover a collection of UI/UX design projects showcasing my skills and experience',
-                        url: 'https://emcia.design/projects',
-                        author: {
-                            '@type': 'Person',
-                            name: 'Emilia Markiewicz',
-                        },
-                    },
-                },
+                webPageJsonLd({
+                    name: 'Projects - Emilia Markiewicz - UI & UX Portfolio',
+                    description: 'Discover a collection of UI/UX design projects showcasing my skills and experience',
+                    url: 'https://emcia.design/projects',
+                    authorName: 'Emilia Markiewicz',
+                })
             ]
         },
         'resume': {
@@ -151,4 +126,4 @@ const seoConfig = {
     }
 } as SeoConfig;
 
-export { seoConfig };
+export {seoConfig};
