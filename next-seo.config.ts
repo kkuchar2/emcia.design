@@ -46,6 +46,7 @@ const metadataOf = (meta: CustomMeta): Metadata => {
     return {
         title: meta.title,
         description: meta.description,
+        alternates: meta.alternates,
         openGraph: {
             url: meta.url,
             siteName: meta.title,
@@ -106,7 +107,7 @@ const pageMetadata = siteUrlValid ? {
             description: "I'm Emilia Markiewicz, a UI/UX designer specializing in creating beautiful and functional user interfaces. Check out my portfolio to see my work.",
             ogImages: [
                 {
-                    url: SITE_URL + 'images/seo/og-image.png'
+                    url: 'images/seo/og-image.png'
                 }
             ]
         }),
@@ -132,12 +133,12 @@ const pageMetadata = siteUrlValid ? {
             url: SITE_URL + 'projects',
             title: 'Projects - ' + HOME_TITLE,
             alternates: {
-                canonical: SITE_URL + 'projects'
+                canonical: '/projects'
             },
             description: 'Discover a collection of UI/UX design projects showcasing my skills and experience',
             ogImages: [
                 {
-                    url: SITE_URL + 'images/seo/og-image.png'
+                    url: 'images/seo/og-image.png'
                 }
             ]
         }),
@@ -155,12 +156,12 @@ const pageMetadata = siteUrlValid ? {
             url: SITE_URL + 'resume',
             title: 'Resume - ' + HOME_TITLE,
             alternates: {
-                canonical: SITE_URL + 'resume'
+                canonical: '/resume'
             },
             description: 'Learn more about my professional experience and educational background.',
             ogImages: [
                 {
-                    url: SITE_URL + 'images/seo/og-image.png'
+                    url: 'images/seo/og-image.png'
                 }
             ]
         }),
@@ -170,12 +171,12 @@ const pageMetadata = siteUrlValid ? {
             url: SITE_URL + 'contact',
             title: SITE_URL + 'contact',
             alternates: {
-                canonical: SITE_URL + 'contact'
+                canonical: '/contact'
             },
             description: "Designing a better user experience. Get in touch if you're looking for a UI/UX designer to join your team.",
             ogImages: [
                 {
-                    url: SITE_URL + 'images/seo/og-image.png'
+                    url: 'images/seo/og-image.png'
                 }
             ]
         })
