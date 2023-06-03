@@ -4,9 +4,9 @@ import { ContactPage } from 'components/pages/ContactPage';
 import { SEO } from 'components/SEO/SEO';
 import { Metadata } from 'next';
 
-export const metadata: Metadata = {
-    title: 'Contact | Portfolio'
-};
+import { seoConfig } from '../../../next-seo.config';
+
+export const metadata: Metadata = { ...seoConfig.pages['contact'].meta };
 
 export default function Contact() {
 

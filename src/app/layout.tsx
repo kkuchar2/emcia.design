@@ -3,8 +3,11 @@ import React from 'react';
 import { Layout } from 'components/pages/layout';
 import { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import Head from 'next/head';
 
 import '../styles/globals.css';
+
+import { seoConfig } from '../../next-seo.config';
 
 const inter = Inter({
     subsets: ['latin'],
@@ -14,16 +17,14 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-    title: 'Emilia Markiewicaaaz',
-    description: 'Emilia Markiewicz\'s personal website',
+    ...seoConfig.common
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return <html lang={'en'}>
-        <head>
-            <link rel={'manifest'} href={'/manifest.json'}/>
+        <Head>
             <link rel={'apple-touch-icon'} href={'/images/pwa/icon_x256.png'}/>
-        </head>
+        </Head>
         <body>
             <main className={inter.className}>
                 <Layout>

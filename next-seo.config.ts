@@ -1,4 +1,5 @@
-import {socialProfileJsonLd, webPageJsonLd} from 'components/SEO/JsonLd';
+import { socialProfileJsonLd, webPageJsonLd } from 'components/SEO/JsonLd';
+import { Metadata } from 'next';
 
 export interface JsonLd {
     __html: string;
@@ -6,7 +7,7 @@ export interface JsonLd {
 
 interface PageSeoConfig {
     jsonLd?: JsonLd[];
-    meta?: any;
+    meta?: Metadata;
 }
 
 interface PagesSeoConfig {
@@ -14,116 +15,148 @@ interface PagesSeoConfig {
 }
 
 interface SeoConfig {
-    common: PageSeoConfig;
+    common: Metadata;
     pages: PagesSeoConfig;
 }
 
+interface OgImage {
+    url: string;
+    width?: number;
+    height?: number;
+}
+
+interface TwitterImage {
+    url: string;
+}
+
+interface CustomMeta {
+    title: string;
+    description: string;
+    url: string
+    ogImages?: OgImage[];
+    tiwtterImages?: TwitterImage[];
+    locale?: string;
+    pageType?: string;
+}
+
+const metadataOf = (meta: CustomMeta): Metadata => {
+    return {
+        title: meta.title,
+        description: meta.description,
+        openGraph: {
+            url: meta.url,
+            siteName: meta.title,
+            title: meta.title,
+            description: meta.description,
+            images: meta.ogImages,
+            locale: meta.locale || 'en_US',
+            type: meta['type'] || 'website',
+        },
+        // twitter: {
+        //     card: 'summary_large_image',
+        //     title: meta.title,
+        //     description: meta.description,
+        //     images: meta.tiwtterImages,
+        // }
+    };
+};
+
+const SITE_URL = process.env.SITE_URL as string;
+const HOME_TITLE = 'Emilia Markiewicz - UI & UX Portfolio';
+
 const seoConfig = {
     common: {
-        titleTemplate: '%s - Emilia Markiewicz - UI & UX Portfolio',
-        defaultTitle: 'Emilia Markiewicz - UI & UX Portfolio',
-        language: 'en',
-        type: 'website'
+        title: HOME_TITLE,
+        metadataBase: new URL(SITE_URL),
+        alternates: {
+            canonical: '/'
+        },
+        robots: {
+            index: process.env.NODE_ENV === 'production',
+            follow: process.env.NODE_ENV === 'production',
+        },
+        viewport: {
+            width: 'device-width',
+            initialScale: 1,
+            minimumScale: 1,
+            maximumScale: 5,
+        },
+        manifest: '/manifest.json'
     },
     pages: {
         'home': {
-            meta: {
-                title: 'Home',
-                canonical: 'https://emcia.design',
-                description: `I'm Emilia Markiewicz, a UI/UX designer specializing in creating beautiful and
-         functional user interfaces. Check out my portfolio to see my work.`,
-                openGraph: {
-                    type: 'website',
-                    url: 'https://emcia.design',
-                    title: 'Emilia Markiewicz',
-                    description: `I'm Emilia Markiewicz, a UI/UX designer specializing in creating 
-                    beautiful and functional user interfaces. Check out my portfolio to see my work.`,
-                    language: {hrefLang: 'en-US', text: 'English'},
-                    images: [
-                        {
-                            url: 'https://emcia.design/images/seo/og-image.png',
-                        },
-                    ]
-                }
-            },
+            meta: metadataOf({
+                url: SITE_URL,
+                title: HOME_TITLE,
+                description: "I'm Emilia Markiewicz, a UI/UX designer specializing in creating beautiful and functional user interfaces. Check out my portfolio to see my work.",
+                ogImages: [
+                    {
+                        url: SITE_URL + '/images/seo/og-image.png'
+                    }
+                ]
+            }),
             jsonLd: [
                 socialProfileJsonLd({
                     name: 'Emilia Markiewicz',
-                    url: 'https://emcia.design',
+                    url: SITE_URL,
                     linkedinProfile: 'emiliamarkiewicz',
                     dribbbleProfile: 'emiliamarkiewicz',
                     behanceProfile: 'emiliamarkiewicz'
                 }),
                 webPageJsonLd({
-                    name: 'Emilia Markiewicz - UI/UX Designer Portfolio',
+                    name: HOME_TITLE,
                     description: `I'm Emilia Markiewicz, a UI/UX designer specializing in creating
                     beautiful and functional user interfaces. Check out my portfolio to see my work.`,
-                    url: 'https://emcia.design',
+                    url: SITE_URL,
                     authorName: 'Emilia Markiewicz',
                 })
             ]
         },
         'projects': {
-            meta: {
-                title: 'Projects',
-                canonical: 'https://emcia.design/projects',
+            meta: metadataOf({
+                url: SITE_URL + '/projects',
+                title: 'Projects - ' + HOME_TITLE,
                 description: 'Discover a collection of UI/UX design projects showcasing my skills and experience',
-                openGraph: {
-                    url: 'https://emcia.design/projects',
-                    title: 'Projects - Emilia Markiewicz - UI & UX Portfolio',
-                    description: 'Discover a collection of UI/UX design projects showcasing my skills and experience',
-                    images: [
-                        {
-                            url: 'https://emcia.design/images/seo/og-image.png',
-                        },
-                    ]
-                },
-            },
+                ogImages: [
+                    {
+                        url: SITE_URL + '/images/seo/og-image.png'
+                    }
+                ]
+            }),
             jsonLd: [
                 webPageJsonLd({
-                    name: 'Projects - Emilia Markiewicz - UI & UX Portfolio',
+                    name: 'Projects - ' + HOME_TITLE,
                     description: 'Discover a collection of UI/UX design projects showcasing my skills and experience',
-                    url: 'https://emcia.design/projects',
+                    url: SITE_URL + '/projects',
                     authorName: 'Emilia Markiewicz',
                 })
             ]
         },
         'resume': {
-            meta: {
-                title: 'Resume',
+            meta: metadataOf({
+                url: SITE_URL + '/resume',
+                title: 'Resume - ' + HOME_TITLE,
                 description: 'Learn more about my professional experience and educational background.',
-                canonical: 'https://emcia.design/resume',
-                openGraph: {
-                    url: 'https://emcia.design/resume',
-                    title: 'Resume - Emilia Markiewicz - UI & UX Portfolio',
-                    description: 'Professional resume of Emilia Markiewicz',
-                    images: [
-                        {
-                            url: 'https://emcia.design/images/seo/og-image.png',
-                        }
-                    ]
-                },
-            },
+                ogImages: [
+                    {
+                        url: SITE_URL + '/images/seo/og-image.png'
+                    }
+                ]
+            }),
         },
         'contact': {
-            meta: {
-                title: 'Contact',
-                canonical: 'https://emcia.design/contact',
-                description: `Designing a better user experience. Get in touch if you're
-                 looking for a UI/UX designer to join your team.`,
-                openGraph: {
-                    url: 'https://emcia.design/contact',
-                    title: 'Contact - Emilia Markiewicz - UI & UX Portfolio',
-                    description: 'Contact Emilia Markiewicz',
-                    images: [
-                        {
-                            url: 'https://emcia.design/images/seo/og-image.png',
-                        }
-                    ]
-                },
-            },
+            meta: metadataOf({
+                url: SITE_URL + '/contact',
+                title: SITE_URL + '/contact',
+                description: "Designing a better user experience. Get in touch if you're looking for a UI/UX designer to join your team.",
+                ogImages: [
+                    {
+                        url: SITE_URL + '/images/seo/og-image.png'
+                    }
+                ]
+            })
         }
     }
 } as SeoConfig;
 
-export {seoConfig};
+export { seoConfig };

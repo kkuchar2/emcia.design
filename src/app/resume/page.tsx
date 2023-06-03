@@ -4,9 +4,9 @@ import { ResumePage } from 'components/pages/ResumePage';
 import { SEO } from 'components/SEO/SEO';
 import { Metadata } from 'next';
 
-export const metadata: Metadata = {
-    title: 'Resume | Portfolio',
-};
+import { seoConfig } from '../../../next-seo.config';
+
+export const metadata: Metadata = { ...seoConfig.pages['resume'].meta };
 
 export default function Resume() {
     return <>
