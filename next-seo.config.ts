@@ -37,6 +37,9 @@ interface CustomMeta {
     tiwtterImages?: TwitterImage[];
     locale?: string;
     pageType?: string;
+    alternates?: {
+        canonical: string;
+    }
 }
 
 const metadataOf = (meta: CustomMeta): Metadata => {
@@ -128,6 +131,9 @@ const pageMetadata = siteUrlValid ? {
         meta: metadataOf({
             url: SITE_URL + '/projects',
             title: 'Projects - ' + HOME_TITLE,
+            alternates: {
+                canonical: SITE_URL + '/projects'
+            },
             description: 'Discover a collection of UI/UX design projects showcasing my skills and experience',
             ogImages: [
                 {
@@ -148,6 +154,9 @@ const pageMetadata = siteUrlValid ? {
         meta: metadataOf({
             url: SITE_URL + '/resume',
             title: 'Resume - ' + HOME_TITLE,
+            alternates: {
+                canonical: SITE_URL + '/resume'
+            },
             description: 'Learn more about my professional experience and educational background.',
             ogImages: [
                 {
@@ -160,6 +169,9 @@ const pageMetadata = siteUrlValid ? {
         meta: metadataOf({
             url: SITE_URL + '/contact',
             title: SITE_URL + '/contact',
+            alternates: {
+                canonical: SITE_URL + '/contact'
+            },
             description: "Designing a better user experience. Get in touch if you're looking for a UI/UX designer to join your team.",
             ogImages: [
                 {
