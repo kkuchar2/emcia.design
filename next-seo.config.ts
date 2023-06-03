@@ -71,7 +71,7 @@ try {
     siteUrlValid = true;
 }
 catch (e) {
-    console.error('Invalid SITE_URL: ' + SITE_URL, " Page metadata won't be generated.");
+    console.error('Invalid SITE_URL: ' + SITE_URL, " Page metadata won't be generated. Please set a valid SITE_URL environment variable.");
     siteUrlValid = false;
 }
 

@@ -83,32 +83,32 @@ export const portfolioConfig: IPortfolioConfig = {
             shots: [
                 {
                     name: 'Sciencelo. - User Dashboard',
-                    video: 'videos/sciencelo_user_dashboard.mp4',
+                    video: '/videos/sciencelo_user_dashboard.mp4',
                     link: 'https://dribbble.com/shots/21505890-Sciencelo-User-Dashboard',
                 },
                 {
                     name: 'Lingo - Flashcard Learning App #1',
-                    video: 'videos/resized_lingo_flashcard_1.mp4',
+                    video: '/videos/resized_lingo_flashcard_1.mp4',
                     link: 'https://dribbble.com/shots/21498815-Lingo-Flashcard-Learning-App-1',
                 },
                 {
                     name: 'Lingo - Flashcard Learning App #2',
-                    video: 'videos/resized_lingo_flashcard_2.mp4',
+                    video: '/videos/resized_lingo_flashcard_2.mp4',
                     link: 'https://dribbble.com/shots/21498901-Lingo-Flashcard-Learning-App-2',
                 },
                 {
                     name: 'Sign up page | Daily UI Challenge 001',
-                    image: 'projects/shots/daily_ui_challenge_001.png',
+                    image: '/images/projects/shots/daily_ui_challenge_001.png',
                     link: 'https://dribbble.com/shots/19032056-Sign-up-page-Daily-UI-Challenge-001'
                 },
                 {
                     name: 'Credit Card Checkout | Daily UI Challenge 002',
-                    image: 'projects/shots/daily_ui_challenge_002.png',
+                    image: '/images/projects/shots/daily_ui_challenge_002.png',
                     link: 'https://dribbble.com/shots/19041008-Credit-Card-Checkout-Daily-UI-Challenge-002'
                 },
                 {
                     name: 'Landing page | Daily UI Challenge 003',
-                    image: 'projects/shots/daily_ui_challenge_003.png',
+                    image: '/images/projects/shots/daily_ui_challenge_003.png',
                     link: 'https://dribbble.com/shots/19530852-Landing-page-Daily-UI-Challenge-003',
                 }
             ]
