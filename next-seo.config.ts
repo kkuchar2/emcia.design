@@ -106,7 +106,7 @@ const pageMetadata = siteUrlValid ? {
             description: "I'm Emilia Markiewicz, a UI/UX designer specializing in creating beautiful and functional user interfaces. Check out my portfolio to see my work.",
             ogImages: [
                 {
-                    url: SITE_URL + '/images/seo/og-image.png'
+                    url: SITE_URL + 'images/seo/og-image.png'
                 }
             ]
         }),
@@ -129,15 +129,15 @@ const pageMetadata = siteUrlValid ? {
     },
     'projects': {
         meta: metadataOf({
-            url: SITE_URL + '/projects',
+            url: SITE_URL + 'projects',
             title: 'Projects - ' + HOME_TITLE,
             alternates: {
-                canonical: SITE_URL + '/projects'
+                canonical: SITE_URL + 'projects'
             },
             description: 'Discover a collection of UI/UX design projects showcasing my skills and experience',
             ogImages: [
                 {
-                    url: SITE_URL + '/images/seo/og-image.png'
+                    url: SITE_URL + 'images/seo/og-image.png'
                 }
             ]
         }),
@@ -145,37 +145,37 @@ const pageMetadata = siteUrlValid ? {
             webPageJsonLd({
                 name: 'Projects - ' + HOME_TITLE,
                 description: 'Discover a collection of UI/UX design projects showcasing my skills and experience',
-                url: SITE_URL + '/projects',
+                url: SITE_URL + 'projects',
                 authorName: 'Emilia Markiewicz',
             })
         ]
     },
     'resume': {
         meta: metadataOf({
-            url: SITE_URL + '/resume',
+            url: SITE_URL + 'resume',
             title: 'Resume - ' + HOME_TITLE,
             alternates: {
-                canonical: SITE_URL + '/resume'
+                canonical: SITE_URL + 'resume'
             },
             description: 'Learn more about my professional experience and educational background.',
             ogImages: [
                 {
-                    url: SITE_URL + '/images/seo/og-image.png'
+                    url: SITE_URL + 'images/seo/og-image.png'
                 }
             ]
         }),
     },
     'contact': {
         meta: metadataOf({
-            url: SITE_URL + '/contact',
-            title: SITE_URL + '/contact',
+            url: SITE_URL + 'contact',
+            title: SITE_URL + 'contact',
             alternates: {
-                canonical: SITE_URL + '/contact'
+                canonical: SITE_URL + 'contact'
             },
             description: "Designing a better user experience. Get in touch if you're looking for a UI/UX designer to join your team.",
             ogImages: [
                 {
-                    url: SITE_URL + '/images/seo/og-image.png'
+                    url: SITE_URL + 'images/seo/og-image.png'
                 }
             ]
         })
