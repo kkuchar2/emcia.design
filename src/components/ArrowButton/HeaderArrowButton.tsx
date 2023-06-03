@@ -1,9 +1,8 @@
 import React from 'react';
 
-import Link from 'next/link';
-
 import { ArrowButtonProps } from 'components/ArrowButton/ArrowButton.types';
 import { Arrow } from 'components/svg/Arrow';
+import Link from 'next/link';
 
 import styles from './HeaderArrowButton.module.scss';
 

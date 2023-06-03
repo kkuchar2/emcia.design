@@ -27,7 +27,8 @@ const MainContextProvider: React.FC<MainContextProviderProps> = ({ children }) =
         // Set body overflow to hidden if navbar is opened
         if (next) {
             document.body.style.overflow = 'hidden';
-        } else {
+        }
+        else {
             document.body.style.overflow = '';
         }
 
@@ -40,7 +41,8 @@ const MainContextProvider: React.FC<MainContextProviderProps> = ({ children }) =
         // Set body overflow to hidden if navbar is opened
         if (next) {
             document.body.style.overflow = 'hidden';
-        } else {
+        }
+        else {
             document.body.style.overflow = '';
         }
         setNavbarOpened(next);

@@ -1,8 +1,7 @@
 import React from 'react';
 
-import styled from 'styled-components';
-
 import { ProjectItem, StyledImageWrapper, StyledProjectDescription, StyledProjectItem } from 'components/Projects/ProjectItem';
+import styled from 'styled-components';
 
 import { ShowcaseProjectsConfig } from '../../portfolioConfig.types';
 

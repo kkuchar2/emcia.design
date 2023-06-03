@@ -1,10 +1,9 @@
 import React from 'react';
 
-import styled from 'styled-components';
-
 import { HeaderArrowButton } from 'components/ArrowButton/HeaderArrowButton';
 import { scaleUp } from 'components/Circles/keyframes';
 import { ScrollIndicator } from 'components/ScrollIndicator/ScrollIndicator';
+import styled from 'styled-components';
 
 const Circle = styled.div`
 

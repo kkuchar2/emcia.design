@@ -69,13 +69,14 @@ const _GallerySlide = (props: GallerySlideProps) => {
     return <StyledSwiperSlide className={'carousel-cell'}>
         <ImageWrapper className={'bg-gray-200'}>
             <CompositionImage
-                src={shot.image}
                 alt={shot.name}
-                title={shot.name}
-                fill={true}
-                sizes={'(min-width: 60em) 50vw, (min-width: 28em) 45vw, 80vw'}
-                objectFit={'cover'}
-                quality={100}
+                images={[
+                    {
+                        src: shot.image,
+                        sizes: '(max-width: 768px) 100vw, (max-width: 1024px) 620px, 800px',
+                        objectFit: 'cover',
+                    }
+                ]}
             />
         </ImageWrapper>
     </StyledSwiperSlide>;

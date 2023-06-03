@@ -1,13 +1,12 @@
 import React, { useCallback, useEffect } from 'react';
 
-import { usePathname } from 'next/navigation';
-import styled from 'styled-components';
-
 import { HamburgerButton } from 'components/HamburgerButton/HamburgerButton';
 import { NavBarDesktopItems } from 'components/NavBar/NavBarDesktopItems';
 import { NavBarMobileItems } from 'components/NavBar/NavBarMobileItems';
 import { useScreenWidth } from 'hooks/use-screen';
 import { isScrollbarVisible, setScrollbarWidthMultiplier } from 'hooks/use-scrollbar-width';
+import { usePathname } from 'next/navigation';
+import styled from 'styled-components';
 
 import { useMainContext } from '../../MainContext';
 import { portfolioConfig } from '../../portfolioConfig';
