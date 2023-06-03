@@ -63,6 +63,7 @@ const metadataOf = (meta: CustomMeta): Metadata => {
 
 const SITE_URL = process.env.SITE_URL as string;
 const HOME_TITLE = 'Emilia Markiewicz - UI & UX Portfolio';
+const environment = process.env.ENVIRONMENT as string || 'development';
 
 let siteUrlValid: boolean;
 let siteUrl: URL;
@@ -82,8 +83,8 @@ const commonMetadata = {
         canonical: '/'
     },
     robots: {
-        index: process.env.NODE_ENV === 'production',
-        follow: process.env.NODE_ENV === 'production',
+        index: environment === 'production',
+        follow: environment === 'production',
     },
     viewport: {
         width: 'device-width',
