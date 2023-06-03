@@ -4,9 +4,9 @@ import { ProjectsPage } from 'components/pages/ProjectsPage';
 import { SEO } from 'components/SEO/SEO';
 import { Metadata } from 'next';
 
-import { seoConfig } from '../../../next-seo.config';
+import { getPageMetadata } from '../../../next-seo.config';
 
-export const metadata: Metadata = { ...seoConfig.pages['projects'].meta };
+export const metadata: Metadata = { ...getPageMetadata('projects') };
 
 export default function Projects() {
     return <>

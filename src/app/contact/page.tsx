@@ -4,9 +4,9 @@ import { ContactPage } from 'components/pages/ContactPage';
 import { SEO } from 'components/SEO/SEO';
 import { Metadata } from 'next';
 
-import { seoConfig } from '../../../next-seo.config';
+import { getPageMetadata } from '../../../next-seo.config';
 
-export const metadata: Metadata = { ...seoConfig.pages['contact'].meta };
+export const metadata: Metadata = { ...getPageMetadata('contact') };
 
 export default function Contact() {
 
