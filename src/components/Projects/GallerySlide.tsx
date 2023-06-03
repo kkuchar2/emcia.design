@@ -12,7 +12,8 @@ const ImageWrapper = styled.div`
   max-height: 100%;
   box-sizing: border-box;
   position: relative;
-  overflow: hidden;
+  overflow: hidden;,
+background: rgb(230, 230, 230);
 `;
 
 const fadeIn = keyframes`
@@ -67,7 +68,7 @@ const _GallerySlide = (props: GallerySlideProps) => {
     }
 
     return <StyledSwiperSlide className={'carousel-cell'}>
-        <ImageWrapper className={'bg-gray-200'}>
+        <ImageWrapper>
             <CompositionImage
                 alt={shot.name}
                 images={[

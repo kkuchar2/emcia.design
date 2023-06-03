@@ -16,6 +16,7 @@ const Container = styled.div`
   width: 100%;
   height: 50vw;
   max-height: 500px;
+  background: rgb(230, 230, 230);
 `;
 
 const StyledCarousel = styled.div`
@@ -73,7 +74,7 @@ const GalleryCarousel = (props: GalleryCarouselProps) => {
         };
     }, []);
 
-    return <Container className={loaded ? '' : 'animate-pulse bg-gray-200'}>
+    return <Container className={loaded ? '' : 'animate-pulse'}>
         <StyledCarousel className={'main-carousel'}>
             {shots.map((shot, index) => <GallerySlide key={index} shot={shot}/>)}
         </StyledCarousel>
