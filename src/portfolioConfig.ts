@@ -1,14 +1,14 @@
-import {Behance} from 'components/svg/Behance';
-import {Dribbble} from 'components/svg/Dribbble';
-import {LinkedIn} from 'components/svg/LinkedIn';
+import { Behance } from 'components/svg/Behance';
+import { Dribbble } from 'components/svg/Dribbble';
+import { LinkedIn } from 'components/svg/LinkedIn';
 
-import {transformStyles} from './configUtils';
-import {IPortfolioConfig, Project} from './portfolioConfig.types';
+import { transformStyles } from './configUtils';
+import { IPortfolioConfig, Project } from './portfolioConfig.types';
 
 const projects = [
     {
         title: 'serenity.',
-        image: 'projects/serenity_square.png',
+        image: '/images/projects/serenity_square.png',
         link: 'https://www.behance.net/gallery/156628655/Serenity-Candlemaker-Mobile-App',
         linkTitle: 'Behance - Serenity Candlemaker Mobile App',
         tags: ['UI/UX', 'Mobile', 'App', 'Case Study', 'Design System', 'Candles'],
@@ -23,8 +23,8 @@ const projects = [
     },
     {
         title: 'sciencelo.',
-        image: 'projects/sciencelo_no_text.png',
-        overlayImage: 'projects/sciencelo_text_image.png',
+        image: '/images/projects/sciencelo_no_text.png',
+        overlayImage: '/images/projects/sciencelo_text_image.png',
         link: 'https://www.behance.net/gallery/170657341/Sciencelo-Landing-Page-UI-Design',
         linkTitle: 'Behance - Scencelo - Educational Platform Landing Page',
         tags: ['UI/UX', 'Case Study', 'Design System', 'Education', 'Landing Page', 'Sciencelo'],
@@ -40,7 +40,7 @@ const projects = [
     },
     {
         title: 'aprojekt.',
-        image: 'projects/aprojekt_square.png',
+        image: '/images/projects/aprojekt_square.png',
         link: 'https://www.behance.net/gallery/164216181/Aprojekt-Website-UI-Redesign',
         linkTitle: 'Behance - Aprojekt Website UI redesign',
         tags: ['UI/UX', 'Web', 'Website', 'Case Study', 'Design System', 'Telecommunications'],

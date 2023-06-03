@@ -1,15 +1,16 @@
-'use client';
-
 import React from 'react';
 
-import { ResumeDesktop } from 'components/Resume/ResumeDesktop';
-import { ResumeMobile } from 'components/Resume/ResumeMobile';
-import { useMediaQuery } from 'hooks/useMediaQuery';
+import { ResumePage } from 'components/pages/ResumePage';
+import { SEO } from 'components/SEO/SEO';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+    title: 'Resume | Portfolio',
+};
 
 export default function Resume() {
-    const isDesktop = useMediaQuery('(min-width: 1024px)');
-
-    return <div className={'bg-[#f1f1f1]'}>
-        {isDesktop ? <ResumeDesktop/> : <ResumeMobile/>}
-    </div>;
+    return <>
+        <SEO seoKey={'resume'}/>
+        <ResumePage/>
+    </>;
 }

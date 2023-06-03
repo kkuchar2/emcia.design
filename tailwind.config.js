@@ -72,7 +72,7 @@ module.exports = {
                 clipPath: 'clipPath 800ms cubic-bezier(0.175, 0.32, 0.12, 0.95) forwards',
                 arrowButton: 'arrowButton 800ms cubic-bezier(0.175, 0.32, 0.12, 0.95) forwards',
                 pulseImage: 'animatePulseImage 2s ease-in-out infinite',
-                showDelay: 'fadeIn2 800ms ease forwards 1s',
+                showDelay: 'fadeIn2 800ms ease forwards 2s'
             }
         },
         screens: {

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { ImageWithState } from 'components/Image/AppImage';
+import { CompositionImage } from 'components/Image/AppImage';
 import styled, { keyframes } from 'styled-components';
 
 import { DribbbleShot } from '../../portfolioConfig.types';
@@ -68,7 +68,7 @@ const _GallerySlide = (props: GallerySlideProps) => {
 
     return <StyledSwiperSlide className={'carousel-cell'}>
         <ImageWrapper className={'bg-gray-200'}>
-            <ImageWithState
+            <CompositionImage
                 src={shot.image}
                 alt={shot.name}
                 title={shot.name}

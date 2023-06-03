@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 
 import { ProjectArrowButton } from 'components/ArrowButton/ProjectArrowButton';
-import { ImageWithState } from 'components/Image/AppImage';
+import { CompositionImage } from 'components/Image/AppImage';
 import useIntersectionObserver from 'hooks/use-intersection';
 import Link from 'next/link';
 import styled from 'styled-components';
@@ -90,28 +90,38 @@ export const ProjectItem = (props: ProjectItemProps) => {
     const { longDescriptionMaxWidth } = style || {};
 
     const ref = useRef<HTMLDivElement | null>(null);
-    const entry = useIntersectionObserver(ref, {});
+    const entry = useIntersectionObserver(ref, {
+        threshold: 0.3,
+    });
     const isVisible = !!entry?.isIntersecting;
 
     return <StyledProjectItem ref={ref}>
         <StyledImageWrapper href={project.link} target={'_blank'} rel={'noopener noreferrer'}>
-            <ImageWithState
-                isVisible={isVisible}
-                background={background}
-                src={image}
-                overlayImageSrc={overlayImage}
+            <CompositionImage
+                show={isVisible}
                 alt={`Open in Behance - ${alt}`}
-                title={`Open in Behance - ${alt}`}
-                sizes={'(max-width: 768px) 100vw, (max-width: 1024px) 620px, 800px'}
-                quality={100}
-                fill={true}
-                loading={'lazy'}
-                objectFit={objectFit || 'cover'}
-                style={{
-                    objectFit: objectFit || 'cover',
-                    transition: 'transform 2s cubic-bezier(0.075, 0.82, 0.165, 1)',
-                    transform: isVisible ? `translateY(0) scale(${targetZoom})` : 'translateY(400px) scale(2)',
-                }}/>
+                background={background}
+                images={[
+                    {
+                        src: image,
+                        sizes: '(max-width: 768px) 100vw, (max-width: 1024px) 620px, 800px',
+                        style: {
+                            objectFit: objectFit || 'cover',
+                            transition: 'transform 2s cubic-bezier(0.075, 0.82, 0.165, 1)',
+                            transform: isVisible ? `translateY(0) scale(${targetZoom})` : 'translateY(150%) scale(2)'
+                        }
+                    },
+                    {
+                        src: overlayImage,
+                        sizes: '(max-width: 768px) 100vw, (max-width: 1024px) 620px, 800px',
+                        style: {
+                            objectFit: objectFit || 'cover',
+                            transition: 'transform 2s cubic-bezier(0.075, 0.82, 0.165, 1) 300ms, opacity 2s ease',
+                            transform: isVisible ? `translateY(-20px) scale(${1.2})` : 'translateY(150%) scale(2)'
+                        }
+                    }
+                ]}
+            />
         </StyledImageWrapper>
 
         <StyledProjectDescription>

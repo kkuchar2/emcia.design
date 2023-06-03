@@ -1,84 +1,103 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 
-import { ImageSkeleton } from 'components/Skeleton/ImageSkeleton';
-import Image, { ImageProps } from 'next/image';
+import Image from 'next/image';
 import styled from 'styled-components';
 
-interface ImageWithStateProps extends ImageProps {
-    isVisible?: boolean;
-    overlayImageSrc?: any;
-    background?: string;
-    objectFit?: 'cover' | 'contain';
-    className?: string;
-}
-
-const StyledImageBackground = styled.div<{ isVisible?: boolean, background?: string }>`
+const Skeleton = styled.div<{ loaded?: boolean }>`
   width: 100%;
   height: 100%;
+  display: ${({ loaded }) => loaded ? 'none' : 'block'};
 
-  &:after, &:before {
+  @keyframes alternateOpacity {
+    0%, 100% {
+      opacity: 1
+    }
+    50% {
+      opacity: 0.3
+    }
+  }
+
+  &:before {
     content: '';
     position: absolute;
     width: 100%;
     height: 100%;
-    transition: opacity 2s ease;
-  }
-
-  &:after {
-    background: ${({ background }) => background};
-    opacity: ${({ isVisible }) => isVisible ? 1 : 0};
-  }
-
-  &:before {
-    background: transparent;
-    opacity: ${({ isVisible }) => isVisible ? 0 : 1};
+    background: rgb(230, 230, 230);
+    animation: alternateOpacity 3s ease infinite;
   }
 `;
 
-function ImageWithState(props: ImageWithStateProps): JSX.Element {
-    const [loading, setLoading] = useState(true);
-    const [loadingOverlayImage, setLoadingOverlayImage] = useState(true);
+const Background = styled.div<{ show?: boolean, background?: string, loaded?: boolean }>`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: ${({ background }) => background};
+  opacity: ${({ show, loaded }) => show && loaded ? 1 : 0};
+  transition: opacity 0.3s ease;
+`;
 
-    const { src, alt, style, objectFit, isVisible, background, overlayImageSrc, ...rest } = props;
-
-    const finalStyle = {
-        ...style,
-        opacity: loading ? 0 : 1,
-        objectFit: objectFit || 'cover',
-    };
-
-    const imagePath = src ? `/images/${src}` : null;
-    const overlayImagePath = overlayImageSrc ? `/images/${overlayImageSrc}` : null;
-
-    return <div className={'relative h-full w-full'}>
-        <ImageSkeleton
-            loading={loading && (loadingOverlayImage || !overlayImageSrc) && !isVisible}/>
-        <StyledImageBackground isVisible={isVisible} background={background}/>
-        {imagePath && <Image
-            {...rest}
-            alt={alt}
-            src={imagePath}
-            style={finalStyle}
-            onLoadingComplete={() => setLoading(false)}
-        />}
-        {overlayImagePath && <Image
-            src={overlayImagePath}
-            loading={'eager'}
-            alt={`Open in Behance - ${alt}`}
-            title={`Open in Behance - ${alt}`}
-            fill={true}
-            onLoadingComplete={() => setLoadingOverlayImage(false)}
-            sizes={'(max-width: 768px) 100vw, (max-width: 1024px) 620px, 800px'}
-            priority={true}
-            quality={100}
-            style={{
-                objectFit: objectFit || 'cover',
-                transition: 'transform 2s cubic-bezier(0.075, 0.82, 0.165, 1) 300ms, opacity 2s ease',
-                transform: isVisible ? `translateY(-20px) scale(${1.2})` : 'translateY(400px) scale(2)'
-            }}/>}
-    </div>;
+interface SingleImage {
+    src: string;
+    sizes?: string;
+    objectFit?: 'cover' | 'contain';
+    style?: React.CSSProperties;
 }
 
-export { ImageWithState };
+interface ImageWithStateProps {
+    alt: string;
+    show?: boolean;
+    background?: string;
+    images?: SingleImage[];
+    objectFit?: 'cover' | 'contain';
+    className?: string;
+}
+
+export const CompositionImage = (props: ImageWithStateProps) => {
+
+    const { show, alt, background, images } = props;
+
+    const validImages = useMemo(() => images?.filter(image => !!image.src), [images]);
+
+    const [imagesLoaded, setImagesLoaded] = useState(0);
+
+    const allImagesLoaded = useMemo(() => {
+        return imagesLoaded === validImages?.length;
+    }, [imagesLoaded, validImages]);
+
+    const singleImage = useCallback((image: SingleImage, index: number) => {
+        const { src, objectFit, sizes, style } = image;
+
+        if (!src) {
+            return null;
+        }
+
+        return <Image
+            key={index}
+            src={src}
+            sizes={sizes}
+            fill={true}
+            alt={alt}
+            priority={true}
+            title={alt}
+            style={{
+                objectFit: objectFit || 'cover',
+                ...style
+            }}
+            onLoadingComplete={() => {
+                setImagesLoaded(prev => prev + 1);
+            }}
+        />;
+    }, [allImagesLoaded]);
+
+    return <div className={'relative h-full w-full'}>
+        <div className={'absolute left-0 top-0 h-full w-full animate-showDelay opacity-[0.001]'}>
+            <Skeleton loaded={allImagesLoaded}/>
+        </div>
+        <Background background={background} show={show} loaded={allImagesLoaded}/>
+        {images && images.map(singleImage)}
+    </div>;
+};
