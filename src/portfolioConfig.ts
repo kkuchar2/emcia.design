@@ -83,17 +83,17 @@ export const portfolioConfig: IPortfolioConfig = {
             shots: [
                 {
                     name: 'Sciencelo. - User Dashboard',
-                    video: '/videos/sciencelo_user_dashboard.mp4',
+                    video: '/videos/resized_sciencelo.mp4',
                     link: 'https://dribbble.com/shots/21505890-Sciencelo-User-Dashboard',
                 },
                 {
                     name: 'Lingo - Flashcard Learning App #1',
-                    video: '/videos/resized_lingo_flashcard_1.mp4',
+                    video: '/videos/resized_lingo_1.mp4',
                     link: 'https://dribbble.com/shots/21498815-Lingo-Flashcard-Learning-App-1',
                 },
                 {
                     name: 'Lingo - Flashcard Learning App #2',
-                    video: '/videos/resized_lingo_flashcard_2.mp4',
+                    video: '/videos/resized_lingo_2.mp4',
                     link: 'https://dribbble.com/shots/21498901-Lingo-Flashcard-Learning-App-2',
                 },
                 {

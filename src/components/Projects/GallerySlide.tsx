@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import { CompositionImage } from 'components/Image/AppImage';
+import ReactPlayer from 'react-player';
 import styled, { keyframes } from 'styled-components';
 
 import { DribbbleShot } from '../../portfolioConfig.types';
@@ -55,14 +56,7 @@ const _GallerySlide = (props: GallerySlideProps) => {
         return <StyledSwiperSlide className={'carousel-cell'}>
 
             <ImageWrapper className={'bg-gray-200'}>
-                {hasWindow && <video autoPlay={true} loop={true} muted={true} playsInline={true}
-                    style={{
-                        width: '100%',
-                        height: '100%',
-                        objectFit: 'cover',
-                    }}>
-                    <source src={videoUri} type={'video/mp4'}/>
-                </video>}
+                {hasWindow && <ReactPlayer url={videoUri} controls={false} muted={true} width={'100%'} height={'100%'} loop={true} playing={true}/>}
             </ImageWrapper>
         </StyledSwiperSlide>;
     }
