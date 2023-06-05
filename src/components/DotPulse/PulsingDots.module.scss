@@ -1,11 +1,11 @@
-.pulseDotWrapper {
+.pulsingDots {
   display: inline-flex;
   opacity: 1;
   overflow: hidden;
   transition: all .3s cubic-bezier(0.165, 0.84, 0.44, 1);
   width: 0;
 
-  &.mailSent {
+  &.visible {
     opacity: 1;
     width: 40px;
   }

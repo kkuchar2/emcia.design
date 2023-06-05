@@ -41,17 +41,12 @@
 }
 
 .title {
-  color: #807F7F;
+  align-items: center;
   display: flex;
-  font-size: 1rem;
-  font-weight: 400;
-  gap: 5px;
+  font-size: clamp(1.1rem, 2vw, 1.2rem);
+  font-weight: 600;
+  height: 40px;
   line-height: 1.2;
-  margin-top: 12px;
-
-  @media (min-width: 1024px) {
-    display: none;
-  }
 }
 
 .school {

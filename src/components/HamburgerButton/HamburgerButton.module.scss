@@ -1,0 +1,61 @@
+.hamburgerButton {
+  align-items: center;
+  display: block;
+  font-size: 16px;
+  height: 60px;
+  margin: 0;
+  mix-blend-mode: difference;
+  opacity: var(--navbar-opacity);
+  padding: 0;
+  position: fixed;
+  right: calc(40px - (var(--scrollbar-width) * var(--scrollbar-width-multiplier)));
+  -webkit-tap-highlight-color: transparent;
+  top: 50px;
+  transform: translateY(-50%);
+  transition: opacity 0.8s ease;
+  width: 60px;
+  z-index: 5;
+
+  &.navbarOpened {
+    mix-blend-mode: unset;
+  }
+
+  @media (min-width: 1024px) {
+    display: none;
+  }
+}
+
+.topLine {
+  background-color: #dfdfdf;
+  box-sizing: border-box;
+  height: 2px;
+  position: absolute;
+  top: calc(50% - 5px);
+  transform: translateX(-50%) rotate(0deg);
+  transition: all 0.3s cubic-bezier(0.68, 0.25, 0.265, 0.55);
+  width: 50%;
+
+  &.navbarOpened {
+    background-color: #2c2c2c;
+    top: 50%;
+    transform: translateX(-50%) rotate(-45deg);
+  }
+}
+
+.bottomLine {
+  background-color: #dfdfdf;
+  box-sizing: border-box;
+  height: 2px;
+  left: 50%;
+  position: absolute;
+  top: calc(50% + 5px);
+  transform: translateX(-50%) rotate(0deg);
+  transition: all 0.3s cubic-bezier(0.68, -0.25, 0.265, 0.55);
+  width: 50%;
+
+  &.navbarOpened {
+    background-color: #2c2c2c;
+    top: 50%;
+    transform: translateX(-50%) rotate(45deg)
+  }
+}

@@ -1,0 +1,63 @@
+.customTextArea {
+  align-items: center;
+  border-radius: 12px;
+  color: #1e1e1e;
+  display: flex;
+  font-size: 1.2rem;
+  font-weight: 500;
+  gap: 1rem;
+  justify-content: space-between;
+  position: relative;
+  width: 100%;
+
+  &:hover {
+    cursor: text
+  }
+}
+
+.textArea {
+  background: none;
+  caret-color: #cecece;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: normal;
+  height: 200px;
+  max-height: 400px;
+  outline: none;
+  padding: 10px 10px 10px 20px;
+  resize: none;
+  width: 100%;
+}
+
+.fieldSet {
+  background: none;
+  border: 1px solid #595959;
+  border-radius: 12px;
+  height: 100%;
+  transition: all 0.3s ease-in-out;
+  width: 100%;
+
+  &.focused {
+    background: #232323;
+    border: 1px solid #686868;
+  }
+}
+
+.legend {
+  background: rgba(255, 0, 0, 0);
+  color: #BDBDBD;
+  font-size: 0.8rem;
+  font-weight: 400;
+  margin-left: 15px;
+  padding-left: 7px;
+  padding-right: 7px;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+  &.focused {
+    color: #ffffff;
+  }
+
+  @media (min-width: 768px) {
+    font-size: 1rem;
+  }
+}

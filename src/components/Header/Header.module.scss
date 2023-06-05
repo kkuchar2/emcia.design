@@ -1,0 +1,46 @@
+.header {
+  background: #1e1e1e;
+  display: flex;
+  flex-direction: column;
+  height: 100svh;
+  overflow-x: clip;
+  position: relative;
+}
+
+.headerTop {
+  width: 100%;
+
+  @media (min-width: 1024px) {
+    height: 100px;
+    min-height: 100px;
+  }
+}
+
+@keyframes scaleUp {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.circle {
+  transform: scale(0);
+
+  @media (min-width: 1024px) {
+    animation: scaleUp 2200ms cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+    background: #f1f1f1;
+    border: 1px solid #e3e3e3;
+    border-radius: 50%;
+    bottom: max(-1200px, calc(-62.5vw / 2));
+    height: 62.5vw;
+    max-height: max(2400px, 100dvh);
+    max-width: max(2400px, 100dvh);
+    position: absolute;
+    right: -25vw;
+    transform: scale(1);
+    width: 62.5vw;
+  }
+}
+

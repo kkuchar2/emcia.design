@@ -1,18 +1,11 @@
 import React from 'react';
 
 import { SocialLink } from 'components/SocialMedia/SocialLink';
-import { ISize, useParentSize } from 'hooks/use-size';
-import styled from 'styled-components';
+import { useParentSize } from 'hooks/use-size';
 
 import { portfolioConfig } from '../../portfolioConfig';
 
 import styles from './SocialMedia.module.scss';
-
-const StyledSocialMedia = styled.div<ISize>`
-  @media (max-width: 430px) {
-    height: ${({ width }) => width / 2}px;
-  }
-`;
 
 interface SocialMediaProps {
     title?: string;
@@ -28,7 +21,7 @@ export const SocialMedia = (props: SocialMediaProps) => {
 
     const parentSize = useParentSize(ref);
 
-    return <StyledSocialMedia className={styles.socialMedia} ref={ref} {...parentSize}>
+    return <div className={styles.socialMedia} ref={ref}{...parentSize}>
         {title && <div className={'text-sm font-normal text-[#BDBDBD]'}>
             {title}
         </div>}
@@ -37,5 +30,5 @@ export const SocialMedia = (props: SocialMediaProps) => {
             <SocialLink {...socialConfig.behance} />
             <SocialLink {...socialConfig.linkedin} />
         </div>
-    </StyledSocialMedia>;
+    </div>;
 };

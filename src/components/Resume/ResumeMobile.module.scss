@@ -1,0 +1,63 @@
+.resume {
+  container-type: inline-size;
+  display: flex;
+  flex-direction: column;
+  letter-spacing: 0.03em;
+  position: relative;
+}
+
+.title {
+  color: #e1e1e1;
+  font-size: 2.8rem;
+  font-weight: 600;
+  position: relative;
+  text-align: center;
+  visibility: visible;
+}
+
+.titleHelloMessage {
+  color: #807F7F;
+  font-size: clamp(1rem, 1vw, 1rem);
+  font-weight: 400;
+  text-align: center;
+}
+
+.topCircle {
+  align-items: center;
+  background: #f1f1f1;
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+  display: flex;
+  height: 100vw;
+  justify-content: center;
+  left: 0;
+  position: absolute;
+  top: calc(-50vw + 100px);
+  width: 100vw;
+
+  @media (min-width: 640px) {
+    height: 80vw;
+    top: calc(100px - 40vw);
+    width: 100vw;
+  }
+
+  @media (min-width: 768px) {
+    height: 60vw;
+    top: calc(100px - 30vw);
+    width: 100vw;
+  }
+}
+
+.fakeCircleBlock {
+  background: #1e1e1e;
+  height: calc(50vw);
+  width: 100%;
+
+  @media (min-width: 640px) {
+    height: 40vw;
+  }
+
+  @media (min-width: 768px) {
+    height: 30vw;
+  }
+}

@@ -3,14 +3,16 @@ import React from 'react';
 import styles from './PulsingDots.module.scss';
 
 interface DotPulseProps {
-    mailSent: boolean;
+    visible: boolean;
 }
 
 export const PulsingDots = (props: DotPulseProps) => {
 
-    const { mailSent } = props;
+    const { visible } = props;
 
-    return <div className={[styles.dotPulse, mailSent ? styles.mailSent : ''].join(' ')}>
+    console.log('PulsingDots', visible);
+
+    return <div className={`${styles.pulsingDots} ${visible ? styles.visible : ''}`}>
         <div className={'flex gap-[2px]'}>
             <div className={styles.dot}/>
             <div className={styles.dot}/>

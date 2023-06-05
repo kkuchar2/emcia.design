@@ -5,7 +5,6 @@ import React, { useEffect } from 'react';
 import { NavBar } from 'components/NavBar/NavBar';
 import useScrollbarWidth, { isScrollbarVisible, setScrollbarWidthMultiplier } from 'hooks/use-scrollbar-width';
 
-import StyledComponentsRegistry from '../../app/registry';
 import MainContextProvider from '../../MainContext';
 
 import '../../styles/globals.css';
@@ -42,10 +41,8 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
         };
     }, []);
 
-    return <StyledComponentsRegistry>
-        <MainContextProvider>
-            <NavBar/>
-            {children}
-        </MainContextProvider>
-    </StyledComponentsRegistry>;
+    return <MainContextProvider>
+        <NavBar/>
+        {children}
+    </MainContextProvider>;
 };

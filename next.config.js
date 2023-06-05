@@ -5,8 +5,5 @@ module.exports = {
     swcMinify: true,
     sassOptions: {
         includePaths: [path.join(__dirname, 'src/components')],
-    },
-    compiler: {
-        styledComponents: true,
     }
 };

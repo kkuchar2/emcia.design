@@ -1,49 +1,15 @@
 import React from 'react';
 
 import { HeaderArrowButton } from 'components/ArrowButton/HeaderArrowButton';
-import { scaleUp } from 'components/Circles/keyframes';
 import { ScrollIndicator } from 'components/ScrollIndicator/ScrollIndicator';
-import styled from 'styled-components';
 
-const Circle = styled.div`
-
-  transform: scale(0);
-
-  @media (min-width: 1024px) {
-    transform: scale(1);
-    position: absolute;
-    background: #f1f1f1;
-    border-radius: 50%;
-    border: 1px solid #e3e3e3;
-    width: 62.5vw;
-    height: 62.5vw;
-    bottom: max(-1200px, calc(-62.5vw / 2));
-    right: -25vw;
-    max-width: max(2400px, 100dvh);
-    max-height: max(2400px, 100dvh);
-    animation: ${scaleUp} 2200ms cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
-  }
-`;
-
-const StyledHeader = styled.div`
-  height: 100svh;
-  position: relative;
-`;
-
-const HeaderTop = styled.div`
-  width: 100%;
-
-  @media (min-width: 1024px) {
-    min-height: 100px;
-    height: 100px;
-  }
-`;
+import styles from './Header.module.scss';
 
 export const Header = () => {
 
-    return <StyledHeader className={'relative flex flex-col overflow-x-clip bg-[#1e1e1e]'}>
-        <Circle/>
-        <HeaderTop/>
+    return <div className={styles.header}>
+        <div className={styles.circle}/>
+        <div className={styles.headerTop}/>
         <div className={'mb-[150px] flex grow items-end justify-center  md:mb-[200px]'}>
             <div className={'flex w-full max-w-[1500px] flex-col justify-center gap-[1.4rem] p-[40px] text-[#f1f1f1]'}>
                 <div>
@@ -72,5 +38,5 @@ export const Header = () => {
             </div>
         </div>
         <ScrollIndicator/>
-    </StyledHeader>;
+    </div>;
 };

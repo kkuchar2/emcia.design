@@ -95,7 +95,7 @@ export const ContactForm = (props: ContactFormProps) => {
                 <div className={'w-[150px] ' + (sending ? 'text-white' : 'text-white')}>
                     {'Send Email'}
                 </div>
-                <PulsingDots mailSent={sending}/>
+                <PulsingDots visible={sending}/>
             </div>
         </button>
     </form>;
