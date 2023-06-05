@@ -1,38 +1,13 @@
 import React, { useEffect, useState } from 'react';
 
-import { CompositionImage } from 'components/Image/AppImage';
+import { CompositionImage } from 'components/Image/CompositionImage';
 import ReactPlayer from 'react-player';
-import styled, { keyframes } from 'styled-components';
 
 import { DribbbleShot } from '../../portfolioConfig.types';
 
 import 'flickity/dist/flickity.min.css';
 
-const ImageWrapper = styled.div`
-  height: 100%;
-  max-height: 100%;
-  box-sizing: border-box;
-  position: relative;
-  overflow: hidden;,
-background: rgb(230, 230, 230);
-`;
-
-const fadeIn = keyframes`
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-`;
-
-const StyledSwiperSlide = styled.div`
-  aspect-ratio: 4/3;
-  height: 100%;
-  margin-right: 20px;
-  counter-increment: carousel-cell;
-  animation: ${fadeIn} 1s ease-in-out;
-`;
+import styles from './GallerySlide.module.scss';
 
 interface GallerySlideProps {
     shot: DribbbleShot;
@@ -53,17 +28,17 @@ const _GallerySlide = (props: GallerySlideProps) => {
     const videoUri = shot.video;
 
     if (videoUri) {
-        return <StyledSwiperSlide className={'carousel-cell'}>
-
-            <ImageWrapper className={'bg-gray-200'}>
+        return <div className={['carousel-cell', styles.swiperSlide].join(' ')}>
+            <div className={styles.mediaItem}>
                 {hasWindow && <ReactPlayer url={videoUri} controls={false} muted={true} width={'100%'} height={'100%'} loop={true} playing={true} playsinline={true}/>}
-            </ImageWrapper>
-        </StyledSwiperSlide>;
+            </div>
+        </div>;
     }
 
-    return <StyledSwiperSlide className={'carousel-cell'}>
-        <ImageWrapper>
+    return <div className={['carousel-cell', styles.swiperSlide].join(' ')}>
+        <div className={styles.mediaItem}>
             <CompositionImage
+                show={true}
                 alt={shot.name}
                 images={[
                     {
@@ -73,8 +48,8 @@ const _GallerySlide = (props: GallerySlideProps) => {
                     }
                 ]}
             />
-        </ImageWrapper>
-    </StyledSwiperSlide>;
+        </div>
+    </div>;
 };
 
 _GallerySlide.displayName = 'SwiperSlider';

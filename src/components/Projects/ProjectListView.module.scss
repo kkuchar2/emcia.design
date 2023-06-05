@@ -1,0 +1,52 @@
+.items {
+  display: flex;
+  flex-direction: column;
+  gap: 160px;
+  width: 100%;
+}
+
+.projectList {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 80px;
+  justify-content: center;
+  margin-top: 80px;
+
+  @media (min-width: 768px) {
+    gap: 160px;
+    justify-content: center;
+    margin-top: 160px;
+    max-width: 1500px;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+
+.title {
+  color: #1e1e1e;
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 700;
+  letter-spacing: -0.06em;
+}
+
+.secondaryTitle {
+  color: #6E6E6E;
+  font-size: clamp(1rem, 1.7vw, 1.2rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  max-width: 400px;
+}
+
+.titlesWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  justify-self: flex-start;
+  padding-left: 40px;
+
+  @media (min-width: 768px) {
+    padding-left: 0;
+  }
+}

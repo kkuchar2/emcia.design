@@ -1,0 +1,46 @@
+.dribbleShots {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  justify-content: center;
+  margin-top: 80px;
+  overflow: hidden;
+  padding-bottom: 50px;
+  width: 100%;
+
+  @media (min-width: 768px) {
+    gap: 80px;
+    justify-content: center;
+    margin-top: 160px;
+  }
+}
+
+.titlesWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-width: 1500px;
+  padding-left: 40px;
+  width: 100%;
+}
+
+.carouselWrapper {
+  max-width: 4000px;
+  width: 100%;
+}
+
+.title {
+  color: #1e1e1e;
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 700;
+  letter-spacing: -0.06em;
+}
+
+.secondaryTitle {
+  color: #807F7F;
+  font-size: clamp(1rem, 1.7vw, 1.2rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  max-width: 400px;
+}

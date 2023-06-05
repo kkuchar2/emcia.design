@@ -3,59 +3,8 @@ import React, { useCallback, useState } from 'react';
 import { CustomInput } from 'components/CustomInput/CustomInput';
 import { CustomTextArea } from 'components/CustomInput/CustomTextArea';
 import { PulsingDots } from 'components/DotPulse/PulsingDots';
-import styled from 'styled-components';
 
-const StyledForm = styled.form`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  gap: 30px;
-  width: 100%;
-  position: relative;
-`;
-
-const SubmitButton = styled.button<{ sending: boolean }>`
-  margin-top: 0;
-  width: 200px;
-  border-radius: 50px;
-  background: #914f37;
-  padding: 12px;
-  font-weight: 600;
-  color: #ffffff;
-  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
-  cursor: pointer;
-  font-size: 1rem;
-  align-self: center;
-  position: relative;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-
-  &:hover {
-    background: #d0562a;
-  }
-
-  &:focus {
-    outline: 1px solid #a4a4a4;
-  }
-
-  &:disabled {
-    background: rgba(74, 74, 74, 0.26);
-    color: rgba(255, 255, 255, 0.35);
-    cursor: not-allowed;
-  }
-
-  &:after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    background: #ffffff;
-    transform: scale(0);
-    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
-  }
-`;
+import styles from './ContactForm.module.scss';
 
 interface ContactFormProps {
     onMailSent: (sender: string) => void;
@@ -103,7 +52,7 @@ export const ContactForm = (props: ContactFormProps) => {
         onMailSent(extractFirstName(name));
     }, [name, email, subject, message, onMailSent]);
 
-    return <StyledForm onSubmit={onFormSubmit}>
+    return <form className={styles.form} onSubmit={onFormSubmit}>
         <CustomInput
             name={'sender_name'}
             label={'Name'}
@@ -141,13 +90,13 @@ export const ContactForm = (props: ContactFormProps) => {
             onChange={e => setMessage(e.target.value)}
         />
 
-        <SubmitButton disabled={sending} sending={sending} type={'submit'}>
+        <button className={styles.submitButton} disabled={sending} type={'submit'}>
             <div className={'relative flex items-center justify-center'}>
                 <div className={'w-[150px] ' + (sending ? 'text-white' : 'text-white')}>
-                    {sending ? 'Sending email' : 'Send'}
+                    {'Send Email'}
                 </div>
                 <PulsingDots mailSent={sending}/>
             </div>
-        </SubmitButton>
-    </StyledForm>;
+        </button>
+    </form>;
 };

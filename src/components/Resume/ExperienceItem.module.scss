@@ -1,0 +1,78 @@
+.experienceItem {
+  color: #f1f1f1;
+  display: grid;
+  grid-column-gap: 60px;
+  grid-template-columns: 1fr;
+  letter-spacing: 0.03em;
+  line-height: 1;
+
+  @media (min-width: 1024px) {
+    grid-template-columns: min-content minmax(200px, 1fr);
+  }
+}
+
+.desktopDate {
+  color: #f1f1f1;
+  display: none;
+  font-size: 1rem;
+  font-weight: 300;
+  gap: 5px;
+
+  @media (min-width: 1024px) {
+    align-items: center;
+    display: flex;
+    height: 40px;
+  }
+}
+
+.mobileDate {
+  color: #807F7F;
+  display: flex;
+  font-size: 1rem;
+  font-weight: 400;
+  gap: 5px;
+  margin-top: 12px;
+
+  @media (min-width: 1024px) {
+    display: none;
+  }
+}
+
+.jobTitle {
+  align-items: center;
+  display: flex;
+  font-size: clamp(1.4rem, 2.5vw, 1.5rem);
+  font-weight: 600;
+  height: 40px;
+}
+
+.company {
+  font-size: clamp(1.2rem, 1.5vw, 1.1rem);
+  font-weight: 300;
+}
+
+.duty {
+  color: #BDBDBD;
+  font-size: clamp(1rem, 1.5vw, 1rem);
+
+  @media (min-width: 1024px) {
+    color: #807F7F;
+  }
+}
+
+.dot {
+  color: #BDBDBD;
+  content: '•';
+  display: grid;
+  place-items: center;
+  transform: scale(1.2);
+
+  @media (min-width: 1024px) {
+    color: #807F7F;
+  }
+}
+
+.rightSide {
+  display: flex;
+  flex-direction: column;
+}

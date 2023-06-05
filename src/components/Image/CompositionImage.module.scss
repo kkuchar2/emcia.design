@@ -1,0 +1,41 @@
+.skeleton {
+  display: block;
+  height: 100%;
+  width: 100%;
+
+  &.loaded {
+    display: none;
+  }
+
+  @keyframes alternateOpacity {
+    0%, 100% {
+      opacity: 1
+    }
+    50% {
+      opacity: 0.3
+    }
+  }
+
+  &:before {
+    animation: alternateOpacity 3s ease infinite;
+    background: rgb(230, 230, 230);
+    content: '';
+    height: 100%;
+    position: absolute;
+    width: 100%;
+  }
+}
+
+.background {
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  transition: opacity 0.3s ease;
+  width: 100%;
+
+  &.show, &.loaded {
+    opacity: 1;
+  }
+}

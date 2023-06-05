@@ -1,0 +1,12 @@
+.socialMedia {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+
+
+  @media (min-width: 1024px) {
+    align-items: center;
+  }
+}

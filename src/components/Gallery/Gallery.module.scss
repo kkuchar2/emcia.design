@@ -1,0 +1,25 @@
+.gallery {
+  background: rgb(230, 230, 230);
+  height: 50vw;
+  max-height: 500px;
+  position: relative;
+  width: 100%;
+
+  &.loaded {
+    background: none;
+  }
+}
+
+.carousel {
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+
+  .flickity-viewport {
+    height: 100% !important;
+  }
+
+  .flickity-slider {
+    width: 100% !important;
+  }
+}

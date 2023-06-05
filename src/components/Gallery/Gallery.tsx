@@ -1,37 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-import { GallerySlide } from 'components/Projects/GallerySlide';
-import styled from 'styled-components';
-
 import { DribbbleShot } from '../../portfolioConfig.types';
+
+import styles from './Gallery.module.scss';
+import { GallerySlide } from './GallerySlide';
 
 import 'flickity/dist/flickity.min.css';
 
 interface GalleryCarouselProps {
     shots: DribbbleShot[]
 }
-
-const Container = styled.div`
-  position: relative;
-  width: 100%;
-  height: 50vw;
-  max-height: 500px;
-  background: rgb(230, 230, 230);
-`;
-
-const StyledCarousel = styled.div`
-  position: relative;
-  height: 100%;
-  overflow: hidden;
-
-  .flickity-viewport {
-    height: 100% !important;
-  }
-
-  .flickity-slider {
-    width: 100% !important;
-  }
-`;
 
 const GalleryCarousel = (props: GalleryCarouselProps) => {
 
@@ -74,11 +52,11 @@ const GalleryCarousel = (props: GalleryCarouselProps) => {
         };
     }, []);
 
-    return <Container className={loaded ? '' : 'animate-pulse'}>
-        <StyledCarousel className={'main-carousel'}>
+    return <div className={[styles.gallery, loaded ? styles.loaded : ''].join(' ')}>
+        <div className={['main-carousel', styles.carousel].join(' ')}>
             {shots.map((shot, index) => <GallerySlide key={index} shot={shot}/>)}
-        </StyledCarousel>
-    </Container>;
+        </div>
+    </div>;
 };
 
 export default GalleryCarousel;

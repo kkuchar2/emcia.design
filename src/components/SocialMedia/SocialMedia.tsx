@@ -6,19 +6,11 @@ import styled from 'styled-components';
 
 import { portfolioConfig } from '../../portfolioConfig';
 
-const StyledSocialMedia = styled.div<ISize>`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
+import styles from './SocialMedia.module.scss';
 
+const StyledSocialMedia = styled.div<ISize>`
   @media (max-width: 430px) {
     height: ${({ width }) => width / 2}px;
-  }
-
-  @media (min-width: 1024px) {
-    align-items: center;
   }
 `;
 
@@ -36,7 +28,7 @@ export const SocialMedia = (props: SocialMediaProps) => {
 
     const parentSize = useParentSize(ref);
 
-    return <StyledSocialMedia ref={ref} {...parentSize}>
+    return <StyledSocialMedia className={styles.socialMedia} ref={ref} {...parentSize}>
         {title && <div className={'text-sm font-normal text-[#BDBDBD]'}>
             {title}
         </div>}

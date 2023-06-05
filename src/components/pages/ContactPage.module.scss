@@ -1,0 +1,245 @@
+.contact {
+  container-type: inline-size;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  min-height: unset;
+  position: relative;
+
+  @media (min-width: 1024px) {
+    align-items: center;
+    height: 100svh;
+    min-height: 100dvh;
+  }
+}
+
+.title {
+  color: #e1e1e1;
+  font-size: clamp(2.8rem, 8vw, 5rem);
+  font-weight: 600;
+  position: relative;
+  text-align: center;
+
+  @media (min-width: 1024px) {
+    line-height: normal;
+    text-align: left;
+  }
+}
+
+.titleHelloMessage {
+  color: #807F7F;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-weight: 400;
+  text-align: center;
+
+  @media (min-width: 1024px) {
+    text-align: left;
+  }
+}
+
+@keyframes showConfirmation {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.confirmation {
+  background: #1e1e1e;
+  color: #ffffff;
+  display: grid;
+  gap: 10px;
+  height: 100dvh;
+  padding-bottom: 0;
+  place-content: center;
+  place-items: center;
+  position: absolute;
+  right: 0;
+  width: 100%;
+  z-index: 1;
+
+  @media (orientation: landscape) and (max-width: 1024px) {
+    height: 100svh;
+    left: 0;
+    padding-bottom: 0;
+    top: 0;
+    width: 100vw;
+  }
+
+  @media (min-width: 1024px) {
+    display: grid;
+    gap: 20px;
+    height: calc(100svh - 100px);
+    place-content: center;
+    place-items: center;
+    right: 0;
+    top: 100px;
+    width: 50%;
+  }
+}
+
+.confirmationTitle {
+  animation: showConfirmation 0.5s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+  color: white;
+  font-size: clamp(1.2rem, 2vw, 2rem);
+  font-weight: 600;
+  mix-blend-mode: difference;
+  text-align: center;
+  transform: scale(0);
+}
+
+.confirmationMessage {
+  animation: showConfirmation 0.5s cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s forwards;
+  color: #ffffff;
+  font-size: clamp(0.8rem, 1.5vw, 1rem);
+  font-weight: 400;
+  text-align: center;
+  transform: scale(0);
+}
+
+.bigScreenTitle {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  justify-content: center;
+  left: calc(100% - 400px);
+  mix-blend-mode: difference;
+  overflow: hidden;
+  position: absolute;
+  top: 55%;
+  transform: translateY(-50%);
+  width: 400px;
+
+  @media (max-height: 768px) {
+    top: 40%;
+  }
+}
+
+.bigScreenCircle {
+  @keyframes scaleUp {
+    0% {
+      transform: scale(0);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  animation: scaleUp 2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+  background: #f1f1f1;
+  border-radius: 50%;
+  bottom: calc(50% - 80vh);
+  display: block;
+  height: 160vh;
+  position: absolute;
+  right: 50%;
+  width: 160vh;
+
+  @media (max-height: 768px) {
+    bottom: calc(30% - 60vw);
+    height: 100vw;
+    width: 100vw;
+  }
+}
+
+.bigScreenCircle2 {
+  border-radius: 50%;
+  bottom: calc(50% - 80vh);
+  height: 160vh;
+  isolation: isolate;
+  mix-blend-mode: difference;
+  overflow: hidden;
+  position: absolute;
+  right: 50%;
+  width: 160vh;
+
+  @media (max-height: 768px) {
+    bottom: calc(30% - 60vw);
+    height: 100vw;
+    width: 100vw;
+  }
+}
+
+.bigScreenCircleWrapper {
+  height: 100dvh;
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
+
+.topCircle {
+  align-items: center;
+  background: #f1f1f1;
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+  display: flex;
+  height: 100vw;
+  justify-content: center;
+  left: 0;
+  position: absolute;
+  top: calc(-50vw + 100px);
+  width: 100vw;
+
+  &.mailSent {
+    display: none;
+  }
+
+  @media (min-width: 640px) {
+    height: 80vw;
+    top: calc(100px - 40vw);
+    width: 100vw;
+  }
+
+  @media (min-width: 768px) {
+    height: 60vw;
+    top: calc(100px - 30vw);
+    width: 100vw;
+  }
+}
+
+.fakeCircleBlock {
+  height: calc(50vw);
+  width: 100%;
+
+  @media (min-width: 640px) {
+    height: 40vw;
+  }
+
+  @media (min-width: 768px) {
+    height: 30vw;
+  }
+}
+
+.line {
+  @keyframes lineGrow {
+    0% {
+      width: 0;
+    }
+    100% {
+      width: 400px;
+    }
+  }
+
+  animation: lineGrow 2.5s cubic-bezier(0.075, 0.82, 0.165, 1) 0.4s forwards;
+  background: #d1d1d1;
+  height: 1px;
+  position: absolute;
+  top: 110px;
+  width: 0;
+}
+
+.contactFormWrapper {
+  display: grid;
+  overflow: auto;
+  place-items: center;
+  position: relative;
+  width: 100%;
+
+  @media (min-width: 1024px) {
+    max-height: calc(100svh - 100px);
+    padding: 40px 0;
+    width: 50%;
+  }
+}

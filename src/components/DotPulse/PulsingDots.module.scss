@@ -1,0 +1,44 @@
+.pulseDotWrapper {
+  display: inline-flex;
+  opacity: 1;
+  overflow: hidden;
+  transition: all .3s cubic-bezier(0.165, 0.84, 0.44, 1);
+  width: 0;
+
+  &.mailSent {
+    opacity: 1;
+    width: 40px;
+  }
+}
+
+.dot {
+  @keyframes pulsingDot {
+    0% {
+      transform: scale(0);
+    }
+    50% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(0);
+    }
+  }
+
+  animation: pulsingDot 1s ease-in-out infinite;
+  background-color: #d0562a;
+  border-radius: 5px;
+  height: 10px;
+  width: 10px;
+
+  &:nth-child(1) {
+    animation-delay: 0s;
+  }
+
+  &:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+
+  &:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+}

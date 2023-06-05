@@ -1,0 +1,62 @@
+.education {
+  align-items: center;
+  background: #f1f1f1;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  padding-bottom: 80px;
+  padding-top: 80px;
+  width: 100%;
+
+  @media (min-width: 768px) {
+    gap: 160px;
+    justify-content: center;
+  }
+}
+
+.title {
+  color: #1E1E1E;
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1.5;
+}
+
+.description {
+  color: #807F7F;
+  font-size: clamp(1rem, 1vw, 1rem);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+.educationItems {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 1000px;
+  width: 100%;
+
+  @media (min-width: 768px) {
+    gap: 3rem;
+  }
+}
+
+.certificationItems {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 1000px;
+  width: 100%;
+
+  @media (min-width: 768px) {
+    gap: 3rem;
+  }
+}
+
+.line {
+  background: #BDBDBD;
+  height: 1px;
+  width: 100%;
+}

@@ -1,28 +1,13 @@
 import React from 'react';
 
-import styled from 'styled-components';
-
-const StyledMadeBy = styled.div`
-  margin-top: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
-  font-weight: 500;
-  color: #F1F1F1;
-`;
-
-const StyledYear = styled.div`
-  display: flex;
-  gap: 1px;
-`;
+import styles from './MadeBy.module.scss';
 
 export const MadeBy = () => {
-    return <StyledMadeBy>
-        <StyledYear>
+    return <div className={styles.madeBy}>
+        <div className={styles.year}>
             <div className={'text-sm'}>{'©'}</div>
             <div className={'text-sm'}>{'2023'}</div>
-        </StyledYear>
+        </div>
         <div className={'text-sm'}>{'Emilia Markiewicz'}</div>
-    </StyledMadeBy>;
+    </div>;
 };
