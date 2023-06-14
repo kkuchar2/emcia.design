@@ -96,7 +96,7 @@ export const ProjectItem = (props: ProjectItemProps) => {
     const isVisible = !!entry?.isIntersecting;
 
     return <StyledProjectItem ref={ref}>
-        <StyledImageWrapper href={project.link} target={'_blank'} rel={'noopener noreferrer'}>
+        <StyledImageWrapper href={project.link} target={'_blank'} rel={'noopener noreferrer'} prefetch={false}>
             <CompositionImage
                 show={isVisible}
                 alt={`Open in Behance - ${alt}`}

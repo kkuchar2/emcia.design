@@ -19,7 +19,11 @@ export const ProjectArrowButton = (props: ArrowButtonProps) => {
 
     return <Link className={[styles.arrowLink, isVisible ? styles.visible : styles.invisible].join(' ')}
         href={href}
-        title={title} ref={ref}>
+        target={'_blank'}
+        rel={'noopener noreferrer'}
+        title={title}
+        prefetch={false}
+        ref={ref}>
         <div className={styles.textWrapper}>
             <div className={styles.text}>{text}</div>
         </div>
