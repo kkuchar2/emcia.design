@@ -169,7 +169,7 @@ const pageMetadata = siteUrlValid ? {
     'contact': {
         meta: metadataOf({
             url: SITE_URL + 'contact',
-            title: SITE_URL + 'contact',
+            title: 'Contact - ' + HOME_TITLE,
             alternates: {
                 canonical: '/contact'
             },
