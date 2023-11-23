@@ -177,6 +177,19 @@ export const portfolioConfig: IPortfolioConfig = {
     },
     experience: [
         {
+            startDate: '08/2023',
+            endDate: 'present',
+            title: 'Junior UI/UX Designer',
+            company: 'IT Squad Sp. z o.o.',
+            duties: [
+                'design user flows and journeys',
+                'create low-fidelity and high-fidelity wireframes',
+                'preparing prototypes to visualize and test design and user flows',
+                'prepare design documentation (style guides, design specifications etc.)',
+                'providing support to developers, analysts, and testers'
+            ]
+        },
+        {
             startDate: '10/2020',
             endDate: '06/2022',
             title: 'Designer',
