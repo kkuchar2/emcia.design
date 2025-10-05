@@ -56,7 +56,7 @@ const _GallerySlide = (props: GallerySlideProps) => {
         return <StyledSwiperSlide className={'carousel-cell'}>
 
             <ImageWrapper className={'bg-gray-200'}>
-                {hasWindow && <ReactPlayer url={videoUri} controls={false} muted={true} width={'100%'} height={'100%'} loop={true} playing={true} playsinline={true}/>}
+                {hasWindow && <ReactPlayer src={videoUri} controls={false} muted width={'100%'} height={'100%'} loop playing playsInline/>}
             </ImageWrapper>
         </StyledSwiperSlide>;
     }

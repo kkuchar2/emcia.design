@@ -27,7 +27,7 @@ export default function StyledComponentsRegistry({
 
     return (
         <StyleSheetManager sheet={styledComponentsStyleSheet.instance}>
-            {children as React.ReactChild}
+            {children}
         </StyleSheetManager>
     );
 }
