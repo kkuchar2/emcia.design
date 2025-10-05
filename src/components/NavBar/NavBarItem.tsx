@@ -1,8 +1,10 @@
 import React from 'react';
 
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import styled from 'styled-components';
 
+import { useMainContext } from '../../MainContext';
 import { INavBarItem } from '../../portfolioConfig.types';
 
 interface StyledNavBarItemProps {
@@ -86,8 +88,19 @@ interface INavbarItemProps {
 export const NavBarItem = (item: INavBarItem & INavbarItemProps) => {
 
     const { title, link, index } = item;
+    const pathname = usePathname();
+    const { navbarOpened, setNavbarOpened } = useMainContext();
 
-    return <StyledNavBarItem index={index} href={link} title={title}>
+    const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+        // If clicking on the current page, close the navbar
+        if (pathname === link && navbarOpened) {
+            e.preventDefault();
+            setNavbarOpened(false);
+            document.body.style.overflow = '';
+        }
+    };
+
+    return <StyledNavBarItem index={index} href={link} title={title} onClick={handleClick}>
         {title.toLowerCase()}
     </StyledNavBarItem>;
 };
