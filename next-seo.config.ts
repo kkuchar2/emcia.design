@@ -65,7 +65,7 @@ const metadataOf = (meta: CustomMeta): Metadata => {
     };
 };
 
-const SITE_URL = process.env.SITE_URL as string;
+const SITE_URL = process.env.SITE_URL || 'https://emcia.design';
 const HOME_TITLE = 'Emilia Markiewicz - UI & UX Portfolio';
 const environment = process.env.ENVIRONMENT as string || 'development';
 
@@ -89,12 +89,6 @@ const commonMetadata = {
     robots: {
         index: environment === 'production',
         follow: environment === 'production',
-    },
-    viewport: {
-        width: 'device-width',
-        initialScale: 1,
-        minimumScale: 1,
-        maximumScale: 5,
     },
     manifest: '/manifest.json'
 };
@@ -165,31 +159,19 @@ const pageMetadata = siteUrlValid ? {
                 }
             ]
         }),
-    },
-    'contact': {
-        meta: metadataOf({
-            url: SITE_URL + 'contact',
-            title: 'Contact - ' + HOME_TITLE,
-            alternates: {
-                canonical: '/contact'
-            },
-            description: "Designing a better user experience. Get in touch if you're looking for a UI/UX designer to join your team.",
-            ogImages: [
-                {
-                    url: 'images/seo/og-image.png'
-                }
-            ]
-        })
     }
 } : {};
 
 const seoConfig = siteUrlValid ? {
     common: commonMetadata,
     pages: pageMetadata
-} : {} as SeoConfig;
+} : {
+    common: commonMetadata,
+    pages: {}
+} as SeoConfig;
 
 const getPageMetadata = (page: string): Metadata => {
-    const pageSeoConfig = seoConfig.pages[page];
+    const pageSeoConfig = seoConfig.pages?.[page];
     return pageSeoConfig ? pageSeoConfig.meta : {} as Metadata;
 };
 

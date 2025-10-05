@@ -7,7 +7,7 @@ import { useMainContext } from '../../MainContext';
 import { INavbarConfig } from '../../portfolioConfig.types';
 
 interface IStyledNavBarMobileItemsProps {
-    opened: boolean;
+    $opened: boolean;
 }
 
 const StyledNavBarMobileItems = styled.div<IStyledNavBarMobileItemsProps>`
@@ -26,14 +26,14 @@ const StyledNavBarMobileItems = styled.div<IStyledNavBarMobileItemsProps>`
   color: #e5e5e5;
   will-change: opacity;
   height: 100dvh;
-  pointer-events: ${({ opened }) => opened ? 'all' : 'none'};
+  pointer-events: ${({ $opened }) => $opened ? 'all' : 'none'};
 
 
   ${StyledNavBarItem} {
-    transition: ${({ opened }) => opened ? 'all 0.6s cubic-bezier(0.075, 0.82, 0.165, 1)' : 'all 0.2s ease'};
+    transition: ${({ $opened }) => $opened ? 'all 0.6s cubic-bezier(0.075, 0.82, 0.165, 1)' : 'all 0.2s ease'};
     transition-delay: calc(var(--index) * 0.03s); /* use a CSS variable to set the delay */
-    transform: ${({ opened }) => opened ? 'translateY(0)' : 'translateY(-10svh)'};
-    opacity: ${({ opened }) => opened ? 1 : 0};
+    transform: ${({ $opened }) => $opened ? 'translateY(0)' : 'translateY(-10svh)'};
+    opacity: ${({ $opened }) => $opened ? 1 : 0};
   }
 
 
@@ -59,7 +59,7 @@ export const NavBarMobileItems = (props: INavbarConfig) => {
         return config.items.map((item, index) => <NavBarItem key={index} index={index} {...item}/>);
     }, []);
 
-    return <StyledNavBarMobileItems opened={navbarOpened}>
+    return <StyledNavBarMobileItems $opened={navbarOpened}>
         {items}
     </StyledNavBarMobileItems>;
 };

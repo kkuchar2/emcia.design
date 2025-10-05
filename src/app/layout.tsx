@@ -20,6 +20,13 @@ export const metadata: Metadata = {
     ...seoConfig.common
 };
 
+export const viewport = {
+    width: 'device-width',
+    initialScale: 1,
+    minimumScale: 1,
+    maximumScale: 5,
+};
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return <html lang={'en'}>
         <Head>

@@ -127,10 +127,6 @@ export const portfolioConfig: IPortfolioConfig = {
             {
                 title: 'Resume',
                 link: '/resume'
-            },
-            {
-                title: 'Contact',
-                link: '/contact'
             }
         ]
     },

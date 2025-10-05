@@ -5,10 +5,10 @@ import React, { useCallback, useMemo, useState } from 'react';
 import Image from 'next/image';
 import styled from 'styled-components';
 
-const Skeleton = styled.div<{ loaded?: boolean }>`
+const Skeleton = styled.div<{ $loaded?: boolean }>`
   width: 100%;
   height: 100%;
-  display: ${({ loaded }) => loaded ? 'none' : 'block'};
+  display: ${({ $loaded }) => $loaded ? 'none' : 'block'};
 
   @keyframes alternateOpacity {
     0%, 100% {
@@ -29,14 +29,14 @@ const Skeleton = styled.div<{ loaded?: boolean }>`
   }
 `;
 
-const Background = styled.div<{ show?: boolean, background?: string, loaded?: boolean }>`
+const Background = styled.div<{ $show?: boolean, $background?: string, $loaded?: boolean }>`
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: ${({ background }) => background};
-  opacity: ${({ show, loaded }) => show && loaded ? 1 : 0};
+  background: ${({ $background }) => $background};
+  opacity: ${({ $show, $loaded }) => $show && $loaded ? 1 : 0};
   transition: opacity 0.3s ease;
 `;
 
@@ -87,7 +87,7 @@ export const CompositionImage = (props: ImageWithStateProps) => {
                 objectFit: objectFit || 'cover',
                 ...style
             }}
-            onLoadingComplete={() => {
+            onLoad={() => {
                 setImagesLoaded(prev => prev + 1);
             }}
         />;
@@ -95,9 +95,9 @@ export const CompositionImage = (props: ImageWithStateProps) => {
 
     return <div className={'relative h-full w-full'}>
         <div className={'absolute left-0 top-0 h-full w-full animate-showDelay opacity-[0.001]'}>
-            <Skeleton loaded={allImagesLoaded}/>
+            <Skeleton $loaded={allImagesLoaded}/>
         </div>
-        <Background background={background} show={show} loaded={allImagesLoaded}/>
+        <Background $background={background} $show={show} $loaded={allImagesLoaded}/>
         {images && images.map(singleImage)}
     </div>;
 };

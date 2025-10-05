@@ -1,23 +1,125 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* globals.css — Tailwind v4 compatible (Option 1: use CSS variables directly) */
 
-@layer components {
-    .index_title {
-        @apply animate-title text-indexTitle font-black leading-[1.2] text-[#F1f1f1] opacity-[0.001];
+@import "tailwindcss";
+
+/* ---------------------------
+   Design tokens (CSS variables)
+   --------------------------- */
+:root {
+    /* Custom font sizes */
+    --font-size-indexDescriptionTitle: clamp(1.2rem, 1.5vw, 1.5rem);
+    --font-size-indexTitle: clamp(2.3rem, 7vw, 4.7rem);
+
+    /* Custom animations */
+    --animate-title: title 1200ms cubic-bezier(0.175, 0.32, 0, 1) forwards;
+    --animate-indexDescription: fadeIn 1200ms ease forwards;
+    --animate-clipPath: clipPath 800ms cubic-bezier(0.175, 0.32, 0.12, 0.95) forwards;
+    --animate-arrowButton: arrowButton 800ms cubic-bezier(0.175, 0.32, 0.12, 0.95) forwards;
+    --animate-pulseImage: animatePulseImage 2s ease-in-out infinite;
+    --animate-showDelay: fadeIn2 800ms ease forwards 2s;
+
+    /* Custom font families */
+    --font-family-plusJakarta: 'Plus Jakarta Sans', sans-serif;
+    --font-family-lato: 'Lato', sans-serif;
+    --font-family-openSans: 'Open Sans', sans-serif;
+}
+
+/* ---------------------------
+   Keyframes
+   --------------------------- */
+@keyframes arrowButton {
+    from {
+        transform: translateX(-30px);
+        opacity: 0.001;
     }
-
-    .index_description {
-        @apply mt-[10px] animate-indexDescription text-indexDescriptionTitle font-normal leading-[1.2] text-[#BDBDBD] opacity-[0.001];
+    to {
+        transform: translateX(0);
+        opacity: 1;
     }
 }
 
+@keyframes fadeIn {
+    from {
+        transform: translateY(30px);
+        opacity: 0.001;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn2 {
+    from {
+        opacity: 0.001;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes clipPath {
+    from {
+        clip-path: inset(0 0 100% 0);
+    }
+    to {
+        clip-path: inset(0 0 0 0);
+    }
+}
+
+@keyframes title {
+    from {
+        transform: translateY(100px);
+        opacity: 0.001;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes animatePulseImage {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.3;
+    }
+}
+
+/* ---------------------------
+   Components
+   --------------------------- */
+@layer components {
+    .index_title {
+        font-size: var(--font-size-indexTitle);
+        animation: var(--animate-title);
+        @apply font-black leading-[1.2] text-[#F1f1f1] opacity-[0.001];
+    }
+
+    .index_description {
+        font-size: var(--font-size-indexDescriptionTitle);
+        animation: var(--animate-indexDescription);
+        @apply mt-[10px] font-normal leading-[1.2] text-[#BDBDBD] opacity-[0.001];
+    }
+}
+
+/* ---------------------------
+   Utilities
+   --------------------------- */
 @layer utilities {
     .index_title_wrapper {
         clip-path: inset(0 0 100% 0);
     }
+
+    .animate-clipPath {
+        animation: var(--animate-clipPath);
+    }
 }
 
+/* ---------------------------
+   Global layout / resets
+   --------------------------- */
 html,
 body > div:first-child,
 div#__next,
