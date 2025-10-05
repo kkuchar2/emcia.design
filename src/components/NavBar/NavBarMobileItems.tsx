@@ -41,9 +41,8 @@ const StyledNavBarMobileItems = styled.div<IStyledNavBarMobileItemsProps>`
     height: auto;
     top: 50%;
     transform: translateY(-50%);
-    display: grid;
-    grid-template-columns: 200px 200px;
-    grid-template-rows: 50px 50px;
+    display: flex;
+      flex-direction: row;
     align-items: center;
     justify-items: center;
   }
