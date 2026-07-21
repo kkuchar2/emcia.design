@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 import { portfolioConfig } from '../../portfolioConfig';
 
-const StyledExperience = styled.div`
+const StyledExperience = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -23,19 +23,25 @@ const StyledExperience = styled.div`
   }
 `;
 
-const ExperienceTitle = styled.div`
+const ExperienceTitle = styled.h2`
   font-size: clamp(1.8rem, 3.5vw, 2.5rem);
   font-weight: 600;
-  line-height: 1.5;
-  letter-spacing: -0.06em;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
   color: #f1f1f1;
+  text-wrap: balance;
+  margin: 0;
 `;
 
-const ExperienceDescription = styled.div`
-  font-size: clamp(1rem, 1vw, 1rem);
-  color: #807F7F;
+const ExperienceDescription = styled.p`
+  font-size: 1rem;
+  color: #A8A8A8;
   font-weight: 400;
   letter-spacing: 0.02em;
+  line-height: 1.5;
+  margin: 0;
+  max-width: 48ch;
+  text-wrap: pretty;
 `;
 
 const StyledExperienceItems = styled.div`
@@ -43,11 +49,14 @@ const StyledExperienceItems = styled.div`
   width: 100%;
   max-width: 1000px;
   flex-direction: column;
-  gap: 7rem;
+  gap: 5.5rem;
+
+  @media (min-width: 768px) {
+    gap: 7rem;
+  }
 `;
 
 export const Experience = () => {
-
     const exp = portfolioConfig.experience;
 
     return <StyledExperience>

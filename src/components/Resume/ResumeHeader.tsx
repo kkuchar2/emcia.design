@@ -4,7 +4,6 @@ import { scaleUp } from 'components/Circles/keyframes';
 import styled, { keyframes } from 'styled-components';
 
 const Circle = styled.div`
-
   transform: scale(0);
 
   @media (min-width: 1024px) {
@@ -22,24 +21,35 @@ const Circle = styled.div`
     animation: ${scaleUp} 2200ms cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
     z-index: 1;
   }
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+    transform: scale(1);
+  }
 `;
 
 const StyledWrapper = styled.h1`
   font-weight: 600;
   font-size: clamp(2.3rem, 7vw, 4.7rem);
   line-height: 1;
+  letter-spacing: -0.03em;
   color: #1E1E1E;
+  text-wrap: balance;
+  margin: 0;
 `;
 
-const StyledWrapper2 = styled.h2`
+const StyledWrapper2 = styled.p`
   font-weight: 400;
   font-size: clamp(1.2rem, 1.5vw, 1.5rem);
-  line-height: 1.2;
+  line-height: 1.35;
   margin-top: 20px;
-  color: #807F7F;
+  margin-bottom: 0;
+  color: #6B6B6B;
+  max-width: 36ch;
+  text-wrap: pretty;
 `;
 
-const StyledHeader = styled.div`
+const StyledHeader = styled.header`
   height: 80svh;
 `;
 
@@ -54,7 +64,7 @@ const HeaderMiddle = styled.div`
   flex-direction: column;
   gap: 1.4rem;
   position: relative;
-  padding: 40px 40px 40px 40px;
+  padding: 40px;
   color: #F1F1F1;
   min-height: 40%;
   width: 100%;
@@ -82,18 +92,22 @@ const Line = styled.div`
   background: #000000;
   margin-top: 20px;
   animation: ${lineAnimation} 4s cubic-bezier(0.075, 0.92, 0.565, 1) forwards;
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+    width: 100%;
+  }
 `;
 
 export const ResumeHeader = () => {
-
     return <StyledHeader className={'relative flex flex-col overflow-x-clip bg-[#F1F1F1]'}>
-        <Circle/>
+        <Circle aria-hidden={true}/>
         <HeaderTop/>
-        <div className={'mb-0 flex grow items-center justify-center  sm:mb-[50px] md:mb-[20px]'}>
+        <div className={'mb-0 flex grow items-center justify-center sm:mb-[50px] md:mb-[20px]'}>
             <HeaderMiddle>
                 <StyledTitle>
                     <StyledWrapper>{'resume'}</StyledWrapper>
-                    <Line/>
+                    <Line aria-hidden={true}/>
                     <StyledWrapper2>{'My previous professional experience is presented below.'}</StyledWrapper2>
                 </StyledTitle>
             </HeaderMiddle>

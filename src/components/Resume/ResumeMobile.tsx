@@ -13,20 +13,25 @@ const StyledResume = styled.div`
     letter-spacing: 0.03em;
 `;
 
-const Title = styled.div`
+const Title = styled.h1`
     font-size: 2.8rem;
-    visibility: visible;
     font-weight: 600;
     color: #e1e1e1;
     text-align: center;
     position: relative;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+    margin: 0;
 `;
 
-const TitleHelloMessage = styled.div`
-    font-size: clamp(1rem, 1vw, 1rem);
+const TitleHelloMessage = styled.p`
+    font-size: 1rem;
     font-weight: 400;
     color: #807F7F;
     text-align: center;
+    line-height: 1.4;
+    margin: 0;
 `;
 
 const TopCircle = styled.div`
@@ -69,19 +74,25 @@ const FakeCircleBlock = styled.div`
     }
 `;
 
+const HeaderSpacer = styled.div`
+    height: 100px;
+    width: 100%;
+    flex-shrink: 0;
+`;
+
 export const ResumeMobile = () => {
-    return <StyledResume>
+    return <StyledResume as={'main'}>
         <TopCircle>
             <div className={'absolute bottom-[80px] flex flex-col gap-2 mix-blend-difference'}>
                 <Title>{'resume'}</Title>
-                <div>
+                <div className={'flex flex-col gap-0.5'}>
                     <TitleHelloMessage>{'My previous professional experience'}</TitleHelloMessage>
                     <TitleHelloMessage>{'is presented below'}</TitleHelloMessage>
                 </div>
             </div>
         </TopCircle>
-        <div className={'opacity-0 sm:visible h-[100px] w-full bg-red-500'}/>
-        <FakeCircleBlock/>
+        <HeaderSpacer aria-hidden={true}/>
+        <FakeCircleBlock aria-hidden={true}/>
         <div className={'flex flex-col items-center justify-center bg-[#f1f1f1]'}>
             <Experience/>
             <Education/>

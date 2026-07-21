@@ -37,9 +37,9 @@ export const SocialMedia = (props: SocialMediaProps) => {
     const parentSize = useParentSize(ref);
 
     return <StyledSocialMedia ref={ref} {...parentSize}>
-        {title && <div className={'text-sm font-normal text-[#BDBDBD]'}>
+        {title && <p className={'m-0 text-sm font-normal text-[#C8C8C8]'}>
             {title}
-        </div>}
+        </p>}
         <div className={'flex gap-8 p-2'}>
             <SocialLink {...socialConfig.dribbble} />
             <SocialLink {...socialConfig.behance} />

@@ -146,4 +146,49 @@
       }
     }
   }
+
+  &:focus-visible {
+    outline: none;
+
+    &:before {
+      background: rgb(216, 216, 216);
+      box-shadow: 0 0 0 2px #1e1e1e;
+    }
+
+    @media (min-width: 768px) {
+      .textWrapper {
+        transform: translateX(10px);
+      }
+
+      .arrowWrapper {
+        transform: translateX(15px);
+      }
+
+      &:before {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .arrowLink.visible {
+    .arrow,
+    .text {
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+
+    &:before {
+      transform: translateY(50%) scale(1) !important;
+    }
+  }
+
+  .textWrapper,
+  .arrowWrapper,
+  .arrowLink,
+  .arrowLink:before {
+    transition: none !important;
+  }
 }

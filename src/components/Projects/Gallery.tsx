@@ -8,7 +8,7 @@ import { DribbbleShot } from '../../portfolioConfig.types';
 import 'flickity/dist/flickity.min.css';
 
 interface GalleryCarouselProps {
-    shots: DribbbleShot[]
+    shots: DribbbleShot[];
 }
 
 const Container = styled.div`
@@ -31,14 +31,16 @@ const StyledCarousel = styled.div`
   .flickity-slider {
     width: 100% !important;
   }
+
+  .flickity-button:focus-visible {
+    outline: 2px solid #1e1e1e;
+    outline-offset: 2px;
+  }
 `;
 
 const GalleryCarousel = (props: GalleryCarouselProps) => {
-
     const { shots } = props;
-
-    const flickityRef = useRef(null);
-
+    const flickityRef = useRef<{ destroy: () => void; stopPlayer: () => void; resize: () => void } | null>(null);
     const [loaded, setLoaded] = useState(false);
 
     useEffect(() => {
@@ -46,37 +48,47 @@ const GalleryCarousel = (props: GalleryCarouselProps) => {
             return;
         }
 
-        const Flickity = typeof window !== 'undefined' ? require('flickity') : null;
+        // eslint-disable-next-line @typescript-eslint/no-require-imports
+        const Flickity = require('flickity');
 
-        flickityRef.current = new Flickity('.main-carousel', {
+        const flickity = new Flickity('.main-carousel', {
             wrapAround: true,
             freeScroll: true,
             pageDots: false,
+            accessibility: true,
         });
 
-        flickityRef.current.on('staticClick', function (event, pointer, cellElement, cellIndex) {
-            if (cellElement) {
-                window.open(shots[cellIndex].link, '_blank');
+        flickityRef.current = flickity;
+
+        const onResize = () => {
+            if (!flickityRef.current) {
+                return;
             }
-        });
 
-        window.addEventListener('resize', () => {
             flickityRef.current.stopPlayer();
             flickityRef.current.resize();
-        });
+        };
 
+        window.addEventListener('resize', onResize);
         setLoaded(true);
 
         return () => {
+            window.removeEventListener('resize', onResize);
             if (flickityRef.current) {
                 flickityRef.current.destroy();
+                flickityRef.current = null;
             }
         };
     }, []);
 
     return <Container className={loaded ? '' : 'animate-pulse'}>
-        <StyledCarousel className={'main-carousel'}>
-            {shots.map((shot, index) => <GallerySlide key={index} shot={shot}/>)}
+        <StyledCarousel
+            className={'main-carousel'}
+            role={'region'}
+            aria-roledescription={'carousel'}
+            aria-label={'Dribbble shots'}
+        >
+            {shots.map((shot) => <GallerySlide key={shot.link} shot={shot}/>)}
         </StyledCarousel>
     </Container>;
 };

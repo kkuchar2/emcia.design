@@ -13,8 +13,8 @@ const ImageWrapper = styled.div`
   max-height: 100%;
   box-sizing: border-box;
   position: relative;
-  overflow: hidden;,
-background: rgb(230, 230, 230);
+  overflow: hidden;
+  background: rgb(230, 230, 230);
 `;
 
 const fadeIn = keyframes`
@@ -26,12 +26,25 @@ const fadeIn = keyframes`
   }
 `;
 
-const StyledSwiperSlide = styled.div`
+const StyledSwiperSlide = styled.a`
   aspect-ratio: 4/3;
   height: 100%;
   margin-right: 20px;
   counter-increment: carousel-cell;
   animation: ${fadeIn} 1s ease-in-out;
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  outline: none;
+  cursor: pointer;
+
+  &:focus-visible {
+    box-shadow: inset 0 0 0 3px #1e1e1e;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
 `;
 
 interface GallerySlideProps {
@@ -39,9 +52,7 @@ interface GallerySlideProps {
 }
 
 const _GallerySlide = (props: GallerySlideProps) => {
-
     const [hasWindow, setHasWindow] = useState(false);
-
     const { shot } = props;
 
     useEffect(() => {
@@ -53,15 +64,39 @@ const _GallerySlide = (props: GallerySlideProps) => {
     const videoUri = shot.video;
 
     if (videoUri) {
-        return <StyledSwiperSlide className={'carousel-cell'}>
-
-            <ImageWrapper className={'bg-gray-200'}>
-                {hasWindow && <ReactPlayer src={videoUri} controls={false} muted width={'100%'} height={'100%'} loop playing playsInline/>}
+        return <StyledSwiperSlide
+            className={'carousel-cell'}
+            href={shot.link}
+            target={'_blank'}
+            rel={'noopener noreferrer'}
+            title={shot.name}
+            aria-label={`Open on Dribbble: ${shot.name}`}
+        >
+            <ImageWrapper>
+                {hasWindow && (
+                    <ReactPlayer
+                        src={videoUri}
+                        controls={false}
+                        muted
+                        width={'100%'}
+                        height={'100%'}
+                        loop
+                        playing
+                        playsInline
+                    />
+                )}
             </ImageWrapper>
         </StyledSwiperSlide>;
     }
 
-    return <StyledSwiperSlide className={'carousel-cell'}>
+    return <StyledSwiperSlide
+        className={'carousel-cell'}
+        href={shot.link}
+        target={'_blank'}
+        rel={'noopener noreferrer'}
+        title={shot.name}
+        aria-label={`Open on Dribbble: ${shot.name}`}
+    >
         <ImageWrapper>
             <CompositionImage
                 alt={shot.name}
@@ -77,6 +112,6 @@ const _GallerySlide = (props: GallerySlideProps) => {
     </StyledSwiperSlide>;
 };
 
-_GallerySlide.displayName = 'SwiperSlider';
+_GallerySlide.displayName = 'GallerySlide';
 
 export const GallerySlide = _GallerySlide;

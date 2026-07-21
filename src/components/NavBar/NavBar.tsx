@@ -23,6 +23,7 @@ const StyledOverlay = styled.div`
   top: 50px;
   right: calc(40px - (var(--scrollbar-width) * var(--scrollbar-width-multiplier)) + 30px);
   transform: translate(50%, -50%);
+  pointer-events: none;
 
   @media (orientation: landscape) {
     width: 0;
@@ -48,50 +49,75 @@ const StyledOverlay = styled.div`
       height: 250vh;
     }
   }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: opacity 0.2s ease, width 0s, height 0s, top 0s, right 0s, transform 0s;
+
+    &.opened {
+      transition: opacity 0.2s ease, width 0s, height 0s, top 0s, right 0s, transform 0s;
+    }
+  }
 `;
 
 const StyledOverlay2 = styled.div`
   position: fixed;
-  content: '';
+  inset: 0;
   background: #313131;
   z-index: 2;
-  width: 100svw;
-  height: 100svh;
-  display: none;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.35s ease, visibility 0.35s ease;
 
   &.opened {
-    display: block;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
   }
 `;
 
 export const NavBar = () => {
-
     const screenWidth = useScreenWidth();
-
     const { navbarOpened, toggleNavbar, setNavbarOpened } = useMainContext();
-
     const pathname = usePathname();
 
     useEffect(() => {
         setNavbarOpened(false);
-        document.body.style.overflow = '';
     }, [pathname, setNavbarOpened]);
 
     useEffect(() => {
         if (screenWidth > 1024) {
             setNavbarOpened(false);
         }
-    }, [screenWidth]);
+    }, [screenWidth, setNavbarOpened]);
 
     useEffect(() => {
         setScrollbarWidthMultiplier(isScrollbarVisible() ? 1 : 0);
     }, [navbarOpened]);
 
+    useEffect(() => {
+        if (!navbarOpened) {
+            return;
+        }
+
+        const onKeyDown = (event: KeyboardEvent) => {
+            if (event.key === 'Escape') {
+                setNavbarOpened(false);
+            }
+        };
+
+        window.addEventListener('keydown', onKeyDown);
+        return () => window.removeEventListener('keydown', onKeyDown);
+    }, [navbarOpened, setNavbarOpened]);
+
     const onHamburgerClick = useCallback(() => {
         toggleNavbar();
     }, [toggleNavbar]);
 
-    return <>
+    return <nav aria-label={'Main'}>
         <HamburgerButton onClick={onHamburgerClick} navbarOpened={navbarOpened}/>
 
         <div className={'hidden lg:block'}>
@@ -100,12 +126,9 @@ export const NavBar = () => {
         <div className={'lg:hidden'}>
             <NavBarMobileItems {...portfolioConfig.navBarConfig} />
         </div>
-        <div className={'lg:hidden'}>
-            <StyledOverlay
-                className={navbarOpened ? 'opened' : ''}/>
-
-            <StyledOverlay2
-                className={navbarOpened ? 'opened' : ''}/>
+        <div className={'lg:hidden'} aria-hidden={true}>
+            <StyledOverlay className={navbarOpened ? 'opened' : ''}/>
+            <StyledOverlay2 className={navbarOpened ? 'opened' : ''}/>
         </div>
-    </>;
+    </nav>;
 };

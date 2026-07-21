@@ -25,21 +25,37 @@ const StyledHamburgerButton = styled.button<StyledHamburgerButtonProps>`
     margin: 0;
     padding: 0;
     display: block;
+    border: none;
+    background: transparent;
     -webkit-tap-highlight-color: transparent;
-    mix-blend-mode: ${({$navbarOpened}) => $navbarOpened ? 'unset' : 'difference'};
+    mix-blend-mode: ${({ $navbarOpened }) => ($navbarOpened ? 'unset' : 'difference')};
     opacity: var(--navbar-opacity);
     transition: opacity 0.8s ease;
+    outline: none;
 
     &:hover {
         cursor: pointer;
-        
+
         > span {
-            background-color: ${({$navbarOpened}) => $navbarOpened ? '#2c2c2c' : '#ffffff'};
+            background-color: ${({ $navbarOpened }) => ($navbarOpened ? '#2c2c2c' : '#ffffff')};
         }
+    }
+
+    &:focus-visible {
+        border-radius: 4px;
+        box-shadow: 0 0 0 2px ${({ $navbarOpened }) => ($navbarOpened ? '#2c2c2c' : '#f1f1f1')};
     }
 
     @media (min-width: 1024px) {
         display: none;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        transition: none;
+
+        > span {
+            transition: none;
+        }
     }
 `;
 
@@ -47,9 +63,10 @@ const StyledHamburgerButtonTopLine = styled.span<StyledHamburgerButtonProps>`
     width: 50%;
     height: 2px;
     position: absolute;
-    top: ${({$navbarOpened, $gap}) => !$navbarOpened ? 'calc(50% - ' + $gap + 'px)' : '50%'};
-    transform: ${({$navbarOpened}) => $navbarOpened ? 'translateX(-50%) rotate(-45deg)' : 'translateX(-50%) rotate(0deg)'};
-    background-color: ${props => props.$navbarOpened ? '#2c2c2c' : '#dfdfdf'};
+    left: 50%;
+    top: ${({ $navbarOpened, $gap }) => (!$navbarOpened ? `calc(50% - ${$gap}px)` : '50%')};
+    transform: ${({ $navbarOpened }) => ($navbarOpened ? 'translateX(-50%) rotate(-45deg)' : 'translateX(-50%) rotate(0deg)')};
+    background-color: ${props => (props.$navbarOpened ? '#2c2c2c' : '#dfdfdf')};
     transition: all 0.3s cubic-bezier(0.68, 0.25, 0.265, 0.55);
 `;
 
@@ -57,23 +74,26 @@ const StyledHamburgerButtonBottomLine = styled.span<StyledHamburgerButtonProps>`
     width: 50%;
     height: 2px;
     position: absolute;
-    top: ${({$navbarOpened, $gap}) => !$navbarOpened ? 'calc(50% + ' + $gap + 'px)' : '50%'};
+    top: ${({ $navbarOpened, $gap }) => (!$navbarOpened ? `calc(50% + ${$gap}px)` : '50%')};
     left: 50%;
-    transform: ${({$navbarOpened}) => $navbarOpened ? 'translateX(-50%) rotate(45deg)' : 'translateX(-50%) rotate(0deg)'};
-    background-color: ${props => props.$navbarOpened ? '#2c2c2c' : '#dfdfdf'};
+    transform: ${({ $navbarOpened }) => ($navbarOpened ? 'translateX(-50%) rotate(45deg)' : 'translateX(-50%) rotate(0deg)')};
+    background-color: ${props => (props.$navbarOpened ? '#2c2c2c' : '#dfdfdf')};
     transition: all 0.3s cubic-bezier(0.68, -0.25, 0.265, 0.55);
 `;
 
 export const HamburgerButton = (props: HamburgerButtonProps) => {
-
-    const {onClick, navbarOpened} = props;
+    const { onClick, navbarOpened = false } = props;
 
     return <StyledHamburgerButton
-        title={'Menu'}
-        name={'Menu'}
+        type={'button'}
+        aria-label={navbarOpened ? 'Close menu' : 'Open menu'}
+        aria-expanded={navbarOpened}
+        aria-controls={'mobile-navigation'}
+        title={navbarOpened ? 'Close menu' : 'Open menu'}
         onClick={onClick}
-        $navbarOpened={navbarOpened}>
-        <StyledHamburgerButtonTopLine $navbarOpened={navbarOpened} $gap={5}/>
-        <StyledHamburgerButtonBottomLine $navbarOpened={navbarOpened} $gap={5}/>
+        $navbarOpened={navbarOpened}
+    >
+        <StyledHamburgerButtonTopLine aria-hidden={true} $navbarOpened={navbarOpened} $gap={5}/>
+        <StyledHamburgerButtonBottomLine aria-hidden={true} $navbarOpened={navbarOpened} $gap={5}/>
     </StyledHamburgerButton>;
 };

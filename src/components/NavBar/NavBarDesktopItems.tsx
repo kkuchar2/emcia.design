@@ -1,11 +1,11 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 
 import { NavBarItem } from 'components/NavBar/NavBarItem';
 import styled from 'styled-components';
 
 import { INavbarConfig } from '../../portfolioConfig.types';
 
-const StyledNavBarDesktopItems = styled.div`
+const StyledNavBarDesktopItems = styled.ul`
   width: 100vw;
   position: absolute;
   top: 0;
@@ -23,18 +23,19 @@ const StyledNavBarDesktopItems = styled.div`
   pointer-events: all;
   flex-direction: row;
   height: 100px;
-  padding-right: 30px;
+  padding: 0 30px 0 0;
+  margin: 0;
+  list-style: none;
 `;
 
 export const NavBarDesktopItems = (props: INavbarConfig) => {
-
-    const { ...config } = props;
-
-    const items = useMemo(() => {
-        return config.items.map((item, index) => <NavBarItem index={index} key={index} {...item}/>);
-    }, []);
+    const { items } = props;
 
     return <StyledNavBarDesktopItems className={'ease opacity-[--navbar-opacity] transition-opacity duration-[800ms]'}>
-        {items}
+        {items.map((item, index) => (
+            <li key={item.link}>
+                <NavBarItem index={index} {...item}/>
+            </li>
+        ))}
     </StyledNavBarDesktopItems>;
 };

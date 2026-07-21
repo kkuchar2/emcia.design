@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 import { ShowcaseProjectsConfig } from '../../portfolioConfig.types';
 
-const StyledSelectedProjects = styled.div`
+const StyledSelectedProjects = styled.section`
   margin-top: 80px;
   display: flex;
   flex-direction: column;
@@ -54,23 +54,28 @@ const StyledProjectItems = styled.div`
   }
 `;
 
-const Title = styled.h1`
+const Title = styled.h2`
   font-size: clamp(1.8rem, 3.5vw, 2.8rem);
   font-weight: 700;
-  letter-spacing: -0.06em;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
   color: #1e1e1e;
+  text-wrap: balance;
+  margin: 0;
 `;
 
-const SecondaryTitle = styled.h2`
+const SecondaryTitle = styled.p`
   font-size: clamp(1rem, 1.7vw, 1.2rem);
-  color: #6E6E6E;
+  color: #5C5C5C;
   font-weight: 400;
   letter-spacing: -0.02em;
-  max-width: 400px;
+  line-height: 1.45;
+  max-width: 40ch;
+  margin: 0;
+  text-wrap: pretty;
 `;
 
 export const ProjectsListView = (props: ShowcaseProjectsConfig) => {
-
     const { title, secondaryTitle, projects } = props;
 
     return <StyledSelectedProjects>
@@ -79,7 +84,7 @@ export const ProjectsListView = (props: ShowcaseProjectsConfig) => {
             <SecondaryTitle>{secondaryTitle}</SecondaryTitle>
         </div>
         <StyledProjectItems>
-            {projects.map((project, index) => <ProjectItem key={index} project={project}/>)}
+            {projects.map((project, index) => <ProjectItem key={project.link || index} project={project}/>)}
         </StyledProjectItems>
     </StyledSelectedProjects>;
 };

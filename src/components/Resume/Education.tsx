@@ -6,7 +6,7 @@ import styled from 'styled-components';
 
 import { portfolioConfig } from '../../portfolioConfig';
 
-const StyledEducation = styled.div`
+const StyledEducation = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -24,19 +24,25 @@ const StyledEducation = styled.div`
   }
 `;
 
-const EducationTitle = styled.div`
+const EducationTitle = styled.h2`
   font-size: clamp(1.8rem, 3.5vw, 2.5rem);
   font-weight: 600;
-  line-height: 1.5;
+  line-height: 1.2;
   color: #1E1E1E;
-  letter-spacing: 0.02em;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+  margin: 0;
 `;
 
-const EducationDescription = styled.div`
-  font-size: clamp(1rem, 1vw, 1rem);
-  color: #807F7F;
+const EducationDescription = styled.p`
+  font-size: 1rem;
+  color: #5C5C5C;
   font-weight: 400;
   letter-spacing: 0.02em;
+  line-height: 1.5;
+  margin: 0;
+  max-width: 52ch;
+  text-wrap: pretty;
 `;
 
 const EducationItems = styled.div`
@@ -63,14 +69,15 @@ const CertificationItems = styled.div`
   }
 `;
 
-const Line = styled.div`
+const Line = styled.hr`
   width: 100%;
   height: 1px;
+  border: none;
   background: #BDBDBD;
+  margin: 0;
 `;
 
 export const Education = () => {
-
     const education = portfolioConfig.education;
     const certifications = portfolioConfig.certifications;
 

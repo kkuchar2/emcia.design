@@ -9,6 +9,7 @@ import { INavBarItem } from '../../portfolioConfig.types';
 
 interface StyledNavBarItemProps {
     index: number;
+    $active: boolean;
 }
 
 export const StyledNavBarItem = styled(Link)<StyledNavBarItemProps>`
@@ -21,10 +22,13 @@ export const StyledNavBarItem = styled(Link)<StyledNavBarItemProps>`
   position: relative;
   user-select: none;
   -webkit-tap-highlight-color: transparent;
-  font-weight: 500;
+  font-weight: ${({ $active }) => ($active ? 600 : 500)};
   text-transform: lowercase;
+  color: inherit;
+  text-decoration: none;
+  outline: none;
+  transition: color 200ms cubic-bezier(0.22, 1, 0.36, 1);
 
-  // when pressed:
   &:active {
     font-weight: 700;
   }
@@ -33,14 +37,15 @@ export const StyledNavBarItem = styled(Link)<StyledNavBarItemProps>`
     display: none;
     content: '';
     position: absolute;
-    width: 0;
+    width: ${({ $active }) => ($active ? '65%' : '0')};
     left: 50%;
     transform: translateX(-50%);
     height: 2px;
     bottom: 5px;
-    background: #c3c3c3;
-    transition: all 0.5s cubic-bezier(0.075, 0.82, 0.265, 1);
-    opacity: 0;
+    background: #f1f1f1;
+    transition: width 0.5s cubic-bezier(0.075, 0.82, 0.265, 1),
+      opacity 0.5s cubic-bezier(0.075, 0.82, 0.265, 1);
+    opacity: ${({ $active }) => ($active ? 1 : 0)};
     border-radius: 2px;
   }
 
@@ -55,16 +60,25 @@ export const StyledNavBarItem = styled(Link)<StyledNavBarItemProps>`
     }
   }
 
+  &:focus-visible {
+    color: #ffffff;
+    border-radius: 2px;
+    box-shadow: 0 0 0 2px #f1f1f1;
+  }
+
+  &:focus-visible:after {
+    width: 65%;
+    opacity: 1;
+  }
+
   @media (max-height: 600px) {
     &:after {
       display: none;
     }
 
-    &:hover {
-
-      &:after {
-        display: none;
-      }
+    &:hover:after,
+    &:focus-visible:after {
+      display: none;
     }
   }
 
@@ -72,11 +86,19 @@ export const StyledNavBarItem = styled(Link)<StyledNavBarItemProps>`
     justify-content: center;
 
     &:hover {
-      font-weight: 500;
+      font-weight: ${({ $active }) => ($active ? 600 : 500)};
     }
 
     &:after {
       display: block;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+
+    &:after {
+      transition: none;
     }
   }
 `;
@@ -85,22 +107,35 @@ interface INavbarItemProps {
     index: number;
 }
 
-export const NavBarItem = (item: INavBarItem & INavbarItemProps) => {
+const isCurrentPath = (pathname: string, link: string) => {
+    if (link === '/') {
+        return pathname === '/';
+    }
 
+    return pathname === link || pathname.startsWith(`${link}/`);
+};
+
+export const NavBarItem = (item: INavBarItem & INavbarItemProps) => {
     const { title, link, index } = item;
     const pathname = usePathname();
     const { navbarOpened, setNavbarOpened } = useMainContext();
+    const active = isCurrentPath(pathname, link);
 
     const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-        // If clicking on the current page, close the navbar
         if (pathname === link && navbarOpened) {
             e.preventDefault();
             setNavbarOpened(false);
-            document.body.style.overflow = '';
         }
     };
 
-    return <StyledNavBarItem index={index} href={link} title={title} onClick={handleClick}>
+    return <StyledNavBarItem
+        index={index}
+        $active={active}
+        href={link}
+        title={title}
+        aria-current={active ? 'page' : undefined}
+        onClick={handleClick}
+    >
         {title.toLowerCase()}
     </StyledNavBarItem>;
 };

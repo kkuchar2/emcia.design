@@ -9,11 +9,12 @@ const StyledScrollIndicator = styled.div`
   width: 2rem;
   height: 3.5rem;
   border-radius: 2rem;
-  border: 1px solid rgba(241, 241, 241, 0.34);
+  border: 1px solid rgba(241, 241, 241, 0.45);
   display: flex;
   bottom: 50px;
   opacity: var(--scroll-indicator-opacity, 1);
   transition: opacity 0.5s ease;
+  pointer-events: none;
 
   @media (orientation: landscape) {
     bottom: 10px;
@@ -58,8 +59,20 @@ const StyledScrollIndicator = styled.div`
     background: #F1F1F1;
     animation: dot 2s ease infinite;
   }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+
+    &:after {
+      animation: none;
+      top: 1.25rem;
+      opacity: 0.85;
+      width: 0.5rem;
+      height: 0.5rem;
+    }
+  }
 `;
 
 export const ScrollIndicator = () => {
-    return <StyledScrollIndicator/>;
+    return <StyledScrollIndicator aria-hidden={true}/>;
 };

@@ -1,16 +1,25 @@
-import React from 'react';
+import React from 'react'
 
-import { ProjectsPage } from 'components/pages/ProjectsPage';
-import { SEO } from 'components/SEO/SEO';
-import { Metadata } from 'next';
+import { ProjectsPage } from 'components/pages/ProjectsPage'
+import { getPageJsonLdSchemas } from 'lib/jsonLd'
+import { getPageMetadata, serializeJsonLd } from 'lib/seo'
+import type { Metadata } from 'next'
 
-import { getPageMetadata } from '../../../next-seo.config';
-
-export const metadata: Metadata = { ...getPageMetadata('projects') };
+export const metadata: Metadata = getPageMetadata('projects')
 
 export default function Projects() {
-    return <>
-        <SEO seoKey={'projects'}/>
-        <ProjectsPage/>
-    </>;
+  const schemas = getPageJsonLdSchemas('projects')
+
+  return (
+    <>
+      {schemas.map((schema) => (
+        <script
+          key={schema['@type']}
+          type={'application/ld+json'}
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(schema) }}
+        />
+      ))}
+      <ProjectsPage />
+    </>
+  )
 }

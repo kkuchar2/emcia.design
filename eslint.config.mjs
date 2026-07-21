@@ -5,8 +5,6 @@ import { fileURLToPath } from 'url'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 
-console.log('Directory name:', __dirname)
-
 const compat = new FlatCompat({
   // import.meta.dirname is available after Node.js v20.11.0
   baseDirectory: import.meta.dirname,
@@ -18,7 +16,8 @@ const eslintConfig = [
     plugins: ['prettier', 'jsx-a11y', 'tailwindcss'],
     settings: {
       tailwindcss: {
-        config: `${__dirname}/src/app/globals.css`,
+        // Tailwind v4: point at the CSS entry that owns @theme / utilities
+        config: `${__dirname}/src/styles/globals.css`,
       },
     },
     rules: {

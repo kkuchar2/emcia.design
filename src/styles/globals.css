@@ -94,13 +94,23 @@
     .index_title {
         font-size: var(--font-size-indexTitle);
         animation: var(--animate-title);
-        @apply font-black leading-[1.2] text-[#F1f1f1] opacity-[0.001];
+        letter-spacing: -0.03em;
+        text-wrap: balance;
+        margin: 0;
+        @apply font-black leading-[1.15] text-[#F1F1F1] opacity-[0.001];
+    }
+
+    .index_subtitle {
+        margin: 0;
     }
 
     .index_description {
         font-size: var(--font-size-indexDescriptionTitle);
         animation: var(--animate-indexDescription);
-        @apply mt-[10px] font-normal leading-[1.2] text-[#BDBDBD] opacity-[0.001];
+        max-width: 42ch;
+        text-wrap: pretty;
+        margin: 0;
+        @apply mt-[10px] font-normal leading-[1.4] text-[#C8C8C8] opacity-[0.001];
     }
 }
 
@@ -114,6 +124,25 @@
 
     .animate-clipPath {
         animation: var(--animate-clipPath);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .index_title,
+    .index_description,
+    .animate-clipPath {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+    }
+
+    .index_title_wrapper {
+        clip-path: none;
+    }
+
+    html,
+    body {
+        scroll-behavior: auto;
     }
 }
 

@@ -2,8 +2,9 @@ import React from 'react';
 
 import styled from 'styled-components';
 
-const StyledMadeBy = styled.div`
+const StyledMadeBy = styled.p`
   margin-top: 50px;
+  margin-bottom: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -12,17 +13,19 @@ const StyledMadeBy = styled.div`
   color: #F1F1F1;
 `;
 
-const StyledYear = styled.div`
+const StyledYear = styled.span`
   display: flex;
   gap: 1px;
 `;
 
 export const MadeBy = () => {
+    const year = new Date().getFullYear();
+
     return <StyledMadeBy>
         <StyledYear>
-            <div className={'text-sm'}>{'©'}</div>
-            <div className={'text-sm'}>{'2025'}</div>
+            <span className={'text-sm'}>{'©'}</span>
+            <span className={'text-sm'}>{year}</span>
         </StyledYear>
-        <div className={'text-sm'}>{'Emilia Markiewicz'}</div>
+        <span className={'text-sm'}>{'Emilia Markiewicz'}</span>
     </StyledMadeBy>;
 };

@@ -1,16 +1,25 @@
-import React from 'react';
+import React from 'react'
 
-import { HomePage } from 'components/pages/HomePage';
-import { SEO } from 'components/SEO/SEO';
-import { Metadata } from 'next';
+import { HomePage } from 'components/pages/HomePage'
+import { getPageJsonLdSchemas } from 'lib/jsonLd'
+import { getPageMetadata, serializeJsonLd } from 'lib/seo'
+import type { Metadata } from 'next'
 
-import { getPageMetadata } from '../../next-seo.config';
-
-export const metadata: Metadata = { ...getPageMetadata('home') };
+export const metadata: Metadata = getPageMetadata('home')
 
 export default function Index() {
-    return <>
-        <SEO seoKey={'home'}/>
-        <HomePage/>
-    </>;
-};
+  const schemas = getPageJsonLdSchemas('home')
+
+  return (
+    <>
+      {schemas.map((schema) => (
+        <script
+          key={schema['@type']}
+          type={'application/ld+json'}
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(schema) }}
+        />
+      ))}
+      <HomePage />
+    </>
+  )
+}

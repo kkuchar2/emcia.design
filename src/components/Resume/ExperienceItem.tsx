@@ -4,81 +4,91 @@ import styled from 'styled-components';
 
 import { IExperienceItem } from '../../portfolioConfig.types';
 
-const StyledExperienceItem = styled.div`
+const StyledExperienceItem = styled.article`
   color: #f1f1f1;
   display: grid;
   grid-template-columns: 1fr;
   grid-column-gap: 60px;
-  line-height: 1;
   letter-spacing: 0.03em;
 
   @media (min-width: 1024px) {
-    grid-template-columns: min-content minmax(200px, 1fr);
+    grid-template-columns: 160px minmax(200px, 1fr);
   }
 `;
 
 const DesktopDate = styled.div`
   display: none;
-  gap: 5px;
+  gap: 6px;
   font-size: 1rem;
   font-weight: 300;
-  color: #f1f1f1;
+  color: #C8C8C8;
+  line-height: 1.2;
+  white-space: nowrap;
 
   @media (min-width: 1024px) {
     display: flex;
-    height: 40px;
+    min-height: 40px;
     align-items: center;
   }
 `;
 
 const MobileDate = styled.div`
   display: flex;
-  gap: 5px;
-  font-size: 1rem;
+  gap: 6px;
+  font-size: 0.95rem;
   font-weight: 400;
-  color: #807F7F;
+  color: #A8A8A8;
   margin-top: 12px;
+  line-height: 1.2;
 
   @media (min-width: 1024px) {
     display: none;
   }
 `;
 
-const JobTitle = styled.div`
-  font-size: clamp(1.4rem, 2.5vw, 1.5rem);
+const JobTitle = styled.h3`
+  font-size: clamp(1.35rem, 2.5vw, 1.5rem);
   font-weight: 600;
   display: flex;
   align-items: center;
-  height: 40px;
+  min-height: 40px;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  margin: 0;
+  text-wrap: balance;
 `;
 
 const Company = styled.div`
-  font-size: clamp(1.2rem, 1.5vw, 1.1rem);
+  font-size: clamp(1.05rem, 1.5vw, 1.1rem);
   font-weight: 300;
+  line-height: 1.35;
+  color: #E8E8E8;
+  margin-top: 2px;
 `;
 
-const Duty = styled.div`
-  font-size: clamp(1rem, 1.5vw, 1rem);
+const Duty = styled.span`
+  font-size: 1rem;
   color: #BDBDBD;
+  line-height: 1.55;
+  letter-spacing: 0.01em;
 
   @media (min-width: 1024px) {
-    color: #807F7F;
+    color: #A8A8A8;
   }
 `;
 
-const Dot = styled.div`
-  content: '•';
-  transform: scale(1.2);
-  display: grid;
-  place-items: center;
+const Dot = styled.span`
+  flex: 0 0 0.75em;
+  width: 0.75em;
+  font-size: 1rem;
+  line-height: 1.55;
   color: #BDBDBD;
+  text-align: center;
+  user-select: none;
 
   @media (min-width: 1024px) {
-    color: #807F7F;
+    color: #A8A8A8;
   }
-`;
-
-const LeftSide = styled.div`
 `;
 
 const RightSide = styled.div`
@@ -86,39 +96,52 @@ const RightSide = styled.div`
   flex-direction: column;
 `;
 
+const Duties = styled.ul`
+  margin: 28px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+`;
+
+const DutyItem = styled.li`
+  display: flex;
+  align-items: baseline;
+  gap: 0.55rem;
+`;
+
 export const ExperienceItem = (props: IExperienceItem) => {
     const { startDate, endDate, title, company, duties } = props;
 
     const dutiesList = useMemo(() => {
         return duties.map((duty, index) => {
-            return <div key={index} className={'flex items-start gap-2'}>
-                <Dot>{'•'}</Dot>
+            return <DutyItem key={index}>
+                <Dot aria-hidden={true}>{'•'}</Dot>
                 <Duty>{duty}</Duty>
-            </div>;
+            </DutyItem>;
         });
     }, [duties]);
 
     return <StyledExperienceItem>
-        <LeftSide>
+        <div>
             <DesktopDate>
-                <div>{startDate}</div>
-                <div>{'-'}</div>
-                <div>{endDate}</div>
+                <span>{startDate}</span>
+                <span aria-hidden={true}>{'–'}</span>
+                <span>{endDate}</span>
             </DesktopDate>
-        </LeftSide>
+        </div>
         <RightSide>
             <JobTitle>{title}</JobTitle>
             <Company>{company}</Company>
             <MobileDate>
-                <div>{startDate}</div>
-                <div>{'-'}</div>
-                <div>{endDate}</div>
+                <span>{startDate}</span>
+                <span aria-hidden={true}>{'–'}</span>
+                <span>{endDate}</span>
             </MobileDate>
-            <div className={'mt-[30px] flex flex-col gap-2 text-sm text-[#807F7F]'}>
-                <div className={'flex flex-col gap-2'}>
-                    {dutiesList}
-                </div>
-            </div>
+            <Duties>
+                {dutiesList}
+            </Duties>
         </RightSide>
     </StyledExperienceItem>;
 };

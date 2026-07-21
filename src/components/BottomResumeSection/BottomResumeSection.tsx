@@ -85,12 +85,15 @@ const CircleWrapper = styled.div`
   }
 `;
 
-const DownloadResumeTitle = styled.div`
+const DownloadResumeTitle = styled.h2`
   font-size: clamp(0.9em, 3.6vw, 2rem);
   font-weight: 600;
-  line-height: 1.5;
-  letter-spacing: 0.5px;
+  line-height: 1.35;
+  letter-spacing: -0.02em;
   color: #f1f1f1;
+  margin: 0;
+  text-wrap: balance;
+  text-align: center;
 `;
 
 const DownloadResumeSection = styled.div`
@@ -110,8 +113,9 @@ const ResumeButton = styled.a`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: clamp(120px, 20vw, 180px);
-  height: 40px;
+  min-width: clamp(120px, 20vw, 180px);
+  min-height: 44px;
+  padding: 0 1.25rem;
   border-radius: 50px;
   background: none;
   border: 1px solid #FF5C00;
@@ -119,27 +123,41 @@ const ResumeButton = styled.a`
   font-size: clamp(0.8em, 2vw, 1rem);
   font-weight: 600;
   text-decoration: none;
-  transition: all 0.2s ease;
+  transition: color 200ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 200ms cubic-bezier(0.22, 1, 0.36, 1);
   -webkit-tap-highlight-color: transparent;
 
   @media (min-width: 768px) {
-    height: 50px;
+    min-height: 50px;
   }
 
   &:hover {
     cursor: pointer;
-    border: 1px solid #ffa671;
+    border-color: #ffa671;
     color: #ffa671;
+  }
+
+  &:focus-visible {
+    outline: 2px solid #FF5C00;
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
   }
 `;
 
 export const BottomResumeSection = () => {
-
     return <StyledBottomSection>
         <CircleWrapper>
             <DownloadResumeSection>
                 <DownloadResumeTitle>{'Download my resume'}</DownloadResumeTitle>
-                <ResumeButton href={'doc/CV-Emilia-Markiewicz.pdf'} target={'blank'} title={'Download my resume'}>
+                <ResumeButton
+                    href={'doc/CV-Emilia-Markiewicz.pdf'}
+                    target={'_blank'}
+                    rel={'noopener noreferrer'}
+                    title={'Download my resume'}
+                >
                     {'Click here'}
                 </ResumeButton>
             </DownloadResumeSection>

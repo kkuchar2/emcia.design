@@ -8,14 +8,16 @@ import styled from 'styled-components';
 
 import { Project } from '../../portfolioConfig.types';
 
-const StyledProjectLongDescription = styled.div`
+const StyledProjectLongDescription = styled.p`
   font-size: 15px;
-  color: #595959;
+  color: #4A4A4A;
   font-weight: 400;
-  margin-top: 30px;
+  line-height: 1.55;
+  margin: 30px 0 0;
+  text-wrap: pretty;
 `;
 
-export const StyledProjectItem = styled.div`
+export const StyledProjectItem = styled.article`
   position: relative;
   display: grid;
   grid-template-columns: 1fr;
@@ -63,33 +65,42 @@ export const StyledImageWrapper = styled(Link)`
   overflow: hidden;
   transition: background 2s ease;
   order: 1;
+  outline: none;
+
+  &:focus-visible {
+    box-shadow: inset 0 0 0 3px #1e1e1e;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
 `;
 
-const Title = styled.div`
+const Title = styled.h3`
   font-size: clamp(3rem, 3.5vw, 4rem);
   font-weight: 700;
   color: #1e1e1e;
-  line-height: 0.8;
+  line-height: 0.85;
+  letter-spacing: -0.03em;
+  margin: 0;
+  text-wrap: balance;
 `;
 
-const ShortDescription = styled.div`
+const ShortDescription = styled.p`
   font-size: 15px;
-  color: #595959;
+  color: #4A4A4A;
   font-weight: 400;
-  margin-top: 20px;
+  line-height: 1.45;
+  margin: 20px 0 0;
 `;
 
 export const ProjectItem = (props: ProjectItemProps) => {
-
     const { project } = props;
-
     const { title, image, overlayImage, alt, shortDescription, longDescription, style } = project;
-
     const { background, targetZoom, objectFit } = style || {};
-
     const { longDescriptionMaxWidth } = style || {};
 
-    const ref = useRef<HTMLDivElement | null>(null);
+    const ref = useRef<HTMLElement | null>(null);
     const entry = useIntersectionObserver(ref, {
         threshold: 0.3,
     });
@@ -117,7 +128,7 @@ export const ProjectItem = (props: ProjectItemProps) => {
                         style: {
                             objectFit: objectFit || 'cover',
                             transition: 'transform 2s cubic-bezier(0.075, 0.82, 0.165, 1) 300ms, opacity 2s ease',
-                            transform: isVisible ? `translateY(-20px) scale(${1.2})` : 'translateY(150%) scale(2)'
+                            transform: isVisible ? 'translateY(-20px) scale(1.2)' : 'translateY(150%) scale(2)'
                         }
                     }
                 ]}
@@ -127,7 +138,9 @@ export const ProjectItem = (props: ProjectItemProps) => {
         <StyledProjectDescription>
             <Title>{title}</Title>
             <ShortDescription>{shortDescription}</ShortDescription>
-            <StyledProjectLongDescription style={{ maxWidth: `${longDescriptionMaxWidth}px` || 'auto' }}>
+            <StyledProjectLongDescription
+                style={{ maxWidth: longDescriptionMaxWidth ? `${longDescriptionMaxWidth}px` : undefined }}
+            >
                 {longDescription}
             </StyledProjectLongDescription>
 
