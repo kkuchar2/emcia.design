@@ -27,6 +27,9 @@ type ProjectShowcasePageProps = {
   atmosphere?: ShowcaseAtmosphere;
 };
 
+/** Modules that may fetch ahead of the last finished one. */
+const LOAD_AHEAD = 2;
+
 const candleFlicker = keyframes`
   0%, 100% {
     opacity: 0.45;
@@ -293,12 +296,11 @@ export const ProjectShowcasePage = ({
   galleryLabel,
   atmosphere = 'default',
 }: ProjectShowcasePageProps) => {
-  // Index into `images` that is currently allowed to start loading.
-  // Advances only after the previous module finishes (or errors).
-  const [loadUpTo, setLoadUpTo] = useState(0);
+  // Keep a small parallel fetch window without flooding bandwidth on fat GIFs.
+  const [loadUpTo, setLoadUpTo] = useState(LOAD_AHEAD);
 
   const onModuleLoaded = useCallback((index: number) => {
-    setLoadUpTo((current) => Math.max(current, index + 1));
+    setLoadUpTo((current) => Math.max(current, index + 1 + LOAD_AHEAD));
   }, []);
 
   const projectName = title.replace(/\.$/, '');

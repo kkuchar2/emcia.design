@@ -2,7 +2,7 @@ import type { ShowcaseImage } from 'components/pages/ProjectShowcasePage';
 
 const CDN_BASE = 'https://cdn.static.kkucharski.com/emcia.design/aprojekt';
 
-/** Animated modules served as GIF with 256 / 512 / 1024 / full variants. */
+/** Animated modules — GIF only at `full` (resized GIF variants are often larger). */
 const GIF_INDICES = new Set([3, 17, 19, 20, 22, 23]);
 
 const TOTAL_IMAGES = 24;
@@ -48,17 +48,13 @@ function withDimensions(index: number, image: Omit<ShowcaseImage, 'width' | 'hei
 
 function buildGifImage(index: number): ShowcaseImage {
   const id = pad(index);
-  const url = (suffix: string) => `${CDN_BASE}/aprojekt-${id}-${suffix}.gif`;
+  // Intermediate GIF resizes are often *larger* than full (bad LZW). Serve full only.
+  const src = `${CDN_BASE}/aprojekt-${id}-full.gif`;
 
   return withDimensions(index, {
     index,
-    src: url('full'),
-    srcSet: [
-      `${url('256w')} 256w`,
-      `${url('512w')} 512w`,
-      `${url('1024w')} 1024w`,
-      `${url('full')} 1400w`,
-    ].join(', '),
+    src,
+    srcSet: `${src} 1400w`,
     sizes: SIZES,
   });
 }

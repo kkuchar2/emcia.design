@@ -17,6 +17,7 @@ type ShowcaseModuleProps = {
 };
 
 const SNAPSHOT_MAX_WIDTH = 1400;
+const FADE_MS = 420;
 
 const skeletonPulse = keyframes`
   0%, 100% {
@@ -75,10 +76,9 @@ const Image = styled.img<{ $shown: boolean }>`
   height: 100%;
   object-fit: fill;
   opacity: ${({ $shown }) => ($shown ? 1 : 0)};
-  transition: opacity 420ms ease;
+  transition: opacity ${FADE_MS}ms ease;
 
   @media (prefers-reduced-motion: reduce) {
-    opacity: 1;
     transition: none;
   }
 `;
@@ -147,13 +147,26 @@ export const ShowcaseModule = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [canLoad, image.src]);
 
+  // Double rAF so opacity:0 paints first — cached hits otherwise skip the CSS fade.
   useEffect(() => {
-    if (loaded && inView) {
-      setRevealed(true);
+    if (!loaded || !inView || revealed) {
+      return;
     }
-  }, [loaded, inView]);
 
-  // Capture a durable paint so scroll-away discard cannot blank the module.
+    let innerRaf = 0;
+    const outerRaf = requestAnimationFrame(() => {
+      innerRaf = requestAnimationFrame(() => {
+        setRevealed(true);
+      });
+    });
+
+    return () => {
+      cancelAnimationFrame(outerRaf);
+      cancelAnimationFrame(innerRaf);
+    };
+  }, [loaded, inView, revealed]);
+
+  // Snapshot only after fade finishes so canvas does not flash under the transition.
   useEffect(() => {
     if (!revealed) {
       return;
@@ -165,15 +178,16 @@ export const ShowcaseModule = ({
       return;
     }
 
-    const capture = () => {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const delay = reduceMotion ? 0 : FADE_MS;
+
+    const timer = window.setTimeout(() => {
       if (paintSnapshot(img, canvas)) {
         setHasSnapshot(true);
       }
-    };
+    }, delay);
 
-    capture();
-    const raf = requestAnimationFrame(capture);
-    return () => cancelAnimationFrame(raf);
+    return () => window.clearTimeout(timer);
   }, [revealed, image.src]);
 
   // Re-warm decode when scrolling back without React state churn.
@@ -205,7 +219,7 @@ export const ShowcaseModule = ({
       $atmosphere={atmosphere}
       style={{ aspectRatio: `${image.width} / ${image.height}` }}
     >
-      <Skeleton $visible={!loaded} $atmosphere={atmosphere} aria-hidden={true} />
+      <Skeleton $visible={!revealed} $atmosphere={atmosphere} aria-hidden={true} />
       <Snapshot ref={canvasRef} $shown={hasSnapshot} aria-hidden={true} />
       {canLoad && (
         <Image

@@ -157,7 +157,7 @@ div#__next > main {
     box-sizing: border-box;
     display: flex;
     justify-content: center;
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
     width: 100%;
 }
 
@@ -172,7 +172,7 @@ html {
 body {
     background: #1e1e1e;
     font-family: Inter, sans-serif;
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
     width: 100%;
 }
 
