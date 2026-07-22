@@ -16,6 +16,9 @@
       ],
       "lib/*": [
         "lib/*"
+      ],
+      "projects/*": [
+        "projects/*"
       ]
     },
     "target": "ES2017",

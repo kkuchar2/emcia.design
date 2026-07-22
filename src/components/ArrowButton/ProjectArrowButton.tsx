@@ -11,7 +11,7 @@ import styles from './ProjectArrowButton.module.scss';
 
 export const ProjectArrowButton = (props: ArrowButtonProps) => {
 
-    const { text, strokeColor, href, title } = props;
+    const { text, strokeColor, href, title, external = true } = props;
 
     const ref = useRef<HTMLAnchorElement | null>(null);
     const entry = useIntersectionObserver(ref, {});
@@ -19,8 +19,8 @@ export const ProjectArrowButton = (props: ArrowButtonProps) => {
 
     return <Link className={[styles.arrowLink, isVisible ? styles.visible : styles.invisible].join(' ')}
         href={href}
-        target={'_blank'}
-        rel={'noopener noreferrer'}
+        target={external ? '_blank' : undefined}
+        rel={external ? 'noopener noreferrer' : undefined}
         title={title}
         prefetch={false}
         ref={ref}>

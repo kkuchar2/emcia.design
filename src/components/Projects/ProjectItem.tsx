@@ -94,11 +94,14 @@ const ShortDescription = styled.p`
   margin: 20px 0 0;
 `;
 
+const isExternalHref = (href: string) => /^https?:\/\//i.test(href);
+
 export const ProjectItem = (props: ProjectItemProps) => {
     const { project } = props;
     const { title, image, overlayImage, alt, shortDescription, longDescription, style } = project;
     const { background, targetZoom, objectFit } = style || {};
     const { longDescriptionMaxWidth } = style || {};
+    const external = isExternalHref(project.link);
 
     const ref = useRef<HTMLElement | null>(null);
     const entry = useIntersectionObserver(ref, {
@@ -107,10 +110,15 @@ export const ProjectItem = (props: ProjectItemProps) => {
     const isVisible = !!entry?.isIntersecting;
 
     return <StyledProjectItem ref={ref}>
-        <StyledImageWrapper href={project.link} target={'_blank'} rel={'noopener noreferrer'} prefetch={false}>
+        <StyledImageWrapper
+            href={project.link}
+            target={external ? '_blank' : undefined}
+            rel={external ? 'noopener noreferrer' : undefined}
+            prefetch={false}
+        >
             <CompositionImage
                 show={isVisible}
-                alt={`Open in Behance - ${alt}`}
+                alt={`${external ? 'Open in Behance' : 'View project'} - ${alt}`}
                 background={background}
                 images={[
                     {
@@ -136,7 +144,7 @@ export const ProjectItem = (props: ProjectItemProps) => {
         </StyledImageWrapper>
 
         <StyledProjectDescription>
-            <Title>{title}</Title>
+            <Title>{title.replace(/\.$/, '')}</Title>
             <ShortDescription>{shortDescription}</ShortDescription>
             <StyledProjectLongDescription
                 style={{ maxWidth: longDescriptionMaxWidth ? `${longDescriptionMaxWidth}px` : undefined }}
@@ -148,7 +156,9 @@ export const ProjectItem = (props: ProjectItemProps) => {
                 <ProjectArrowButton
                     text={'more details'}
                     href={project.link}
-                    title={project.linkTitle}/>
+                    title={project.linkTitle}
+                    external={external}
+                />
             </div>
         </StyledProjectDescription>
     </StyledProjectItem>;

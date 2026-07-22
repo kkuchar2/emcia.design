@@ -6,6 +6,7 @@ import styled from 'styled-components';
 
 import { useMainContext } from '../../MainContext';
 import { INavBarItem } from '../../portfolioConfig.types';
+import { isNavItemActive } from './navItems';
 
 interface StyledNavBarItemProps {
     index: number;
@@ -14,7 +15,8 @@ interface StyledNavBarItemProps {
 
 export const StyledNavBarItem = styled(Link)<StyledNavBarItemProps>`
   --index: ${({ index }) => index};
-  width: 120px;
+  min-width: 120px;
+  width: auto;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -107,19 +109,11 @@ interface INavbarItemProps {
     index: number;
 }
 
-const isCurrentPath = (pathname: string, link: string) => {
-    if (link === '/') {
-        return pathname === '/';
-    }
-
-    return pathname === link || pathname.startsWith(`${link}/`);
-};
-
 export const NavBarItem = (item: INavBarItem & INavbarItemProps) => {
     const { title, link, index } = item;
     const pathname = usePathname();
     const { navbarOpened, setNavbarOpened } = useMainContext();
-    const active = isCurrentPath(pathname, link);
+    const active = isNavItemActive(pathname, link);
 
     const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
         if (pathname === link && navbarOpened) {

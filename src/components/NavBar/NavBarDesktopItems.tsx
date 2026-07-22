@@ -1,6 +1,8 @@
 import React from 'react';
 
 import { NavBarItem } from 'components/NavBar/NavBarItem';
+import { resolveNavItems } from 'components/NavBar/navItems';
+import { usePathname } from 'next/navigation';
 import styled from 'styled-components';
 
 import { INavbarConfig } from '../../portfolioConfig.types';
@@ -29,10 +31,12 @@ const StyledNavBarDesktopItems = styled.ul`
 `;
 
 export const NavBarDesktopItems = (props: INavbarConfig) => {
-    const { items } = props;
+    const { items, projectLabels } = props;
+    const pathname = usePathname();
+    const navItems = resolveNavItems(items, pathname, projectLabels);
 
     return <StyledNavBarDesktopItems className={'ease opacity-[--navbar-opacity] transition-opacity duration-[800ms]'}>
-        {items.map((item, index) => (
+        {navItems.map((item, index) => (
             <li key={item.link}>
                 <NavBarItem index={index} {...item}/>
             </li>

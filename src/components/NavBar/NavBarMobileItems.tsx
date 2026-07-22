@@ -1,6 +1,8 @@
 import React from 'react';
 
 import { NavBarItem, StyledNavBarItem } from 'components/NavBar/NavBarItem';
+import { resolveNavItems } from 'components/NavBar/navItems';
+import { usePathname } from 'next/navigation';
 import styled from 'styled-components';
 
 import { useMainContext } from '../../MainContext';
@@ -61,8 +63,10 @@ const StyledNavBarMobileItems = styled.ul<IStyledNavBarMobileItemsProps>`
 `;
 
 export const NavBarMobileItems = (props: INavbarConfig) => {
-    const { items } = props;
+    const { items, projectLabels } = props;
     const { navbarOpened } = useMainContext();
+    const pathname = usePathname();
+    const navItems = resolveNavItems(items, pathname, projectLabels);
 
     return <StyledNavBarMobileItems
         id={'mobile-navigation'}
@@ -70,7 +74,7 @@ export const NavBarMobileItems = (props: INavbarConfig) => {
         aria-hidden={!navbarOpened}
         inert={!navbarOpened ? true : undefined}
     >
-        {items.map((item, index) => (
+        {navItems.map((item, index) => (
             <li key={item.link}>
                 <NavBarItem index={index} {...item}/>
             </li>

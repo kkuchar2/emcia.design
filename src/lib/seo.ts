@@ -30,7 +30,7 @@ export function serializeJsonLd(data: unknown): string {
 }
 
 /** Paths listed in sitemap (indexable pages). */
-export const PUBLIC_ROUTE_PATHS = ['/', '/projects', '/resume'] as const
+export const PUBLIC_ROUTE_PATHS = ['/', '/projects', '/projects/sciencelo', '/projects/serenity', '/projects/aprojekt', '/resume'] as const
 
 const NOINDEX_ROBOTS: Metadata['robots'] = { index: false, follow: false }
 

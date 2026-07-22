@@ -9,8 +9,8 @@ const projects = [
     {
         title: 'serenity.',
         image: '/images/projects/serenity_square.png',
-        link: 'https://www.behance.net/gallery/156628655/Serenity-Candlemaker-Mobile-App',
-        linkTitle: 'Behance - Serenity Candlemaker Mobile App',
+        link: '/projects/serenity',
+        linkTitle: 'Serenity - Candlemaker Mobile App',
         tags: ['UI/UX', 'Mobile', 'App', 'Case Study', 'Design System', 'Candles'],
         alt: 'Serenity Candlemaker Mobile App',
         shortDescription: 'CANDLEMAKER STORE MOBILE APP',
@@ -25,8 +25,8 @@ const projects = [
         title: 'sciencelo.',
         image: '/images/projects/sciencelo_no_text.png',
         overlayImage: '/images/projects/sciencelo_text_image.png',
-        link: 'https://www.behance.net/gallery/170657341/Sciencelo-Landing-Page-UI-Design',
-        linkTitle: 'Behance - Scencelo - Educational Platform Landing Page',
+        link: '/projects/sciencelo',
+        linkTitle: 'Sciencelo - Educational Platform Landing Page',
         tags: ['UI/UX', 'Case Study', 'Design System', 'Education', 'Landing Page', 'Sciencelo'],
         alt: 'Sciencelo Landing Page',
         extraImageText: 'Sciencelo.',
@@ -41,8 +41,8 @@ const projects = [
     {
         title: 'aprojekt.',
         image: '/images/projects/aprojekt_square.png',
-        link: 'https://www.behance.net/gallery/164216181/Aprojekt-Website-UI-Redesign',
-        linkTitle: 'Behance - Aprojekt Website UI redesign',
+        link: '/projects/aprojekt',
+        linkTitle: 'Aprojekt - Website UI Redesign',
         tags: ['UI/UX', 'Web', 'Website', 'Case Study', 'Design System', 'Telecommunications'],
         alt: 'AProjekt Website Redesign',
         shortDescription: 'FIBER CABLES COMPANY',
@@ -128,7 +128,12 @@ export const portfolioConfig: IPortfolioConfig = {
                 title: 'Resume',
                 link: '/resume'
             }
-        ]
+        ],
+        projectLabels: {
+            '/projects/sciencelo': 'sciencelo.',
+            '/projects/serenity': 'serenity.',
+            '/projects/aprojekt': 'aprojekt.',
+        },
     },
     socialConfig: {
         dribbble: {

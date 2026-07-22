@@ -34,8 +34,12 @@ export interface INavBarItem {
     link?: string
 }
 
+/** Path → label for in-site project detail pages shown in the top nav. */
+export type ProjectNavLabels = Record<string, string>;
+
 export interface INavbarConfig {
     items: INavBarItem[]
+    projectLabels?: ProjectNavLabels
 }
 
 export interface ShowcaseProjectsConfig {
