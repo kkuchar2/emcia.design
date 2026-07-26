@@ -10,7 +10,7 @@ import { portfolioConfig } from '../../portfolioConfig';
 
 export const HomePage = () => {
     return <main>
-        <Header/>
+        {/*<Header/>*/}
         <div className={'flex flex-col items-center justify-center bg-[#f1f1f1]'}>
             <ProjectsListView {...portfolioConfig.homePageConfig.selectedProjectsConfig}/>
             <BottomContactSection/>
