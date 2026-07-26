@@ -9,7 +9,9 @@
  *   R2_JURISDICTION    — optional; `eu` | `fedramp` for jurisdiction buckets
  *                        (kkucharski-static is EU → must be `eu`)
  *   R2_ENDPOINT        — optional override; else built from account + jurisdiction
- *   STRIP_LOCAL_STATIC — if "1" or ASSET_PREFIX set, remove out/_next/static after upload
+ *   STRIP_LOCAL_STATIC — if "1", remove out/_next/static after upload.
+ *                        Default: keep a copy on Pages so stale HTML without
+ *                        assetPrefix (edge/browser cutover) still resolves.
  *
  * Local builds without R2 creds: skip (exit 0).
  * ASSET_PREFIX set without R2 creds: fail (misconfigured CF Pages env).
@@ -181,10 +183,14 @@ async function main() {
     console.log(`  ok ${key}`);
   }
 
-  const shouldStrip = STRIP_LOCAL_STATIC === '1' || Boolean(ASSET_PREFIX);
+  const shouldStrip = STRIP_LOCAL_STATIC === '1';
   if (shouldStrip) {
     rmSync(staticDir, { recursive: true, force: true });
     console.log('[upload-static] Removed out/_next/static from Pages artifact.');
+  } else {
+    console.log(
+      '[upload-static] Keeping out/_next/static on Pages (set STRIP_LOCAL_STATIC=1 to remove).',
+    );
   }
 
   console.log('[upload-static] Done.');
