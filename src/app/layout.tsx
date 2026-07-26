@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { DeployRecover } from 'components/DeployRecover/DeployRecover'
 import { Layout } from 'components/pages/layout'
 import { rootMetadata } from 'lib/rootMetadata'
 import { Inter } from 'next/font/google'
@@ -26,6 +27,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang={'en'}>
       <body>
+        <DeployRecover />
         <main className={inter.className}>
           <Layout>{children}</Layout>
         </main>
