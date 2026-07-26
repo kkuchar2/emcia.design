@@ -26,7 +26,7 @@ export const viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang={'en'}>
-      <body>
+      <body data-deploy-probe="2026-07-26T14:00Z">
         <DeployRecover />
         <main className={inter.className}>
           <Layout>{children}</Layout>
