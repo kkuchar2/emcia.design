@@ -88,6 +88,8 @@ async function main() {
 
   const prefix = R2_PREFIX.replace(/^\/+|\/+$/g, '');
   const endpoint = R2_ENDPOINT || `https://${R2_ACCOUNT_ID}.r2.cloudflarestorage.com`;
+  // AWS SDK ≥3.729 sends default checksum headers; R2 rejects them as AccessDenied.
+  // https://developers.cloudflare.com/r2/examples/aws/aws-sdk-js-v3/
   const client = new S3Client({
     region: 'auto',
     endpoint,
@@ -95,6 +97,8 @@ async function main() {
       accessKeyId: R2_ACCESS_KEY_ID,
       secretAccessKey: R2_SECRET_ACCESS_KEY,
     },
+    requestChecksumCalculation: 'WHEN_REQUIRED',
+    responseChecksumValidation: 'WHEN_REQUIRED',
   });
 
   const files = walkFiles(staticDir);
