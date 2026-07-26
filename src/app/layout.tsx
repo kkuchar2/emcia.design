@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { DeployRecover } from 'components/DeployRecover/DeployRecover'
+import { BuildStamp } from 'components/BuildStamp/BuildStamp'
 import { Layout } from 'components/pages/layout'
 import { rootMetadata } from 'lib/rootMetadata'
 import { Inter } from 'next/font/google'
@@ -26,8 +27,9 @@ export const viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang={'en'}>
-      <body data-deploy-probe="2026-07-26T14:00Z">
+      <body>
         <DeployRecover />
+        <BuildStamp />
         <main className={inter.className}>
           <Layout>{children}</Layout>
         </main>
